@@ -1,0 +1,338 @@
+<script setup>
+    import { ref } from 'vue'
+    
+    
+    const SkillsSection = ref({programmingSkillsLeft: [
+            { icon: 'https://img.icons8.com/?size=100&id=13679&format=png&color=000000', name: 'Java', percentage: 90 },
+            { icon: 'https://img.icons8.com/?size=100&id=108784&format=png&color=000000', name: 'JavaScript', percentage: 70 },
+            { icon: 'https://img.icons8.com/?size=100&id=13441&format=png&color=000000', name: 'Python', percentage: 80 },
+        ],
+        programmingSkillsRight: [
+            { icon: 'https://img.icons8.com/?size=100&id=mfkStOwP4EC0&format=png&color=000000', name: 'C Programming', percentage: 90 },
+            { icon: 'https://img.icons8.com/?size=100&id=40669&format=png&color=000000', name: 'C++', percentage: 75 },
+            { icon: 'https://img.icons8.com/?size=100&id=ZoxjA0jZDdFZ&format=png&color=000000', name: 'Kotlin', percentage: 50 },
+        ],
+        webSkillsLeft: [
+            { icon: 'https://img.icons8.com/?size=100&id=20909&format=png&color=000000', name: 'HTML', percentage: 85 },
+        ],
+        webSkillsRight: [
+            { icon: 'https://img.icons8.com/?size=100&id=21278&format=png&color=000000', name: 'CSS', percentage: 85 },
+        ],
+        devToolsSkillsLeft: [
+            { icon: 'https://img.icons8.com/?size=100&id=20906&format=png&color=000000', name: 'Git', percentage: 80 },
+            { icon: 'https://img.icons8.com/?size=100&id=16318&format=png&color=000000', name: 'Github', percentage: 80 },
+        ],
+        devToolsSkillsRight: [
+            { icon: 'https://img.icons8.com/?size=100&id=rPAHs7H1vriV&format=png&color=000000', name: 'Eclipse', percentage: 80 },
+            { icon: 'https://img.icons8.com/?size=100&id=0OQR1FYCuA9f&format=png&color=000000', name: 'VS Code', percentage: 90 },
+        ],
+        frameworksSkillsLeft: [
+            { icon: 'https://img.icons8.com/?size=100&id=NfbyHexzVEDk&format=png&color=000000', name: 'React', percentage: 75 },
+            { icon: 'https://img.icons8.com/?size=100&id=ouWtcsgDBiwO&format=png&color=000000', name: 'Node.js', percentage: 70 },
+            { icon: 'https://img.icons8.com/?size=100&id=AqYCfGyGXlO7&format=png&color=000000', name: 'Flask', percentage: 85 },
+        ],
+        frameworksSkillsRight: [
+            { icon: 'https://img.icons8.com/?size=100&id=tbleCw0ch6QC&format=png&color=000000', name: 'Vue JS', percentage: 85 },
+            { icon: 'https://img.icons8.com/?size=100&id=WoopfRcDj3RF&format=png&color=000000', name: 'Tailwind CSS', percentage: 80 },
+            { icon: 'https://img.icons8.com/?size=100&id=EzPCiQUqWWEa&format=png&color=000000', name: 'Bootstrap', percentage: 75 },
+        ],
+    });
+
+</script>
+
+<template>
+    <div class="w-[80%] mx-auto flex flex-col items-center">
+        <!-- First Section: Programming Languages -->
+        <div class="relative overflow-x-auto sm:rounded-lg w-full">
+            <div class="flex justify-center items-center space-x-4">
+                <!-- Left Table -->
+                <div class="w-1/3 overflow-x-auto">
+                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                        <tbody>
+                            <tr v-for="(skill, index) in SkillsSection.programmingSkillsLeft" :key="'left-top-' + index"
+                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                <td>
+                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                </td>
+                                <th scope="row"
+                                    class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ skill.name }}
+                                </th>
+                                <td class="px-6 py-3">
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                            :style="{ width: skill.percentage + '%' }"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Middle Heading with Lines -->
+                <div class="w-1/3 flex items-center relative">
+                    <!-- Left Line -->
+                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
+                    <!-- Heading Box -->
+                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg 
+                                transition duration-300 hover:bg-blue-500 hover:text-white 
+                            dark:hover:bg-blue-500 cursor-pointer z-10">
+                        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
+                            Programming Languages
+                        </h2>
+                    </div>
+                    <!-- Right Line -->
+                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
+                </div>
+
+                <!-- Right Table -->
+                <div class="w-1/3 overflow-x-auto">
+                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                        <tbody>
+                            <tr v-for="(skill, index) in SkillsSection.programmingSkillsRight"
+                                :key="'right-top-' + index"
+                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                <td>
+                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                </td>
+                                <th scope="row"
+                                    class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ skill.name }}
+                                </th>
+                                <td class="px-6 py-3">
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                            :style="{ width: skill.percentage + '%' }"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vertical Connecting Line -->
+        <div class="w-0.5 h-16 mb-5 bg-gray-400 dark:bg-gray-600"></div>
+
+        <!-- Second Section: Web Development -->
+        <div class="relative overflow-x-auto sm:rounded-lg w-full">
+            <div class="flex justify-center items-center space-x-4">
+                <!-- Left Table -->
+                <div class="w-1/3 overflow-x-auto">
+                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                        <tbody>
+                            <tr v-for="(skill, index) in SkillsSection.webSkillsLeft" :key="'left-second-' + index"
+                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                <td>
+                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                </td>
+                                <th scope="row"
+                                    class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ skill.name }}
+                                </th>
+                                <td class="px-6 py-3">
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                            :style="{ width: skill.percentage + '%' }"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Middle Heading with Lines -->
+                <div class="w-1/3 flex items-center relative">
+                    <!-- Left Line -->
+                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
+                    <!-- Heading Box -->
+                    <div class="mx-4 px-6 py-2 bg-gray-100 W dark:bg-gray-700 rounded-lg 
+                                transition duration-300 hover:bg-blue-500 hover:text-white 
+                            dark:hover:bg-blue-500 cursor-pointer z-10">
+                        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
+                            Web Development
+                        </h2>
+                    </div>
+                    <!-- Right Line -->
+                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
+                </div>
+
+                <!-- Right Table -->
+                <div class="w-1/3 overflow-x-auto">
+                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                        <tbody>
+                            <tr v-for="(skill, index) in SkillsSection.webSkillsRight" :key="'right-second-' + index"
+                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                <td>
+                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                </td>
+                                <th scope="row"
+                                    class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ skill.name }}
+                                </th>
+                                <td class="px-6 py-3">
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                            :style="{ width: skill.percentage + '%' }"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vertical Connecting Line -->
+        <div class="w-0.5 h-16 mt-5 bg-gray-400 dark:bg-gray-600"></div>
+
+        <!-- Third Section: Developer Tools -->
+        <div class="relative overflow-x-auto sm:rounded-lg w-full">
+            <div class="flex justify-center items-center space-x-4">
+                <!-- Left Table -->
+                <div class="w-1/3 overflow-x-auto">
+                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                        <tbody>
+                            <tr v-for="(skill, index) in SkillsSection.devToolsSkillsLeft" :key="'left-third-' + index"
+                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                <td>
+                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                </td>
+                                <th scope="row"
+                                    class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ skill.name }}
+                                </th>
+                                <td class="px-6 py-3">
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                            :style="{ width: skill.percentage + '%' }"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Middle Heading with Lines -->
+                <div class="w-1/3 flex items-center relative">
+                    <!-- Left Line -->
+                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
+                    <!-- Heading Box -->
+                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg 
+                                transition duration-300 hover:bg-blue-500 hover:text-white 
+                            dark:hover:bg-blue-500 cursor-pointer z-10">
+                        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
+                            Developer Tools
+                        </h2>
+                    </div>
+                    <!-- Right Line -->
+                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
+                </div>
+
+                <!-- Right Table -->
+                <div class="w-1/3 overflow-x-auto">
+                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                        <tbody>
+                            <tr v-for="(skill, index) in SkillsSection.devToolsSkillsRight"
+                                :key="'right-third-' + index"
+                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                <td>
+                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                </td>
+                                <th scope="row"
+                                    class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ skill.name }}
+                                </th>
+                                <td class="px-6 py-3">
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                            :style="{ width: skill.percentage + '%' }"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vertical Connecting Line -->
+        <div class="w-0.5 h-16 bg-gray-400 dark:bg-gray-600"></div>
+
+        <!-- Fourth Section: Technologies/Frameworks -->
+        <div class="relative overflow-x-auto sm:rounded-lg w-full">
+            <div class="flex justify-center items-center space-x-4">
+                <!-- Left Table -->
+                <div class="w-1/3 overflow-x-auto">
+                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                        <tbody>
+                            <tr v-for="(skill, index) in SkillsSection.frameworksSkillsLeft"
+                                :key="'left-fourth-' + index"
+                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                <td>
+                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                </td>
+                                <th scope="row"
+                                    class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ skill.name }}
+                                </th>
+                                <td class="px-6 py-3">
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                            :style="{ width: skill.percentage + '%' }"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Middle Heading with Lines -->
+                <div class="w-1/3 flex items-center relative">
+                    <!-- Left Line -->
+                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
+                    <!-- Heading Box -->
+                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg 
+                                transition duration-300 hover:bg-blue-500 hover:text-white 
+                            dark:hover:bg-blue-500 cursor-pointer z-10">
+                        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
+                            Technologies/Frameworks
+                        </h2>
+                    </div>
+                    <!-- Right Line -->
+                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
+                </div>
+
+                <!-- Right Table -->
+                <div class="w-1/3 overflow-x-auto">
+                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                        <tbody>
+                            <tr v-for="(skill, index) in SkillsSection.frameworksSkillsRight"
+                                :key="'right-fourth-' + index"
+                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                <td>
+                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                </td>
+                                <th scope="row"
+                                    class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ skill.name }}
+                                </th>
+                                <td class="px-6 py-3">
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                            :style="{ width: skill.percentage + '%' }"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style>
+
+</style>
