@@ -5,6 +5,7 @@ import Skills from './components/Skills.vue'
 import Footer from './components/Footer.vue'
 import Education from './components/Education.vue'
 import Achievements from './components/Achievements.vue'
+import ContactMe from './components/ContactMe.vue'
 
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
@@ -18,6 +19,7 @@ if ('scrollRestoration' in history) {
     <Skills/>
     <Education/>
     <Achievements/>
+    <ContactMe/>
     <Footer/>
 </template>
 
