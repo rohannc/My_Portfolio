@@ -87,12 +87,12 @@ const hideTooltip = (item, buttonId) => {
 </script>
 
 <template>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px;" class="mx-15">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px;" class="mx-35">
         <div v-for="(item, index) in achievements" :key="index"
-            style="max-width: 24rem; background-color: rgb(28, 36, 50); border: 1px solid rgb(28, 36, 50); border-radius: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); margin-bottom: 15px; display: flex; flex-direction: column; min-height: 300px;">
+            style="max-width: 22rem; background-color: rgb(28, 36, 50); border: 1px solid rgb(28, 36, 50); border-radius: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); margin-bottom: 15px; display: flex; flex-direction: column; min-height: 300px;">
             <a href="#">
                 <div style="overflow: hidden;">
-                    <div class="mx-10" style="display: flex; justify-content: space-between; padding: 10px 5px;">
+                    <div class="mx-17 mt-5" style="display: flex; justify-content: space-between; padding: 10px 5px;">
                         <img :src="item.icon1" alt="Image 1"
                             style="width: 35%; height: auto; border-radius: 0.5rem 0 0 0;" />
                         <img :src="item.icon2" alt="Image 2"
