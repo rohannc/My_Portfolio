@@ -2,7 +2,7 @@
 
 import { ref } from "vue";
 
-const imageUrl = ref("src\\assets\\ProfileImageCropped.jpg");
+const imageUrl = ref("../assets/ProfileImageCropped.jpg");
 const designationLine1 = ref("Rohan Chakraborty");
 const designationLine2 = ref("Computer Science Graduate || Software Developer || AI Enthusiast");
 const textContent = ref("I’m an MCA student at Jadavpur University, with a love for cracking tough problems through code. My journey with Computer started at Bangabasi College, and now I’m diving deep into tech. I built a DeepFake detection tool with my team that hit 99.98% accuracy using Python and TensorFlow. I thrive in the buzz of hackathons like DoubleSlash 3.0 and coding contests like CodeCrafter, having tackled over 450 problems on LeetCode and GeeksforGeeks and other platforms. I’m always curious, always creating, and excited for what’s next—can’t wait to share more!");
@@ -10,7 +10,7 @@ const downloadGIF = ref("https://img.icons8.com/?size=100&id=aO3W9kKC9PMv&format
 
 const downloadResume = () => {
     const link = document.createElement('a');
-    link.href = '../assets/ProfileImageCropped.jpg';
+    link.href = '../assets/Rohan_s_Resume_2025.pdf';
     link.download = 'Rohan_Chakraborty_Resume.pdf';
     document.body.appendChild(link);
     link.click();
