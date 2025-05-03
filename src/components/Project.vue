@@ -61,13 +61,20 @@
                             alt="Responsive Design">
                     </swiper-slide>
                 </swiper>
-                <div class="mx-20 py-6">
+                <div class="mx-10 py-6">
                     <ul class="flex md:flex-row flex-col md:gap-8 gap-4 justify-center">
                         <li v-for="item in items" :key="item.name" class="flex items-center gap-4">
                             <img src="../assets/ProjectIcon1Cropper.jpg" alt="Profile picture"
                                 class="w-10 h-10 rounded-full" />
-                            <div class="font-medium text-sm dark:text-white">
+                            <div class="font-medium libre-baskerville-bold text-base dark:text-white">
                                 {{ item.name }}
+                            </div>
+                            <div class="mx-auto flex justify-center mt-auto cursor-pointer">
+                                <a :href="item.username" target="_blank" rel="noopener noreferrer"
+                                    class="">
+                                    <img src="https://img.icons8.com/?size=100&id=lMUZwFHycz7a&format=png&color=000000"
+                                        alt="LinkedIn" class="w-10 h-10">
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -449,15 +456,18 @@ const tabs = [
 const items = ref([
     {
         name: 'Rohan Chakraborty',
-        image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80'
+        image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80',
+        username: 'https://www.linkedin.com/in/rohanchakraborty0108/'
     },
     {
         name: 'Adrika Ghosh',
-        image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80'
+        image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80',
+        username: 'https://www.linkedin.com/in/adrika-ghosh-b07a66298/'
     },
     {
         name: 'Subhashis Mondal',
-        image: 'https://images.unsplash.com/photo-1487412729047-8bef73b3f8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80'
+        image: 'https://images.unsplash.com/photo-1487412729047-8bef73b3f8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80',
+        username: 'https://www.linkedin.com/in/subhashis360/'
     }
 ]);
 
@@ -598,10 +608,5 @@ const handleButtonClick = (text) => {
 :deep(.swiper-button-prev:after),
 :deep(.swiper-button-next:after) {
     font-size: 16px;
-}
-
-.tabbed-paragraph {
-    text-indent: 40px;
-    /* Indent the first line */
 }
 </style>
