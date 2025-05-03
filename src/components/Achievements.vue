@@ -16,7 +16,7 @@ const achievements = [
         linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
-        icon1: "https://img.icons8.com/?size=100&id=46669&format=png&color=000000",
+        icon1: "https://img.icons8.com/?size=100&id=33486&format=png&color=000000",
         icon2: "https://img.icons8.com/?size=100&id=43966&format=png&color=000000",
         position: "Winner",
         color: "#ffbf00",
@@ -42,7 +42,7 @@ const achievements = [
         linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_srijanju-mca-jumca-activity-7319796457308311552-JpnY?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg"
     },
     {
-        icon1: "https://img.icons8.com/?size=100&id=YpZH52a9GdnR&format=png&color=000000",
+        icon1: "https://img.icons8.com/?size=100&id=33486&format=png&color=000000",
         icon2: "https://img.icons8.com/?size=100&id=44831&format=png&color=000000",
         position: "Winner",
         color: "#ffbf00",
@@ -55,7 +55,7 @@ const achievements = [
         linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_codingcompetition-error404-rkmrc-activity-7314332325641613312--KBI?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg"
     },
     {
-        icon1: "https://img.icons8.com/?size=100&id=KL1txQ7JoYvd&format=png&color=000000",
+        icon1: "https://img.icons8.com/?size=100&id=23875&format=png&color=000000",
         icon2: "https://img.icons8.com/?size=100&id=44831&format=png&color=000000",
         position: "First Runner-Up",
         color: "#bc7335",
@@ -68,7 +68,7 @@ const achievements = [
         linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
-        icon1: "https://img.icons8.com/?size=100&id=J7CvaM9VdM3e&format=png&color=000000",
+        icon1: "https://img.icons8.com/?size=100&id=23875&format=png&color=000000",
         icon2: "https://img.icons8.com/?size=100&id=44831&format=png&color=000000",
         position: "First Runner-Up",
         color: "#bc7335",
