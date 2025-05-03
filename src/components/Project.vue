@@ -1,6 +1,132 @@
+<script setup>
+import { ref } from 'vue';
+import ProjectNavbar from './ProjectNavbar.vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-fade';
+
+const copied = ref([false, false, false, false]);
+const copyCommand = (command, index) => {
+    navigator.clipboard.writeText(command).then(() => {
+        copied.value[index] = true;
+        setTimeout(() => {
+            copied.value[index] = false;
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+    });
+};
+
+const modules = [Autoplay, Pagination, Navigation, EffectFade];
+
+const tabs = [
+    {
+        id: 'Introduction',
+        name: 'Introduction',
+        icon: 'https://img.icons8.com/?size=100&id=104233&format=png&color=000000',
+        content: {
+            main: 'DeepFake Image Detection: Leveraging AI and Forensic Analysis\nA Robust System for Identifying Manipulated Images in the Age of Synthetic Media',
+            secondary: ''
+        }
+    },
+    {
+        id: 'About',
+        name: 'About',
+        icon: 'https://img.icons8.com/?size=100&id=102326&format=png&color=000000',
+        content: {
+            main: 'DeepFake Image Detection: Leveraging AI and Forensic Analysis\nA Robust System for Identifying Manipulated Images in the Age of Synthetic Media',
+            secondary: 'Check your progress and stay informed about your account status.'
+        }
+    },
+    {
+        id: 'TechStack',
+        name: 'TechStack',
+        icon: 'https://img.icons8.com/?size=100&id=19020&format=png&color=000000',
+        content: {
+            main: 'The Settings tab allows you to customize your experience. Adjust your notification preferences, privacy settings, and more.',
+            secondary: 'Make changes to tailor the platform to your needs.'
+        }
+    },
+    {
+        id: 'Link',
+        name: 'Link',
+        icon: 'https://img.icons8.com/?size=100&id=43229&format=png&color=000000',
+        content: {
+            main: 'Get in touch with us through the Contact tab. Submit your questions, feedback, or support requests here.',
+            secondary: 'Our team is here to assist you with any inquiries.'
+        }
+    }
+];
+
+const items = ref([
+    {
+        name: 'Rohan Chakraborty',
+        image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80',
+        username: 'https://www.linkedin.com/in/rohanchakraborty0108/'
+    },
+    {
+        name: 'Adrika Ghosh',
+        image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80',
+        username: 'https://www.linkedin.com/in/adrika-ghosh-b07a66298/'
+    },
+    {
+        name: 'Subhashis Mondal',
+        image: 'https://images.unsplash.com/photo-1487412729047-8bef73b3f8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80',
+        username: 'https://www.linkedin.com/in/subhashis360/'
+    }
+]);
+
+const frontendButtons = ref([
+    { text: 'HTML', icon: 'https://img.icons8.com/?size=100&id=46605&format=png&color=000007' },
+    { text: 'CSS', icon: 'https://img.icons8.com/?size=100&id=107497&format=png&color=000000' },
+    { text: 'JavaScript', icon: 'https://img.icons8.com/?size=100&id=gYCTehfTlYk5&format=png&color=000000' },
+    { text: 'Bootstrap', icon: 'https://img.icons8.com/?size=100&id=ZMc42tPbG32H&format=png&color=000000' }
+]);
+
+const backendButtons = ref([
+    { text: 'Flask', icon: 'https://img.icons8.com/?size=100&id=ewGOClUtmFX4&format=png&color=000000' },
+]);
+
+const elaButtons = ref([
+    { text: 'PIL', icon: 'https://img.icons8.com/?size=100&id=zLlZqaDdonl7&format=png&color=000000' },
+    { text: 'OpenCV', icon: 'https://img.icons8.com/?size=100&id=bpip0gGiBLT1&format=png&color=000000' }
+]);
+
+const mlButtons = ref([
+    { text: 'PyTorch', icon: 'https://img.icons8.com/?size=100&id=O6SWwpPIM0GB&format=png&color=000000' },
+    { text: 'Scikit-learn', icon: 'https://img.icons8.com/?size=100&id=qfwWgmubuPUl&format=png&color=000000' },
+    { text: 'NumPy', icon: 'https://img.icons8.com/?size=100&id=aR9CXyMagKIS&format=png&color=000000' }
+]);
+
+const activeTab = ref('Introduction');
+const activeAccordions = ref([]);
+
+const setActiveTab = (tabId) => {
+    activeTab.value = tabId;
+};
+
+const toggleAccordion = (index) => {
+    if (activeAccordions.value.includes(index)) {
+        activeAccordions.value = activeAccordions.value.filter(i => i !== index);
+    } else {
+        activeAccordions.value.push(index);
+    }
+};
+
+const handleButtonClick = (text) => {
+    console.log(`Button clicked: ${text}`);
+};
+</script>
+
 <template>
+    <div class="heading w-[90%] mx-auto mt-30">
+        <h1>Projects</h1>
+    </div>
     <ProjectNavbar />
-    <div class="md:flex mx-20 mt-10">
+    <div class="md:flex mx-20 mb-20 mt-10">
         <ul
             class="tagesschrift-regular flex-column space-y-4 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0 flex flex-col items-center sidebar">
             <li v-for="tab in tabs" :key="tab.id" class="w-full">
@@ -70,8 +196,7 @@
                                 {{ item.name }}
                             </div>
                             <div class="mx-auto flex justify-center mt-auto cursor-pointer">
-                                <a :href="item.username" target="_blank" rel="noopener noreferrer"
-                                    class="">
+                                <a :href="item.username" target="_blank" rel="noopener noreferrer" class="">
                                     <img src="https://img.icons8.com/?size=100&id=lMUZwFHycz7a&format=png&color=000000"
                                         alt="LinkedIn" class="w-10 h-10">
                                 </a>
@@ -389,129 +514,6 @@
         </div>
     </div>
 </template>
-
-<script setup>
-import { ref } from 'vue';
-import ProjectNavbar from './ProjectNavbar.vue';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import 'swiper/css/effect-fade';
-
-const copied = ref([false, false, false, false]);
-const copyCommand = (command, index) => {
-    navigator.clipboard.writeText(command).then(() => {
-        copied.value[index] = true;
-        setTimeout(() => {
-            copied.value[index] = false;
-        }, 2000);
-    }).catch(err => {
-        console.error('Failed to copy:', err);
-    });
-};
-
-const modules = [Autoplay, Pagination, Navigation, EffectFade];
-
-const tabs = [
-    {
-        id: 'Introduction',
-        name: 'Introduction',
-        icon: 'https://img.icons8.com/?size=100&id=104233&format=png&color=000000',
-        content: {
-            main: 'DeepFake Image Detection: Leveraging AI and Forensic Analysis\nA Robust System for Identifying Manipulated Images in the Age of Synthetic Media',
-            secondary: ''
-        }
-    },
-    {
-        id: 'About',
-        name: 'About',
-        icon: 'https://img.icons8.com/?size=100&id=102326&format=png&color=000000',
-        content: {
-            main: 'DeepFake Image Detection: Leveraging AI and Forensic Analysis\nA Robust System for Identifying Manipulated Images in the Age of Synthetic Media',
-            secondary: 'Check your progress and stay informed about your account status.'
-        }
-    },
-    {
-        id: 'TechStack',
-        name: 'TechStack',
-        icon: 'https://img.icons8.com/?size=100&id=19020&format=png&color=000000',
-        content: {
-            main: 'The Settings tab allows you to customize your experience. Adjust your notification preferences, privacy settings, and more.',
-            secondary: 'Make changes to tailor the platform to your needs.'
-        }
-    },
-    {
-        id: 'Link',
-        name: 'Link',
-        icon: 'https://img.icons8.com/?size=100&id=43229&format=png&color=000000',
-        content: {
-            main: 'Get in touch with us through the Contact tab. Submit your questions, feedback, or support requests here.',
-            secondary: 'Our team is here to assist you with any inquiries.'
-        }
-    }
-];
-
-const items = ref([
-    {
-        name: 'Rohan Chakraborty',
-        image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80',
-        username: 'https://www.linkedin.com/in/rohanchakraborty0108/'
-    },
-    {
-        name: 'Adrika Ghosh',
-        image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80',
-        username: 'https://www.linkedin.com/in/adrika-ghosh-b07a66298/'
-    },
-    {
-        name: 'Subhashis Mondal',
-        image: 'https://images.unsplash.com/photo-1487412729047-8bef73b3f8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80',
-        username: 'https://www.linkedin.com/in/subhashis360/'
-    }
-]);
-
-const frontendButtons = ref([
-    { text: 'HTML', icon: 'https://img.icons8.com/?size=100&id=46605&format=png&color=000007' },
-    { text: 'CSS', icon: 'https://img.icons8.com/?size=100&id=107497&format=png&color=000000' },
-    { text: 'JavaScript', icon: 'https://img.icons8.com/?size=100&id=gYCTehfTlYk5&format=png&color=000000' },
-    { text: 'Bootstrap', icon: 'https://img.icons8.com/?size=100&id=ZMc42tPbG32H&format=png&color=000000' }
-]);
-
-const backendButtons = ref([
-    { text: 'Flask', icon: 'https://img.icons8.com/?size=100&id=ewGOClUtmFX4&format=png&color=000000' },
-]);
-
-const elaButtons = ref([
-    { text: 'PIL', icon: 'https://img.icons8.com/?size=100&id=zLlZqaDdonl7&format=png&color=000000' },
-    { text: 'OpenCV', icon: 'https://img.icons8.com/?size=100&id=bpip0gGiBLT1&format=png&color=000000' }
-]);
-
-const mlButtons = ref([
-    { text: 'PyTorch', icon: 'https://img.icons8.com/?size=100&id=O6SWwpPIM0GB&format=png&color=000000' },
-    { text: 'Scikit-learn', icon: 'https://img.icons8.com/?size=100&id=qfwWgmubuPUl&format=png&color=000000' },
-    { text: 'NumPy', icon: 'https://img.icons8.com/?size=100&id=aR9CXyMagKIS&format=png&color=000000' }
-]);
-
-const activeTab = ref('Introduction');
-const activeAccordions = ref([]);
-
-const setActiveTab = (tabId) => {
-    activeTab.value = tabId;
-};
-
-const toggleAccordion = (index) => {
-    if (activeAccordions.value.includes(index)) {
-        activeAccordions.value = activeAccordions.value.filter(i => i !== index);
-    } else {
-        activeAccordions.value.push(index);
-    }
-};
-
-const handleButtonClick = (text) => {
-    console.log(`Button clicked: ${text}`);
-};
-</script>
 
 <style scoped>
 .sidebar {

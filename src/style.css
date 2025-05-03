@@ -9,6 +9,56 @@ body {
     /* Indent the first line */
 }
 
+/* === BASE HEADING === */
+
+h1 .heading {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+h1 span .heading {
+    display: block;
+    font-size: 0.5em;
+    line-height: 1.3;
+}
+
+h1 em {
+    font-style: normal;
+    font-weight: 600;
+}
+
+.heading h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 300;
+    color: #f1fc1c;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.heading h1:after,
+.heading h1:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #fb3a84;
+    border-top: 1px solid #fb3a84;
+    height: 5px;
+    background-color: #101828;
+}
+
 .material-symbols-outlined {
     font-variation-settings:
         'FILL' 0,
