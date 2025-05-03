@@ -1,21 +1,16 @@
 <script setup>
-    import {
-        ref,
-        onMounted,
-        onUnmounted
-    }
+import {
+    ref,
+    onMounted,
+    onUnmounted
+}
     from "vue";
 
-    // Navigation items
-    const navItems = ref([
+// Navigation items
+const navItems = ref([
     {
-        name: "About Me",
-        url: "#aboutme",
-        active: false
-    },
-    {
-        name: "Education",
-        url: "#education",
+        name: "Me",
+        url: "#",
         active: false
     },
     {
@@ -24,8 +19,8 @@
         active: false
     },
     {
-        name: "Projects",
-        url: "#projects",
+        name: "Education",
+        url: "#education",
         active: false
     },
     {
@@ -34,31 +29,37 @@
         active: false
     },
     {
+        name: "Projects",
+        url: "#projects",
+        active: false
+    },
+    {
         name: "Contact Me",
         url: "#contact",
         active: false
     },
-    ]);
+]);
 
-    let lastScrollTop = 0;
-    const navbar = document.getElementById('navbar');
+let lastScrollTop = 0;
+const navbar = document.getElementById('navbar');
 
-    window.addEventListener('scroll', function () {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+window.addEventListener('scroll', function () {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (scrollTop > lastScrollTop) {
-            // Scrolling Down
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            // Scrolling Up
-            navbar.style.transform = 'translateY(0)';
-        }
-        lastScrollTop = scrollTop;
-    });
+    if (scrollTop > lastScrollTop) {
+        // Scrolling Down
+        navbar.style.transform = 'translateY(-100%)';
+    } else {
+        // Scrolling Up
+        navbar.style.transform = 'translateY(0)';
+    }
+    lastScrollTop = scrollTop;
+});
 </script>
 
 <template>
-    <nav id="navbar" class="fixed top-0 w-full z-50 bg-white border-gray-200 dark:bg-gray-900 transition-transform duration-100">
+    <nav id="navbar"
+        class="fixed top-0 w-full z-50 bg-white border-gray-200 dark:bg-gray-900 transition-transform duration-100">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <!-- Logo Section -->
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -112,10 +113,10 @@
                 md:dark:bg-gray-900 dark:border-gray-700">
                     <li v-for="(item, index) in navItems" :key="index">
                         <a :href="item.url" :class="[
-                        'block py-2 px-3 rounded-sm md:p-0',
-                        item.active 
-                        ? 'text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500'
-                        : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
+                            'block py-2 px-3 rounded-sm md:p-0',
+                            item.active
+                                ? 'text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500'
+                                : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
                         ]" aria-current="page">
                             {{ item.name }}
                         </a>
@@ -126,5 +127,4 @@
     </nav>
 </template>
 
-<style>
-</style>
+<style></style>

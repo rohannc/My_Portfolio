@@ -40,7 +40,8 @@ const SkillsSection = ref({
 </script>
 
 <template>
-    <div class="heading w-[90%] mx-auto mt-30">
+    <div id="skills"></div>
+    <div class="heading w-[90%] mx-auto mt-45">
         <h1>Skills</h1>
     </div>
     <div class="w-[80%] mx-auto flex flex-col items-center">
