@@ -11,7 +11,9 @@ const achievements = [
         institute: "West Bengal Joint Entrance Examination Board",
         description: "",
         medal: "",
-        participation: ""
+        participation: "",
+        view: "",
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
         icon1: "https://img.icons8.com/?size=100&id=46669&format=png&color=000000",
@@ -22,7 +24,9 @@ const achievements = [
         institute: "Ramakrishna Mission Vivekananda Centenary College, Rahara, Kolkata",
         description: "",
         medal: "Gold",
-        participation: "Team of Two"
+        participation: "Team of Two",
+        view: "",
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
         icon1: "https://img.icons8.com/?size=100&id=33486&format=png&color=000000",
@@ -33,7 +37,9 @@ const achievements = [
         institute: "Faculty of Engineering and Technology, Jadavpur University",
         description: "",
         medal: "Gold",
-        participation: "Team of Three"
+        participation: "Team of Three",
+        view: "",
+        linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_srijanju-mca-jumca-activity-7319796457308311552-JpnY?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg"
     },
     {
         icon1: "https://img.icons8.com/?size=100&id=YpZH52a9GdnR&format=png&color=000000",
@@ -44,7 +50,9 @@ const achievements = [
         institute: "Ramakrishna Mission Residential College, Narendrapur, Kolkata",
         description: "",
         medal: "Gold",
-        participation: "Single Player"
+        participation: "Single Player",
+        view: "",
+        linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_codingcompetition-error404-rkmrc-activity-7314332325641613312--KBI?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg"
     },
     {
         icon1: "https://img.icons8.com/?size=100&id=KL1txQ7JoYvd&format=png&color=000000",
@@ -55,7 +63,9 @@ const achievements = [
         institute: "International Institute of Management, Kolkata",
         description: "",
         medal: "Bronze",
-        participation: "Single Player"
+        participation: "Single Player",
+        view: "",
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
         icon1: "https://img.icons8.com/?size=100&id=J7CvaM9VdM3e&format=png&color=000000",
@@ -66,7 +76,9 @@ const achievements = [
         institute: "Ramakrishna Mission Vivekananda Centenary College, Rahara, Kolkata",
         description: "",
         medal: "Bronze",
-        participation: "Single Player"
+        participation: "Single Player",
+        view: "",
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
         icon1: "https://img.icons8.com/?size=100&id=23875&format=png&color=000000",
@@ -77,7 +89,9 @@ const achievements = [
         institute: "Ramakrishna Mission Vivekananda Educational and Research Institute",
         description: "",
         medal: "Bronze",
-        participation: "Single Player"
+        participation: "Single Player",
+        view: "",
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     }
 ];
 
@@ -157,9 +171,6 @@ const hideTooltip = (item, buttonId) => {
                     <h3 style="margin-bottom: 1.5rem; font-size: 0.9rem; font-weight: 400; color: #16e607;">
                         {{ item.institute }}
                     </h3>
-                    <p style="margin-bottom: 1rem; font-size: 0.9rem; font-weight: 400; color: #2aba93;">
-                        {{ item.description || 'No description available' }}
-                    </p>
                 </div>
                 <div style="display: flex; gap: 80px; justify-content: center; margin-top: auto; padding-top: 1rem;">
                     <!-- View Button -->
