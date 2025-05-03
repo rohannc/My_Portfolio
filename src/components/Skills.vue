@@ -40,6 +40,9 @@ const SkillsSection = ref({
 </script>
 
 <template>
+    <div class="heading w-[90%] mx-auto mt-30">
+        <h1>Skills</h1>
+    </div>
     <div class="w-[80%] mx-auto flex flex-col items-center">
         <!-- First Section: Programming Languages -->
         <div class="relative overflow-x-auto sm:rounded-lg w-full">

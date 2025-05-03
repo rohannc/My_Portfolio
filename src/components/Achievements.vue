@@ -119,6 +119,9 @@ const hideTooltip = (item, buttonId) => {
 </script>
 
 <template>
+    <div class="heading w-[90%] mx-auto mt-30 mb-10">
+        <h1>Achievements</h1>
+    </div>
     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 10px;" class="mx-35">
         <div v-for="(item, index) in achievements" :key="index"
             style="max-width: 22rem; background-color: rgb(28, 36, 50); border: 1px solid rgb(28, 36, 50); border-radius: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); margin-bottom: 15px; display: flex; flex-direction: column; min-height: 300px; position: relative;">

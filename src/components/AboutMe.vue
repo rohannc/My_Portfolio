@@ -1,5 +1,4 @@
 <script setup>
-
 import { ref } from "vue";
 
 const imageUrl = ref("../../assets/ProfileImageCropped.jpg");
@@ -16,17 +15,18 @@ const downloadResume = () => {
     link.click();
     document.body.removeChild(link);
 }
-
 </script>
 
 <template>
-    <div class="flex relative px-8 mx-10 my-20 typing-container">
-        <div class="part1 text-gray-300 text-left pt-30">
-            <h1 class="text-4xl playfair-display-regular">Hi, I'm Rohan Chakraborty</h1>
-            <p class="p-8 text-base">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {{ textContent }}
-            </p>
+    <div class="flex relative px-8 mx-10 mb-20 mt-30 gap-6 typing-container">
+        <div class="part1 flex flex-col justify-between rounded-lg p-6 text-gray-300 text-left"
+            style="background-color: rgb(30, 41, 57)">
+            <div class="mt-8">
+                <h1 class="pl-6 text-4xl playfair-display-regular">Hi, I'm Rohan Chakraborty</h1>
+                <p class="pl-6 pt-8 text-base text-left tabbed-paragraph">
+                    {{ textContent }}
+                </p>
+            </div>
             <div class="pt-6 flex justify-center">
                 <button @click="downloadResume"
                     class="hover-button relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white">
@@ -38,15 +38,17 @@ const downloadResume = () => {
                 </button>
             </div>
         </div>
-        <div class="part2">
-            <div class="pt-10 w-full rounded-lg overflow-hidden text-center pl-10">
-                <div class="w-full h-80 overflow-hidden">
-                    <img src="../assets/ProfileImageCropped.jpg" class="w-full h-full object-cover rounded-full" alt="Profile Image">
+        <div class="part2 rounded-lg" style="background-color: rgb(30, 41, 57)">
+            <div class="pt-10 w-full rounded-lg overflow-hidden text-center px-4">
+                <div class="h-64 w-64 mx-auto rounded-lg">
+                    <img src="../assets/ProfileImageCropped.jpg"
+                        class="w-full h-full object-cover rounded-full border-2 border-gray-300 dark:border-gray-500"
+                        alt="Profile Image">
                 </div>
-                <div class="p-2 pt-4">
-                    <p class="m-0 text-3xl pt-serif-bold-italic font-semibold text-gray-300">{{ designationLine1 }}
-                    </p>
-                    <p class="m-0 text-sm font-semibold text-gray-300">{{ designationLine2 }}</p>
+                <div class="p-2 pt-4 mt-6">
+                    <p class="m-0 text-3xl pt-serif-bold-italic font-semibold text-gray-300 whitespace-nowrap">{{
+                        designationLine1 }}</p>
+                    <p class="mb-10 text-sm font-semibold text-gray-300">{{ designationLine2 }}</p>
                 </div>
             </div>
         </div>
@@ -83,7 +85,6 @@ const downloadResume = () => {
     position: relative;
 }
 
-
 .hover-button .icon img {
     height: 24px;
     width: 24px;
@@ -97,4 +98,7 @@ const downloadResume = () => {
     flex: 1;
 }
 
+.whitespace-nowrap {
+    white-space: nowrap;
+}
 </style>

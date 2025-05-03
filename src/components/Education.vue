@@ -13,6 +13,7 @@ const educationList = ref([
             "Object Oriented Programming",
             "Computer Organisation and Architecture",
             "Database Management Systems",
+            "Operating Systems"
         ],
         type: "CGPA",
         cgpa: "Not Applicable",
@@ -25,12 +26,13 @@ const educationList = ref([
         institution: "Bangabasi College, University of Calcutta, Kolkata",
         courseworks: [
             "Data Structures",
-            "Operating Systems",
             "Computer Networks",
             "Digital Systems",
             "Software Engineering",
             "Design and Analysis of Algorithms",
-            "Artificial Intelligence"
+            "Artificial Intelligence",
+            "Physics",
+            "Mathematics"
         ],
         type: "CGPA",
         cgpa: "7.706",
@@ -77,8 +79,10 @@ const educationList = ref([
 </script>
 
 <template>
-
-    <div class="relative px-8 mx-25 my-20">
+    <div class="heading w-[90%] mx-auto mt-30">
+        <h1>Education</h1>
+    </div>
+    <div class="relative px-8 mx-25 mb-20">
         <div v-for="(item, index) in educationList" :key="index" class="mb-10 flex items-start">
             <!-- First Column -->
             <div class="relative flex-1">
@@ -99,7 +103,7 @@ const educationList = ref([
                     <p
                         class="block mb-2 text-sm comic-relief-regular font-normal leading-none text-gray-400 dark:text-gray-300">
                         {{ item.type }}: {{ item.cgpa }} </p>
-                    <div class="flex gap-1 flex-wrap">
+                    <div class="mt-5 flex gap-1 flex-wrap">
                         <button v-for="(course, idx) in item.courseworks" :key="idx"
                             class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
                             <span
