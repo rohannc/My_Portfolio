@@ -119,7 +119,8 @@ const hideTooltip = (item, buttonId) => {
 </script>
 
 <template>
-    <div class="heading w-[90%] mx-auto mt-30 mb-10">
+    <div id="achievements"></div>
+    <div class="heading w-[90%] mx-auto mt-45 mb-10">
         <h1>Achievements</h1>
     </div>
     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 10px;" class="mx-35">

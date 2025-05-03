@@ -123,7 +123,8 @@ const handleSubmit = async (event) => {
 </script>
 
 <template>
-    <div class="container mx-auto px-7 py-8">
+    <div id="contact"></div>
+    <div class="container mx-auto px-7 py-8 mt-50">
         <div class="grid grid-cols-3 gap-6">
             <!-- First Card (2/3 width) -->
             <div class="col-span-2 bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col max-h-[500px]">

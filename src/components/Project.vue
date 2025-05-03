@@ -122,7 +122,8 @@ const handleButtonClick = (text) => {
 </script>
 
 <template>
-    <div class="heading w-[90%] mx-auto mt-30">
+    <div id="projects"></div>
+    <div class="heading w-[90%] mx-auto mt-25">
         <h1>Projects</h1>
     </div>
     <ProjectNavbar />
@@ -434,7 +435,7 @@ const handleButtonClick = (text) => {
                 class="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg flex flex-col min-h-[90vh]"
                 :class="{ 'hidden': activeTab !== 'Link' }">
                 <div class="flex flex-col w-full">
-                    <h3 class="mb-5 text-xl font-semibold text-gray-900 dark:text-white mb-4 pt-serif-bold">DeepFake
+                    <h3 class="mb-5 text-xl font-semibold text-gray-900 dark:text-white pt-serif-bold">DeepFake
                         Defender || Github Repository</h3>
                     <div class="mb-4">
                         <p class="mb-2">

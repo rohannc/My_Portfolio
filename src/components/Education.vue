@@ -79,7 +79,8 @@ const educationList = ref([
 </script>
 
 <template>
-    <div class="heading w-[90%] mx-auto mt-30">
+    <div id="education"></div>
+    <div class="heading w-[90%] mx-auto mt-25">
         <h1>Education</h1>
     </div>
     <div class="relative px-8 mx-25 mb-20">
