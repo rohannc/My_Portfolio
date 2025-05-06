@@ -123,7 +123,9 @@ const hideTooltip = (item, buttonId) => {
     <div class="heading w-[90%] mx-auto mt-45 mb-10">
         <h1>Achievements</h1>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 10px;" class="mx-35">
+    <!-- Desktop View -->
+    <div class="hidden md:grid mx-35"
+        style="grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 10px;">
         <div v-for="(item, index) in achievements" :key="index"
             style="max-width: 22rem; background-color: rgb(28, 36, 50); border: 1px solid rgb(28, 36, 50); border-radius: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); margin-bottom: 15px; display: flex; flex-direction: column; min-height: 300px; position: relative;">
             <div>
@@ -206,6 +208,98 @@ const hideTooltip = (item, buttonId) => {
                             Visit LinkedIn
                             <div
                                 style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: #293246 transparent transparent transparent;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile View -->
+    <div class="block md:hidden mx-4"
+        style="gap: 20px; padding: 10px;">
+        <div v-for="(item, index) in achievements" :key="index"
+            style="max-width: 100%; background-color: rgb(28, 36, 50); border: 1px solid rgb(28, 36, 50); border-radius: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); margin-bottom: 10px; display: flex; flex-direction: column; min-height: 250px; position: relative;">
+            <div>
+                <div class="mx-2 mt-3" style="display: flex; justify-content: space-between; padding: 8px 4px;">
+                    <!-- Medal Button -->
+                    <div style="position: relative;" @mouseover="showTooltip(index, 1)"
+                        @mouseleave="hideTooltip(index, 1)">
+                        <button
+                            style="background: none; border: none; cursor: pointer; padding: 2px; transition: transform 0.2s;">
+                            <img :src="item.icon1" alt="Medal Icon"
+                                style="width: 50px; height: auto; border-radius: 0.5rem 0 0 0;" />
+                        </button>
+                        <div v-if="item.medal !== '' && tooltipVisible[index]?.[1]"
+                            style="position: absolute; top: -35px; left: 50%; transform: translateX(-50%); z-index: 1000; padding: 4px 8px; font-size: 12px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
+                            {{ item.medal }}
+                            <div
+                                style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); border-width: 4px; border-style: solid; border-color: #293246 transparent transparent transparent;">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Profile Button -->
+                    <div style="position: relative;" @mouseover="showTooltip(index, 2)"
+                        @mouseleave="hideTooltip(index, 2)">
+                        <button
+                            style="background: none; border: none; cursor: pointer; padding: 2px; transition: transform 0.2s;">
+                            <img :src="item.icon2" alt="Profile Icon"
+                                style="width: 50px; height: auto; border-radius: 0 0.5rem 0 0;" />
+                        </button>
+                        <div v-if="item.medal !== '' && tooltipVisible[index]?.[2]"
+                            style="position: absolute; top: -35px; left: 50%; transform: translateX(-50%); z-index: 1000; padding: 4px 8px; font-size: 12px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
+                            {{ item.participation }}
+                            <div
+                                style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); border-width: 4px; border-style: solid; border-color: #293246 transparent transparent transparent;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                style="padding: 0.75rem; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <h5 style="margin-bottom: 0.2rem; font-size: 1.2rem; font-weight: 700;"
+                        :style="{ color: item.color }">
+                        {{ item.position }}
+                    </h5>
+                    <h5 style="margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600; color: #d35757;">
+                        {{ item.name }}
+                    </h5>
+                    <h3 style="margin-bottom: 1rem; font-size: 0.8rem; font-weight: 400; color: #16e607;">
+                        {{ item.institute }}
+                    </h3>
+                </div>
+                <div style="display: flex; gap: 30px; justify-content: center; margin-top: auto; padding-top: 0.75rem;">
+                    <!-- View Button -->
+                    <div style="position: relative;" @mouseover="showTooltip(index, 3)"
+                        @mouseleave="hideTooltip(index, 3)">
+                        <button
+                            style="background: none; border: none; cursor: pointer; padding: 2px; transition: transform 0.2s;">
+                            <img src="https://img.icons8.com/?size=100&id=Psrfh0UtjRyD&format=png&color=000000"
+                                alt="View Icon" style="width: 30px; height: auto; padding-top: 3px;" />
+                        </button>
+                        <div v-if="tooltipVisible[index]?.[3]"
+                            style="position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); z-index: 1000; padding: 4px 8px; font-size: 12px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
+                            View
+                            <div
+                                style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 4px; border-style: solid; border-color: #293246 transparent transparent transparent;">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- LinkedIn Button -->
+                    <div style="position: relative;" @mouseover="showTooltip(index, 4)"
+                        @mouseleave="hideTooltip(index, 4)">
+                        <button
+                            style="background: none; border: none; cursor: pointer; padding: 2px; transition: transform 0.2s;">
+                            <img src="https://img.icons8.com/?size=100&id=67570&format=png&color=000000"
+                                alt="LinkedIn Icon" style="width: 35px; height: auto;" />
+                        </button>
+                        <div v-if="tooltipVisible[index]?.[4]"
+                            style="position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); z-index: 1000; padding: 4px 8px; font-size: 12px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
+                            Visit LinkedIn
+                            <div
+                                style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 4px; border-style: solid; border-color: #293246 transparent transparent transparent;">
                             </div>
                         </div>
                     </div>

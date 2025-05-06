@@ -127,7 +127,8 @@ const handleButtonClick = (text) => {
         <h1>Projects</h1>
     </div>
     <ProjectNavbar />
-    <div class="md:flex mx-20 mb-20 mt-10">
+    <!-- Desktop View -->
+    <div class="hidden md:flex mx-20 mb-20 mt-10">
         <ul
             class="tagesschrift-regular flex-column space-y-4 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0 flex flex-col items-center sidebar">
             <li v-for="tab in tabs" :key="tab.id" class="w-full">
@@ -443,13 +444,16 @@ const handleButtonClick = (text) => {
                                 class="w-4 h-4 inline-block mr-2">
                             Clone the repository:
                         </p>
-                        <div
-                            class="relative bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-sm text-gray-800 dark:text-gray-200">
-                            <code>git clone https://github.com/rohannc/FinalYearProject_DeepFakeImageDetection.git</code>
-                            <button @click="copyCommand('git clone https://github.com/username/repo.git', 0)"
-                                class="absolute top-2 right-2 px-2 py-1 bg-green-200 text-black hover:text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-700 text-xs flex items-center gap-1">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="flex-grow bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-sm text-gray-800 dark:text-gray-200">
+                                <code>git clone https://github.com/rohannc/FinalYearProject_DeepFakeImageDetection.git</code>
+                            </div>
+                            <button
+                                @click="copyCommand('git clone https://github.com/rohannc/FinalYearProject_DeepFakeImageDetection.git', 0)"
+                                class="px-4 py-2 bg-green-200 text-black hover:text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-700 text-sm flex items-center justify-center gap-2">
                                 <img src="https://img.icons8.com/?size=100&id=43148&format=png&color=000000" alt="Copy"
-                                    class="w-4 h-4">
+                                    class="w-5 h-5">
                                 <span>{{ copied[0] ? 'Copied!' : 'Copy' }}</span>
                             </button>
                         </div>
@@ -460,13 +464,15 @@ const handleButtonClick = (text) => {
                                 class="w-4 h-4 inline-block mr-2">
                             Navigate to the project folder:
                         </p>
-                        <div
-                            class="relative bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-sm text-gray-800 dark:text-gray-200">
-                            <code>cd [repo_name]</code>
-                            <button @click="copyCommand('cd repo', 1)"
-                                class="absolute top-2 right-2 px-2 py-1 bg-green-200 text-black hover:text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-700 text-xs flex items-center gap-1">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="flex-grow bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-sm text-gray-800 dark:text-gray-200">
+                                <code>cd FinalYearProject_DeepFakeImageDetection</code>
+                            </div>
+                            <button @click="copyCommand('cd FinalYearProject_DeepFakeImageDetection', 1)"
+                                class="px-4 py-2 bg-green-200 text-black hover:text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-700 text-sm flex items-center justify-center gap-2">
                                 <img src="https://img.icons8.com/?size=100&id=43148&format=png&color=000000" alt="Copy"
-                                    class="w-4 h-4">
+                                    class="w-5 h-5">
                                 <span>{{ copied[1] ? 'Copied!' : 'Copy' }}</span>
                             </button>
                         </div>
@@ -477,13 +483,15 @@ const handleButtonClick = (text) => {
                                 class="w-4 h-4 inline-block mr-2">
                             Install dependencies:
                         </p>
-                        <div
-                            class="relative bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-sm text-gray-800 dark:text-gray-200">
-                            <code>npm install</code>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="flex-grow bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-sm text-gray-800 dark:text-gray-200">
+                                <code>npm install</code>
+                            </div>
                             <button @click="copyCommand('npm install', 2)"
-                                class="absolute top-2 right-2 px-2 py-1 bg-green-200 text-black hover:text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-700 text-xs flex items-center gap-1">
+                                class="px-4 py-2 bg-green-200 text-black hover:text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-700 text-sm flex items-center justify-center gap-2">
                                 <img src="https://img.icons8.com/?size=100&id=43148&format=png&color=000000" alt="Copy"
-                                    class="w-4 h-4">
+                                    class="w-5 h-5">
                                 <span>{{ copied[2] ? 'Copied!' : 'Copy' }}</span>
                             </button>
                         </div>
@@ -494,13 +502,15 @@ const handleButtonClick = (text) => {
                                 class="w-4 h-4 inline-block mr-2">
                             Run the project:
                         </p>
-                        <div
-                            class="relative bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-sm text-gray-800 dark:text-gray-200">
-                            <code>npm run dev</code>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="flex-grow bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-sm text-gray-800 dark:text-gray-200">
+                                <code>npm run dev</code>
+                            </div>
                             <button @click="copyCommand('npm run dev', 3)"
-                                class="absolute top-2 right-2 px-2 py-1 bg-green-200 text-black hover:text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-700 text-xs flex items-center gap-1">
+                                class="px-4 py-2 bg-green-200 text-black hover:text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-700 text-sm flex items-center justify-center gap-2">
                                 <img src="https://img.icons8.com/?size=100&id=43148&format=png&color=000000" alt="Copy"
-                                    class="w-4 h-4">
+                                    class="w-5 h-5">
                                 <span>{{ copied[3] ? 'Copied!' : 'Copy' }}</span>
                             </button>
                         </div>
@@ -514,16 +524,396 @@ const handleButtonClick = (text) => {
             </div>
         </div>
     </div>
+    <!-- Mobile View -->
+    <div class="block md:hidden mx-4 mb-10 mt-6">
+        <div class="w-full">
+            <!-- Introduction Section -->
+            <div id="introduction"
+                class="p-4 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg flex flex-col items-center">
+                <h1 class="text-center mb-6 text-2xl font-extrabold text-gray-900 dark:text-white">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">DeepFake
+                    </span> Image Detection
+                </h1>
+                <swiper class="w-full max-w-lg mb-6" :modules="modules" :slides-per-view="1" :space-between="0"
+                    :loop="true" :autoplay="{ delay: 5000, disableOnInteraction: false }"
+                    :pagination="{ clickable: true }" :navigation="true" :effect="'fade'"
+                    :fade-effect="{ crossFade: true }">
+                    <swiper-slide>
+                        <img src="../assets/Website01.png" class="w-full h-40 object-cover rounded-lg"
+                            alt="Front Page 01">
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="../assets/Website02.png" class="w-full h-40 object-cover rounded-lg"
+                            alt="Front Page 02">
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="../assets/Website03.png" class="w-full h-40 object-cover rounded-lg"
+                            alt="Image Upload">
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="../assets/Website04.png" class="w-full h-40 object-cover rounded-lg"
+                            alt="Output Page 01">
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="../assets/Website05.png" class="w-full h-40 object-cover rounded-lg"
+                            alt="Output Page 02">
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="../assets/Website06.png" class="w-full h-40 object-cover rounded-lg"
+                            alt="Model Output">
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="../assets/Website07.png" class="w-full h-40 object-cover rounded-lg"
+                            alt="Contact Page">
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="../assets/Website08.png" class="w-fit h-40 object-cover rounded-lg"
+                            alt="Responsive Design">
+                    </swiper-slide>
+                </swiper>
+                <div class="mx-4 py-4">
+                    <ul class="flex flex-col gap-4 justify-center">
+                        <li v-for="item in items" :key="item.name" class="flex items-center gap-3">
+                            <img src="../assets/ProjectIcon1Cropper.jpg" alt="Profile picture"
+                                class="w-8 h-8 rounded-full" />
+                            <div class="font-medium libre-baskerville-bold text-sm dark:text-white">
+                                {{ item.name }}
+                            </div>
+                            <div class="flex justify-center cursor-pointer">
+                                <a :href="item.username" target="_blank" rel="noopener noreferrer" class="">
+                                    <img src="https://img.icons8.com/?size=100&id=lMUZwFHycz7a&format=png&color=000000"
+                                        alt="LinkedIn" class="w-8 h-8">
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- About Section -->
+            <div id="about"
+                class="p-4 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg mt-4">
+                <div class="max-w-lg mx-auto flex flex-col space-y-4">
+                    <div>
+                        <h2
+                            class="text-lg font-bold text-gray-900 dark:text-white pt-serif-bold flex items-center gap-2">
+                            <img src="https://img.icons8.com/?size=100&id=bCMIMDcgAmSp&format=png&color=000000"
+                                alt="AI Icon" class="w-5 h-5">
+                            DeepFake Image Detection
+                        </h2>
+                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 tabbed-paragraph">
+                            The rise of deep learning and generative adversarial networks (GANs) has enabled the
+                            creation of highly realistic "DeepFake" images and videos. These AI-generated manipulations
+                            threaten the authenticity of digital content, facilitating misinformation, identity fraud,
+                            and erosion of trust in media. As deepfake technology becomes more accessible, there is an
+                            urgent need for robust detection frameworks to distinguish genuine images from manipulated
+                            ones. The "Learning to Identify DeepFake Images" project addresses this by developing an
+                            advanced detection system that combines state-of-the-art machine learning with forensic
+                            analysis to safeguard digital integrity.
+                        </p>
+                    </div>
+                    <div>
+                        <h3
+                            class="text-base font-semibold text-gray-900 dark:text-white pt-serif-bold flex items-center gap-2">
+                            <img src="https://img.icons8.com/?size=100&id=46721&format=png&color=000000"
+                                alt="Project Icon" class="w-5 h-5">
+                            Project Overview
+                        </h3>
+                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 tabbed-paragraph">
+                            This project designs a comprehensive DeepFake Image Detection framework, integrating deep
+                            learning and forensic techniques. Key components include:
+                        </p>
+                        <ul class="mt-2 space-y-2 text-sm text-gray-500 dark:text-gray-400 list-none">
+                            <li class="flex items-start gap-2">
+                                <img src="https://img.icons8.com/?size=100&id=44053&format=png&color=000000"
+                                    alt="Bullet" class="w-3 h-3 mt-1">
+                                <span>
+                                    <strong class="font-semibold">DeepFake Image Dataset</strong>: Utilizes a diverse
+                                    dataset of authentic and deepfake images with various manipulations,
+                                    transformations, and demographics to ensure robust model generalization.
+                                </span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <img src="https://img.icons8.com/?size=100&id=44053&format=png&color=000000"
+                                    alt="Bullet" class="w-3 h-3 mt-1">
+                                <span>
+                                    <strong class="font-semibold">Two-Phase Deep Learning Architecture</strong>: Employs
+                                    a CNN for feature extraction in the first phase, followed by a CNN classifier in the
+                                    second phase to predict Real/Fake outcomes.
+                                </span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <img src="https://img.icons8.com/?size=100&id=44053&format=png&color=000000"
+                                    alt="Bullet" class="w-3 h-3 mt-1">
+                                <span>
+                                    <strong class="font-semibold">Error Level Analysis (ELA)</strong>: Highlights JPEG
+                                    compression discrepancies to identify manipulated regions, providing a visual
+                                    heatmap for transparency.
+                                </span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <img src="https://img.icons8.com/?size=100&id=44053&format=png&color=000000"
+                                    alt="Bullet" class="w-3 h-3 mt-1">
+                                <span>
+                                    <strong class="font-semibold">Web-Based Detection Interface</strong>: Offers a
+                                    user-friendly web app for uploading images and receiving real-time classification
+                                    results, enhancing accessibility.
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 tabbed-paragraph">
+                        By combining deep learning with forensic analysis, this project delivers a robust, interpretable
+                        solution for DeepFake detection. It achieves high accuracy, provides visual explanations, and
+                        supports efforts to combat synthetic media risks, ensuring trust in digital content.
+                    </p>
+                </div>
+            </div>
+            <!-- TechStack Section -->
+            <div id="techstack"
+                class="p-4 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg mt-4">
+                <div style="background-color: #435168;" id="accordion-open" data-accordion="open">
+                    <h2 id="accordion-open-heading-1" class="">
+                        <button type="button"
+                            class="flex items-center justify-between w-full p-4 font-medium rtl:text-right text-gray-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 gap-3 transition-colors duration-200"
+                            :class="{
+                                'bg-green-100 text-green-800 dark:bg-green-500 dark:text-green-950': activeAccordions.includes(1),
+                                'hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white border-b-4 border-gray-200 dark:border-slate-800': !activeAccordions.includes(1)
+                            }" @click="toggleAccordion(1)" :aria-expanded="activeAccordions.includes(1)"
+                            aria-controls="accordion-open-body-1">
+                            <span class="flex items-center pt-serif-bold text-sm">
+                                <img src="https://img.icons8.com/?size=100&id=42900&format=png&color=000000"
+                                    alt="FrontEnd" class="w-5 h-5 mr-2">
+                                FrontEnd
+                            </span>
+                            <img src="https://img.icons8.com/?size=100&id=44002&format=png&color=000000" alt="Expand"
+                                class="w-5 h-5" :class="{ 'hidden': activeAccordions.includes(1) }">
+                            <img src="https://img.icons8.com/?size=100&id=aweW6OloZ1wC&format=png&color=000000"
+                                alt="Close" class="w-5 h-5" :class="{ 'hidden': !activeAccordions.includes(1) }">
+                        </button>
+                    </h2>
+                    <div id="accordion-open-body-1" :class="{ 'hidden': !activeAccordions.includes(1) }"
+                        aria-labelledby="accordion-open-heading-1">
+                        <div class="p-4 bg-green-100 dark:bg-slate-800">
+                            <div class="flex gap-3 flex-wrap comic-relief-bold">
+                                <button v-for="button in frontendButtons" :key="button.text"
+                                    class="relative inline-flex items-center justify-center p-0.5 mb-2 min-w-[120px] min-h-[40px] overflow-hidden text-xs font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
+                                    @click="handleButtonClick(button.text)">
+                                    <span
+                                        class="relative px-8 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center justify-center gap-3 whitespace-nowrap">
+                                        <img :src="button.icon" alt="Icon" class="w-6 h-6 object-contain" />
+                                        {{ button.text }}
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 id="accordion-open-heading-2" class="">
+                        <button type="button"
+                            class="flex items-center justify-between w-full p-4 font-medium rtl:text-right text-gray-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 gap-3 transition-colors duration-200"
+                            :class="{
+                                'bg-green-100 text-green-800 dark:bg-green-500 dark:text-green-950': activeAccordions.includes(2),
+                                'hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white border-b-4 border-gray-200 dark:border-slate-800': !activeAccordions.includes(2)
+                            }" @click="toggleAccordion(2)" :aria-expanded="activeAccordions.includes(2)"
+                            aria-controls="accordion-open-body-2">
+                            <span class="flex items-center pt-serif-bold text-sm">
+                                <img src="https://img.icons8.com/?size=100&id=43653&format=png&color=000000"
+                                    alt="BackEnd" class="w-5 h-5 mr-2">
+                                BackEnd
+                            </span>
+                            <img src="https://img.icons8.com/?size=100&id=44002&format=png&color=000000" alt="Expand"
+                                class="w-5 h-5" :class="{ 'hidden': activeAccordions.includes(2) }">
+                            <img src="https://img.icons8.com/?size=100&id=aweW6OloZ1wC&format=png&color=000000"
+                                alt="Close" class="w-5 h-5" :class="{ 'hidden': !activeAccordions.includes(2) }">
+                        </button>
+                    </h2>
+                    <div id="accordion-open-body-2" :class="{ 'hidden': !activeAccordions.includes(2) }"
+                        aria-labelledby="accordion-open-heading-2">
+                        <div class="p-4 bg-green-100 dark:bg-slate-800">
+                            <div class="flex gap-3 flex-wrap comic-relief-bold">
+                                <button v-for="button in backendButtons" :key="button.text"
+                                    class="relative inline-flex items-center justify-center p-0.5 mb-2 min-w-[120px] min-h-[40px] overflow-hidden text-xs font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
+                                    @click="handleButtonClick(button.text)">
+                                    <span
+                                        class="relative px-8 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center justify-center gap-3 whitespace-nowrap">
+                                        <img :src="button.icon" alt="Icon" class="w-6 h-6 object-contain" />
+                                        {{ button.text }}
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 id="accordion-open-heading-3" class="">
+                        <button type="button"
+                            class="flex items-center justify-between w-full p-4 font-medium rtl:text-right text-gray-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 gap-3 transition-colors duration-200"
+                            :class="{
+                                'bg-green-100 text-green-800 dark:bg-green-500 dark:text-green-950': activeAccordions.includes(3),
+                                'hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white border-b-4 border-gray-200 dark:border-slate-800': !activeAccordions.includes(3)
+                            }" @click="toggleAccordion(3)" :aria-expanded="activeAccordions.includes(3)"
+                            aria-controls="accordion-open-body-3">
+                            <span class="flex items-center pt-serif-bold text-sm">
+                                <img src="https://img.icons8.com/?size=100&id=42918&format=png&color=000000"
+                                    alt="Error Level Analysis" class="w-5 h-5 mr-2">
+                                Error Level Analysis
+                            </span>
+                            <img src="https://img.icons8.com/?size=100&id=44002&format=png&color=000000" alt="Expand"
+                                class="w-5 h-5" :class="{ 'hidden': activeAccordions.includes(3) }">
+                            <img src="https://img.icons8.com/?size=100&id=aweW6OloZ1wC&format=png&color=000000"
+                                alt="Close" class="w-5 h-5" :class="{ 'hidden': !activeAccordions.includes(3) }">
+                        </button>
+                    </h2>
+                    <div id="accordion-open-body-3" :class="{ 'hidden': !activeAccordions.includes(3) }"
+                        aria-labelledby="accordion-open-heading-3">
+                        <div class="p-4 bg-green-100 dark:bg-slate-800">
+                            <div class="flex gap-3 flex-wrap comic-relief-bold">
+                                <button v-for="button in elaButtons" :key="button.text"
+                                    class="relative inline-flex items-center justify-center p-0.5 mb-2 min-w-[120px] min-h-[40px] overflow-hidden text-xs font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
+                                    @click="handleButtonClick(button.text)">
+                                    <span
+                                        class="relative px-8 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center justify-center gap-3 whitespace-nowrap">
+                                        <img :src="button.icon" alt="Icon" class="w-6 h-6 object-contain" />
+                                        {{ button.text }}
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 id="accordion-open-heading-4" class="">
+                        <button type="button"
+                            class="flex items-center justify-between w-full p-4 font-medium rtl:text-right text-gray-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 gap-3 transition-colors duration-200"
+                            :class="{
+                                'bg-green-100 text-green-800 dark:bg-green-500 dark:text-green-950': activeAccordions.includes(4),
+                                'hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white border-b-4 border-gray-200 dark:border-slate-800': !activeAccordions.includes(4)
+                            }" @click="toggleAccordion(4)" :aria-expanded="activeAccordions.includes(4)"
+                            aria-controls="accordion-open-body-4">
+                            <span class="flex items-center pt-serif-bold text-sm">
+                                <img src="https://img.icons8.com/?size=100&id=xaquNfre75yC&format=png&color=000000"
+                                    alt="Machine Learning" class="w-5 h-5 mr-2">
+                                Machine Learning
+                            </span>
+                            <img src="https://img.icons8.com/?size=100&id=44002&format=png&color=000000" alt="Expand"
+                                class="w-5 h-5" :class="{ 'hidden': activeAccordions.includes(4) }">
+                            <img src="https://img.icons8.com/?size=100&id=aweW6OloZ1wC&format=png&color=000000"
+                                alt="Close" class="w-5 h-5" :class="{ 'hidden': !activeAccordions.includes(4) }">
+                        </button>
+                    </h2>
+                    <div id="accordion-open-body-4" :class="{ 'hidden': !activeAccordions.includes(4) }"
+                        aria-labelledby="accordion-open-heading-4">
+                        <div class="p-4 bg-green-100 dark:bg-slate-800">
+                            <div class="flex gap-3 flex-wrap comic-relief-bold">
+                                <button v-for="button in mlButtons" :key="button.text"
+                                    class="relative inline-flex items-center justify-center p-0.5 mb-2 min-w-[120px] min-h-[40px] overflow-hidden text-xs font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
+                                    @click="handleButtonClick(button.text)">
+                                    <span
+                                        class="relative px-8 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center justify-center gap-3 whitespace-nowrap">
+                                        <img :src="button.icon" alt="Icon" class="w-6 h-6 object-contain" />
+                                        {{ button.text }}
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Link Section -->
+            <div id="link"
+                class="p-4 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg flex flex-col mt-4">
+                <div class="flex flex-col w-full">
+                    <h3 class="mb-4 text-base font-semibold text-gray-900 dark:text-white pt-serif-bold">DeepFake
+                        Defender || Github Repository</h3>
+                    <div class="mb-3">
+                        <p class="mb-2 text-sm">
+                            <img src="https://img.icons8.com/?size=100&id=44053&format=png&color=000000" alt="Bullet"
+                                class="w-3 h-3 inline-block mr-2">
+                            Clone the repository:
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="flex-grow bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-xs text-gray-800 dark:text-gray-200 overflow-x-auto whitespace-nowrap">
+                                <code>git clone https://github.com/rohannc/FinalYearProject_DeepFakeImageDetection.git</code>
+                            </div>
+                            <button
+                                @click="copyCommand('git clone https://github.com/rohannc/FinalYearProject_DeepFakeImageDetection.git', 0)"
+                                class="px-3 py-1.5 bg-green-200 text-black hover:text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-700 text-xs flex items-center justify-center gap-1.5 shrink-0">
+                                <img src="https://img.icons8.com/?size=100&id=43148&format=png&color=000000" alt="Copy"
+                                    class="w-4 h-4">
+                                <span>{{ copied[0] ? 'Copied!' : 'Copy' }}</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <p class="mb-2 text-sm">
+                            <img src="https://img.icons8.com/?size=100&id=44053&format=png&color=000000" alt="Bullet"
+                                class="w-3 h-3 inline-block mr-2">
+                            Navigate to the project folder:
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="flex-grow bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-xs text-gray-800 dark:text-gray-200 overflow-x-auto whitespace-nowrap">
+                                <code>cd FinalYearProject_DeepFakeImageDetection</code>
+                            </div>
+                            <button @click="copyCommand('cd FinalYearProject_DeepFakeImageDetection', 1)"
+                                class="px-3 py-1.5 bg-green-200 text-black hover:text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-700 text-xs flex items-center justify-center gap-1.5 shrink-0">
+                                <img src="https://img.icons8.com/?size=100&id=43148&format=png&color=000000" alt="Copy"
+                                    class="w-4 h-4">
+                                <span>{{ copied[1] ? 'Copied!' : 'Copy' }}</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <p class="mb-2 text-sm">
+                            <img src="https://img.icons8.com/?size=100&id=44053&format=png&color=000000" alt="Bullet"
+                                class="w-3 h-3 inline-block mr-2">
+                            Install dependencies:
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="flex-grow bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-xs text-gray-800 dark:text-gray-200 overflow-x-auto whitespace-nowrap">
+                                <code>npm install</code>
+                            </div>
+                            <button @click="copyCommand('npm install', 2)"
+                                class="px-3 py-1.5 bg-green-200 text-black hover:text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-700 text-xs flex items-center justify-center gap-1.5 shrink-0">
+                                <img src="https://img.icons8.com/?size=100&id=43148&format=png&color=000000" alt="Copy"
+                                    class="w-4 h-4">
+                                <span>{{ copied[2] ? 'Copied!' : 'Copy' }}</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <p class="mb-2 text-sm">
+                            <img src="https://img.icons8.com/?size=100&id=44053&format=png&color=000000" alt="Bullet"
+                                class="w-3 h-3 inline-block mr-2">
+                            Run the project:
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="flex-grow bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-xs text-gray-800 dark:text-gray-200 overflow-x-auto whitespace-nowrap">
+                                <code>npm run dev</code>
+                            </div>
+                            <button @click="copyCommand('npm run dev', 3)"
+                                class="px-3 py-1.5 bg-green-200 text-black hover:text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-700 text-xs flex items-center justify-center gap-1.5 shrink-0">
+                                <img src="https://img.icons8.com/?size=100&id=43148&format=png&color=000000" alt="Copy"
+                                    class="w-4 h-4">
+                                <span>{{ copied[3] ? 'Copied!' : 'Copy' }}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttonDownload mx-auto mt-6 flex justify-center cursor-pointer w-[80%]">
+                    <button class="cursor-pointer text-sm">
+                        Click Me to Visit the Github Repository!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style scoped>
 .sidebar {
     width: 160px;
-    /* Fixed width to match the largest button ("Introduction") */
 }
 
 .buttonDownload {
-    width: 40%;
     --green: #1bfd9c;
     font-size: 15px;
     padding: 0.7em 2.7em;
