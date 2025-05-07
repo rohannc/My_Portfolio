@@ -80,14 +80,14 @@ const items = ref([
 ]);
 
 const frontendButtons = ref([
-    { text: 'HTML', icon: 'https://img.icons8.com/?size=100&id=46605&format=png&color=000007' },
-    { text: 'CSS', icon: 'https://img.icons8.com/?size=100&id=107497&format=png&color=000000' },
-    { text: 'JavaScript', icon: 'https://img.icons8.com/?size=100&id=gYCTehfTlYk5&format=png&color=000000' },
-    { text: 'Bootstrap', icon: 'https://img.icons8.com/?size=100&id=ZMc42tPbG32H&format=png&color=000000' }
+    { text: 'HTML', icon: 'https://img.icons8.com/?size=100&id=20909&format=png&color=000000' },
+    { text: 'CSS', icon: 'https://img.icons8.com/?size=100&id=21278&format=png&color=000000' },
+    { text: 'JavaScript', icon: 'https://img.icons8.com/?size=100&id=108784&format=png&color=000000' },
+    { text: 'Bootstrap', icon: 'https://img.icons8.com/?size=100&id=ldQqWiIRv9bc&format=png&color=000000' }
 ]);
 
 const backendButtons = ref([
-    { text: 'Flask', icon: 'https://img.icons8.com/?size=100&id=ewGOClUtmFX4&format=png&color=000000' },
+    { text: 'Flask', icon: 'https://img.icons8.com/?size=100&id=MHcMYTljfKOr&format=png&color=000000' },
 ]);
 
 const elaButtons = ref([
@@ -143,9 +143,9 @@ const handleButtonClick = (text) => {
                 </button>
             </li>
         </ul>
-        <div class="w-full min-h-[90vh]">
+        <div class="w-full">
             <div id="introduction"
-                class="min-h-full p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg flex flex-col items-center"
+                class="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg flex flex-col items-center"
                 :class="{ 'hidden': activeTab !== 'Introduction' }">
                 <h1
                     class="text-center mb-10 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
@@ -189,26 +189,28 @@ const handleButtonClick = (text) => {
                             alt="Responsive Design">
                     </swiper-slide>
                 </swiper>
-                <div class="mx-10 py-6">
-                    <ul class="flex md:flex-row flex-col md:gap-8 gap-4 justify-center">
-                        <li v-for="item in items" :key="item.name" class="flex items-center gap-4">
-                            <img src="../assets/ProjectIcon1Cropper.jpg" alt="Profile picture"
-                                class="w-10 h-10 rounded-full" />
-                            <div class="font-medium libre-baskerville-bold text-base dark:text-white">
-                                {{ item.name }}
-                            </div>
-                            <div class="mx-auto flex justify-center mt-auto cursor-pointer">
-                                <a :href="item.username" target="_blank" rel="noopener noreferrer" class="">
-                                    <img src="https://img.icons8.com/?size=100&id=lMUZwFHycz7a&format=png&color=000000"
-                                        alt="LinkedIn" class="w-10 h-10">
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="py-6 flex flex-row gap-8 justify-center">
+                    <div v-for="item in items" :key="item.name" class="flex items-center gap-4">
+                        <img v-if="item.name == 'Rohan Chakraborty'" src="../assets/ProjectIcon1Cropper.jpg" alt="Profile picture"
+                            class="w-10 h-10 rounded-full" />
+                        <img v-if="item.name == 'Adrika Ghosh'" src="../assets/Adrika.jpeg" alt="Profile picture"
+                            class="w-10 h-10 rounded-full" />
+                        <img v-if="item.name == 'Subhashis Mondal'" src="../assets/Subhashis.jpeg" alt="Profile picture"
+                            class="w-10 h-10 rounded-full" />
+                        <div class="font-medium libre-baskerville-bold text-base dark:text-white">
+                            {{ item.name }}
+                        </div>
+                        <div class="flex justify-center cursor-pointer">
+                            <a :href="item.username" target="_blank" rel="noopener noreferrer">
+                                <img src="https://img.icons8.com/?size=100&id=lMUZwFHycz7a&format=png&color=000000"
+                                    alt="LinkedIn" class="w-10 h-10">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="about"
-                class="min-h-full p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg"
+                class="min-h-[90vh] p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg"
                 :class="{ 'hidden': activeTab !== 'About' }">
                 <div class="max-w-4xl mx-auto flex flex-col space-y-6">
                     <div>
@@ -223,7 +225,7 @@ const handleButtonClick = (text) => {
                             creation of highly realistic "DeepFake" images and videos. These AI-generated manipulations
                             threaten the authenticity of digital content, facilitating misinformation, identity fraud,
                             and erosion of trust in media. As deepfake technology becomes more accessible, there is an
-                            urgent need for robust detection frameworks to distinguish genuine images from manipulated
+                            urgent need for robust detection frameworks to distinguish Genuine images from manipulated
                             ones. The "Learning to Identify DeepFake Images" project addresses this by developing an
                             advanced detection system that combines state-of-the-art machine learning with forensic
                             analysis to safeguard digital integrity.
@@ -287,153 +289,73 @@ const handleButtonClick = (text) => {
                 </div>
             </div>
             <div id="techstack"
-                class="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 min-h-[90vh]"
+                class="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 min-h-[50vh] justify-center"
                 :class="{ 'hidden': activeTab !== 'TechStack' }">
-                <div style="background-color: #435168;" id="accordion-open" data-accordion="open">
-                    <h2 id="accordion-open-heading-1" class="">
-                        <button type="button"
-                            class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 gap-3 transition-colors duration-200"
-                            :class="{
-                                'bg-green-100 text-green-800 dark:bg-green-500 dark:text-green-950': activeAccordions.includes(1),
-                                'hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white border-b-4 border-gray-200 dark:border-slate-800': !activeAccordions.includes(1)
-                            }" @click="toggleAccordion(1)" :aria-expanded="activeAccordions.includes(1)"
-                            aria-controls="accordion-open-body-1">
-                            <span class="flex items-center pt-serif-bold">
-                                <img src="https://img.icons8.com/?size=100&id=42900&format=png&color=000000"
-                                    alt="FrontEnd" class="w-6 h-6 mr-3">
-                                FrontEnd
-                            </span>
-                            <img src="https://img.icons8.com/?size=100&id=44002&format=png&color=000000" alt="Expand"
-                                class="w-6 h-6" :class="{ 'hidden': activeAccordions.includes(1) }">
-                            <img src="https://img.icons8.com/?size=100&id=aweW6OloZ1wC&format=png&color=000000"
-                                alt="Close" class="w-6 h-6" :class="{ 'hidden': !activeAccordions.includes(1) }">
+                <div class="flex flex-col space-y-6">
+                    <!-- FrontEnd -->
+                    <h3
+                        class="text-base font-semibold text-gray-900 dark:text-white pt-serif-bold flex items-center gap-2">
+                        <img src="https://img.icons8.com/?size=100&id=42900&format=png&color=000000"
+                            alt="FrontEnd" class="w-6 h-6">
+                        FrontEnd
+                    </h3>
+                    <div class="flex gap-4 flex-wrap comic-relief-bold">
+                        <button v-for="button in frontendButtons" :key="button.text" type="button"
+                            class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 flex items-center gap-2"
+                            @click="handleButtonClick(button.text)">
+                            <img :src="button.icon" alt="Icon" class="w-7 h-7 object-contain" />
+                            {{ button.text }}
                         </button>
-                    </h2>
-                    <div id="accordion-open-body-1" :class="{ 'hidden': !activeAccordions.includes(1) }"
-                        aria-labelledby="accordion-open-heading-1">
-                        <div class="p-5 bg-green-100 dark:bg-slate-800">
-                            <div class="flex gap-4 flex-wrap comic-relief-bold">
-                                <button v-for="button in frontendButtons" :key="button.text"
-                                    class="relative inline-flex items-center justify-center p-0.5 mb-2 min-w-[150px] min-h-[48px] overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
-                                    @click="handleButtonClick(button.text)">
-                                    <span
-                                        class="relative px-12 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center justify-center gap-4 whitespace-nowrap">
-                                        <img :src="button.icon" alt="Icon" class="w-7 h-7 object-contain" />
-                                        {{ button.text }}
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
                     </div>
-                    <h2 id="accordion-open-heading-2" class="">
-                        <button type="button"
-                            class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 gap-3 transition-colors duration-200"
-                            :class="{
-                                'bg-green-100 text-green-800 dark:bg-green-500 dark:text-green-950': activeAccordions.includes(2),
-                                'hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white border-b-4 border-gray-200 dark:border-slate-800': !activeAccordions.includes(2)
-                            }" @click="toggleAccordion(2)" :aria-expanded="activeAccordions.includes(2)"
-                            aria-controls="accordion-open-body-2">
-                            <span class="flex items-center pt-serif-bold">
-                                <img src="https://img.icons8.com/?size=100&id=43653&format=png&color=000000"
-                                    alt="BackEnd" class="w-6 h-6 mr-3">
-                                BackEnd
-                            </span>
-                            <img src="https://img.icons8.com/?size=100&id=44002&format=png&color=000000" alt="Expand"
-                                class="w-6 h-6" :class="{ 'hidden': activeAccordions.includes(2) }">
-                            <img src="https://img.icons8.com/?size=100&id=aweW6OloZ1wC&format=png&color=000000"
-                                alt="Close" class="w-6 h-6" :class="{ 'hidden': !activeAccordions.includes(2) }">
+                    <!-- BackEnd -->
+                    <h3
+                        class="text-base font-semibold text-gray-900 dark:text-white pt-serif-bold flex items-center gap-2">
+                        <img src="https://img.icons8.com/?size=100&id=43653&format=png&color=000000"
+                            alt="BackEnd" class="w-6 h-6">
+                        BackEnd
+                    </h3>
+                    <div class="flex gap-4 flex-wrap comic-relief-bold">
+                        <button v-for="button in backendButtons" :key="button.text" type="button"
+                            class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 flex items-center gap-2"
+                            @click="handleButtonClick(button.text)">
+                            <img :src="button.icon" alt="Icon" class="w-7 h-7 object-contain" />
+                            {{ button.text }}
                         </button>
-                    </h2>
-                    <div id="accordion-open-body-2" :class="{ 'hidden': !activeAccordions.includes(2) }"
-                        aria-labelledby="accordion-open-heading-2">
-                        <div class="p-5 bg-green-100 dark:bg-slate-800">
-                            <div class="flex gap-4 flex-wrap comic-relief-bold">
-                                <button v-for="button in backendButtons" :key="button.text"
-                                    class="relative inline-flex items-center justify-center p-0.5 mb-2 min-w-[150px] min-h-[48px] overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
-                                    @click="handleButtonClick(button.text)">
-                                    <span
-                                        class="relative px-12 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center justify-center gap-4 whitespace-nowrap">
-                                        <img :src="button.icon" alt="Icon" class="w-7 h-6 object-contain" />
-                                        {{ button.text }}
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
                     </div>
-                    <h2 id="accordion-open-heading-3" class="">
-                        <button type="button"
-                            class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 gap-3 transition-colors duration-200"
-                            :class="{
-                                'bg-green-100 text-green-800 dark:bg-green-500 dark:text-green-950': activeAccordions.includes(3),
-                                'hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white border-b-4 border-gray-200 dark:border-slate-800': !activeAccordions.includes(3)
-                            }" @click="toggleAccordion(3)" :aria-expanded="activeAccordions.includes(3)"
-                            aria-controls="accordion-open-body-3">
-                            <span class="flex items-center pt-serif-bold">
-                                <img src="https://img.icons8.com/?size=100&id=42918&format=png&color=000000"
-                                    alt="Error Level Analysis" class="w-6 h-6 mr-3">
-                                Error Level Analysis
-                            </span>
-                            <img src="https://img.icons8.com/?size=100&id=44002&format=png&color=000000" alt="Expand"
-                                class="w-6 h-6" :class="{ 'hidden': activeAccordions.includes(3) }">
-                            <img src="https://img.icons8.com/?size=100&id=aweW6OloZ1wC&format=png&color=000000"
-                                alt="Close" class="w-6 h-6" :class="{ 'hidden': !activeAccordions.includes(3) }">
+                    <!-- Error Level Analysis -->
+                    <h3
+                        class="text-base font-semibold text-gray-900 dark:text-white pt-serif-bold flex items-center gap-2">
+                        <img src="https://img.icons8.com/?size=100&id=42918&format=png&color=000000"
+                            alt="Error Level Analysis" class="w-6 h-6">
+                        Error Level Analysis
+                    </h3>
+                    <div class="flex gap-4 flex-wrap comic-relief-bold">
+                        <button v-for="button in elaButtons" :key="button.text" type="button"
+                            class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 flex items-center gap-2"
+                            @click="handleButtonClick(button.text)">
+                            <img :src="button.icon" alt="Icon" class="w-7 h-7 object-contain" />
+                            {{ button.text }}
                         </button>
-                    </h2>
-                    <div id="accordion-open-body-3" :class="{ 'hidden': !activeAccordions.includes(3) }"
-                        aria-labelledby="accordion-open-heading-3">
-                        <div class="p-5 bg-green-100 dark:bg-slate-800">
-                            <div class="flex gap-4 flex-wrap comic-relief-bold">
-                                <button v-for="button in elaButtons" :key="button.text"
-                                    class="relative inline-flex items-center justify-center p-0.5 mb-2 min-w-[150px] min-h-[48px] overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
-                                    @click="handleButtonClick(button.text)">
-                                    <span
-                                        class="relative px-12 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center justify-center gap-4 whitespace-nowrap">
-                                        <img :src="button.icon" alt="Icon" class="w-7 h-7 object-contain" />
-                                        {{ button.text }}
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
                     </div>
-                    <h2 id="accordion-open-heading-4" class="">
-                        <button type="button"
-                            class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 gap-3 transition-colors duration-200"
-                            :class="{
-                                'bg-green-100 text-green-800 dark:bg-green-500 dark:text-green-950': activeAccordions.includes(4),
-                                'hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white border-b-4 border-gray-200 dark:border-slate-800': !activeAccordions.includes(4)
-                            }" @click="toggleAccordion(4)" :aria-expanded="activeAccordions.includes(4)"
-                            aria-controls="accordion-open-body-4">
-                            <span class="flex items-center pt-serif-bold">
-                                <img src="https://img.icons8.com/?size=100&id=xaquNfre75yC&format=png&color=000000"
-                                    alt="Machine Learning" class="w-6 h-6 mr-3">
-                                Machine Learning
-                            </span>
-                            <img src="https://img.icons8.com/?size=100&id=44002&format=png&color=000000" alt="Expand"
-                                class="w-6 h-6" :class="{ 'hidden': activeAccordions.includes(4) }">
-                            <img src="https://img.icons8.com/?size=100&id=aweW6OloZ1wC&format=png&color=000000"
-                                alt="Close" class="w-6 h-6" :class="{ 'hidden': !activeAccordions.includes(4) }">
+                    <!-- Machine Learning -->
+                    <h3
+                        class="text-base font-semibold text-gray-900 dark:text-white pt-serif-bold flex items-center gap-2">
+                        <img src="https://img.icons8.com/?size=100&id=xaquNfre75yC&format=png&color=000000"
+                            alt="Machine Learning" class="w-6 h-6">
+                        Machine Learning
+                    </h3>
+                    <div class="flex gap-4 flex-wrap comic-relief-bold">
+                        <button v-for="button in mlButtons" :key="button.text" type="button"
+                            class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 flex items-center gap-2"
+                            @click="handleButtonClick(button.text)">
+                            <img :src="button.icon" alt="Icon" class="w-7 h-7 object-contain" />
+                            {{ button.text }}
                         </button>
-                    </h2>
-                    <div id="accordion-open-body-4" :class="{ 'hidden': !activeAccordions.includes(4) }"
-                        aria-labelledby="accordion-open-heading-4">
-                        <div class="p-5 bg-green-100 dark:bg-slate-800">
-                            <div class="flex gap-4 flex-wrap comic-relief-bold">
-                                <button v-for="button in mlButtons" :key="button.text"
-                                    class="relative inline-flex items-center justify-center p-0.5 mb-2 min-w-[150px] min-h-[48px] overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
-                                    @click="handleButtonClick(button.text)">
-                                    <span
-                                        class="relative px-12 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center justify-center gap-4 whitespace-nowrap">
-                                        <img :src="button.icon" alt="Icon" class="w-7 h-7 object-contain" />
-                                        {{ button.text }}
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
             <div id="link"
-                class="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg flex flex-col min-h-[90vh]"
+                class="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg flex flex-col min-h-[50vh]"
                 :class="{ 'hidden': activeTab !== 'Link' }">
                 <div class="flex flex-col w-full">
                     <h3 class="mb-5 text-xl font-semibold text-gray-900 dark:text-white pt-serif-bold">DeepFake
@@ -444,7 +366,7 @@ const handleButtonClick = (text) => {
                                 class="w-4 h-4 inline-block mr-2">
                             Clone the repository:
                         </p>
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-2">
                             <div
                                 class="flex-grow bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-sm text-gray-800 dark:text-gray-200">
                                 <code>git clone https://github.com/rohannc/FinalYearProject_DeepFakeImageDetection.git</code>
@@ -464,7 +386,7 @@ const handleButtonClick = (text) => {
                                 class="w-4 h-4 inline-block mr-2">
                             Navigate to the project folder:
                         </p>
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-2">
                             <div
                                 class="flex-grow bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-sm text-gray-800 dark:text-gray-200">
                                 <code>cd FinalYearProject_DeepFakeImageDetection</code>
@@ -483,7 +405,7 @@ const handleButtonClick = (text) => {
                                 class="w-4 h-4 inline-block mr-2">
                             Install dependencies:
                         </p>
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-2">
                             <div
                                 class="flex-grow bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-sm text-gray-800 dark:text-gray-200">
                                 <code>npm install</code>
@@ -502,7 +424,7 @@ const handleButtonClick = (text) => {
                                 class="w-4 h-4 inline-block mr-2">
                             Run the project:
                         </p>
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-2">
                             <div
                                 class="flex-grow bg-gray-100 dark:bg-gray-900 rounded-md p-2 font-mono text-sm text-gray-800 dark:text-gray-200">
                                 <code>npm run dev</code>
@@ -572,15 +494,19 @@ const handleButtonClick = (text) => {
                     </swiper-slide>
                 </swiper>
                 <div class="mx-4 py-4">
-                    <ul class="flex flex-col gap-4 justify-center">
+                    <ul class="flex flex-col gap-4 justify-center items-center">
                         <li v-for="item in items" :key="item.name" class="flex items-center gap-3">
-                            <img src="../assets/ProjectIcon1Cropper.jpg" alt="Profile picture"
+                            <img v-if="item.name == 'Rohan Chakraborty'" src="../assets/ProjectIcon1Cropper.jpg" alt="Profile picture"
+                                class="w-8 h-8 rounded-full" />
+                            <img v-if="item.name == 'Adrika Ghosh'" src="../assets/Adrika.jpeg" alt="Profile picture"
+                                class="w-8 h-8 rounded-full" />
+                            <img v-if="item.name == 'Subhashis Mondal'" src="../assets/Subhashis.jpeg" alt="Profile picture"
                                 class="w-8 h-8 rounded-full" />
                             <div class="font-medium libre-baskerville-bold text-sm dark:text-white">
                                 {{ item.name }}
                             </div>
                             <div class="flex justify-center cursor-pointer">
-                                <a :href="item.username" target="_blank" rel="noopener noreferrer" class="">
+                                <a :href="item.username" target="_blank" rel="noopener noreferrer">
                                     <img src="https://img.icons8.com/?size=100&id=lMUZwFHycz7a&format=png&color=000000"
                                         alt="LinkedIn" class="w-8 h-8">
                                 </a>
@@ -605,7 +531,7 @@ const handleButtonClick = (text) => {
                             creation of highly realistic "DeepFake" images and videos. These AI-generated manipulations
                             threaten the authenticity of digital content, facilitating misinformation, identity fraud,
                             and erosion of trust in media. As deepfake technology becomes more accessible, there is an
-                            urgent need for robust detection frameworks to distinguish genuine images from manipulated
+                            urgent need for robust detection frameworks to distinguish Genuine images from manipulated
                             ones. The "Learning to Identify DeepFake Images" project addresses this by developing an
                             advanced detection system that combines state-of-the-art machine learning with forensic
                             analysis to safeguard digital integrity.
@@ -671,146 +597,66 @@ const handleButtonClick = (text) => {
             <!-- TechStack Section -->
             <div id="techstack"
                 class="p-4 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg mt-4">
-                <div style="background-color: #435168;" id="accordion-open" data-accordion="open">
-                    <h2 id="accordion-open-heading-1" class="">
-                        <button type="button"
-                            class="flex items-center justify-between w-full p-4 font-medium rtl:text-right text-gray-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 gap-3 transition-colors duration-200"
-                            :class="{
-                                'bg-green-100 text-green-800 dark:bg-green-500 dark:text-green-950': activeAccordions.includes(1),
-                                'hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white border-b-4 border-gray-200 dark:border-slate-800': !activeAccordions.includes(1)
-                            }" @click="toggleAccordion(1)" :aria-expanded="activeAccordions.includes(1)"
-                            aria-controls="accordion-open-body-1">
-                            <span class="flex items-center pt-serif-bold text-sm">
-                                <img src="https://img.icons8.com/?size=100&id=42900&format=png&color=000000"
-                                    alt="FrontEnd" class="w-5 h-5 mr-2">
-                                FrontEnd
-                            </span>
-                            <img src="https://img.icons8.com/?size=100&id=44002&format=png&color=000000" alt="Expand"
-                                class="w-5 h-5" :class="{ 'hidden': activeAccordions.includes(1) }">
-                            <img src="https://img.icons8.com/?size=100&id=aweW6OloZ1wC&format=png&color=000000"
-                                alt="Close" class="w-5 h-5" :class="{ 'hidden': !activeAccordions.includes(1) }">
+                <div class="max-w-lg mx-auto flex flex-col space-y-4">
+                    <!-- FrontEnd -->
+                    <h3
+                        class="text-base font-semibold text-gray-900 dark:text-white pt-serif-bold flex items-center gap-2">
+                        <img src="https://img.icons8.com/?size=100&id=42900&format=png&color=000000"
+                            alt="FrontEnd" class="w-5 h-5">
+                        FrontEnd
+                    </h3>
+                    <div class="flex gap-3 flex-wrap comic-relief-bold mb-3">
+                        <button v-for="button in frontendButtons" :key="button.text" type="button"
+                            class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-xs px-5 py-2.5 text-center me-2 mb-2 flex items-center gap-2"
+                            @click="handleButtonClick(button.text)">
+                            <img :src="button.icon" alt="Icon" class="w-5 h-5 object-contain" />
+                            {{ button.text }}
                         </button>
-                    </h2>
-                    <div id="accordion-open-body-1" :class="{ 'hidden': !activeAccordions.includes(1) }"
-                        aria-labelledby="accordion-open-heading-1">
-                        <div class="p-4 bg-green-100 dark:bg-slate-800">
-                            <div class="flex gap-3 flex-wrap comic-relief-bold">
-                                <button v-for="button in frontendButtons" :key="button.text"
-                                    class="relative inline-flex items-center justify-center p-0.5 mb-2 min-w-[120px] min-h-[40px] overflow-hidden text-xs font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
-                                    @click="handleButtonClick(button.text)">
-                                    <span
-                                        class="relative px-8 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center justify-center gap-3 whitespace-nowrap">
-                                        <img :src="button.icon" alt="Icon" class="w-6 h-6 object-contain" />
-                                        {{ button.text }}
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
                     </div>
-                    <h2 id="accordion-open-heading-2" class="">
-                        <button type="button"
-                            class="flex items-center justify-between w-full p-4 font-medium rtl:text-right text-gray-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 gap-3 transition-colors duration-200"
-                            :class="{
-                                'bg-green-100 text-green-800 dark:bg-green-500 dark:text-green-950': activeAccordions.includes(2),
-                                'hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white border-b-4 border-gray-200 dark:border-slate-800': !activeAccordions.includes(2)
-                            }" @click="toggleAccordion(2)" :aria-expanded="activeAccordions.includes(2)"
-                            aria-controls="accordion-open-body-2">
-                            <span class="flex items-center pt-serif-bold text-sm">
-                                <img src="https://img.icons8.com/?size=100&id=43653&format=png&color=000000"
-                                    alt="BackEnd" class="w-5 h-5 mr-2">
-                                BackEnd
-                            </span>
-                            <img src="https://img.icons8.com/?size=100&id=44002&format=png&color=000000" alt="Expand"
-                                class="w-5 h-5" :class="{ 'hidden': activeAccordions.includes(2) }">
-                            <img src="https://img.icons8.com/?size=100&id=aweW6OloZ1wC&format=png&color=000000"
-                                alt="Close" class="w-5 h-5" :class="{ 'hidden': !activeAccordions.includes(2) }">
+                    <!-- BackEnd -->
+                    <h3
+                        class="text-base font-semibold text-gray-900 dark:text-white pt-serif-bold flex items-center gap-2">
+                        <img src="https://img.icons8.com/?size=100&id=43653&format=png&color=000000"
+                            alt="BackEnd" class="w-5 h-5">
+                        BackEnd
+                    </h3>
+                    <div class="flex gap-3 flex-wrap comic-relief-bold mb-3">
+                        <button v-for="button in backendButtons" :key="button.text" type="button"
+                            class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-xs px-5 py-2.5 text-center me-2 mb-2 flex items-center gap-2"
+                            @click="handleButtonClick(button.text)">
+                            <img :src="button.icon" alt="Icon" class="w-5 h-5 object-contain" />
+                            {{ button.text }}
                         </button>
-                    </h2>
-                    <div id="accordion-open-body-2" :class="{ 'hidden': !activeAccordions.includes(2) }"
-                        aria-labelledby="accordion-open-heading-2">
-                        <div class="p-4 bg-green-100 dark:bg-slate-800">
-                            <div class="flex gap-3 flex-wrap comic-relief-bold">
-                                <button v-for="button in backendButtons" :key="button.text"
-                                    class="relative inline-flex items-center justify-center p-0.5 mb-2 min-w-[120px] min-h-[40px] overflow-hidden text-xs font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
-                                    @click="handleButtonClick(button.text)">
-                                    <span
-                                        class="relative px-8 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center justify-center gap-3 whitespace-nowrap">
-                                        <img :src="button.icon" alt="Icon" class="w-6 h-6 object-contain" />
-                                        {{ button.text }}
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
                     </div>
-                    <h2 id="accordion-open-heading-3" class="">
-                        <button type="button"
-                            class="flex items-center justify-between w-full p-4 font-medium rtl:text-right text-gray-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 gap-3 transition-colors duration-200"
-                            :class="{
-                                'bg-green-100 text-green-800 dark:bg-green-500 dark:text-green-950': activeAccordions.includes(3),
-                                'hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white border-b-4 border-gray-200 dark:border-slate-800': !activeAccordions.includes(3)
-                            }" @click="toggleAccordion(3)" :aria-expanded="activeAccordions.includes(3)"
-                            aria-controls="accordion-open-body-3">
-                            <span class="flex items-center pt-serif-bold text-sm">
-                                <img src="https://img.icons8.com/?size=100&id=42918&format=png&color=000000"
-                                    alt="Error Level Analysis" class="w-5 h-5 mr-2">
-                                Error Level Analysis
-                            </span>
-                            <img src="https://img.icons8.com/?size=100&id=44002&format=png&color=000000" alt="Expand"
-                                class="w-5 h-5" :class="{ 'hidden': activeAccordions.includes(3) }">
-                            <img src="https://img.icons8.com/?size=100&id=aweW6OloZ1wC&format=png&color=000000"
-                                alt="Close" class="w-5 h-5" :class="{ 'hidden': !activeAccordions.includes(3) }">
+                    <!-- Error Level Analysis -->
+                    <h3
+                        class="text-base font-semibold text-gray-900 dark:text-white pt-serif-bold flex items-center gap-2">
+                        <img src="https://img.icons8.com/?size=100&id=42918&format=png&color=000000"
+                            alt="Error Level Analysis" class="w-5 h-5">
+                        Error Level Analysis
+                    </h3>
+                    <div class="flex gap-3 flex-wrap comic-relief-bold mb-3">
+                        <button v-for="button in elaButtons" :key="button.text" type="button"
+                            class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-xs px-5 py-2.5 text-center me-2 mb-2 flex items-center gap-2"
+                            @click="handleButtonClick(button.text)">
+                            <img :src="button.icon" alt="Icon" class="w-5 h-5 object-contain" />
+                            {{ button.text }}
                         </button>
-                    </h2>
-                    <div id="accordion-open-body-3" :class="{ 'hidden': !activeAccordions.includes(3) }"
-                        aria-labelledby="accordion-open-heading-3">
-                        <div class="p-4 bg-green-100 dark:bg-slate-800">
-                            <div class="flex gap-3 flex-wrap comic-relief-bold">
-                                <button v-for="button in elaButtons" :key="button.text"
-                                    class="relative inline-flex items-center justify-center p-0.5 mb-2 min-w-[120px] min-h-[40px] overflow-hidden text-xs font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
-                                    @click="handleButtonClick(button.text)">
-                                    <span
-                                        class="relative px-8 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center justify-center gap-3 whitespace-nowrap">
-                                        <img :src="button.icon" alt="Icon" class="w-6 h-6 object-contain" />
-                                        {{ button.text }}
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
                     </div>
-                    <h2 id="accordion-open-heading-4" class="">
-                        <button type="button"
-                            class="flex items-center justify-between w-full p-4 font-medium rtl:text-right text-gray-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 gap-3 transition-colors duration-200"
-                            :class="{
-                                'bg-green-100 text-green-800 dark:bg-green-500 dark:text-green-950': activeAccordions.includes(4),
-                                'hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white border-b-4 border-gray-200 dark:border-slate-800': !activeAccordions.includes(4)
-                            }" @click="toggleAccordion(4)" :aria-expanded="activeAccordions.includes(4)"
-                            aria-controls="accordion-open-body-4">
-                            <span class="flex items-center pt-serif-bold text-sm">
-                                <img src="https://img.icons8.com/?size=100&id=xaquNfre75yC&format=png&color=000000"
-                                    alt="Machine Learning" class="w-5 h-5 mr-2">
-                                Machine Learning
-                            </span>
-                            <img src="https://img.icons8.com/?size=100&id=44002&format=png&color=000000" alt="Expand"
-                                class="w-5 h-5" :class="{ 'hidden': activeAccordions.includes(4) }">
-                            <img src="https://img.icons8.com/?size=100&id=aweW6OloZ1wC&format=png&color=000000"
-                                alt="Close" class="w-5 h-5" :class="{ 'hidden': !activeAccordions.includes(4) }">
+                    <!-- Machine Learning -->
+                    <h3
+                        class="text-base font-semibold text-gray-900 dark:text-white pt-serif-bold flex items-center gap-2">
+                        <img src="https://img.icons8.com/?size=100&id=xaquNfre75yC&format=png&color=000000"
+                            alt="Machine Learning" class="w-5 h-5">
+                        Machine Learning
+                    </h3>
+                    <div class="flex gap-3 flex-wrap comic-relief-bold">
+                        <button v-for="button in mlButtons" :key="button.text" type="button"
+                            class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-xs px-5 py-2.5 text-center me-2 mb-2 flex items-center gap-2"
+                            @click="handleButtonClick(button.text)">
+                            <img :src="button.icon" alt="Icon" class="w-5 h-5 object-contain" />
+                            {{ button.text }}
                         </button>
-                    </h2>
-                    <div id="accordion-open-body-4" :class="{ 'hidden': !activeAccordions.includes(4) }"
-                        aria-labelledby="accordion-open-heading-4">
-                        <div class="p-4 bg-green-100 dark:bg-slate-800">
-                            <div class="flex gap-3 flex-wrap comic-relief-bold">
-                                <button v-for="button in mlButtons" :key="button.text"
-                                    class="relative inline-flex items-center justify-center p-0.5 mb-2 min-w-[120px] min-h-[40px] overflow-hidden text-xs font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
-                                    @click="handleButtonClick(button.text)">
-                                    <span
-                                        class="relative px-8 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent flex items-center justify-center gap-3 whitespace-nowrap">
-                                        <img :src="button.icon" alt="Icon" class="w-6 h-6 object-contain" />
-                                        {{ button.text }}
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
