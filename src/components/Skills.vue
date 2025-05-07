@@ -64,7 +64,7 @@ const SkillsSection = ref({
                                 </td>
                                 <th scope="row"
                                     class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
-                                    style="color: #ff6600;">
+                                    style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-6 py-3">
@@ -104,7 +104,7 @@ const SkillsSection = ref({
                                 </td>
                                 <th scope="row"
                                     class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
-                                    style="color: #ff6600;">
+                                    style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-6 py-3">
@@ -142,7 +142,7 @@ const SkillsSection = ref({
                                 </td>
                                 <th scope="row"
                                     class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
-                                    style="color: #ff6600;">
+                                    style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-6 py-3">
@@ -181,7 +181,7 @@ const SkillsSection = ref({
                                 </td>
                                 <th scope="row"
                                     class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
-                                    style="color: #ff6600;">
+                                    style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-6 py-3">
@@ -219,7 +219,7 @@ const SkillsSection = ref({
                                 </td>
                                 <th scope="row"
                                     class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
-                                    style="color: #ff6600;">
+                                    style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-6 py-3">
@@ -259,7 +259,7 @@ const SkillsSection = ref({
                                 </td>
                                 <th scope="row"
                                     class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
-                                    style="color: #ff6600;">
+                                    style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-6 py-3">
@@ -298,7 +298,7 @@ const SkillsSection = ref({
                                 </td>
                                 <th scope="row"
                                     class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
-                                    style="color: #ff6600;">
+                                    style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-6 py-3">
@@ -338,7 +338,7 @@ const SkillsSection = ref({
                                 </td>
                                 <th scope="row"
                                     class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
-                                    style="color: #ff6600;">
+                                    style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-6 py-3">
@@ -376,7 +376,7 @@ const SkillsSection = ref({
                         <td class="px-4 py-3 flex items-center">
                             <img :src="skill.icon" class="h-6 w-6 mr-2">
                             <span class="comic-relief-bold font-medium text-sm text-gray-900 whitespace-nowrap"
-                                style="color: #ff6600;">{{ skill.name }}</span>
+                                style="color: #FFDB58;">{{ skill.name }}</span>
                         </td>
                         <td class="px-4 py-3">
                             <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
@@ -408,7 +408,7 @@ const SkillsSection = ref({
                         <td class="px-4 py-3 flex items-center">
                             <img :src="skill.icon" class="h-6 w-6 mr-2">
                             <span class="comic-relief-bold font-medium text-sm text-gray-900 whitespace-nowrap"
-                                style="color: #ff6600;">{{ skill.name }}</span>
+                                style="color: #FFDB58;">{{ skill.name }}</span>
                         </td>
                         <td class="px-4 py-3">
                             <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
@@ -440,7 +440,7 @@ const SkillsSection = ref({
                         <td class="px-4 py-3 flex items-center">
                             <img :src="skill.icon" class="h-6 w-6 mr-2">
                             <span class="comic-relief-bold font-medium text-sm text-gray-900 whitespace-nowrap"
-                                style="color: #ff6600;">{{ skill.name }}</span>
+                                style="color: #FFDB58;">{{ skill.name }}</span>
                         </td>
                         <td class="px-4 py-3">
                             <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
@@ -472,7 +472,7 @@ const SkillsSection = ref({
                         <td class="px-4 py-3 flex items-center">
                             <img :src="skill.icon" class="h-6 w-6 mr-2">
                             <span class="comic-relief-bold font-medium text-sm text-gray-900 whitespace-nowrap"
-                                style="color: #ff6600;">{{ skill.name }}</span>
+                                style="color: #FFDB58;">{{ skill.name }}</span>
                         </td>
                         <td class="px-4 py-3">
                             <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
