@@ -16,7 +16,7 @@ const educationList = ref([
             "Operating Systems"
         ],
         type: "CGPA",
-        cgpa: "Not Applicable",
+        cgpa: "Not Available",
         text: "2024 - Current",
         link: "https://img.icons8.com/?size=100&id=YqmuQfHF9wvC&format=png&color=000000",
         linkToPdf: ""
@@ -38,7 +38,7 @@ const educationList = ref([
         cgpa: "7.706",
         text: "2021 - 2024",
         link: "https://img.icons8.com/?size=100&id=21258&format=png&color=000000",
-        linkToPdf: "src\\assets\\SemesterVIMarksheet.pdf"
+        linkToPdf: "src\\assets\\GraduationCertificate.pdf"
     },
     {
         course: "Higher Secondary, West Bengal Council of Higher Secondary Education",
@@ -55,7 +55,7 @@ const educationList = ref([
         cgpa: "83.60",
         text: "2020 - 2021",
         link: "https://img.icons8.com/?size=100&id=9HuXC128p4_T&format=png&color=000000",
-        linkToPdf: "src\\assets\\HigherSecondaryMarksheet.pdf"
+        linkToPdf: "src\\assets\\HigherSecondaryCertificate.pdf"
     },
     {
         course: "Secondary, West Bengal Board of Secondary Education",
@@ -73,7 +73,7 @@ const educationList = ref([
         cgpa: "82.43",
         text: "2018 - 2019",
         link: "https://img.icons8.com/?size=100&id=RWH5eUW9Vr7f&format=png&color=000000",
-        linkToPdf: "src\\assets\\MadhyamikResult.pdf"
+        linkToPdf: "src\\assets\\SecondaryCertificate.pdf"
     }
 ]);
 </script>

@@ -126,25 +126,48 @@ const handleSubmit = async (event) => {
     <div id="contact"></div>
     <div class="container mx-auto px-7 py-8 mt-50">
         <div class="grid grid-cols-3 gap-6">
-            <!-- First Card (2/3 width) -->
+            <!-- Mobile View: Social Icons Only -->
+            <div class="md:hidden col-span-3 bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col">
+                <h2 class="text-2xl font-bold text-white mb-4 mx-auto">Contact Me</h2>
+                <div class="flex justify-center gap-3 pt-6 pb-6">
+                    <div v-for="(link, btnIndex) in socialLinks" :key="btnIndex" class="relative"
+                        @mouseover="showTooltip(0, btnIndex)" @mouseleave="hideTooltip(0, btnIndex)">
+                        <a :href="link.url" target="_blank">
+                            <button
+                                class="bg-transparent border-none cursor-pointer p-2 hover:scale-110 transition-transform">
+                                <img :src="link.icon" :alt="link.name" class="w-8" />
+                            </button>
+                        </a>
+                        <div v-if="tooltipVisible[0]?.[btnIndex]"
+                            class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 z-10 px-3 py-1 text-sm text-gray-100 bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
+                            {{ link.tooltip }}
+                            <div
+                                class="absolute top-full left-1/2 -translate-x-1/2 border-5 border-t-gray-700 border-x-transparent border-b-transparent">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop View: First Card (2/3 width) -->
             <div
-                class="col-span-2 bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col max-h-[500px] md:p-6 md:max-h-[500px]">
+                class="hidden md:flex col-span-2 bg-gray-800 rounded-xl shadow-lg p-6 flex-col max-h-[500px] md:p-6 md:max-h-[500px]">
                 <h2 class="text-2xl md:text-3xl font-bold text-white mb-4 mx-auto">Contact Me</h2>
-                <p class="text-lg text-gray-500 dark:text-gray-400 md:block hidden">
+                <p class="text-lg text-gray-500 dark:text-gray-400">
                     Hello, I'm Rohan Chakraborty!
                 </p>
-                <p class="text-base text-gray-500 dark:text-gray-400 tabbed-paragraph my-2 md:block hidden">
+                <p class="text-base text-gray-500 dark:text-gray-400 tabbed-paragraph my-2">
                     I'm currently pursuing my Master of Computer Applications (MCA) at Jadavpur University, building on
                     my 2024 graduation from Bangabasi College, Kolkata. Passionate about technology, innovation, and
                     creating impactful solutions, I’m always eager to explore new challenges and collaborate on exciting
                     projects.
                 </p>
-                <p class="text-base text-gray-500 dark:text-gray-400 md:block hidden">
+                <p class="text-base text-gray-500 dark:text-gray-400">
                     Whether you have a project idea, a collaboration opportunity, or just want to connect, I’d love to
                     hear from you! Let’s work together to turn ideas into reality or discuss the latest in tech. Feel
                     free to reach out via email or connect with me on LinkedIn.
                 </p>
-                <div class="mt-auto flex justify-center gap-6 pt-6 md:gap-6 md:pt-6">
+                <div class="mt-auto flex justify-center gap-6 pt-6 md:gap-6 md:pt-6 md:pb-6">
                     <div v-for="(link, btnIndex) in socialLinks" :key="btnIndex" class="relative"
                         @mouseover="showTooltip(0, btnIndex)" @mouseleave="hideTooltip(0, btnIndex)">
                         <a :href="link.url" target="_blank">
@@ -165,7 +188,7 @@ const handleSubmit = async (event) => {
             </div>
 
             <!-- Second Card (1/3 width) -->
-            <div class="col-span-1 bg-gray-800 rounded-xl shadow-lg p-4 md:p-6">
+            <div class="col-span-3 md:col-span-1 bg-gray-800 rounded-xl shadow-lg p-4 md:p-6">
                 <form class="max-w-md mx-auto" @submit="handleSubmit">
                     <div class="relative z-0 w-full mb-5 group">
                         <input type="email" name="floating_email" id="floating_email" v-model="formState.email"
@@ -258,13 +281,7 @@ const handleSubmit = async (event) => {
         grid-template-columns: 1fr;
     }
 
-    .col-span-2 {
-        grid-column: span 1;
-        padding: 8px;
-        max-height: 120px;
-    }
-
-    .col-span-1 {
+    .col-span-3 {
         grid-column: span 1;
     }
 }

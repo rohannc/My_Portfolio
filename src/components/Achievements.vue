@@ -12,7 +12,7 @@ const achievements = [
         description: "",
         medal: "",
         participation: "",
-        view: "",
+        view: "src\\assets\\Certificate1.pdf",
         linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
@@ -25,7 +25,7 @@ const achievements = [
         description: "",
         medal: "Gold",
         participation: "Team of Two",
-        view: "",
+        view: "src\\assets\\Certificate2.pdf",
         linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
@@ -38,7 +38,7 @@ const achievements = [
         description: "",
         medal: "Gold",
         participation: "Team of Three",
-        view: "",
+        view: "src\\assets\\Certificate3.pdf",
         linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_srijanju-mca-jumca-activity-7319796457308311552-JpnY?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg"
     },
     {
@@ -51,7 +51,7 @@ const achievements = [
         description: "",
         medal: "Gold",
         participation: "Single Player",
-        view: "",
+        view: "src\\assets\\Certificate4.pdf",
         linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_codingcompetition-error404-rkmrc-activity-7314332325641613312--KBI?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg"
     },
     {
@@ -64,7 +64,7 @@ const achievements = [
         description: "",
         medal: "Bronze",
         participation: "Single Player",
-        view: "",
+        view: "src\\assets\\Certificate5.pdf",
         linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
@@ -77,7 +77,7 @@ const achievements = [
         description: "",
         medal: "Bronze",
         participation: "Single Player",
-        view: "",
+        view: "src\\assets\\Certificate6.pdf",
         linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
@@ -90,7 +90,7 @@ const achievements = [
         description: "",
         medal: "Bronze",
         participation: "Single Player",
-        view: "",
+        view: "src\\assets\\Certificate7.pdf",
         linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     }
 ];
@@ -124,8 +124,7 @@ const hideTooltip = (item, buttonId) => {
         <h1>Achievements</h1>
     </div>
     <!-- Desktop View -->
-    <div class="hidden md:grid mx-35"
-        style="grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 10px;">
+    <div class="hidden md:grid mx-35" style="grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 10px;">
         <div v-for="(item, index) in achievements" :key="index"
             style="max-width: 22rem; background-color: rgb(28, 36, 50); border: 1px solid rgb(28, 36, 50); border-radius: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); margin-bottom: 15px; display: flex; flex-direction: column; min-height: 300px; position: relative;">
             <div>
@@ -180,13 +179,13 @@ const hideTooltip = (item, buttonId) => {
                 </div>
                 <div style="display: flex; gap: 80px; justify-content: center; margin-top: auto; padding-top: 1rem;">
                     <!-- View Button -->
-                    <div style="position: relative;" @mouseover="showTooltip(index, 3)"
+                    <div class="mt-0.5" style="position: relative;" @mouseover="showTooltip(index, 3)"
                         @mouseleave="hideTooltip(index, 3)">
-                        <button
+                        <a target="_blank" :href="item.view"
                             style="background: none; border: none; cursor: pointer; padding: 3px; transition: transform 0.2s;">
                             <img src="https://img.icons8.com/?size=100&id=Psrfh0UtjRyD&format=png&color=000000"
                                 alt="View Icon" style="width: 40px; height: auto; padding-top: 4px;" />
-                        </button>
+                        </a>
                         <div v-if="tooltipVisible[index]?.[3]"
                             style="position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); z-index: 1000; padding: 6px 10px; font-size: 14px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
                             View
@@ -198,11 +197,11 @@ const hideTooltip = (item, buttonId) => {
                     <!-- LinkedIn Button -->
                     <div style="position: relative;" @mouseover="showTooltip(index, 4)"
                         @mouseleave="hideTooltip(index, 4)">
-                        <button
+                        <a :href="item.linkedin" target="_blank"
                             style="background: none; border: none; cursor: pointer; padding: 3px; transition: transform 0.2s;">
                             <img src="https://img.icons8.com/?size=100&id=67570&format=png&color=000000"
                                 alt="LinkedIn Icon" style="width: 50px; height: auto;" />
-                        </button>
+                        </a>
                         <div v-if="tooltipVisible[index]?.[4]"
                             style="position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); z-index: 1000; padding: 6px 10px; font-size: 14px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
                             Visit LinkedIn
@@ -216,8 +215,7 @@ const hideTooltip = (item, buttonId) => {
         </div>
     </div>
     <!-- Mobile View -->
-    <div class="block md:hidden mx-4"
-        style="gap: 20px; padding: 10px;">
+    <div class="block md:hidden mx-4" style="gap: 20px; padding: 10px;">
         <div v-for="(item, index) in achievements" :key="index"
             style="max-width: 100%; background-color: rgb(28, 36, 50); border: 1px solid rgb(28, 36, 50); border-radius: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); margin-bottom: 10px; display: flex; flex-direction: column; min-height: 250px; position: relative;">
             <div>
@@ -270,15 +268,15 @@ const hideTooltip = (item, buttonId) => {
                         {{ item.institute }}
                     </h3>
                 </div>
-                <div style="display: flex; gap: 30px; justify-content: center; margin-top: auto; padding-top: 0.75rem;">
+                <div style="display: flex; gap: 80px; justify-content: center; margin-top: auto; padding-top: 0.75rem;">
                     <!-- View Button -->
-                    <div style="position: relative;" @mouseover="showTooltip(index, 3)"
+                    <div class="mt-0.5" style="position: relative;" @mouseover="showTooltip(index, 3)"
                         @mouseleave="hideTooltip(index, 3)">
-                        <button
+                        <a target="_blank" :href="item.view"
                             style="background: none; border: none; cursor: pointer; padding: 2px; transition: transform 0.2s;">
                             <img src="https://img.icons8.com/?size=100&id=Psrfh0UtjRyD&format=png&color=000000"
                                 alt="View Icon" style="width: 30px; height: auto; padding-top: 3px;" />
-                        </button>
+                        </a>
                         <div v-if="tooltipVisible[index]?.[3]"
                             style="position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); z-index: 1000; padding: 4px 8px; font-size: 12px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
                             View
@@ -290,11 +288,11 @@ const hideTooltip = (item, buttonId) => {
                     <!-- LinkedIn Button -->
                     <div style="position: relative;" @mouseover="showTooltip(index, 4)"
                         @mouseleave="hideTooltip(index, 4)">
-                        <button
+                        <a :href="item.linkedin" target="_blank"
                             style="background: none; border: none; cursor: pointer; padding: 2px; transition: transform 0.2s;">
                             <img src="https://img.icons8.com/?size=100&id=67570&format=png&color=000000"
-                                alt="LinkedIn Icon" style="width: 35px; height: auto;" />
-                        </button>
+                                alt="LinkedIn Icon" style="width: 40px; height: auto;" />
+                        </a>
                         <div v-if="tooltipVisible[index]?.[4]"
                             style="position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); z-index: 1000; padding: 4px 8px; font-size: 12px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
                             Visit LinkedIn
