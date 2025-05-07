@@ -83,7 +83,9 @@ const educationList = ref([
     <div class="heading w-[90%] mx-auto mt-25">
         <h1>Education</h1>
     </div>
-    <div class="relative px-8 mx-25 mb-20">
+
+    <!-- Desktop View -->
+    <div class="relative px-8 mx-25 mb-20 hidden md:block">
         <div v-for="(item, index) in educationList" :key="index" class="mb-10 flex items-start">
             <!-- First Column -->
             <div class="relative flex-1">
@@ -100,10 +102,12 @@ const educationList = ref([
                     </h3>
                     <p
                         class="block mb-2 text-sm comic-relief-bold font-normal leading-none text-gray-400 dark:text-gray-300">
-                        {{ item.institution }} </p>
+                        {{ item.institution }}
+                    </p>
                     <p
                         class="block mb-2 text-sm comic-relief-regular font-normal leading-none text-gray-400 dark:text-gray-300">
-                        {{ item.type }}: {{ item.cgpa }} </p>
+                        {{ item.type }}: {{ item.cgpa }}
+                    </p>
                     <div class="mt-5 flex gap-1 flex-wrap">
                         <button v-for="(course, idx) in item.courseworks" :key="idx"
                             class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
@@ -121,16 +125,11 @@ const educationList = ref([
                 <p class="text-sm font-normal comic-relief-regular text-gray-500 dark:text-gray-400">
                     {{ item.text }}
                 </p>
-                <!-- Bottom part with buttons -->
+                <!-- Bottom part with view button -->
                 <div class="flex gap-2">
-                    <a :href="item.linkToPdf" download
+                    <a v-if="item.linkToPdf" :href="item.linkToPdf" target="_blank"
                         class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">
-                        <img src="https://img.icons8.com/?size=100&id=104149&format=png&color=000000" alt="Download"
-                            height="20" width="20px">
-                    </a>
-                    <a :href="item.linkToPdf" target="_blank"
-                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">
-                        <img src="https://img.icons8.com/?size=100&id=59964&format=png&color=000000" alt="Download"
+                        <img src="https://img.icons8.com/?size=100&id=59964&format=png&color=000000" alt="View"
                             height="20" width="20px">
                     </a>
                 </div>
@@ -138,6 +137,53 @@ const educationList = ref([
         </div>
     </div>
 
+    <!-- Mobile View -->
+    <div class="relative px-4 w-[90%] mx-auto mb-12 md:hidden">
+        <div v-for="(item, index) in educationList" :key="index" class="mb-8 flex items-start">
+            <div class="relative flex-1">
+                <span
+                    class="absolute flex items-center mt-0.5 justify-center w-5 h-5 bg-blue-100 rounded-full -left-2.5 ring-6 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                    <img :src="item.link" alt="" height="18px" width="18px">
+                </span>
+                <!-- Vertical line connecting spans -->
+                <div v-if="index < educationList.length"
+                    class="absolute left-0 mt-5 top-5 w-0.5 h-3/4 bg-gray-200 dark:bg-gray-700"></div>
+                <div class="flex-1 ml-5">
+                    <h3 class="mb-1 text-base font-semibold text-gray-900 dark:text-white">
+                        {{ item.course }}
+                    </h3>
+                    <p
+                        class="block mb-1 text-xs comic-relief-bold font-normal leading-none text-gray-400 dark:text-gray-300">
+                        {{ item.institution }}
+                    </p>
+                    <p
+                        class="block mb-1 text-xs comic-relief-regular font-normal leading-none text-gray-400 dark:text-gray-300">
+                        {{ item.type }}: {{ item.cgpa }}
+                    </p>
+                    <p class="text-xs font-normal comic-relief-regular text-gray-500 dark:text-gray-400 mb-3">
+                        {{ item.text }}
+                    </p>
+                    <div class="flex gap-1 flex-wrap">
+                        <button v-for="(course, idx) in item.courseworks" :key="idx"
+                            class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xs font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                            <span
+                                class="relative px-3 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent hover:text-black">
+                                {{ course }}
+                            </span>
+                        </button>
+                    </div>
+                    <!-- View button below coursework buttons -->
+                    <div class="mt-4" v-if="item.linkToPdf">
+                        <a :href="item.linkToPdf" target="_blank"
+                            class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">
+                            <img src="https://img.icons8.com/?size=100&id=59964&format=png&color=000000" alt="View"
+                                height="16" width="16px">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style></style>

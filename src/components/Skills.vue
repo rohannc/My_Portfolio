@@ -44,7 +44,9 @@ const SkillsSection = ref({
     <div class="heading w-[90%] mx-auto mt-45">
         <h1>Skills</h1>
     </div>
-    <div class="w-[80%] mx-auto flex flex-col items-center">
+
+    <!-- Desktop View -->
+    <div class="w-[80%] mx-auto flex flex-col items-center hidden md:block">
         <!-- First Section: Programming Languages -->
         <div class="relative overflow-x-auto sm:rounded-lg w-full">
             <div class="flex justify-center items-center space-x-4">
@@ -79,8 +81,7 @@ const SkillsSection = ref({
                 <!-- Middle Heading with Lines -->
                 <div class="w-1/3 flex items-center relative">
                     <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
-                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg 
-                                z-10">
+                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
                         <h2 class="text-lg font-semibold text-gray-900" style="color: #5bed7d;">
                             Programming Languages
                         </h2>
@@ -120,7 +121,9 @@ const SkillsSection = ref({
         </div>
 
         <!-- Vertical Connecting Line -->
-        <div class="w-0.5 h-16 mb-5 bg-gray-400 dark:bg-gray-600"></div>
+        <div class="flex justify-center my-5">
+            <div class="w-0.5 h-16 bg-gray-400 dark:bg-gray-600"></div>
+        </div>
 
         <!-- Second Section: Web Development -->
         <div class="relative overflow-x-auto sm:rounded-lg w-full">
@@ -156,14 +159,12 @@ const SkillsSection = ref({
                 <!-- Middle Heading with Lines -->
                 <div class="w-1/3 flex items-center relative">
                     <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
-                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg 
-                                z-10">
+                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
                         <h2 class="text-lg font-semibold text-gray-900" style="color: #5bed7d;">
                             Web Development
                         </h2>
                     </div>
-                    <div class=" flex-grow h-0.5 bg-gray-400 dark:bg-gray-600">
-                    </div>
+                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
                 </div>
 
                 <!-- Right Table -->
@@ -197,7 +198,9 @@ const SkillsSection = ref({
         </div>
 
         <!-- Vertical Connecting Line -->
-        <div class="w-0.5 h-16 mt-5 bg-gray-400 dark:bg-gray-600"></div>
+        <div class="flex justify-center my-5">
+            <div class="w-0.5 h-16 bg-gray-400 dark:bg-gray-600"></div>
+        </div>
 
         <!-- Third Section: Developer Tools -->
         <div class="relative overflow-x-auto sm:rounded-lg w-full">
@@ -233,16 +236,13 @@ const SkillsSection = ref({
                 <!-- Middle Heading with Lines -->
                 <div class="w-1/3 flex items-center relative">
                     <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
-                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg 
-                                z-10">
+                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
                         <h2 class="text-lg font-semibold text-gray-900" style="color: #5bed7d;">
                             Developer Tools
                         </h2>
                     </div>
                     <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
                 </div>
-
-
 
                 <!-- Right Table -->
                 <div class="w-1/3 overflow-x-auto">
@@ -276,7 +276,9 @@ const SkillsSection = ref({
         </div>
 
         <!-- Vertical Connecting Line -->
-        <div class="w-0.5 h-16 bg-gray-400 dark:bg-gray-600"></div>
+        <div class="flex justify-center my-5">
+            <div class="w-0.5 h-16 bg-gray-400 dark:bg-gray-600"></div>
+        </div>
 
         <!-- Fourth Section: Technologies/Frameworks -->
         <div class="relative overflow-x-auto sm:rounded-lg w-full">
@@ -313,8 +315,7 @@ const SkillsSection = ref({
                 <!-- Middle Heading with Lines -->
                 <div class="w-1/3 flex items-center relative">
                     <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
-                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg 
-                                z-10">
+                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
                         <h2 class="text-lg font-semibold text-gray-900" style="color: #5bed7d;">
                             Technologies & Frameworks
                         </h2>
@@ -351,6 +352,137 @@ const SkillsSection = ref({
                     </table>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Mobile View -->
+    <div class="w-[90%] mx-auto flex flex-col items-center md:hidden">
+        <!-- Programming Languages Section -->
+        <div class="w-full mb-8">
+            <div class="flex justify-center mb-2">
+                <h2 class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-base font-semibold text-gray-900"
+                    style="color: #5bed7d;">
+                    Programming Languages
+                </h2>
+            </div>
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <tbody>
+                    <tr v-for="(skill, index) in [...SkillsSection.programmingSkillsLeft, ...SkillsSection.programmingSkillsRight]"
+                        :key="'mobile-prog-' + index"
+                        class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                            'rounded-t-lg': index === 0,
+                            'rounded-b-lg': index === SkillsSection.programmingSkillsLeft.length + SkillsSection.programmingSkillsRight.length - 1
+                        }">
+                        <td class="px-4 py-3 flex items-center">
+                            <img :src="skill.icon" class="h-6 w-6 mr-2">
+                            <span class="comic-relief-bold font-medium text-sm text-gray-900 whitespace-nowrap"
+                                style="color: #ff6600;">{{ skill.name }}</span>
+                        </td>
+                        <td class="px-4 py-3">
+                            <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                    :style="{ width: skill.percentage + '%' }"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Web Development Section -->
+        <div class="w-full mb-8">
+            <div class="flex justify-center mb-2">
+                <h2 class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-base font-semibold text-gray-900"
+                    style="color: #5bed7d;">
+                    Web Development
+                </h2>
+            </div>
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <tbody>
+                    <tr v-for="(skill, index) in [...SkillsSection.webSkillsLeft, ...SkillsSection.webSkillsRight]"
+                        :key="'mobile-web-' + index"
+                        class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                            'rounded-t-lg': index === 0,
+                            'rounded-b-lg': index === SkillsSection.webSkillsLeft.length + SkillsSection.webSkillsRight.length - 1
+                        }">
+                        <td class="px-4 py-3 flex items-center">
+                            <img :src="skill.icon" class="h-6 w-6 mr-2">
+                            <span class="comic-relief-bold font-medium text-sm text-gray-900 whitespace-nowrap"
+                                style="color: #ff6600;">{{ skill.name }}</span>
+                        </td>
+                        <td class="px-4 py-3">
+                            <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                    :style="{ width: skill.percentage + '%' }"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Developer Tools Section -->
+        <div class="w-full mb-8">
+            <div class="flex justify-center mb-2">
+                <h2 class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-base font-semibold text-gray-900"
+                    style="color: #5bed7d;">
+                    Developer Tools
+                </h2>
+            </div>
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <tbody>
+                    <tr v-for="(skill, index) in [...SkillsSection.devToolsSkillsLeft, ...SkillsSection.devToolsSkillsRight]"
+                        :key="'mobile-devtools-' + index"
+                        class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                            'rounded-t-lg': index === 0,
+                            'rounded-b-lg': index === SkillsSection.devToolsSkillsLeft.length + SkillsSection.devToolsSkillsRight.length - 1
+                        }">
+                        <td class="px-4 py-3 flex items-center">
+                            <img :src="skill.icon" class="h-6 w-6 mr-2">
+                            <span class="comic-relief-bold font-medium text-sm text-gray-900 whitespace-nowrap"
+                                style="color: #ff6600;">{{ skill.name }}</span>
+                        </td>
+                        <td class="px-4 py-3">
+                            <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                    :style="{ width: skill.percentage + '%' }"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Technologies & Frameworks Section -->
+        <div class="w-full mb-8">
+            <div class="flex justify-center mb-2">
+                <h2 class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-base font-semibold text-gray-900"
+                    style="color: #5bed7d;">
+                    Technologies & Frameworks
+                </h2>
+            </div>
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <tbody>
+                    <tr v-for="(skill, index) in [...SkillsSection.frameworksSkillsLeft, ...SkillsSection.frameworksSkillsRight]"
+                        :key="'mobile-frameworks-' + index"
+                        class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                            'rounded-t-lg': index === 0,
+                            'rounded-b-lg': index === SkillsSection.frameworksSkillsLeft.length + SkillsSection.frameworksSkillsRight.length - 1
+                        }">
+                        <td class="px-4 py-3 flex items-center">
+                            <img :src="skill.icon" class="h-6 w-6 mr-2">
+                            <span class="comic-relief-bold font-medium text-sm text-gray-900 whitespace-nowrap"
+                                style="color: #ff6600;">{{ skill.name }}</span>
+                        </td>
+                        <td class="px-4 py-3">
+                            <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                    :style="{ width: skill.percentage + '%' }"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </template>
