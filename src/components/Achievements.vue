@@ -12,7 +12,7 @@ const achievements = [
         description: "",
         medal: "",
         participation: "",
-        view: "src\\assets\\Certificate1.pdf",
+        view: "https://drive.google.com/file/d/1xO0XuySHLrjJ9MZeWgAh7oJokfVN_s27/view?usp=sharing",
         linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
@@ -25,7 +25,7 @@ const achievements = [
         description: "",
         medal: "Gold",
         participation: "Team of Two",
-        view: "src\\assets\\Certificate2.pdf",
+        view: "https://drive.google.com/file/d/1w1hQy0AGePx4jwjhxvmLAaQi8VFh6H43/view?usp=sharing",
         linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
@@ -38,7 +38,7 @@ const achievements = [
         description: "",
         medal: "Gold",
         participation: "Team of Three",
-        view: "src\\assets\\Certificate3.pdf",
+        view: "https://drive.google.com/file/d/1PakvJlfb4XBnVtWNY-4-3HVm6JzF2b-V/view?usp=sharing",
         linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_srijanju-mca-jumca-activity-7319796457308311552-JpnY?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg"
     },
     {
@@ -51,7 +51,7 @@ const achievements = [
         description: "",
         medal: "Gold",
         participation: "Single Player",
-        view: "src\\assets\\Certificate4.pdf",
+        view: "https://drive.google.com/file/d/1QujfDQFttfx7SlyVsXCIlj6YIgjVBZfO/view?usp=sharing",
         linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_codingcompetition-error404-rkmrc-activity-7314332325641613312--KBI?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg"
     },
     {
@@ -64,7 +64,7 @@ const achievements = [
         description: "",
         medal: "Bronze",
         participation: "Single Player",
-        view: "src\\assets\\Certificate5.pdf",
+        view: "https://drive.google.com/file/d/10W_Kjy_E2jnggi95a_kPv4L1YwYHm1Jv/view?usp=sharing",
         linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
@@ -77,7 +77,7 @@ const achievements = [
         description: "",
         medal: "Bronze",
         participation: "Single Player",
-        view: "src\\assets\\Certificate6.pdf",
+        view: "https://drive.google.com/file/d/1194-dcJvEL1IchtdqhIF5-Nya_OpkuZk/view?usp=sharing",
         linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
@@ -90,7 +90,7 @@ const achievements = [
         description: "",
         medal: "Bronze",
         participation: "Single Player",
-        view: "src\\assets\\Certificate7.pdf",
+        view: "https://drive.google.com/file/d/1b_B5QMO62DZasjctaB0_I-u6IZvgMPsw/view?usp=sharing",
         linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     }
 ];

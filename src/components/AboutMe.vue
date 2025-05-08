@@ -8,7 +8,7 @@ const downloadGIF = ref("https://img.icons8.com/?size=100&id=aO3W9kKC9PMv&format
 
 const downloadResume = () => {
     const link = document.createElement('a');
-    link.href = '../assets/Rohan_s_Resume_2025.pdf';
+    link.href = 'https://drive.google.com/file/d/1kglTL7wUMt2hYZ5Rjb5SlouAge9DAURT/view?usp=drive_link';
     link.download = 'Rohan_Chakraborty_Resume.pdf';
     document.body.appendChild(link);
     link.click();
