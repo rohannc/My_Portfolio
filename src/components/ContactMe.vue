@@ -3,7 +3,7 @@ import { reactive } from 'vue';
 import { init, send } from '@emailjs/browser';
 
 // Initialize EmailJS with your User ID (replace 'YOUR_USER_ID' with your actual EmailJS User ID)
-init('YOUR_USER_ID');
+init('VVFBHi65kAeNjynhZ');
 
 // Social media links
 const socialLinks = [
@@ -94,8 +94,8 @@ const handleSubmit = async (event) => {
     try {
         // Send email via EmailJS
         const response = await send(
-            'YOUR_SERVICE_ID', // Replace with your EmailJS Service ID
-            'YOUR_TEMPLATE_ID', // Replace with your EmailJS Template ID
+            'service_8kwda1d', // Replace with your EmailJS Service ID
+            'template_9lrlp3m', // Replace with your EmailJS Template ID
             {
                 email: formState.email,
                 first_name: formState.first_name,
