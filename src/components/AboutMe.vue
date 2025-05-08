@@ -1,3 +1,4 @@
+```vue
 <script setup>
 import { ref } from "vue";
 
@@ -7,12 +8,7 @@ const textContent = ref("I’m an MCA student at Jadavpur University, with a lov
 const downloadGIF = ref("https://img.icons8.com/?size=100&id=aO3W9kKC9PMv&format=png&color=000000");
 
 const downloadResume = () => {
-    const link = document.createElement('a');
-    link.href = 'https://drive.google.com/file/d/1kglTL7wUMt2hYZ5Rjb5SlouAge9DAURT/view?usp=drive_link';
-    link.download = 'Rohan_Chakraborty_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    window.open('https://drive.google.com/file/d/1kglTL7wUMt2hYZ5Rjb5SlouAge9DAURT/view?usp=drive_link', '_blank');
 }
 </script>
 
@@ -35,13 +31,9 @@ const downloadResume = () => {
                 </div>
                 <!-- Download Resume Button (Mobile Only) -->
                 <div class="pb-6 flex justify-center md:hidden">
-                    <button @click="downloadResume"
-                        class="hover-button relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white">
-                        <span
-                            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
-                            <img class="icon" :src="downloadGIF" alt="Download" height="20px" width="20px">
-                            <span class="hideText">Download Resume</span>
-                        </span>
+                    <button @click="downloadResume" type="button"
+                        class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-xs px-4 py-2 text-center">
+                        Download Resume
                     </button>
                 </div>
             </div>
@@ -117,3 +109,4 @@ const downloadResume = () => {
     white-space: nowrap;
 }
 </style>
+```
