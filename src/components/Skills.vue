@@ -41,18 +41,19 @@ const SkillsSection = ref({
 
 <template>
     <div id="skills"></div>
-    <div class="heading w-[90%] mx-auto mt-45">
+    <div class="heading w-[90%] mx-auto mt-[clamp(18rem,15vw,18rem)]">
         <h1>Skills</h1>
     </div>
 
     <!-- Desktop View -->
-    <div class="w-[80%] mx-auto flex flex-col items-center hidden md:block">
+    <div
+        class="container-desktop w-[clamp(70%,85%,95%)] max-w-[90rem] min-w-[48rem] mx-auto flex flex-col items-center hidden md:block">
         <!-- First Section: Programming Languages -->
         <div class="relative overflow-x-auto sm:rounded-lg w-full">
-            <div class="flex justify-center items-center space-x-4">
+            <div class="flex justify-center items-center gap-[clamp(1rem,3vw,1.5rem)]">
                 <!-- Left Table -->
-                <div class="w-1/3 overflow-x-auto">
-                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                <div class="table-width w-[clamp(28%,33%,38%)] overflow-x-auto">
+                    <table class="w-full text-center rtl:text-right text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.programmingSkillsLeft" :key="'left-top-' + index"
                                 class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
@@ -60,16 +61,16 @@ const SkillsSection = ref({
                                     'rounded-b-lg': index === SkillsSection.programmingSkillsLeft.length - 1
                                 }">
                                 <td>
-                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                    <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
                                     style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
-                                <td class="px-6 py-3">
-                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                <td class="px-[1.5rem] py-[0.75rem]">
+                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
+                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -79,19 +80,22 @@ const SkillsSection = ref({
                 </div>
 
                 <!-- Middle Heading with Lines -->
-                <div class="w-1/3 flex items-center relative">
-                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
-                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
-                        <h2 class="text-lg font-semibold text-gray-900" style="color: #5bed7d;">
+                <div class="table-width w-[clamp(28%,33%,38%)] flex items-center justify-center relative">
+                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    </div>
+                    <div
+                        class="subheading-container mx-[1.5rem] px-[1.5rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
+                        <h2 class="section-title text-gray-900" style="color: #5bed7d;">
                             Programming Languages
                         </h2>
                     </div>
-                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
+                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    </div>
                 </div>
 
                 <!-- Right Table -->
-                <div class="w-1/3 overflow-x-auto">
-                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                <div class="table-width w-[clamp(28%,33%,38%)] overflow-x-auto">
+                    <table class="w-full text-center rtl:text-right text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.programmingSkillsRight"
                                 :key="'right-top-' + index"
@@ -100,16 +104,16 @@ const SkillsSection = ref({
                                     'rounded-b-lg': index === SkillsSection.programmingSkillsRight.length - 1
                                 }">
                                 <td>
-                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                    <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
                                     style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
-                                <td class="px-6 py-3">
-                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                <td class="px-[1.5rem] py-[0.75rem]">
+                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
+                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -121,16 +125,16 @@ const SkillsSection = ref({
         </div>
 
         <!-- Vertical Connecting Line -->
-        <div class="flex justify-center my-5">
-            <div class="w-0.5 h-16 bg-gray-400 dark:bg-gray-600"></div>
+        <div class="flex justify-center my-[clamp(1.25rem,3vw,2rem)]">
+            <div class="w-[0.125rem] h-[clamp(3rem,5vw,4rem)] bg-gray-400 dark:bg-gray-600"></div>
         </div>
 
         <!-- Second Section: Web Development -->
         <div class="relative overflow-x-auto sm:rounded-lg w-full">
-            <div class="flex justify-center items-center space-x-4">
+            <div class="flex justify-center items-center gap-[clamp(1rem,3vw,1.5rem)]">
                 <!-- Left Table -->
-                <div class="w-1/3 overflow-x-auto">
-                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                <div class="table-width w-[clamp(28%,33%,38%)] overflow-x-auto">
+                    <table class="w-full text-center rtl:text-right text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.webSkillsLeft" :key="'left-second-' + index"
                                 class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
@@ -138,16 +142,16 @@ const SkillsSection = ref({
                                     'rounded-b-lg': index === SkillsSection.webSkillsLeft.length - 1
                                 }">
                                 <td>
-                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                    <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
                                     style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
-                                <td class="px-6 py-3">
-                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                <td class="px-[1.5rem] py-[0.75rem]">
+                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
+                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -157,19 +161,22 @@ const SkillsSection = ref({
                 </div>
 
                 <!-- Middle Heading with Lines -->
-                <div class="w-1/3 flex items-center relative">
-                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
-                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
-                        <h2 class="text-lg font-semibold text-gray-900" style="color: #5bed7d;">
+                <div class="table-width w-[clamp(28%,33%,38%)] flex items-center justify-center relative">
+                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    </div>
+                    <div
+                        class="subheading-container mx-[1.5rem] px-[1.5rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
+                        <h2 class="section-title text-gray-900" style="color: #5bed7d;">
                             Web Development
                         </h2>
                     </div>
-                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
+                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    </div>
                 </div>
 
                 <!-- Right Table -->
-                <div class="w-1/3 overflow-x-auto">
-                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                <div class="table-width w-[clamp(28%,33%,38%)] overflow-x-auto">
+                    <table class="w-full text-center rtl:text-right text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.webSkillsRight" :key="'right-second-' + index"
                                 class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
@@ -177,16 +184,16 @@ const SkillsSection = ref({
                                     'rounded-b-lg': index === SkillsSection.webSkillsRight.length - 1
                                 }">
                                 <td>
-                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                    <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
                                     style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
-                                <td class="px-6 py-3">
-                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                <td class="px-[1.5rem] py-[0.75rem]">
+                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
+                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -198,16 +205,16 @@ const SkillsSection = ref({
         </div>
 
         <!-- Vertical Connecting Line -->
-        <div class="flex justify-center my-5">
-            <div class="w-0.5 h-16 bg-gray-400 dark:bg-gray-600"></div>
+        <div class="flex justify-center my-[clamp(1.25rem,3vw,2rem)]">
+            <div class="w-[0.125rem] h-[clamp(3rem,5vw,4rem)] bg-gray-400 dark:bg-gray-600"></div>
         </div>
 
         <!-- Third Section: Developer Tools -->
         <div class="relative overflow-x-auto sm:rounded-lg w-full">
-            <div class="flex justify-center items-center space-x-4">
+            <div class="flex justify-center items-center gap-[clamp(1rem,3vw,1.5rem)]">
                 <!-- Left Table -->
-                <div class="w-1/3 overflow-x-auto">
-                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                <div class="table-width w-[clamp(28%,33%,38%)] overflow-x-auto">
+                    <table class="w-full text-center rtl:text-right text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.devToolsSkillsLeft" :key="'left-third-' + index"
                                 class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
@@ -215,16 +222,16 @@ const SkillsSection = ref({
                                     'rounded-b-lg': index === SkillsSection.devToolsSkillsLeft.length - 1
                                 }">
                                 <td>
-                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                    <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
                                     style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
-                                <td class="px-6 py-3">
-                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                <td class="px-[1.5rem] py-[0.75rem]">
+                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
+                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -234,19 +241,22 @@ const SkillsSection = ref({
                 </div>
 
                 <!-- Middle Heading with Lines -->
-                <div class="w-1/3 flex items-center relative">
-                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
-                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
-                        <h2 class="text-lg font-semibold text-gray-900" style="color: #5bed7d;">
+                <div class="table-width w-[clamp(28%,33%,38%)] flex items-center justify-center relative">
+                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    </div>
+                    <div
+                        class="subheading-container mx-[1.5rem] px-[1.5rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
+                        <h2 class="section-title text-gray-900" style="color: #5bed7d;">
                             Developer Tools
                         </h2>
                     </div>
-                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
+                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    </div>
                 </div>
 
                 <!-- Right Table -->
-                <div class="w-1/3 overflow-x-auto">
-                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                <div class="table-width w-[clamp(28%,33%,38%)] overflow-x-auto">
+                    <table class="w-full text-center rtl:text-right text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.devToolsSkillsRight"
                                 :key="'right-third-' + index"
@@ -255,16 +265,16 @@ const SkillsSection = ref({
                                     'rounded-b-lg': index === SkillsSection.devToolsSkillsRight.length - 1
                                 }">
                                 <td>
-                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                    <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
                                     style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
-                                <td class="px-6 py-3">
-                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                <td class="px-[1.5rem] py-[0.75rem]">
+                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
+                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -276,16 +286,16 @@ const SkillsSection = ref({
         </div>
 
         <!-- Vertical Connecting Line -->
-        <div class="flex justify-center my-5">
-            <div class="w-0.5 h-16 bg-gray-400 dark:bg-gray-600"></div>
+        <div class="flex justify-center my-[clamp(1.25rem,3vw,2rem)]">
+            <div class="w-[0.125rem] h-[clamp(3rem,5vw,4rem)] bg-gray-400 dark:bg-gray-600"></div>
         </div>
 
         <!-- Fourth Section: Technologies/Frameworks -->
         <div class="relative overflow-x-auto sm:rounded-lg w-full">
-            <div class="flex justify-center items-center space-x-4">
+            <div class="flex justify-center items-center gap-[clamp(1rem,3vw,1.5rem)]">
                 <!-- Left Table -->
-                <div class="w-1/3 overflow-x-auto">
-                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                <div class="table-width w-[clamp(28%,33%,38%)] overflow-x-auto">
+                    <table class="w-full text-center rtl:text-right text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.frameworksSkillsLeft"
                                 :key="'left-fourth-' + index"
@@ -294,16 +304,16 @@ const SkillsSection = ref({
                                     'rounded-b-lg': index === SkillsSection.frameworksSkillsLeft.length - 1
                                 }">
                                 <td>
-                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                    <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
                                     style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
-                                <td class="px-6 py-3">
-                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                <td class="px-[1.5rem] py-[0.75rem]">
+                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
+                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -313,19 +323,22 @@ const SkillsSection = ref({
                 </div>
 
                 <!-- Middle Heading with Lines -->
-                <div class="w-1/3 flex items-center relative">
-                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
-                    <div class="mx-4 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
-                        <h2 class="text-lg font-semibold text-gray-900" style="color: #5bed7d;">
+                <div class="table-width w-[clamp(28%,33%,38%)] flex items-center justify-center relative">
+                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    </div>
+                    <div
+                        class="subheading-container mx-[1.5rem] px-[1.5rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
+                        <h2 class="section-title text-gray-900" style="color: #5bed7d;">
                             Technologies & Frameworks
                         </h2>
                     </div>
-                    <div class="flex-grow h-0.5 bg-gray-400 dark:bg-gray-600"></div>
+                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    </div>
                 </div>
 
                 <!-- Right Table -->
-                <div class="w-1/3 overflow-x-auto">
-                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                <div class="table-width w-[clamp(28%,33%,38%)] overflow-x-auto">
+                    <table class="w-full text-center rtl:text-right text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.frameworksSkillsRight"
                                 :key="'right-fourth-' + index"
@@ -334,16 +347,16 @@ const SkillsSection = ref({
                                     'rounded-b-lg': index === SkillsSection.frameworksSkillsRight.length - 1
                                 }">
                                 <td>
-                                    <img :src="skill.icon" class="h-8 w-8 ml-4">
+                                    <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-6 py-3 comic-relief-bold font-medium text-gray-900 whitespace-nowrap"
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
                                     style="color: #FFDB58;">
                                     {{ skill.name }}
                                 </th>
-                                <td class="px-6 py-3">
-                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-                                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                <td class="px-[1.5rem] py-[0.75rem]">
+                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
+                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -356,16 +369,16 @@ const SkillsSection = ref({
     </div>
 
     <!-- Mobile View -->
-    <div class="w-[90%] mx-auto flex flex-col items-center md:hidden">
+    <div class="container-mobile w-[95%] max-w-[40rem] min-w-[20rem] mx-auto flex flex-col items-center md:hidden">
         <!-- Programming Languages Section -->
-        <div class="w-full mb-8">
-            <div class="flex justify-center mb-2">
-                <h2 class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-base font-semibold text-gray-900"
+        <div class="w-full mb-[clamp(2rem,5vw,2.5rem)]">
+            <div class="flex justify-center mb-[clamp(0.5rem,1.5vw,0.75rem)]">
+                <h2 class="px-[1rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg section-title text-gray-900"
                     style="color: #5bed7d;">
                     Programming Languages
                 </h2>
             </div>
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table class="w-full text-left text-gray-500 dark:text-gray-400">
                 <tbody>
                     <tr v-for="(skill, index) in [...SkillsSection.programmingSkillsLeft, ...SkillsSection.programmingSkillsRight]"
                         :key="'mobile-prog-' + index"
@@ -373,14 +386,14 @@ const SkillsSection = ref({
                             'rounded-t-lg': index === 0,
                             'rounded-b-lg': index === SkillsSection.programmingSkillsLeft.length + SkillsSection.programmingSkillsRight.length - 1
                         }">
-                        <td class="px-4 py-3 flex items-center">
-                            <img :src="skill.icon" class="h-6 w-6 mr-2">
-                            <span class="comic-relief-bold font-medium text-sm text-gray-900 whitespace-nowrap"
+                        <td class="px-[1rem] py-[0.75rem] flex items-center">
+                            <img :src="skill.icon" class="skill-icon mr-[0.75rem]">
+                            <span class="comic-relief-bold font-medium skill-name text-gray-900 whitespace-nowrap"
                                 style="color: #FFDB58;">{{ skill.name }}</span>
                         </td>
-                        <td class="px-4 py-3">
-                            <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-                                <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                        <td class="px-[1rem] py-[0.75rem]">
+                            <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
+                                <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
                                     :style="{ width: skill.percentage + '%' }"></div>
                             </div>
                         </td>
@@ -390,14 +403,14 @@ const SkillsSection = ref({
         </div>
 
         <!-- Web Development Section -->
-        <div class="w-full mb-8">
-            <div class="flex justify-center mb-2">
-                <h2 class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-base font-semibold text-gray-900"
+        <div class="w-full mb-[clamp(2rem,5vw,2.5rem)]">
+            <div class="flex justify-center mb-[clamp(0.5rem,1.5vw,0.75rem)]">
+                <h2 class="px-[1rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg section-title text-gray-900"
                     style="color: #5bed7d;">
                     Web Development
                 </h2>
             </div>
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table class="w-full text-left text-gray-500 dark:text-gray-400">
                 <tbody>
                     <tr v-for="(skill, index) in [...SkillsSection.webSkillsLeft, ...SkillsSection.webSkillsRight]"
                         :key="'mobile-web-' + index"
@@ -405,14 +418,14 @@ const SkillsSection = ref({
                             'rounded-t-lg': index === 0,
                             'rounded-b-lg': index === SkillsSection.webSkillsLeft.length + SkillsSection.webSkillsRight.length - 1
                         }">
-                        <td class="px-4 py-3 flex items-center">
-                            <img :src="skill.icon" class="h-6 w-6 mr-2">
-                            <span class="comic-relief-bold font-medium text-sm text-gray-900 whitespace-nowrap"
+                        <td class="px-[1rem] py-[0.75rem] flex items-center">
+                            <img :src="skill.icon" class="skill-icon mr-[0.75rem]">
+                            <span class="comic-relief-bold font-medium skill-name text-gray-900 whitespace-nowrap"
                                 style="color: #FFDB58;">{{ skill.name }}</span>
                         </td>
-                        <td class="px-4 py-3">
-                            <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-                                <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                        <td class="px-[1rem] py-[0.75rem]">
+                            <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
+                                <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
                                     :style="{ width: skill.percentage + '%' }"></div>
                             </div>
                         </td>
@@ -422,14 +435,14 @@ const SkillsSection = ref({
         </div>
 
         <!-- Developer Tools Section -->
-        <div class="w-full mb-8">
-            <div class="flex justify-center mb-2">
-                <h2 class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-base font-semibold text-gray-900"
+        <div class="w-full mb-[clamp(2rem,5vw,2.5rem)]">
+            <div class="flex justify-center mb-[clamp(0.5rem,1.5vw,0.75rem)]">
+                <h2 class="px-[1rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg section-title text-gray-900"
                     style="color: #5bed7d;">
                     Developer Tools
                 </h2>
             </div>
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table class="w-full text-left text-gray-500 dark:text-gray-400">
                 <tbody>
                     <tr v-for="(skill, index) in [...SkillsSection.devToolsSkillsLeft, ...SkillsSection.devToolsSkillsRight]"
                         :key="'mobile-devtools-' + index"
@@ -437,14 +450,14 @@ const SkillsSection = ref({
                             'rounded-t-lg': index === 0,
                             'rounded-b-lg': index === SkillsSection.devToolsSkillsLeft.length + SkillsSection.devToolsSkillsRight.length - 1
                         }">
-                        <td class="px-4 py-3 flex items-center">
-                            <img :src="skill.icon" class="h-6 w-6 mr-2">
-                            <span class="comic-relief-bold font-medium text-sm text-gray-900 whitespace-nowrap"
+                        <td class="px-[1rem] py-[0.75rem] flex items-center">
+                            <img :src="skill.icon" class="skill-icon mr-[0.75rem]">
+                            <span class="comic-relief-bold font-medium skill-name text-gray-900 whitespace-nowrap"
                                 style="color: #FFDB58;">{{ skill.name }}</span>
                         </td>
-                        <td class="px-4 py-3">
-                            <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-                                <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                        <td class="px-[1rem] py-[0.75rem]">
+                            <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
+                                <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
                                     :style="{ width: skill.percentage + '%' }"></div>
                             </div>
                         </td>
@@ -454,14 +467,14 @@ const SkillsSection = ref({
         </div>
 
         <!-- Technologies & Frameworks Section -->
-        <div class="w-full mb-8">
-            <div class="flex justify-center mb-2">
-                <h2 class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-base font-semibold text-gray-900"
+        <div class="w-full mb-[clamp(2rem,5vw,2.5rem)]">
+            <div class="flex justify-center mb-[clamp(0.5rem,1.5vw,0.75rem)]">
+                <h2 class="px-[1rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg section-title text-gray-900"
                     style="color: #5bed7d;">
                     Technologies & Frameworks
                 </h2>
             </div>
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table class="w-full text-left text-gray-500 dark:text-gray-400">
                 <tbody>
                     <tr v-for="(skill, index) in [...SkillsSection.frameworksSkillsLeft, ...SkillsSection.frameworksSkillsRight]"
                         :key="'mobile-frameworks-' + index"
@@ -469,14 +482,14 @@ const SkillsSection = ref({
                             'rounded-t-lg': index === 0,
                             'rounded-b-lg': index === SkillsSection.frameworksSkillsLeft.length + SkillsSection.frameworksSkillsRight.length - 1
                         }">
-                        <td class="px-4 py-3 flex items-center">
-                            <img :src="skill.icon" class="h-6 w-6 mr-2">
-                            <span class="comic-relief-bold font-medium text-sm text-gray-900 whitespace-nowrap"
+                        <td class="px-[1rem] py-[0.75rem] flex items-center">
+                            <img :src="skill.icon" class="skill-icon mr-[0.75rem]">
+                            <span class="comic-relief-bold font-medium skill-name text-gray-900 whitespace-nowrap"
                                 style="color: #FFDB58;">{{ skill.name }}</span>
                         </td>
-                        <td class="px-4 py-3">
-                            <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-                                <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                        <td class="px-[1rem] py-[0.75rem]">
+                            <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
+                                <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
                                     :style="{ width: skill.percentage + '%' }"></div>
                             </div>
                         </td>
@@ -487,8 +500,8 @@ const SkillsSection = ref({
     </div>
 </template>
 
-<style>
-/* Ensure rounded corners for the first and last rows of each table */
+<style scoped>
+/* Rounded corners for tables */
 .rounded-t-lg td:first-child {
     border-top-left-radius: 0.5rem;
 }
@@ -505,9 +518,141 @@ const SkillsSection = ref({
     border-bottom-right-radius: 0.5rem;
 }
 
-/* Ensure the table cells respect the border radius */
 table {
     border-collapse: separate;
     border-spacing: 0;
+}
+
+/* Desktop (>1024px) */
+.heading-text {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: bold;
+    text-align: center;
+}
+
+.section-title {
+    font-size: clamp(0.875rem, 1.75vw, 1rem);
+    font-weight: 600;
+    text-align: center;
+}
+
+.skill-name {
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+}
+
+.skill-icon {
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
+}
+
+.progress-bar {
+    height: 0.375rem;
+}
+
+/* Desktop: Hide horizontal lines for 1025px–1199px */
+@media (min-width: 1025px) and (max-width: 1199px) {
+    .horizontal-line {
+        display: none;
+    }
+
+    .subheading-container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* iPad (768px–1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .heading-text {
+        font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    }
+
+    .section-title {
+        font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+        text-align: center;
+    }
+
+    .skill-name {
+        font-size: clamp(0.625rem, 1.25vw, 0.75rem);
+    }
+
+    .skill-icon {
+        width: 1.75rem;
+        height: 1.75rem;
+        object-fit: contain;
+    }
+
+    .progress-bar {
+        height: 0.3125rem;
+    }
+
+    .table-width {
+        width: clamp(30%, 34%, 38%);
+    }
+
+    .gap-\[clamp\(1rem\,3vw\,1\.5rem\)\] {
+        gap: clamp(0.75rem, 2.5vw, 1.25rem);
+    }
+
+    .my-\[clamp\(1\.25rem\,3vw\,2rem\)\] {
+        margin-top: clamp(1rem, 2.5vw, 1.5rem);
+        margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+    }
+
+    .mx-\[1\.5rem\] {
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+    }
+
+    .px-\[1\.5rem\] {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .py-\[0\.75rem\] {
+        padding-top: 0.625rem;
+        padding-bottom: 0.625rem;
+    }
+
+    .px-\[1rem\] {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .py-\[0\.5rem\] {
+        padding-top: 0.375rem;
+        padding-bottom: 0.375rem;
+    }
+
+    .h-\[clamp\(3rem\,5vw\,4rem\)\] {
+        height: clamp(2.5rem, 4vw, 3.5rem);
+    }
+}
+
+/* Mobile (<768px) */
+@media (max-width: 767px) {
+    .heading-text {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+    }
+
+    .section-title {
+        font-size: clamp(0.625rem, 1.25vw, 0.75rem);
+        text-align: center;
+    }
+
+    .skill-name {
+        font-size: clamp(0.625rem, 1.25vw, 0.75rem);
+    }
+
+    .skill-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        object-fit: contain;
+    }
+
+    .progress-bar {
+        height: 0.375rem;
+    }
 }
 </style>

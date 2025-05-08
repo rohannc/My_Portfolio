@@ -1,4 +1,3 @@
-```vue
 <script setup>
 import { ref } from "vue";
 
@@ -13,26 +12,28 @@ const downloadResume = () => {
 </script>
 
 <template>
-    <div class="flex flex-col md:flex-row px-4 md:px-8 mx-4 md:mx-10 mb-20 mt-30 gap-4 md:gap-6 typing-container">
+    <div
+        class="flex flex-col md:flex-row px-[clamp(1rem,2vw,2rem)] mx-[clamp(1rem,2vw,2.5rem)] mb-[clamp(10rem,20vw,12.5rem)] mt-[clamp(5rem,8vw,6rem)] gap-[clamp(1rem,2vw,1.5rem)] typing-container">
         <!-- Right Div (part2) - Top on Mobile, Right on Desktop -->
         <div class="part2 rounded-lg order-1 md:order-2" style="background-color: rgb(30, 41, 57)">
             <div class="pt-6 md:pt-10 w-full rounded-lg overflow-hidden text-center px-4">
-                <div class="h-48 w-48 md:h-64 md:w-64 mx-auto rounded-lg">
+                <div class="h-[clamp(10rem,30vw,14rem)] w-[clamp(10rem,30vw,14rem)] mx-auto rounded-lg">
                     <img src="../assets/ProfileImageCropped.jpg"
-                        class="w-full h-full object-cover rounded-full border-2 border-gray-300 dark:border-gray-500"
+                        class="w-full h-full object-cover rounded-full border-[clamp(0.125rem,0.25vw,0.1875rem)] border-gray-300 dark:border-gray-500"
                         alt="Profile Image">
                 </div>
                 <div class="p-2 pt-4 mt-4 md:mt-6">
                     <p
-                        class="m-0 text-xl md:text-3xl pt-serif-bold-italic font-semibold text-gray-300 whitespace-nowrap">
+                        class="m-0 text-[clamp(1.25rem,2.5vw,1.75rem)] pt-serif-bold-italic font-semibold text-gray-300 whitespace-nowrap">
                         {{ designationLine1 }}
                     </p>
-                    <p class="mb-6 md:mb-10 text-xs md:text-sm font-semibold text-gray-300">{{ designationLine2 }}</p>
+                    <p class="mb-6 md:mb-10 text-[clamp(0.625rem,1.25vw,0.75rem)] font-semibold text-gray-300">{{
+                        designationLine2 }}</p>
                 </div>
                 <!-- Download Resume Button (Mobile Only) -->
                 <div class="pb-6 flex justify-center md:hidden">
                     <button @click="downloadResume" type="button"
-                        class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-xs px-4 py-2 text-center">
+                        class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-[clamp(0.625rem,1.25vw,0.75rem)] px-4 py-2 text-center">
                         Download Resume
                     </button>
                 </div>
@@ -42,15 +43,16 @@ const downloadResume = () => {
         <div class="part1 flex flex-col justify-between rounded-lg p-4 md:p-6 text-gray-300 text-left order-2 md:order-1"
             style="background-color: rgb(30, 41, 57)">
             <div class="mt-4 md:mt-8">
-                <h1 class="pl-4 md:pl-6 text-2xl md:text-4xl playfair-display-regular">Hi, I'm Rohan Chakraborty</h1>
-                <p class="pl-4 md:pl-6 pt-4 md:pt-8 text-sm md:text-base text-left tabbed-paragraph">
+                <h1 class="pl-4 md:pl-6 text-[clamp(1.5rem,3vw,2rem)] playfair-display-regular">Hi, I'm Rohan
+                    Chakraborty</h1>
+                <p class="pl-4 md:pl-6 pt-4 md:pt-8 text-[clamp(0.875rem,1.75vw,1rem)] text-left tabbed-paragraph">
                     {{ textContent }}
                 </p>
             </div>
             <!-- Download Resume Button (Desktop Only) -->
             <div class="pt-4 md:pt-6 flex justify-center hidden md:flex">
                 <button @click="downloadResume"
-                    class="hover-button relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white">
+                    class="hover-button relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-[clamp(0.75rem,1.5vw,0.875rem)] font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white">
                     <span
                         class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
                         <img class="icon" :src="downloadGIF" alt="Download" height="20px" width="20px">
@@ -98,15 +100,14 @@ const downloadResume = () => {
 }
 
 .part1 {
-    flex: 2;
+    flex: clamp(1.5, 2 + 0.5 * ((100vw - 768px) / 1152), 2.5);
 }
 
 .part2 {
-    flex: 1;
+    flex: clamp(0.75, 1 + 0.25 * ((100vw - 768px) / 1152), 1.25);
 }
 
 .whitespace-nowrap {
     white-space: nowrap;
 }
 </style>
-```
