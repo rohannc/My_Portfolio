@@ -120,93 +120,83 @@ const hideTooltip = (item, buttonId) => {
 
 <template>
     <div id="achievements"></div>
-    <div class="heading w-[90%] mx-auto mt-45 mb-10">
-        <h1>Achievements</h1>
+    <div class="heading w-[90%] mx-auto mt-[15vw] mb-[2vw]">
+        <h1 class="text-[4vw] md:text-[3vw] font-bold text-center">Achievements</h1>
     </div>
-    <!-- Desktop View -->
-    <div class="hidden md:grid mx-35" style="grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 10px;">
+    <!-- Desktop and iPad View -->
+    <div class="hidden md:grid mx-[2vw] grid-cols-3 gap-[2vw] p-[2vw]">
         <div v-for="(item, index) in achievements" :key="index"
-            style="max-width: 22rem; background-color: rgb(28, 36, 50); border: 1px solid rgb(28, 36, 50); border-radius: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); margin-bottom: 15px; display: flex; flex-direction: column; min-height: 300px; position: relative;">
-            <div>
-                <div class="mx-17 mt-5" style="display: flex; justify-content: space-between; padding: 10px 5px;">
-                    <!-- Medal Button -->
-                    <div style="position: relative;" @mouseover="showTooltip(index, 1)"
-                        @mouseleave="hideTooltip(index, 1)">
-                        <button
-                            style="background: none; border: none; cursor: pointer; padding: 3px; transition: transform 0.2s;">
-                            <img :src="item.icon1" alt="Medal Icon"
-                                style="width: 70px; height: auto; border-radius: 0.5rem 0 0 0;" />
-                        </button>
-                        <div v-if="item.medal !== '' && tooltipVisible[index]?.[1]"
-                            style="position: absolute; top: -40px; left: 50%; transform: translateX(-50%); z-index: 1000; padding: 6px 10px; font-size: 14px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
-                            {{ item.medal }}
-                            <div
-                                style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: #293246 transparent transparent transparent;">
-                            </div>
+            class="card-container bg-gray-800 border border-gray-800 rounded-xl shadow-sm mb-[2vw] flex flex-col h-[22rem]">
+            <div class="mx-[2vw] mt-[1vw] flex justify-between p-[1vw]">
+                <!-- Medal Button -->
+                <div class="relative" @mouseover="showTooltip(index, 1)" @mouseleave="hideTooltip(index, 1)">
+                    <button
+                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform">
+                        <img :src="item.icon1" alt="Medal Icon" class="w-[4rem] h-auto rounded-tl-md" />
+                    </button>
+                    <div v-if="item.medal !== '' && tooltipVisible[index]?.[1]"
+                        class="absolute top-[-2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
+                        {{ item.medal }}
+                        <div
+                            class="absolute bottom-[-0.3rem] left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
                         </div>
                     </div>
-                    <!-- Profile Button -->
-                    <div style="position: relative;" @mouseover="showTooltip(index, 2)"
-                        @mouseleave="hideTooltip(index, 2)">
-                        <button
-                            style="background: none; border: none; cursor: pointer; padding: 3px; transition: transform 0.2s;">
-                            <img :src="item.icon2" alt="Profile Icon"
-                                style="width: 70px; height: auto; border-radius: 0 0.5rem 0 0;" />
-                        </button>
-                        <div v-if="item.medal !== '' && tooltipVisible[index]?.[2]"
-                            style="position: absolute; top: -40px; left: 50%; transform: translateX(-50%); z-index: 1000; padding: 6px 10px; font-size: 14px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
-                            {{ item.participation }}
-                            <div
-                                style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: #293246 transparent transparent transparent;">
-                            </div>
+                </div>
+                <!-- Profile Button -->
+                <div class="relative" @mouseover="showTooltip(index, 2)" @mouseleave="hideTooltip(index, 2)">
+                    <button
+                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform">
+                        <img :src="item.icon2" alt="Profile Icon" class="w-[4rem] h-auto rounded-tr-md" />
+                    </button>
+                    <div v-if="item.medal !== '' && tooltipVisible[index]?.[2]"
+                        class="absolute top-[-2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
+                        {{ item.participation }}
+                        <div
+                            class="absolute bottom-[-0.3rem] left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
                         </div>
                     </div>
                 </div>
             </div>
-            <div
-                style="padding: 1rem; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <h5 style="margin-bottom: 0.2rem; font-size: 1.4rem; font-weight: 700;"
-                        :style="{ color: item.color }">
+            <div class="card-content p-[1rem] text-center flex flex-col flex-grow">
+                <div class="text-content">
+                    <h5 class="mb-[0.2rem] text-[1.4rem] font-bold" :style="{ color: item.color }">
                         {{ item.position }}
                     </h5>
-                    <h5 style="margin-bottom: 0.7rem; font-size: 1.1rem; font-weight: 600; color: #d35757;">
+                    <h5 class="mb-[0.7rem] text-[1.1rem] font-semibold text-[#d35757]">
                         {{ item.name }}
                     </h5>
-                    <h3 style="margin-bottom: 1.5rem; font-size: 0.9rem; font-weight: 400; color: #16e607;">
+                    <h3 class="mb-[1rem] text-[0.9rem] font-normal text-[#16e607]">
                         {{ item.institute }}
                     </h3>
                 </div>
-                <div style="display: flex; gap: 80px; justify-content: center; margin-top: auto; padding-top: 1rem;">
+                <div class="card-buttons flex gap-[4rem] justify-center pb-[0.75rem] items-center">
                     <!-- View Button -->
-                    <div class="mt-0.5" style="position: relative;" @mouseover="showTooltip(index, 3)"
-                        @mouseleave="hideTooltip(index, 3)">
+                    <div class="relative">
                         <a target="_blank" :href="item.view"
-                            style="background: none; border: none; cursor: pointer; padding: 3px; transition: transform 0.2s;">
+                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block">
                             <img src="https://img.icons8.com/?size=100&id=Psrfh0UtjRyD&format=png&color=000000"
-                                alt="View Icon" style="width: 40px; height: auto; padding-top: 4px;" />
+                                alt="View Icon" class="w-[2.5rem] h-auto" />
                         </a>
                         <div v-if="tooltipVisible[index]?.[3]"
-                            style="position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); z-index: 1000; padding: 6px 10px; font-size: 14px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
+                            class="absolute bottom-[2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
                             View
                             <div
-                                style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: #293246 transparent transparent transparent;">
+                                class="absolute top-full left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
                             </div>
                         </div>
                     </div>
                     <!-- LinkedIn Button -->
-                    <div style="position: relative;" @mouseover="showTooltip(index, 4)"
-                        @mouseleave="hideTooltip(index, 4)">
+                    <div class="relative">
                         <a :href="item.linkedin" target="_blank"
-                            style="background: none; border: none; cursor: pointer; padding: 3px; transition: transform 0.2s;">
+                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block">
                             <img src="https://img.icons8.com/?size=100&id=67570&format=png&color=000000"
-                                alt="LinkedIn Icon" style="width: 50px; height: auto;" />
+                                alt="LinkedIn Icon" class="w-[3rem] h-auto" />
                         </a>
                         <div v-if="tooltipVisible[index]?.[4]"
-                            style="position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); z-index: 1000; padding: 6px 10px; font-size: 14px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
+                            class="absolute bottom-[2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
                             Visit LinkedIn
                             <div
-                                style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: #293246 transparent transparent transparent;">
+                                class="absolute top-full left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
                             </div>
                         </div>
                     </div>
@@ -215,89 +205,79 @@ const hideTooltip = (item, buttonId) => {
         </div>
     </div>
     <!-- Mobile View -->
-    <div class="block md:hidden mx-4" style="gap: 20px; padding: 10px;">
+    <div class="block md:hidden mx-[4vw] p-[2vw]">
         <div v-for="(item, index) in achievements" :key="index"
-            style="max-width: 100%; background-color: rgb(28, 36, 50); border: 1px solid rgb(28, 36, 50); border-radius: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); margin-bottom: 10px; display: flex; flex-direction: column; min-height: 250px; position: relative;">
-            <div>
-                <div class="mx-2 mt-3" style="display: flex; justify-content: space-between; padding: 8px 4px;">
-                    <!-- Medal Button -->
-                    <div style="position: relative;" @mouseover="showTooltip(index, 1)"
-                        @mouseleave="hideTooltip(index, 1)">
-                        <button
-                            style="background: none; border: none; cursor: pointer; padding: 2px; transition: transform 0.2s;">
-                            <img :src="item.icon1" alt="Medal Icon"
-                                style="width: 50px; height: auto; border-radius: 0.5rem 0 0 0;" />
-                        </button>
-                        <div v-if="item.medal !== '' && tooltipVisible[index]?.[1]"
-                            style="position: absolute; top: -35px; left: 50%; transform: translateX(-50%); z-index: 1000; padding: 4px 8px; font-size: 12px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
-                            {{ item.medal }}
-                            <div
-                                style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); border-width: 4px; border-style: solid; border-color: #293246 transparent transparent transparent;">
-                            </div>
+            class="card-container bg-gray-800 border border-gray-800 rounded-xl shadow-sm mb-[2vw] flex flex-col h-[20rem] w-[90%] mx-auto">
+            <div class="mx-[2vw] mt-[1vw] flex justify-between p-[1vw]">
+                <!-- Medal Button -->
+                <div class="relative" @mouseover="showTooltip(index, 1)" @mouseleave="hideTooltip(index, 1)">
+                    <button
+                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform">
+                        <img :src="item.icon1" alt="Medal Icon" class="w-[3rem] h-auto rounded-tl-md" />
+                    </button>
+                    <div v-if="item.medal !== '' && tooltipVisible[index]?.[1]"
+                        class="absolute top-[-2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
+                        {{ item.medal }}
+                        <div
+                            class="absolute bottom-[-0.3rem] left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
                         </div>
                     </div>
-                    <!-- Profile Button -->
-                    <div style="position: relative;" @mouseover="showTooltip(index, 2)"
-                        @mouseleave="hideTooltip(index, 2)">
-                        <button
-                            style="background: none; border: none; cursor: pointer; padding: 2px; transition: transform 0.2s;">
-                            <img :src="item.icon2" alt="Profile Icon"
-                                style="width: 50px; height: auto; border-radius: 0 0.5rem 0 0;" />
-                        </button>
-                        <div v-if="item.medal !== '' && tooltipVisible[index]?.[2]"
-                            style="position: absolute; top: -35px; left: 50%; transform: translateX(-50%); z-index: 1000; padding: 4px 8px; font-size: 12px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
-                            {{ item.participation }}
-                            <div
-                                style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); border-width: 4px; border-style: solid; border-color: #293246 transparent transparent transparent;">
-                            </div>
+                </div>
+                <!-- Profile Button -->
+                <div class="relative" @mouseover="showTooltip(index, 2)" @mouseleave="hideTooltip(index, 2)">
+                    <button
+                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform">
+                        <img :src="item.icon2" alt="Profile Icon" class="w-[3rem] h-auto rounded-tr-md" />
+                    </button>
+                    <div v-if="item.medal !== '' && tooltipVisible[index]?.[2]"
+                        class="absolute top-[-2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
+                        {{ item.participation }}
+                        <div
+                            class="absolute bottom-[-0.3rem] left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
                         </div>
                     </div>
                 </div>
             </div>
-            <div
-                style="padding: 0.75rem; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <h5 style="margin-bottom: 0.2rem; font-size: 1.2rem; font-weight: 700;"
-                        :style="{ color: item.color }">
+            <div class="card-content p-[0.75rem] text-center flex flex-col flex-grow">
+                <div class="text-content">
+                    <h5 class="mb-[0.2rem] text-[1.2rem] font-bold" :style="{ color: item.color }">
                         {{ item.position }}
                     </h5>
-                    <h5 style="margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600; color: #d35757;">
+                    <h5 class="mb-[0.5rem] text-[0.9rem] font-semibold text-[#d35757]">
                         {{ item.name }}
                     </h5>
-                    <h3 style="margin-bottom: 1rem; font-size: 0.8rem; font-weight: 400; color: #16e607;">
+                    <h3 class="mb-[0.75rem] text-[0.8rem] font-normal text-[#16e607]">
                         {{ item.institute }}
                     </h3>
                 </div>
-                <div style="display: flex; gap: 80px; justify-content: center; margin-top: auto; padding-top: 0.75rem;">
+                <div class="card-buttons flex gap-[4rem] justify-center pb-[0.75rem] items-center">
                     <!-- View Button -->
-                    <div class="mt-0.5" style="position: relative;" @mouseover="showTooltip(index, 3)"
-                        @mouseleave="hideTooltip(index, 3)">
+                    <div class="relative">
                         <a target="_blank" :href="item.view"
-                            style="background: none; border: none; cursor: pointer; padding: 2px; transition: transform 0.2s;">
+                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block">
                             <img src="https://img.icons8.com/?size=100&id=Psrfh0UtjRyD&format=png&color=000000"
-                                alt="View Icon" style="width: 30px; height: auto; padding-top: 3px;" />
+                                alt="View Icon" class="w-[2rem] h-auto" />
                         </a>
                         <div v-if="tooltipVisible[index]?.[3]"
-                            style="position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); z-index: 1000; padding: 4px 8px; font-size: 12px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
+                            class="absolute bottom-[2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
                             View
                             <div
-                                style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 4px; border-style: solid; border-color: #293246 transparent transparent transparent;">
+                                class="absolute top-full left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
                             </div>
                         </div>
                     </div>
                     <!-- LinkedIn Button -->
-                    <div style="position: relative;" @mouseover="showTooltip(index, 4)"
-                        @mouseleave="hideTooltip(index, 4)">
+                    <div class="relative">
                         <a :href="item.linkedin" target="_blank"
-                            style="background: none; border: none; cursor: pointer; padding: 2px; transition: transform 0.2s;">
+                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block">
                             <img src="https://img.icons8.com/?size=100&id=67570&format=png&color=000000"
-                                alt="LinkedIn Icon" style="width: 40px; height: auto;" />
+                                alt="LinkedIn Icon" class="w-[2rem] h-auto" />
                         </a>
                         <div v-if="tooltipVisible[index]?.[4]"
-                            style="position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); z-index: 1000; padding: 4px 8px; font-size: 12px; color: #fff; background-color: #293246; border-radius: 0.25rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: opacity 0.3s; opacity: 1; white-space: nowrap;">
+                            class="absolute bottom-[2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
                             Visit LinkedIn
                             <div
-                                style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 4px; border-style: solid; border-color: #293246 transparent transparent transparent;">
+                                class="absolute top-full left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
                             </div>
                         </div>
                     </div>
@@ -307,7 +287,7 @@ const hideTooltip = (item, buttonId) => {
     </div>
 </template>
 
-<style>
+<style scoped>
 .card-container {
     display: flex;
     flex-direction: column;
@@ -318,11 +298,75 @@ const hideTooltip = (item, buttonId) => {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+}
+
+.text-content {
+    flex-grow: 0;
+    flex-shrink: 0;
+    min-height: 10rem;
 }
 
 .card-buttons {
     margin-top: auto;
-    padding-top: 1rem;
+    padding-bottom: 0.75rem;
+    align-items: center;
+}
+
+.card-buttons img {
+    line-height: 1;
+    vertical-align: middle;
+}
+
+/* iPad-specific adjustments */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-container {
+        height: 21rem;
+    }
+
+    .text-content {
+        min-height: 9rem;
+    }
+
+    .text-\[1\.4rem\] {
+        font-size: 1.2rem;
+    }
+
+    .text-\[1\.1rem\] {
+        font-size: 1rem;
+    }
+
+    .text-\[0\.9rem\] {
+        font-size: 0.875rem;
+    }
+
+    .w-\[4rem\] {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .w-\[2\.5rem\] {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .gap-\[4rem\] {
+        gap: 3rem;
+    }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 767px) {
+    .text-content {
+        min-height: 8rem;
+    }
+
+    .w-\[2rem\] {
+        width: 2rem;
+        height: 2rem;
+    }
 }
 </style>

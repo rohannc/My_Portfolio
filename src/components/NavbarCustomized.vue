@@ -16,6 +16,14 @@ const isDarkMode = ref(true);
 // Mobile menu state
 const isMenuOpen = ref(false);
 
+// Window width state for hiding profile name and adjusting margins
+const windowWidth = ref(window.innerWidth);
+
+// Update window width on resize
+const updateWindowWidth = () => {
+    windowWidth.value = window.innerWidth;
+};
+
 // Watch isDarkMode to update HTML class
 watch(isDarkMode, (newValue) => {
     if (newValue) {
@@ -38,7 +46,7 @@ const toggleDarkMode = () => {
     isDarkMode.value = !isDarkMode.value;
 };
 
-// Initialize dark mode and Intersection Observer
+// Initialize dark mode, Intersection Observer, and window width listener
 onMounted(() => {
     isDarkMode.value = true;
     document.documentElement.classList.add('dark');
@@ -74,37 +82,42 @@ onMounted(() => {
         }
     });
 
-    // Cleanup observer on unmount
+    // Add window resize listener
+    window.addEventListener('resize', updateWindowWidth);
+
+    // Cleanup observer and listener on unmount
     onUnmounted(() => {
         observer.disconnect();
+        window.removeEventListener('resize', updateWindowWidth);
     });
 });
 </script>
 
 <template>
-    <nav id="navbar" class="fixed top-0 w-full z-50 bg-white border-gray-200 dark:bg-gray-900">
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-white border-gray-200 dark:bg-gray-900">
         <div class="w-[91%] ml-[5%] mr-[4%] flex items-center justify-between p-4">
             <!-- Logo Section -->
             <a href="#" class="flex items-center space-x-3">
                 <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
                     src="../assets/ProfileImageCropped.jpg" alt="Bordered avatar">
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hidden md:block">
+                <span v-if="windowWidth >= 900 || windowWidth < 768"
+                    class="self-center text-[clamp(1.125rem,2.25vw,1.5rem)] font-semibold whitespace-nowrap dark:text-white hidden md:block">
                     Rohan Chakraborty
                 </span>
             </a>
             <!-- Navigation and Toggle -->
             <div class="flex items-center space-x-8">
                 <!-- Desktop Navigation -->
-                <ul class="hidden md:flex space-x-8 font-medium">
+                <ul class="hidden md:flex space-x-8 font-medium text-[clamp(0.875rem,1.5vw,1rem)]">
                     <li v-for="(item, index) in navItems" :key="index">
-                        <a :href="item.url" @click="handleNavClick(item)" class="inline-flex items-center space-x-2"
-                            :class="[
+                        <a :href="item.url" @click="handleNavClick(item)"
+                            class="inline-flex items-center space-x-2 whitespace-nowrap" :class="[
                                 item.active
                                     ? 'text-blue-700 dark:text-blue-500'
                                     : 'text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500'
                             ]">
                             <svg v-if="item.icon"
-                                :class="['w-5 h-5', item.active ? 'text-blue-700 dark:text-blue-500' : 'text-gray-900 dark:text-white']"
+                                :class="['w-[clamp(1.125rem,2vw,1.25rem)] h-[clamp(1.125rem,2vw,1.25rem)]', item.active ? 'text-blue-700 dark:text-blue-500' : 'text-gray-900 dark:text-white']"
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path v-if="item.icon === 'light-bulb'" stroke-linecap="round" stroke-linejoin="round"
@@ -247,7 +260,6 @@ input:checked+.slider:before {
 .toggle2 {
     position: relative;
     width: 30px;
-    /* Smaller size for mobile */
     height: 30px;
     cursor: pointer;
     display: flex;
@@ -255,14 +267,12 @@ input:checked+.slider:before {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    /* Smaller gap */
     transition-duration: .5s;
 }
 
 .bars {
     width: 100%;
     height: 3px;
-    /* Thinner bars */
     background-color: rgb(92, 176, 255);
     border-radius: 3px;
 }
