@@ -192,6 +192,18 @@ const visitgithub = () => {
                         <img src="../assets/Website08.png" class="w-full h-auto aspect-[16/9] object-cover rounded-lg"
                             alt="Responsive Design">
                     </swiper-slide>
+                    <swiper-slide>
+                        <img src="../assets/Website09.png" class="w-full h-auto aspect-[16/9] object-cover rounded-lg"
+                            alt="Responsive Design">
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="../assets/Website10.png" class="w-full h-auto aspect-[16/9] object-cover rounded-lg"
+                            alt="Responsive Design">
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="../assets/Website11.png" class="w-full h-auto aspect-[16/9] object-cover rounded-lg"
+                            alt="Responsive Design">
+                    </swiper-slide>
                 </swiper>
                 <div class="py-[2vw] flex flex-row gap-[2vw] justify-center">
                     <div v-for="item in items" :key="item.name" class="flex items-center gap-[1vw]">
