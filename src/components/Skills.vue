@@ -56,7 +56,8 @@ const SkillsSection = ref({
                     <table class="w-full text-center rtl:text-right text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.programmingSkillsLeft" :key="'left-top-' + index"
-                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                                class="bg-white light-mode:bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 transition-colors duration-300"
+                                :class="{
                                     'rounded-t-lg': index === 0,
                                     'rounded-b-lg': index === SkillsSection.programmingSkillsLeft.length - 1
                                 }">
@@ -64,13 +65,13 @@ const SkillsSection = ref({
                                     <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
-                                    style="color: #FFDB58;">
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-[#FFDB58] light-mode:text-gray-900 whitespace-nowrap skill-name transition-colors duration-300">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-[1.5rem] py-[0.75rem]">
-                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
-                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
+                                    <div
+                                        class="w-full bg-gray-200 light-mode:bg-gray-200 rounded-full progress-bar dark:bg-gray-700 transition-colors duration-300">
+                                        <div class="bg-blue-600 light-mode:bg-blue-600 progress-bar rounded-full dark:bg-blue-500 transition-colors duration-300"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -81,15 +82,18 @@ const SkillsSection = ref({
 
                 <!-- Middle Heading with Lines -->
                 <div class="table-width w-[clamp(28%,33%,38%)] flex items-center justify-center relative">
-                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    <div
+                        class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 light-mode:bg-gray-400 dark:bg-gray-600 transition-colors duration-300">
                     </div>
                     <div
-                        class="subheading-container mx-[1.5rem] px-[1.5rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
-                        <h2 class="section-title text-gray-900" style="color: #5bed7d;">
+                        class="subheading-container mx-[1.5rem] px-[1.5rem] py-[0.5rem] bg-gray-100 light-mode:bg-gray-100 dark:bg-gray-700 rounded-lg z-10 transition-colors duration-300">
+                        <h2
+                            class="section-title text-[#5bed7d] light-mode:text-gray-900 transition-colors duration-300">
                             Programming Languages
                         </h2>
                     </div>
-                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    <div
+                        class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 light-mode:bg-gray-400 dark:bg-gray-600 transition-colors duration-300">
                     </div>
                 </div>
 
@@ -99,7 +103,8 @@ const SkillsSection = ref({
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.programmingSkillsRight"
                                 :key="'right-top-' + index"
-                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                                class="bg-white light-mode:bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 transition-colors duration-300"
+                                :class="{
                                     'rounded-t-lg': index === 0,
                                     'rounded-b-lg': index === SkillsSection.programmingSkillsRight.length - 1
                                 }">
@@ -107,13 +112,13 @@ const SkillsSection = ref({
                                     <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
-                                    style="color: #FFDB58;">
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-[#FFDB58] light-mode:text-gray-900 whitespace-nowrap skill-name transition-colors duration-300">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-[1.5rem] py-[0.75rem]">
-                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
-                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
+                                    <div
+                                        class="w-full bg-gray-200 light-mode:bg-gray-200 rounded-full progress-bar dark:bg-gray-700 transition-colors duration-300">
+                                        <div class="bg-blue-600 light-mode:bg-blue-600 progress-bar rounded-full dark:bg-blue-500 transition-colors duration-300"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -126,7 +131,9 @@ const SkillsSection = ref({
 
         <!-- Vertical Connecting Line -->
         <div class="flex justify-center my-[clamp(1.25rem,3vw,2rem)]">
-            <div class="w-[0.125rem] h-[clamp(3rem,5vw,4rem)] bg-gray-400 dark:bg-gray-600"></div>
+            <div
+                class="w-[0.125rem] h-[clamp(3rem,5vw,4rem)] bg-gray-400 light-mode:bg-gray-400 dark:bg-gray-600 transition-colors duration-300">
+            </div>
         </div>
 
         <!-- Second Section: Web Development -->
@@ -137,7 +144,8 @@ const SkillsSection = ref({
                     <table class="w-full text-center rtl:text-right text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.webSkillsLeft" :key="'left-second-' + index"
-                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                                class="bg-white light-mode:bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 transition-colors duration-300"
+                                :class="{
                                     'rounded-t-lg': index === 0,
                                     'rounded-b-lg': index === SkillsSection.webSkillsLeft.length - 1
                                 }">
@@ -145,13 +153,13 @@ const SkillsSection = ref({
                                     <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
-                                    style="color: #FFDB58;">
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-[#FFDB58] light-mode:text-gray-900 whitespace-nowrap skill-name transition-colors duration-300">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-[1.5rem] py-[0.75rem]">
-                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
-                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
+                                    <div
+                                        class="w-full bg-gray-200 light-mode:bg-gray-200 rounded-full progress-bar dark:bg-gray-700 transition-colors duration-300">
+                                        <div class="bg-blue-600 light-mode:bg-blue-600 progress-bar rounded-full dark:bg-blue-500 transition-colors duration-300"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -162,15 +170,18 @@ const SkillsSection = ref({
 
                 <!-- Middle Heading with Lines -->
                 <div class="table-width w-[clamp(28%,33%,38%)] flex items-center justify-center relative">
-                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    <div
+                        class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 light-mode:bg-gray-400 dark:bg-gray-600 transition-colors duration-300">
                     </div>
                     <div
-                        class="subheading-container mx-[1.5rem] px-[1.5rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
-                        <h2 class="section-title text-gray-900" style="color: #5bed7d;">
+                        class="subheading-container mx-[1.5rem] px-[1.5rem] py-[0.5rem] bg-gray-100 light-mode:bg-gray-100 dark:bg-gray-700 rounded-lg z-10 transition-colors duration-300">
+                        <h2
+                            class="section-title text-[#5bed7d] light-mode:text-gray-900 transition-colors duration-300">
                             Web Development
                         </h2>
                     </div>
-                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    <div
+                        class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 light-mode:bg-gray-400 dark:bg-gray-600 transition-colors duration-300">
                     </div>
                 </div>
 
@@ -179,7 +190,8 @@ const SkillsSection = ref({
                     <table class="w-full text-center rtl:text-right text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.webSkillsRight" :key="'right-second-' + index"
-                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                                class="bg-white light-mode:bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 transition-colors duration-300"
+                                :class="{
                                     'rounded-t-lg': index === 0,
                                     'rounded-b-lg': index === SkillsSection.webSkillsRight.length - 1
                                 }">
@@ -187,13 +199,13 @@ const SkillsSection = ref({
                                     <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
-                                    style="color: #FFDB58;">
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-[#FFDB58] light-mode:text-gray-900 whitespace-nowrap skill-name transition-colors duration-300">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-[1.5rem] py-[0.75rem]">
-                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
-                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
+                                    <div
+                                        class="w-full bg-gray-200 light-mode:bg-gray-200 rounded-full progress-bar dark:bg-gray-700 transition-colors duration-300">
+                                        <div class="bg-blue-600 light-mode:bg-blue-600 progress-bar rounded-full dark:bg-blue-500 transition-colors duration-300"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -206,7 +218,9 @@ const SkillsSection = ref({
 
         <!-- Vertical Connecting Line -->
         <div class="flex justify-center my-[clamp(1.25rem,3vw,2rem)]">
-            <div class="w-[0.125rem] h-[clamp(3rem,5vw,4rem)] bg-gray-400 dark:bg-gray-600"></div>
+            <div
+                class="w-[0.125rem] h-[clamp(3rem,5vw,4rem)] bg-gray-400 light-mode:bg-gray-400 dark:bg-gray-600 transition-colors duration-300">
+            </div>
         </div>
 
         <!-- Third Section: Developer Tools -->
@@ -217,7 +231,8 @@ const SkillsSection = ref({
                     <table class="w-full text-center rtl:text-right text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.devToolsSkillsLeft" :key="'left-third-' + index"
-                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                                class="bg-white light-mode:bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 transition-colors duration-300"
+                                :class="{
                                     'rounded-t-lg': index === 0,
                                     'rounded-b-lg': index === SkillsSection.devToolsSkillsLeft.length - 1
                                 }">
@@ -225,13 +240,13 @@ const SkillsSection = ref({
                                     <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
-                                    style="color: #FFDB58;">
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-[#FFDB58] light-mode:text-gray-900 whitespace-nowrap skill-name transition-colors duration-300">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-[1.5rem] py-[0.75rem]">
-                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
-                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
+                                    <div
+                                        class="w-full bg-gray-200 light-mode:bg-gray-200 rounded-full progress-bar dark:bg-gray-700 transition-colors duration-300">
+                                        <div class="bg-blue-600 light-mode:bg-blue-600 progress-bar rounded-full dark:bg-blue-500 transition-colors duration-300"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -242,15 +257,18 @@ const SkillsSection = ref({
 
                 <!-- Middle Heading with Lines -->
                 <div class="table-width w-[clamp(28%,33%,38%)] flex items-center justify-center relative">
-                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    <div
+                        class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 light-mode:bg-gray-400 dark:bg-gray-600 transition-colors duration-300">
                     </div>
                     <div
-                        class="subheading-container mx-[1.5rem] px-[1.5rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
-                        <h2 class="section-title text-gray-900" style="color: #5bed7d;">
+                        class="subheading-container mx-[1.5rem] px-[1.5rem] py-[0.5rem] bg-gray-100 light-mode:bg-gray-100 dark:bg-gray-700 rounded-lg z-10 transition-colors duration-300">
+                        <h2
+                            class="section-title text-[#5bed7d] light-mode:text-gray-900 transition-colors duration-300">
                             Developer Tools
                         </h2>
                     </div>
-                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    <div
+                        class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 light-mode:bg-gray-400 dark:bg-gray-600 transition-colors duration-300">
                     </div>
                 </div>
 
@@ -260,7 +278,8 @@ const SkillsSection = ref({
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.devToolsSkillsRight"
                                 :key="'right-third-' + index"
-                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                                class="bg-white light-mode:bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 transition-colors duration-300"
+                                :class="{
                                     'rounded-t-lg': index === 0,
                                     'rounded-b-lg': index === SkillsSection.devToolsSkillsRight.length - 1
                                 }">
@@ -268,13 +287,13 @@ const SkillsSection = ref({
                                     <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
-                                    style="color: #FFDB58;">
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-[#FFDB58] light-mode:text-gray-900 whitespace-nowrap skill-name transition-colors duration-300">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-[1.5rem] py-[0.75rem]">
-                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
-                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
+                                    <div
+                                        class="w-full bg-gray-200 light-mode:bg-gray-200 rounded-full progress-bar dark:bg-gray-700 transition-colors duration-300">
+                                        <div class="bg-blue-600 light-mode:bg-blue-600 progress-bar rounded-full dark:bg-blue-500 transition-colors duration-300"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -287,7 +306,9 @@ const SkillsSection = ref({
 
         <!-- Vertical Connecting Line -->
         <div class="flex justify-center my-[clamp(1.25rem,3vw,2rem)]">
-            <div class="w-[0.125rem] h-[clamp(3rem,5vw,4rem)] bg-gray-400 dark:bg-gray-600"></div>
+            <div
+                class="w-[0.125rem] h-[clamp(3rem,5vw,4rem)] bg-gray-400 light-mode:bg-gray-400 dark:bg-gray-600 transition-colors duration-300">
+            </div>
         </div>
 
         <!-- Fourth Section: Technologies/Frameworks -->
@@ -299,7 +320,8 @@ const SkillsSection = ref({
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.frameworksSkillsLeft"
                                 :key="'left-fourth-' + index"
-                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                                class="bg-white light-mode:bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 transition-colors duration-300"
+                                :class="{
                                     'rounded-t-lg': index === 0,
                                     'rounded-b-lg': index === SkillsSection.frameworksSkillsLeft.length - 1
                                 }">
@@ -307,13 +329,13 @@ const SkillsSection = ref({
                                     <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
-                                    style="color: #FFDB58;">
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-[#FFDB58] light-mode:text-gray-900 whitespace-nowrap skill-name transition-colors duration-300">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-[1.5rem] py-[0.75rem]">
-                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
-                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
+                                    <div
+                                        class="w-full bg-gray-200 light-mode:bg-gray-200 rounded-full progress-bar dark:bg-gray-700 transition-colors duration-300">
+                                        <div class="bg-blue-600 light-mode:bg-blue-600 progress-bar rounded-full dark:bg-blue-500 transition-colors duration-300"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -324,15 +346,18 @@ const SkillsSection = ref({
 
                 <!-- Middle Heading with Lines -->
                 <div class="table-width w-[clamp(28%,33%,38%)] flex items-center justify-center relative">
-                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    <div
+                        class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 light-mode:bg-gray-400 dark:bg-gray-600 transition-colors duration-300">
                     </div>
                     <div
-                        class="subheading-container mx-[1.5rem] px-[1.5rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg z-10">
-                        <h2 class="section-title text-gray-900" style="color: #5bed7d;">
+                        class="subheading-container mx-[1.5rem] px-[1.5rem] py-[0.5rem] bg-gray-100 light-mode:bg-gray-100 dark:bg-gray-700 rounded-lg z-10 transition-colors duration-300">
+                        <h2
+                            class="section-title text-[#5bed7d] light-mode:text-gray-900 transition-colors duration-300">
                             Technologies & Frameworks
                         </h2>
                     </div>
-                    <div class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 dark:bg-gray-600">
+                    <div
+                        class="horizontal-line w-[clamp(2rem,5vw,3rem)] h-[0.125rem] bg-gray-400 light-mode:bg-gray-400 dark:bg-gray-600 transition-colors duration-300">
                     </div>
                 </div>
 
@@ -342,7 +367,8 @@ const SkillsSection = ref({
                         <tbody>
                             <tr v-for="(skill, index) in SkillsSection.frameworksSkillsRight"
                                 :key="'right-fourth-' + index"
-                                class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                                class="bg-white light-mode:bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 transition-colors duration-300"
+                                :class="{
                                     'rounded-t-lg': index === 0,
                                     'rounded-b-lg': index === SkillsSection.frameworksSkillsRight.length - 1
                                 }">
@@ -350,13 +376,13 @@ const SkillsSection = ref({
                                     <img :src="skill.icon" class="skill-icon ml-[1rem]">
                                 </td>
                                 <th scope="row"
-                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-gray-900 whitespace-nowrap skill-name"
-                                    style="color: #FFDB58;">
+                                    class="px-[1.5rem] py-[0.75rem] comic-relief-bold font-medium text-[#FFDB58] light-mode:text-gray-900 whitespace-nowrap skill-name transition-colors duration-300">
                                     {{ skill.name }}
                                 </th>
                                 <td class="px-[1.5rem] py-[0.75rem]">
-                                    <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
-                                        <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
+                                    <div
+                                        class="w-full bg-gray-200 light-mode:bg-gray-200 rounded-full progress-bar dark:bg-gray-700 transition-colors duration-300">
+                                        <div class="bg-blue-600 light-mode:bg-blue-600 progress-bar rounded-full dark:bg-blue-500 transition-colors duration-300"
                                             :style="{ width: skill.percentage + '%' }"></div>
                                     </div>
                                 </td>
@@ -373,8 +399,8 @@ const SkillsSection = ref({
         <!-- Programming Languages Section -->
         <div class="w-full mb-[clamp(2rem,5vw,2.5rem)]">
             <div class="flex justify-center mb-[clamp(0.5rem,1.5vw,0.75rem)]">
-                <h2 class="px-[1rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg section-title text-gray-900"
-                    style="color: #5bed7d;">
+                <h2
+                    class="px-[1rem] py-[0.5rem] bg-gray-100 light-mode:bg-gray-100 dark:bg-gray-700 rounded-lg section-title text-[#5bed7d] light-mode:text-gray-900 transition-colors duration-300">
                     Programming Languages
                 </h2>
             </div>
@@ -382,18 +408,22 @@ const SkillsSection = ref({
                 <tbody>
                     <tr v-for="(skill, index) in [...SkillsSection.programmingSkillsLeft, ...SkillsSection.programmingSkillsRight]"
                         :key="'mobile-prog-' + index"
-                        class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                        class="bg-white light-mode:bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 transition-colors duration-300"
+                        :class="{
                             'rounded-t-lg': index === 0,
                             'rounded-b-lg': index === SkillsSection.programmingSkillsLeft.length + SkillsSection.programmingSkillsRight.length - 1
                         }">
                         <td class="px-[1rem] py-[0.75rem] flex items-center">
                             <img :src="skill.icon" class="skill-icon mr-[0.75rem]">
-                            <span class="comic-relief-bold font-medium skill-name text-gray-900 whitespace-nowrap"
-                                style="color: #FFDB58;">{{ skill.name }}</span>
+                            <span
+                                class="comic-relief-bold font-medium skill-name text-[#FFDB58] light-mode:text-gray-900 whitespace-nowrap transition-colors duration-300">
+                                {{ skill.name }}
+                            </span>
                         </td>
                         <td class="px-[1rem] py-[0.75rem]">
-                            <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
-                                <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
+                            <div
+                                class="w-full bg-gray-200 light-mode:bg-gray-200 rounded-full progress-bar dark:bg-gray-700 transition-colors duration-300">
+                                <div class="bg-blue-600 light-mode:bg-blue-600 progress-bar rounded-full dark:bg-blue-500 transition-colors duration-300"
                                     :style="{ width: skill.percentage + '%' }"></div>
                             </div>
                         </td>
@@ -405,8 +435,8 @@ const SkillsSection = ref({
         <!-- Web Development Section -->
         <div class="w-full mb-[clamp(2rem,5vw,2.5rem)]">
             <div class="flex justify-center mb-[clamp(0.5rem,1.5vw,0.75rem)]">
-                <h2 class="px-[1rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg section-title text-gray-900"
-                    style="color: #5bed7d;">
+                <h2
+                    class="px-[1rem] py-[0.5rem] bg-gray-100 light-mode:bg-gray-100 dark:bg-gray-700 rounded-lg section-title text-[#5bed7d] light-mode:text-gray-900 transition-colors duration-300">
                     Web Development
                 </h2>
             </div>
@@ -414,18 +444,22 @@ const SkillsSection = ref({
                 <tbody>
                     <tr v-for="(skill, index) in [...SkillsSection.webSkillsLeft, ...SkillsSection.webSkillsRight]"
                         :key="'mobile-web-' + index"
-                        class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                        class="bg-white light-mode:bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 transition-colors duration-300"
+                        :class="{
                             'rounded-t-lg': index === 0,
                             'rounded-b-lg': index === SkillsSection.webSkillsLeft.length + SkillsSection.webSkillsRight.length - 1
                         }">
                         <td class="px-[1rem] py-[0.75rem] flex items-center">
                             <img :src="skill.icon" class="skill-icon mr-[0.75rem]">
-                            <span class="comic-relief-bold font-medium skill-name text-gray-900 whitespace-nowrap"
-                                style="color: #FFDB58;">{{ skill.name }}</span>
+                            <span
+                                class="comic-relief-bold font-medium skill-name text-[#FFDB58] light-mode:text-gray-900 whitespace-nowrap transition-colors duration-300">
+                                {{ skill.name }}
+                            </span>
                         </td>
                         <td class="px-[1rem] py-[0.75rem]">
-                            <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
-                                <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
+                            <div
+                                class="w-full bg-gray-200 light-mode:bg-gray-200 rounded-full progress-bar dark:bg-gray-700 transition-colors duration-300">
+                                <div class="bg-blue-600 light-mode:bg-blue-600 progress-bar rounded-full dark:bg-blue-500 transition-colors duration-300"
                                     :style="{ width: skill.percentage + '%' }"></div>
                             </div>
                         </td>
@@ -437,8 +471,8 @@ const SkillsSection = ref({
         <!-- Developer Tools Section -->
         <div class="w-full mb-[clamp(2rem,5vw,2.5rem)]">
             <div class="flex justify-center mb-[clamp(0.5rem,1.5vw,0.75rem)]">
-                <h2 class="px-[1rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg section-title text-gray-900"
-                    style="color: #5bed7d;">
+                <h2
+                    class="px-[1rem] py-[0.5rem] bg-gray-100 light-mode:bg-gray-100 dark:bg-gray-700 rounded-lg section-title text-[#5bed7d] light-mode:text-gray-900 transition-colors duration-300">
                     Developer Tools
                 </h2>
             </div>
@@ -446,18 +480,22 @@ const SkillsSection = ref({
                 <tbody>
                     <tr v-for="(skill, index) in [...SkillsSection.devToolsSkillsLeft, ...SkillsSection.devToolsSkillsRight]"
                         :key="'mobile-devtools-' + index"
-                        class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                        class="bg-white light-mode:bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 transition-colors duration-300"
+                        :class="{
                             'rounded-t-lg': index === 0,
                             'rounded-b-lg': index === SkillsSection.devToolsSkillsLeft.length + SkillsSection.devToolsSkillsRight.length - 1
                         }">
                         <td class="px-[1rem] py-[0.75rem] flex items-center">
                             <img :src="skill.icon" class="skill-icon mr-[0.75rem]">
-                            <span class="comic-relief-bold font-medium skill-name text-gray-900 whitespace-nowrap"
-                                style="color: #FFDB58;">{{ skill.name }}</span>
+                            <span
+                                class="comic-relief-bold font-medium skill-name text-[#FFDB58] light-mode:text-gray-900 whitespace-nowrap transition-colors duration-300">
+                                {{ skill.name }}
+                            </span>
                         </td>
                         <td class="px-[1rem] py-[0.75rem]">
-                            <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
-                                <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
+                            <div
+                                class="w-full bg-gray-200 light-mode:bg-gray-200 rounded-full progress-bar dark:bg-gray-700 transition-colors duration-300">
+                                <div class="bg-blue-600 light-mode:bg-blue-600 progress-bar rounded-full dark:bg-blue-500 transition-colors duration-300"
                                     :style="{ width: skill.percentage + '%' }"></div>
                             </div>
                         </td>
@@ -469,8 +507,8 @@ const SkillsSection = ref({
         <!-- Technologies & Frameworks Section -->
         <div class="w-full mb-[clamp(2rem,5vw,2.5rem)]">
             <div class="flex justify-center mb-[clamp(0.5rem,1.5vw,0.75rem)]">
-                <h2 class="px-[1rem] py-[0.5rem] bg-gray-100 dark:bg-gray-700 rounded-lg section-title text-gray-900"
-                    style="color: #5bed7d;">
+                <h2
+                    class="px-[1rem] py-[0.5rem] bg-gray-100 light-mode:bg-gray-100 dark:bg-gray-700 rounded-lg section-title text-[#5bed7d] light-mode:text-gray-900 transition-colors duration-300">
                     Technologies & Frameworks
                 </h2>
             </div>
@@ -478,18 +516,22 @@ const SkillsSection = ref({
                 <tbody>
                     <tr v-for="(skill, index) in [...SkillsSection.frameworksSkillsLeft, ...SkillsSection.frameworksSkillsRight]"
                         :key="'mobile-frameworks-' + index"
-                        class="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200" :class="{
+                        class="bg-white light-mode:bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-200 transition-colors duration-300"
+                        :class="{
                             'rounded-t-lg': index === 0,
                             'rounded-b-lg': index === SkillsSection.frameworksSkillsLeft.length + SkillsSection.frameworksSkillsRight.length - 1
                         }">
                         <td class="px-[1rem] py-[0.75rem] flex items-center">
                             <img :src="skill.icon" class="skill-icon mr-[0.75rem]">
-                            <span class="comic-relief-bold font-medium skill-name text-gray-900 whitespace-nowrap"
-                                style="color: #FFDB58;">{{ skill.name }}</span>
+                            <span
+                                class="comic-relief-bold font-medium skill-name text-[#FFDB58] light-mode:text-gray-900 whitespace-nowrap transition-colors duration-300">
+                                {{ skill.name }}
+                            </span>
                         </td>
                         <td class="px-[1rem] py-[0.75rem]">
-                            <div class="w-full bg-gray-200 rounded-full progress-bar dark:bg-gray-700">
-                                <div class="bg-blue-600 progress-bar rounded-full dark:bg-blue-500"
+                            <div
+                                class="w-full bg-gray-200 light-mode:bg-gray-200 rounded-full progress-bar dark:bg-gray-700 transition-colors duration-300">
+                                <div class="bg-blue-600 light-mode:bg-blue-600 progress-bar rounded-full dark:bg-blue-500 transition-colors duration-300"
                                     :style="{ width: skill.percentage + '%' }"></div>
                             </div>
                         </td>
