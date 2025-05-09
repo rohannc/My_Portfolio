@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 // Navigation items with icons
 const navItems = ref([
@@ -9,9 +9,6 @@ const navItems = ref([
     { name: "Projects", url: "#projects", active: false, icon: "briefcase" },
     { name: "Contact Me", url: "#contact", active: false, icon: "envelope" },
 ]);
-
-// Dark mode state
-const isDarkMode = ref(true);
 
 // Mobile menu state
 const isMenuOpen = ref(false);
@@ -24,15 +21,6 @@ const updateWindowWidth = () => {
     windowWidth.value = window.innerWidth;
 };
 
-// Watch isDarkMode to update HTML class
-watch(isDarkMode, (newValue) => {
-    if (newValue) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
-});
-
 // Handle navbar button click
 const handleNavClick = (clickedItem) => {
     navItems.value.forEach((item) => {
@@ -41,14 +29,13 @@ const handleNavClick = (clickedItem) => {
     isMenuOpen.value = false; // Close mobile menu
 };
 
-// Toggle dark mode
-const toggleDarkMode = () => {
-    isDarkMode.value = !isDarkMode.value;
+// Open link in new tab
+const openLink = () => {
+    window.open('https://codolio.com/profile/Rohann', '_blank');
 };
 
 // Initialize dark mode, Intersection Observer, and window width listener
 onMounted(() => {
-    isDarkMode.value = true;
     document.documentElement.classList.add('dark');
 
     // Set up Intersection Observer for section visibility
@@ -94,14 +81,14 @@ onMounted(() => {
 </script>
 
 <template>
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-white border-gray-200 dark:bg-gray-900">
-        <div class="w-[91%] ml-[5%] mr-[4%] flex items-center justify-between p-4">
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-gray-900 border-gray-200">
+        <div class="w-[96%] ml-[2%] mr-[2%] flex items-center justify-between p-4">
             <!-- Logo Section -->
             <a href="#" class="flex items-center space-x-3">
-                <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-                    src="../assets/ProfileImageCropped.jpg" alt="Bordered avatar">
+                <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-500" src="../assets/ProfileImageCropped.jpg"
+                    alt="Bordered avatar">
                 <span v-if="windowWidth >= 900 || windowWidth < 768"
-                    class="self-center text-[clamp(1.125rem,2.25vw,1.5rem)] font-semibold whitespace-nowrap dark:text-white hidden md:block">
+                    class="self-center text-[clamp(1.125rem,2.25vw,1.5rem)] font-semibold whitespace-nowrap text-white hidden md:block">
                     Rohan Chakraborty
                 </span>
             </a>
@@ -113,11 +100,11 @@ onMounted(() => {
                         <a :href="item.url" @click="handleNavClick(item)"
                             class="inline-flex items-center space-x-2 whitespace-nowrap" :class="[
                                 item.active
-                                    ? 'text-blue-700 dark:text-blue-500'
-                                    : 'text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500'
+                                    ? 'text-blue-500'
+                                    : 'text-white hover:text-blue-500'
                             ]">
                             <svg v-if="item.icon"
-                                :class="['w-[clamp(1.125rem,2vw,1.25rem)] h-[clamp(1.125rem,2vw,1.25rem)]', item.active ? 'text-blue-700 dark:text-blue-500' : 'text-gray-900 dark:text-white']"
+                                :class="['w-[clamp(1.125rem,2vw,1.25rem)] h-[clamp(1.125rem,2vw,1.25rem)]', item.active ? 'text-blue-500' : 'text-white']"
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path v-if="item.icon === 'light-bulb'" stroke-linecap="round" stroke-linejoin="round"
@@ -140,15 +127,15 @@ onMounted(() => {
                         </a>
                     </li>
                 </ul>
-                <!-- Dark Mode Toggle -->
-                <label class="switch md:ml-4 mb-1.5 mr-8">
-                    <input type="checkbox" v-model="isDarkMode" @click="toggleDarkMode">
-                    <span class="slider"></span>
-                </label>
+                <!-- Link Button with Tooltip -->
+                <button @click="openLink" class="md:ml-4 mb-1.5 mr-8 relative" data-tooltip="Coding Profile">
+                    <img src="https://img.icons8.com/?size=100&id=xXaeGQn5sAFy&format=png&color=000000" alt="Link icon"
+                        class="w-6 h-6">
+                </button>
                 <!-- Hamburger Menu for Mobile -->
                 <div class="md:hidden fixed top-4 right-4 z-60">
                     <input id="checkbox2" type="checkbox" class="hidden" v-model="isMenuOpen">
-                    <label class="toggle toggle2" for="checkbox2">
+                    <label class="toggle2" for="checkbox2">
                         <div id="bar4" class="bars"></div>
                         <div id="bar5" class="bars"></div>
                         <div id="bar6" class="bars"></div>
@@ -157,17 +144,16 @@ onMounted(() => {
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 z-40 transform transition-transform duration-300 ease-in-out"
+        <div class="fixed top-0 left-0 w-full bg-gray-900/90 z-40 transform transition-transform duration-300 ease-in-out"
             :class="{ 'translate-y-0': isMenuOpen, '-translate-y-full': !isMenuOpen }">
             <ul class="flex flex-col items-center py-6 space-y-4 font-medium h-fit max-h-[80vh] mt-16">
                 <li v-for="(item, index) in navItems" :key="index">
                     <a :href="item.url" @click="handleNavClick(item)" class="inline-flex items-center space-x-2" :class="[
                         item.active
-                            ? 'text-blue-700 dark:text-blue-500'
-                            : 'text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500'
+                            ? 'text-blue-500'
+                            : 'text-white hover:text-blue-500'
                     ]">
-                        <svg v-if="item.icon"
-                            :class="['w-5 h-5', item.active ? 'text-blue-700 dark:text-blue-500' : 'text-gray-900 dark:text-white']"
+                        <svg v-if="item.icon" :class="['w-5 h-5', item.active ? 'text-blue-500' : 'text-white']"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path v-if="item.icon === 'light-bulb'" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2"
@@ -199,57 +185,75 @@ onMounted(() => {
     z-index: 50;
 }
 
-/* Dark Mode Switch */
-.switch {
-    display: block;
-    --width-of-switch: 2.5em;
-    --height-of-switch: 1.5em;
-    --size-of-icon: 1em;
-    --slider-offset: 0.2em;
-    position: relative;
-    width: var(--width-of-switch);
-    height: var(--height-of-switch);
+/* Navbar Styles */
+#navbar {
+    background-color: #1f2937;
+    border-color: #374151;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+/* Logo Section */
+#navbar .flex.items-center.space-x-3 img {
+    ring-color: #6b7280;
 }
 
-.slider {
-    position: absolute;
+#navbar .flex.items-center.space-x-3 span {
+    color: #ffffff;
+}
+
+/* Navigation Links */
+#navbar ul li a {
+    color: #ffffff;
+}
+
+#navbar ul li a:hover {
+    color: #3b82f6;
+}
+
+#navbar ul li a.text-blue-500 {
+    color: #3b82f6;
+}
+
+#navbar ul li a svg {
+    stroke: #ffffff;
+}
+
+#navbar ul li a.text-blue-500 svg {
+    stroke: #3b82f6;
+}
+
+/* Link Button with Tooltip */
+#navbar button[data-tooltip] {
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #f4f4f5;
-    transition: .4s;
-    border-radius: 30px;
+    position: relative;
 }
 
-.slider:before {
+#navbar button[data-tooltip]::after {
+    content: attr(data-tooltip);
     position: absolute;
-    content: "";
-    height: var(--size-of-icon, 1em);
-    width: var(--size-of-icon, 1em);
-    border-radius: 20px;
-    left: var(--slider-offset, 0.2em);
-    top: 50%;
-    transform: translateY(-50%);
-    background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
-    transition: .4s;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #374151;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 100;
 }
 
-input:checked+.slider {
-    background-color: #303136;
+#navbar button[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
 }
 
-input:checked+.slider:before {
-    left: calc(100% - (var(--size-of-icon, 1em) + var(--slider-offset, 0.2em)));
-    background: #303136;
-    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+/* Mobile Menu */
+#navbar .fixed.top-0.left-0.w-full {
+    background-color: rgba(31, 41, 55, 0.9);
 }
 
 /* Hamburger Menu */
@@ -273,7 +277,7 @@ input:checked+.slider:before {
 .bars {
     width: 100%;
     height: 3px;
-    background-color: rgb(92, 176, 255);
+    background-color: #5cb0ff;
     border-radius: 3px;
 }
 
