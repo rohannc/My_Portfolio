@@ -13,7 +13,8 @@ const achievements = [
         medal: "",
         participation: "",
         view: "https://drive.google.com/file/d/1xO0XuySHLrjJ9MZeWgAh7oJokfVN_s27/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
+        message: "View"
     },
     {
         icon1: "https://img.icons8.com/?size=100&id=33486&format=png&color=000000",
@@ -26,7 +27,8 @@ const achievements = [
         medal: "Gold",
         participation: "Team of Two",
         view: "https://drive.google.com/file/d/1w1hQy0AGePx4jwjhxvmLAaQi8VFh6H43/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
+        message: "View"
     },
     {
         icon1: "https://img.icons8.com/?size=100&id=33486&format=png&color=000000",
@@ -39,7 +41,8 @@ const achievements = [
         medal: "Gold",
         participation: "Team of Three",
         view: "https://drive.google.com/file/d/1PakvJlfb4XBnVtWNY-4-3HVm6JzF2b-V/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_srijanju-mca-jumca-activity-7319796457308311552-JpnY?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg"
+        linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_srijanju-mca-jumca-activity-7319796457308311552-JpnY?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg",
+        message: "View"
     },
     {
         icon1: "https://img.icons8.com/?size=100&id=33486&format=png&color=000000",
@@ -52,7 +55,8 @@ const achievements = [
         medal: "Gold",
         participation: "Single Player",
         view: "https://drive.google.com/file/d/1QujfDQFttfx7SlyVsXCIlj6YIgjVBZfO/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_codingcompetition-error404-rkmrc-activity-7314332325641613312--KBI?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg"
+        linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_codingcompetition-error404-rkmrc-activity-7314332325641613312--KBI?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg",
+        message: "View"
     },
     {
         icon1: "https://img.icons8.com/?size=100&id=23875&format=png&color=000000",
@@ -65,7 +69,8 @@ const achievements = [
         medal: "Bronze",
         participation: "Single Player",
         view: "https://drive.google.com/file/d/10W_Kjy_E2jnggi95a_kPv4L1YwYHm1Jv/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
+        message: "View"
     },
     {
         icon1: "https://img.icons8.com/?size=100&id=23875&format=png&color=000000",
@@ -78,7 +83,8 @@ const achievements = [
         medal: "Bronze",
         participation: "Single Player",
         view: "https://drive.google.com/file/d/1194-dcJvEL1IchtdqhIF5-Nya_OpkuZk/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
+        message: "View"
     },
     {
         icon1: "https://img.icons8.com/?size=100&id=23875&format=png&color=000000",
@@ -91,30 +97,73 @@ const achievements = [
         medal: "Bronze",
         participation: "Single Player",
         view: "https://drive.google.com/file/d/1b_B5QMO62DZasjctaB0_I-u6IZvgMPsw/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
+        message: "View"
+    },
+    {
+        icon1: "https://img.icons8.com/?size=100&id=AbQBhN9v62Ob&format=png&color=000000",
+        icon2: "https://img.icons8.com/?size=100&id=1FdYDpqhZ86g&format=png&color=000000",
+        position: "250+ Problems Solved",
+        color: "#bc7335",
+        name: "GeeksForGeeks",
+        institute: "With a Coding Score of 861 and Contest Rating of 1560 in 2 Contests",
+        description: "",
+        medal: "GFG",
+        participation: "",
+        view: "https://www.geeksforgeeks.org/user/rohannju/",
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
+        message: "Visit Profile"
+    },
+    {
+        icon1: "https://img.icons8.com/?size=100&id=On4zzIgLaBAu&format=png&color=000000",
+        icon2: "https://img.icons8.com/?size=100&id=1FdYDpqhZ86g&format=png&color=000000",
+        position: "300+ Problems Solved",
+        color: "#bc7335",
+        name: "LeetCode",
+        institute: "With a Contest Rating of 1435 in 4 Contests and Problem of the Day Streak of 120+ Days",
+        description: "",
+        medal: "Leetcode",
+        participation: "",
+        view: "https://leetcode.com/u/rohanch0108003/",
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
+        message: "Visit Profile"
+    },
+    {
+        icon1: "https://img.icons8.com/?size=100&id=42871&format=png&color=000000",
+        icon2: "https://img.icons8.com/?size=100&id=1FdYDpqhZ86g&format=png&color=000000",
+        position: "650+ Problems Solved",
+        color: "#bc7335",
+        name: "Coding Profile Summary",
+        institute: "Within Less Than 200 Active Days, with a Daily Streak of 135+ Days",
+        description: "",
+        medal: "Rohan Chakraborty",
+        participation: "",
+        view: "https://codolio.com/profile/Rohann/problemSolving",
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
+        message: "Visit Profile"
     }
 ];
 
-// Use reactive to make tooltipVisible reactive, scoped to each v-for item
-const tooltipVisible = reactive({});
+// Initialize tooltipVisible with unique keys (using item.name)
+const tooltipVisible = reactive(
+    achievements.reduce((acc, item) => {
+        acc[item.name] = { 1: false, 2: false, 3: false, 4: false };
+        return acc;
+    }, {})
+);
 
-const showTooltip = (item, buttonId) => {
-    if (!tooltipVisible[item]) {
-        tooltipVisible[item] = { 1: false, 2: false, 3: false, 4: false };
-    }
+const showTooltip = (itemName, buttonId) => {
     // Reset all tooltips for this item
-    tooltipVisible[item][1] = false;
-    tooltipVisible[item][2] = false;
-    tooltipVisible[item][3] = false;
-    tooltipVisible[item][4] = false;
+    tooltipVisible[itemName][1] = false;
+    tooltipVisible[itemName][2] = false;
+    tooltipVisible[itemName][3] = false;
+    tooltipVisible[itemName][4] = false;
     // Show the specific tooltip
-    tooltipVisible[item][buttonId] = true;
+    tooltipVisible[itemName][buttonId] = true;
 };
 
-const hideTooltip = (item, buttonId) => {
-    if (tooltipVisible[item]) {
-        tooltipVisible[item][buttonId] = false;
-    }
+const hideTooltip = (itemName, buttonId) => {
+    tooltipVisible[itemName][buttonId] = false;
 };
 </script>
 
@@ -125,17 +174,19 @@ const hideTooltip = (item, buttonId) => {
     </div>
     <!-- Desktop and iPad View -->
     <div class="hidden md:grid mx-[2vw] grid-cols-3 gap-[2vw] p-[2vw]">
-        <div v-for="(item, index) in achievements" :key="index"
+        <div v-for="item in achievements" :key="item.name"
             class="card-container bg-gray-800 border border-gray-800 rounded-xl shadow-sm mb-[2vw] flex flex-col h-[22rem]">
             <div class="mx-[2vw] mt-[1vw] flex justify-between p-[1vw]">
                 <!-- Medal Button -->
-                <div class="relative" @mouseover="showTooltip(index, 1)" @mouseleave="hideTooltip(index, 1)">
+                <div class="relative" @mouseover="showTooltip(item.name, 1)" @mouseleave="hideTooltip(item.name, 1)">
                     <button
-                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform">
+                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform"
+                        :aria-label="item.medal ? `Medal: ${item.medal}` : 'No Medal'">
                         <img :src="item.icon1" alt="Medal Icon" class="w-[4rem] h-auto rounded-tl-md" />
                     </button>
-                    <div v-if="item.medal !== '' && tooltipVisible[index]?.[1]"
-                        class="absolute top-[-2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
+                    <div v-if="item.medal && tooltipVisible[item.name]?.[1]"
+                        class="absolute top-[-2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
+                        role="tooltip">
                         {{ item.medal }}
                         <div
                             class="absolute bottom-[-0.3rem] left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
@@ -143,13 +194,15 @@ const hideTooltip = (item, buttonId) => {
                     </div>
                 </div>
                 <!-- Profile Button -->
-                <div class="relative" @mouseover="showTooltip(index, 2)" @mouseleave="hideTooltip(index, 2)">
+                <div class="relative" @mouseover="showTooltip(item.name, 2)" @mouseleave="hideTooltip(item.name, 2)">
                     <button
-                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform">
+                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform"
+                        :aria-label="item.participation ? `Participation: ${item.participation}` : 'No Participation Info'">
                         <img :src="item.icon2" alt="Profile Icon" class="w-[4rem] h-auto rounded-tr-md" />
                     </button>
-                    <div v-if="item.medal !== '' && tooltipVisible[index]?.[2]"
-                        class="absolute top-[-2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
+                    <div v-if="item.participation && tooltipVisible[item.name]?.[2]"
+                        class="absolute top-[-2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
+                        role="tooltip">
                         {{ item.participation }}
                         <div
                             class="absolute bottom-[-0.3rem] left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
@@ -171,29 +224,35 @@ const hideTooltip = (item, buttonId) => {
                 </div>
                 <div class="card-buttons flex gap-[4rem] justify-center pb-[0.75rem] items-center">
                     <!-- View Button -->
-                    <div class="relative">
+                    <div class="relative" @mouseover="showTooltip(item.name, 3)"
+                        @mouseleave="hideTooltip(item.name, 3)">
                         <a target="_blank" :href="item.view"
-                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block">
+                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block"
+                            aria-label="View Achievement">
                             <img src="https://img.icons8.com/?size=100&id=Psrfh0UtjRyD&format=png&color=000000"
                                 alt="View Icon" class="w-[2.5rem] h-auto" />
                         </a>
-                        <div v-if="tooltipVisible[index]?.[3]"
-                            class="absolute bottom-[2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
-                            View
+                        <div v-if="tooltipVisible[item.name]?.[3]"
+                            class="absolute bottom-[2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
+                            role="tooltip">
+                            {{ item.message }}
                             <div
                                 class="absolute top-full left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
                             </div>
                         </div>
                     </div>
                     <!-- LinkedIn Button -->
-                    <div class="relative">
+                    <div class="relative" @mouseover="showTooltip(item.name, 4)"
+                        @mouseleave="hideTooltip(item.name, 4)">
                         <a :href="item.linkedin" target="_blank"
-                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block">
+                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block"
+                            aria-label="Visit LinkedIn">
                             <img src="https://img.icons8.com/?size=100&id=67570&format=png&color=000000"
                                 alt="LinkedIn Icon" class="w-[3rem] h-auto" />
                         </a>
-                        <div v-if="tooltipVisible[index]?.[4]"
-                            class="absolute bottom-[2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
+                        <div v-if="tooltipVisible[item.name]?.[4]"
+                            class="absolute bottom-[2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
+                            role="tooltip">
                             Visit LinkedIn
                             <div
                                 class="absolute top-full left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
@@ -206,17 +265,19 @@ const hideTooltip = (item, buttonId) => {
     </div>
     <!-- Mobile View -->
     <div class="block md:hidden mx-[4vw] p-[2vw]">
-        <div v-for="(item, index) in achievements" :key="index"
+        <div v-for="item in achievements" :key="item.name"
             class="card-container bg-gray-800 border border-gray-800 rounded-xl shadow-sm mb-[2vw] flex flex-col h-[20rem] w-[90%] mx-auto">
             <div class="mx-[2vw] mt-[1vw] flex justify-between p-[1vw]">
                 <!-- Medal Button -->
-                <div class="relative" @mouseover="showTooltip(index, 1)" @mouseleave="hideTooltip(index, 1)">
+                <div class="relative" @click="showTooltip(item.name, 1)">
                     <button
-                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform">
+                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform"
+                        :aria-label="item.medal ? `Medal: ${item.medal}` : 'No Medal'">
                         <img :src="item.icon1" alt="Medal Icon" class="w-[3rem] h-auto rounded-tl-md" />
                     </button>
-                    <div v-if="item.medal !== '' && tooltipVisible[index]?.[1]"
-                        class="absolute top-[-2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
+                    <div v-if="item.medal && tooltipVisible[item.name]?.[1]"
+                        class="absolute top-[-2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
+                        role="tooltip">
                         {{ item.medal }}
                         <div
                             class="absolute bottom-[-0.3rem] left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
@@ -224,13 +285,15 @@ const hideTooltip = (item, buttonId) => {
                     </div>
                 </div>
                 <!-- Profile Button -->
-                <div class="relative" @mouseover="showTooltip(index, 2)" @mouseleave="hideTooltip(index, 2)">
+                <div class="relative" @click="showTooltip(item.name, 2)">
                     <button
-                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform">
+                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform"
+                        :aria-label="item.participation ? `Participation: ${item.participation}` : 'No Participation Info'">
                         <img :src="item.icon2" alt="Profile Icon" class="w-[3rem] h-auto rounded-tr-md" />
                     </button>
-                    <div v-if="item.medal !== '' && tooltipVisible[index]?.[2]"
-                        class="absolute top-[-2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
+                    <div v-if="item.participation && tooltipVisible[item.name]?.[2]"
+                        class="absolute top-[-2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
+                        role="tooltip">
                         {{ item.participation }}
                         <div
                             class="absolute bottom-[-0.3rem] left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
@@ -252,14 +315,16 @@ const hideTooltip = (item, buttonId) => {
                 </div>
                 <div class="card-buttons flex gap-[4rem] justify-center pb-[0.75rem] items-center">
                     <!-- View Button -->
-                    <div class="relative">
+                    <div class="relative" @click="showTooltip(item.name, 3)">
                         <a target="_blank" :href="item.view"
-                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block">
+                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block"
+                            aria-label="View Achievement">
                             <img src="https://img.icons8.com/?size=100&id=Psrfh0UtjRyD&format=png&color=000000"
                                 alt="View Icon" class="w-[2rem] h-auto" />
                         </a>
-                        <div v-if="tooltipVisible[index]?.[3]"
-                            class="absolute bottom-[2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
+                        <div v-if="tooltipVisible[item.name]?.[3]"
+                            class="absolute bottom-[2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
+                            role="tooltip">
                             View
                             <div
                                 class="absolute top-full left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
@@ -267,14 +332,16 @@ const hideTooltip = (item, buttonId) => {
                         </div>
                     </div>
                     <!-- LinkedIn Button -->
-                    <div class="relative">
+                    <div class="relative" @click="showTooltip(item.name, 4)">
                         <a :href="item.linkedin" target="_blank"
-                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block">
+                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block"
+                            aria-label="Visit LinkedIn">
                             <img src="https://img.icons8.com/?size=100&id=67570&format=png&color=000000"
-                                alt="LinkedIn Icon" class="w-[2rem] h-auto" />
+                                alt="LinkedIn Icon" class="w-[2.4rem] h-auto" />
                         </a>
-                        <div v-if="tooltipVisible[index]?.[4]"
-                            class="absolute bottom-[2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
+                        <div v-if="tooltipVisible[item.name]?.[4]"
+                            class="absolute bottom-[2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
+                            role="tooltip">
                             Visit LinkedIn
                             <div
                                 class="absolute top-full left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
