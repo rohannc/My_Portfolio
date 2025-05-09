@@ -44,7 +44,7 @@ const downloadResume = () => {
                 <div class="pb-6 flex justify-center md:hidden">
                     <button @click="downloadResume" type="button"
                         class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-800 light-mode:bg-gradient-to-r light-mode:from-emerald-500 light-mode:via-emerald-600 light-mode:to-emerald-700 light-mode:focus:ring-emerald-300 pt-serif-bold-italic font-medium rounded-lg text-[clamp(0.625rem,1.25vw,0.75rem)] px-4 py-2 text-center transition-colors duration-300">
-                        Download Resume
+                        Resume
                     </button>
                 </div>
             </div>
@@ -69,7 +69,7 @@ const downloadResume = () => {
                     <span
                         class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-gray-900 light-mode:bg-white rounded-md group-hover:bg-transparent">
                         <img class="icon" :src="downloadGIF" alt="Download" height="20px" width="20px">
-                        <span class="hideText">Download Resume</span>
+                        <span class="hideText">Resume</span>
                     </span>
                 </button>
             </div>
