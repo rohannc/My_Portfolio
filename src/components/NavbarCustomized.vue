@@ -130,10 +130,10 @@ onMounted(() => {
                 <!-- Link Button with Tooltip -->
                 <button @click="openLink" class="md:ml-4 mb-1.5 mr-8 relative" data-tooltip="Coding Profile">
                     <img src="https://img.icons8.com/?size=100&id=xXaeGQn5sAFy&format=png&color=000000" alt="Link icon"
-                        class="w-6 h-6">
+                        class="w-[30px] h-[30px]">
                 </button>
                 <!-- Hamburger Menu for Mobile -->
-                <div class="md:hidden fixed top-4 right-4 z-60">
+                <div class="md:hidden fixed top-4.5 right-4 z-60">
                     <input id="checkbox2" type="checkbox" class="hidden" v-model="isMenuOpen">
                     <label class="toggle2" for="checkbox2">
                         <div id="bar4" class="bars"></div>
