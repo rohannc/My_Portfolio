@@ -15,7 +15,7 @@ const toggleAltColor = () => {
 };
 
 const downloadResume = () => {
-    window.open('https://drive.google.com/file/d/1kglTL7wUMt2hYZ5Rjb5SlouAge9DAURT/view?usp=drive_link', '_blank');
+    window.open('https://drive.google.com/file/d/1dKuI_YY-HckpBuQ7AobFZnZBvkvHWCpg/view?usp=sharing', '_blank');
 }
 </script>
 
