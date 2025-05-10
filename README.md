@@ -11,7 +11,7 @@ Welcome to my professional portfolio repository! This project showcases my skill
 
 [Click to Visit - Live Demo](https://rohann.xyz) <!-- Add your deployed site URL when available -->
 
-![Portfolio Preview](src/assets/portfolio-preview.png) <!-- Create and add a preview image of your site -->
+![Portfolio Preview](src/assets/portfolio-preview.jpg) <!-- Create and add a preview image of your site -->
 
 ## ✨ Features
 
