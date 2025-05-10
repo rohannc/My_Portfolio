@@ -9,9 +9,9 @@
 
 Welcome to my professional portfolio repository! This project showcases my skills, projects, and professional experience in a clean, responsive web application.
 
-[Live Demo](#) <!-- Add your deployed site URL when available -->
+[Click to Visit - Live Demo](https://rohann.xyz) <!-- Add your deployed site URL when available -->
 
-![Portfolio Preview](assets/images/portfolio-preview.png) <!-- Create and add a preview image of your site -->
+![Portfolio Preview](assets/portfolio-preview.png) <!-- Create and add a preview image of your site -->
 
 ## ✨ Features
 
@@ -26,17 +26,14 @@ Welcome to my professional portfolio repository! This project showcases my skill
 
 - **Frontend**:
   - HTML5, CSS3, JavaScript
-  - React.js
-  - Bootstrap/Tailwind CSS
-  - SCSS
+  - Vue.js
+  - Tailwind CSS
 
 - **Deployment**:
-  - GitHub Pages
-  - Netlify/Vercel
+  - Netlify
 
 - **Tools**:
   - Git & GitHub
-  - Figma (for design)
   - VS Code
 
 ## 🚀 Installation & Setup
@@ -67,30 +64,24 @@ Welcome to my professional portfolio repository! This project showcases my skill
 ```
 My_Portfolio/
 ├── public/
-│   ├── index.html
-│   └── favicon.ico
+│   ├──
 ├── src/
 │   ├── components/
-│   │   ├── Header/
-│   │   ├── Hero/
-│   │   ├── Projects/
-│   │   ├── Skills/
-│   │   ├── Experience/
-│   │   ├── Contact/
-│   │   └── Footer/
+│   │   ├── About Me
+│   │   ├── Projects
+│   │   ├── Skills
+│   │   ├── Education
+│   │   ├── Contact
+│   │   └── Footer
 │   ├── assets/
-│   │   ├── images/
-│   │   └── styles/
+│   │   ├── images
 │   ├── App.js
-│   └── index.js
 ├── package.json
+├── index.html
 └── README.md
 ```
 
 ## 📱 Features Overview
-
-### Home Section
-A welcoming introduction with a professional headshot and brief tagline about my skills and expertise.
 
 ### About Me
 A concise biography highlighting my background, education, and professional journey in the tech industry.
@@ -99,7 +90,6 @@ A concise biography highlighting my background, education, and professional jour
 Showcase of my best work with:
 - Project screenshots
 - Tech stack details
-- Live demo links
 - GitHub repository links
 
 ### Skills
@@ -107,10 +97,9 @@ Visualization of my technical skills categorized by:
 - Programming languages
 - Frameworks & libraries
 - Tools & technologies
-- Soft skills
 
-### Experience
-Timeline of my professional experience and education.
+### Education
+Timeline of my education.
 
 ### Contact
 A contact form and links to my professional profiles.
@@ -124,17 +113,12 @@ A contact form and links to my professional profiles.
 
 ## 👨‍💻 About Me
 
-I am a passionate software developer with expertise in [your key skills]. I enjoy building innovative solutions and continuously learning new technologies. I'm open to freelance opportunities and collaborations.
+I am a passionate software developer with expertise in Machine Learning. I enjoy building innovative solutions and continuously learning new technologies. I'm open to freelance opportunities and collaborations.
 
 ## 📬 Contact
 
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **LinkedIn**: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- **Twitter**: [@yourhandle](https://twitter.com/yourhandle)
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- **Email**: [chakrabortyrohan.abc01@gmail.com](mailto:chakrabortyrohan.abc01@gmail.com)
+- **LinkedIn**: [rohanchakraborty0108](https://www.linkedin.com/in/rohanchakraborty0108/)
 
 ---
 
