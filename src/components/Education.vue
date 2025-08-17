@@ -34,7 +34,7 @@ const educationList = ref([
             "Operating Systems"
         ],
         type: "CGPA",
-        cgpa: "Not Available",
+        cgpa: "7.86",
         text: "2024 - Current",
         link: "https://img.icons8.com/?size=100&id=YqmuQfHF9wvC&format=png&color=000000",
         linkToPdf: ""
