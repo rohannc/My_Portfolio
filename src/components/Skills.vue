@@ -27,7 +27,7 @@ const SkillsSection = ref({
         { icon: 'https://img.icons8.com/?size=100&id=0OQR1FYCuA9f&format=png&color=000000', name: 'VS Code', percentage: 90 },
     ],
     frameworksSkillsLeft: [
-        { icon: 'https://img.icons8.com/?size=100&id=NfbyHexzVEDk&format=png&color=000000', name: 'React', percentage: 75 },
+        { icon: 'https://img.icons8.com/?size=100&id=A3Ulk2RcONKs&format=png&color=000000', name: 'SpringBoot', percentage: 90 },
         { icon: 'https://img.icons8.com/?size=100&id=ouWtcsgDBiwO&format=png&color=000000', name: 'Node.js', percentage: 70 },
         { icon: 'https://img.icons8.com/?size=100&id=ewGOClUtmFX4&format=png&color=000000', name: 'Flask', percentage: 85 },
     ],
