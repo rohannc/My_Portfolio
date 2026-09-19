@@ -29,13 +29,13 @@ import { experiences } from "../data/portfolioData.js";
           <!-- Header Bar: Visa Logo Badge, Role Title, Status Badge, Period -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-5 border-b border-white/5">
             <div class="flex items-start sm:items-center gap-4">
-              <!-- Highlighted White Visa Logo (No Background) -->
+              <!-- Highlighted White Visa Logo (No Background, Compact Size) -->
               <div
                 class="flex items-center justify-center flex-shrink-0 pt-0.5"
                 title="Visa Inc."
               >
                 <svg
-                  class="h-6 sm:h-7 w-auto fill-white drop-shadow-[0_0_12px_rgba(255,255,255,0.85)] drop-shadow-[0_0_3px_#ffffff] transition-all duration-300 group-hover:drop-shadow-[0_0_18px_rgba(255,255,255,1)] group-hover:scale-105"
+                  class="h-[18px] sm:h-[21px] w-auto fill-white drop-shadow-[0_0_8px_rgba(255,255,255,0.85)] drop-shadow-[0_0_2px_#ffffff] transition-all duration-300 group-hover:drop-shadow-[0_0_14px_rgba(255,255,255,1)] group-hover:scale-105"
                   viewBox="0 0 1000 324.68"
                   xmlns="http://www.w3.org/2000/svg"
                   role="img"
@@ -64,7 +64,7 @@ import { experiences } from "../data/portfolioData.js";
                 </div>
 
                 <div class="flex items-center gap-2 text-xs sm:text-sm text-slate-300 mt-1 flex-wrap font-medium">
-                  <span class="visa-highlight-white">{{ exp.company }}</span>
+                  <span class="visa-highlight">{{ exp.company }}</span>
                   <span class="text-slate-600">•</span>
                   <span>{{ exp.employmentType }}</span>
                   <span class="text-slate-600">•</span>
