@@ -1,21 +1,21 @@
 // Portfolio Centralized Data
 export const personalInfo = {
   name: "Rohan Chakraborty",
-  tagline: "Software Engineer at Visa || MCA from Jadavpur University || AI & Agentic Systems",
+  tagline: "Software Engineer at Visa || Master of Computer Applications from Jadavpur University || AI & Agentic Systems",
   headline: "Engineering autonomous AI agents & scalable, secure enterprise software.",
   role: "Software Engineer at Visa",
   company: "Visa",
-  status: "Software Engineer @ Visa",
+  status: "Software Engineer at Visa",
   location: "Bengaluru, Karnataka, India",
   email: "chakrabortyrohan.abc01@gmail.com",
-  resumeUrl: "https://drive.google.com/file/d/1dKuI_YY-HckpBuQ7AobFZnZBvkvHWCpg/view?usp=sharing",
+  resumeUrl: "https://drive.google.com/file/d/19UzkhTtntELmvFp6c0OTfz8GoNirav87/view?usp=sharing",
   codolioUrl: "https://codolio.com/profile/Rohann",
-  about: `I am a Software Engineer at Visa in Bengaluru, having completed my Master of Computer Applications (MCA) degree from Jadavpur University. During my time at Visa, I have focused on optimizing the SDLC by engineering autonomous AI agents (Python, LangGraph, MCP) and building secure, Human-In-The-Loop CI/CD pipelines to automate vulnerability remediation and accelerate feature delivery. Beyond software engineering, I am deeply passionate about competitive programming, hackathons, and analytical problem-solving with 450+ DSA problems solved and multiple collegiate championships.`,
+  about: `I am a Software Engineer at Visa in Bengaluru, having completed my Master of Computer Applications degree from Jadavpur University. During my journey at Visa, I focused on optimizing the SDLC by engineering Autonomous AI Agents ( Python, LangGraph, MCP ) and building secure, CI/CD pipelines with Human-In-The-Loop to automate vulnerability remediation and accelerate feature delivery. Beyond software engineering, I am deeply passionate about competitive programming, hackathons, and analytical problem-solving with 1700+ DSA problems solved and multiple collegiate championships.`,
   stats: [
     { label: "Current Role", value: "Visa", desc: "Software Engineer, Bengaluru" },
-    { label: "WBJECA Rank", value: "AIR 17", desc: "State Entrance Exam 2024" },
-    { label: "Problems Solved", value: "450+", desc: "LeetCode & GeeksforGeeks" },
-    { label: "Contest Milestones", value: "9+", desc: "Hackathons, Wins & Finals" }
+    { label: "WBJECA Rank", value: "Rank 17", desc: "State Entrance Exam 2024" },
+    { label: "Problems Solved", value: "1700+", desc: "LeetCode & GeeksforGeeks" },
+    { label: "Contest Milestones", value: "9+", desc: "Hackathon, Winner & Finalist" }
   ]
 };
 
@@ -43,60 +43,153 @@ export const socialLinks = [
     url: "https://discordapp.com/users/rohanchakraborty.",
     icon: "discord",
     handle: "rohanchakraborty."
+  }
+];
+
+export const experiences = [
+  {
+    role: "Software Engineer",
+    company: "Visa",
+    employmentType: "Full-time",
+    location: "Bengaluru, Karnataka, India",
+    period: "June 2026 — Present",
+    current: true,
+    badge: "Current Role",
+    summary: "Building scalable enterprise software systems, agentic development workflows, and high-reliability distributed architectures.",
+    description: "Continuing to engineer and evolve mission-critical software solutions, scalable distributed systems, and autonomous development workflows within Visa's core technology landscape.",
+    contributions: [
+      {
+        title: "Enterprise Software Engineering",
+        desc: "Engineering scalable, resilient backend services and production features supporting enterprise payment ecosystem capabilities."
+      },
+      {
+        title: "Intelligent Workflow Evolution",
+        desc: "Advancing internal engineering workflows by integrating autonomous agentic tooling, real-time code analysis, and high-assurance delivery practices."
+      }
+    ],
+    skills: ["Python", "Java", "Spring Boot", "Autonomous AI Agents", "LangGraph", "Model Context Protocol (MCP)", "CI/CD", "DevSecOps"]
   },
   {
-    name: "X (Twitter)",
-    url: "https://x.com/RohanCh07687035",
-    icon: "twitter",
-    handle: "@RohanCh07687035"
+    role: "Software Engineer Intern",
+    company: "Visa",
+    employmentType: "Internship",
+    location: "Bengaluru, Karnataka, India",
+    period: "January 2026 — June 2026",
+    current: false,
+    badge: "Internship",
+    summary: "Transitioned from an Intern to a Software Engineer by driving automation and optimizing the Software Development Life Cycle (SDLC) to accelerate end-to-end feature delivery.",
+    contributions: [
+      {
+        title: "AI & Workflow Automation",
+        desc: "Engineered autonomous AI agents using Python Asyncio, LangGraph, and the Model Context Protocol (MCP) to streamline complex workflows, including automated Jira requirement extraction, Test-Driven Development (TDD) implementation, and Git management."
+      },
+      {
+        title: "CI/CD & DevSecOps",
+        desc: "Architected Human-In-The-Loop (HITL) CI/CD pipelines by integrating Jenkins and Claude CLI."
+      },
+      {
+        title: "Automated Security",
+        desc: "Integrated enterprise security tools (SonarQube, Checkmarx, Nexus IQ) directly into the pipeline to automate vulnerability scanning and remediation, drastically reducing delivery bottlenecks."
+      }
+    ],
+    skills: ["Python Asyncio", "LangGraph", "MCP", "Claude CLI", "Jenkins", "SonarQube", "Checkmarx", "Nexus IQ", "Jira Automation", "TDD", "Git"]
   }
 ];
 
 export const skillCategories = [
   {
-    title: "AI, Agents & Forensics",
-    icon: "brain",
+    title: "Libraries and Frameworks",
+    icon: "library",
     skills: [
-      { name: "LangGraph", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=O6SWwpPIM0GB&format=png&color=000000" },
-      { name: "MCP (Model Context Protocol)", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=13441&format=png&color=000000" },
-      { name: "Autonomous Agents", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=O6SWwpPIM0GB&format=png&color=000000" },
-      { name: "PyTorch", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=O6SWwpPIM0GB&format=png&color=000000" },
-      { name: "TensorFlow", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=n3QRpDA7KZ7P&format=png&color=000000" },
-      { name: "OpenCV & PIL", level: "Advanced", icon: "https://img.icons8.com/?size=100&id=bpip0gGiBLT1&format=png&color=000000" }
+      { name: "LangGraph", level: "Agentic AI", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/langchain.svg", invertIcon: true },
+      { name: "Spring Boot", level: "Enterprise Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
+      { name: "Vert.x", level: "Reactive Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vertx/vertx-original.svg" },
+      { name: "TensorFlow", level: "Machine Learning", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
+      { name: "OpenCV & PIL", level: "Computer Vision", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" },
+      { name: "Vue.js 3", level: "Frontend UI", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" },
+      { name: "Flask", level: "Python Backend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg", invertIcon: true },
+      { name: "Tailwind CSS", level: "Modern Styling", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "Node.js", level: "Runtime", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" }
     ]
   },
   {
     title: "Programming Languages",
     icon: "code",
     skills: [
-      { name: "Python", level: "Advanced", icon: "https://img.icons8.com/?size=100&id=13441&format=png&color=000000" },
-      { name: "Java", level: "Advanced", icon: "https://img.icons8.com/?size=100&id=13679&format=png&color=000000" },
-      { name: "C Programming", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=mfkStOwP4EC0&format=png&color=000000" },
-      { name: "C++", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=40669&format=png&color=000000" },
-      { name: "JavaScript", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=108784&format=png&color=000000" },
-      { name: "Kotlin", level: "Familiar", icon: "https://img.icons8.com/?size=100&id=ZoxjA0jZDdFZ&format=png&color=000000" }
+      { name: "Python", level: "Advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "Java", level: "Advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+      { name: "C Programming", level: "Proficient", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
+      { name: "C++", level: "Proficient", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
+      { name: "JavaScript", level: "Proficient", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+      { name: "SQL", level: "Proficient", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" }
     ]
   },
   {
-    title: "Software & Web Engineering",
-    icon: "globe",
+    title: "Computer Science Coursework",
+    icon: "academic",
     skills: [
-      { name: "Vue.js 3", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=tbleCw0ch6QC&format=png&color=000000" },
-      { name: "Spring Boot", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=A3Ulk2RcONKs&format=png&color=000000" },
-      { name: "Flask", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=ewGOClUtmFX4&format=png&color=000000" },
-      { name: "Node.js", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=ouWtcsgDBiwO&format=png&color=000000" },
-      { name: "Tailwind CSS", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=WoopfRcDj3RF&format=png&color=000000" },
-      { name: "REST APIs", level: "Advanced", icon: "https://img.icons8.com/?size=100&id=20909&format=png&color=000000" }
+      { name: "Data Structures & Algorithms", level: "Core Foundations", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/thealgorithms.svg", invertIcon: true },
+      { name: "Database Management Systems", level: "DBMS & SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+      { name: "Operating Systems", level: "Kernel & Concurrency", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
+      { name: "Computer Networks", level: "Protocols & Sockets", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/wireshark.svg", invertIcon: true },
+      { name: "Object Oriented Programming", level: "OOP Principles", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/uml.svg", invertIcon: true },
+      { name: "Computer Architecture", level: "COA & Hardware", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/embeddedc/embeddedc-original.svg" },
+      { name: "Software Engineering", level: "Design & Lifecycle", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/diagramsdotnet.svg", invertIcon: true },
+      { name: "Bioinformatics", level: "Computational Biology", icon: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322d3ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 15c6.667-6 13.333 0 20-6'/><path d='M9 22c1.798-1.998 2.518-3.995 2.807-5.993'/><path d='M15 2c-1.798 1.998-2.518 3.995-2.807 5.993'/><path d='M17 6l-2.5-2.5'/><path d='M14 8l-1-1'/><path d='M7 18l2.5 2.5'/><path d='M3.5 14.5l.5.5'/><path d='M20 9l.5.5'/><path d='M6.5 12.5l1 1'/><path d='M16.5 10.5l1 1'/><path d='M10 16l1.5 1.5'/></svg>" }
     ]
   },
   {
     title: "DevOps, CI/CD & Tools",
     icon: "tools",
     skills: [
-      { name: "CI/CD Pipelines", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=52539&format=png&color=000000" },
-      { name: "Human-In-The-Loop SDLC", level: "Proficient", icon: "https://img.icons8.com/?size=100&id=20906&format=png&color=000000" },
-      { name: "Git & GitHub", level: "Advanced", icon: "https://img.icons8.com/?size=100&id=20906&format=png&color=000000" },
-      { name: "VS Code & Eclipse", level: "Advanced", icon: "https://img.icons8.com/?size=100&id=0OQR1FYCuA9f&format=png&color=000000" }
+      { name: "Jenkins", level: "CI/CD Automation", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" },
+      { name: "Git & GitHub", level: "Version Control", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+      { name: "Maven", level: "Build Tool", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original.svg" },
+      { name: "IntelliJ IDEA", level: "Java IDE", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" },
+      { name: "VS Code", level: "Code Editor", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+      { name: "Eclipse", level: "Java IDE", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg" },
+      { name: "Bruno", level: "API Client", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/bruno.svg", invertIcon: true },
+      { name: "Postman", level: "API Platform", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" }
+    ]
+  },
+  {
+    title: "Cloud, Containers & Streaming",
+    icon: "cloud",
+    skills: [
+      {
+        name: "Docker",
+        level: "Containerization",
+        desc: "Container runtime & image virtualization",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+      },
+      {
+        name: "Kubernetes",
+        level: "Container Orchestration",
+        desc: "Automated scaling & pod cluster management",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"
+      },
+      {
+        name: "Apache Kafka",
+        level: "Event Streaming",
+        desc: "High-throughput distributed publish-subscribe pipelines",
+        icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/apachekafka.svg",
+        invertIcon: true
+      }
+    ]
+  },
+  {
+    title: "Core Concepts & Methodologies",
+    icon: "layers",
+    skills: [
+      { name: "Human In The Loop", level: "SDLC & AI", icon: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322d3ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2a5 5 0 0 1 5 5v1a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5z'/><path d='M19 21v-2a4 4 0 0 0-3-3.87'/><path d='M5 21v-2a4 4 0 0 1 3-3.87'/><path d='M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8'/><path d='M3 3v5h5'/><path d='M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16'/><path d='M21 21v-5h-5'/></svg>" },
+      { name: "Autonomous AI Agents", level: "Agentic Systems", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/openai.svg", invertIcon: true },
+      { name: "Model Context Protocol", level: "MCP Standards", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/anthropic.svg", invertIcon: true },
+      { name: "Vulnerability Remediation", level: "Enterprise Security", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/sonarqube.svg", invertIcon: true },
+      { name: "SDLC Optimization", level: "Pipeline Automation", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/githubactions.svg", invertIcon: true },
+      { name: "Error Level Analysis (ELA)", level: "Forensics", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" },
+      { name: "Competitive Programming", level: "1700+ DSA Solved", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/leetcode.svg", invertIcon: true },
+      { name: "Test Driven Development", level: "Software Quality", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/junit5.svg", invertIcon: true },
+      { name: "Algorithmic Problem Solving", level: "Logic & Complexity", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/geeksforgeeks.svg", invertIcon: true }
     ]
   }
 ];
@@ -112,19 +205,19 @@ export const featuredProject = {
   team: [
     {
       name: "Rohan Chakraborty",
-      role: "Lead Developer & ML Engineer",
+      role: "Lead Developer · Forensic Analysis, ELA & Frontend Integration",
       avatar: "ProjectIcon1Cropper.jpg",
       linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
       name: "Adrika Ghosh",
-      role: "Forensic Analysis & Dataset Pipeline",
+      role: "Frontend Engineering & UI/UX Design",
       avatar: "Adrika.jpeg",
       linkedin: "https://www.linkedin.com/in/adrika-ghosh-b07a66298/"
     },
     {
       name: "Subhashis Mondal",
-      role: "Frontend Integration & UI/UX",
+      role: "Model Training, Dataset Pipeline & Backend Architecture",
       avatar: "Subhashis.jpeg",
       linkedin: "https://www.linkedin.com/in/subhashis360/"
     }
@@ -172,7 +265,7 @@ export const achievements = [
     year: "2024",
     view: "https://drive.google.com/file/d/1xO0XuySHLrjJ9MZeWgAh7oJokfVN_s27/view?usp=sharing",
     linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
-    description: "Secured General Merit Rank 17 state-wide in WBJECA 2024 (West Bengal Joint Entrance Examination for MCA)."
+    description: "Secured General Merit Rank 17 state-wide in WBJECA 2024 (West Bengal Joint Entrance Examination for Master of Computer Applications)."
   },
   {
     title: "Error 404, Envision 2k25",
@@ -282,17 +375,18 @@ export const achievements = [
 
 export const educationHistory = [
   {
-    degree: "Master of Computer Applications (MCA)",
+    degree: "Master of Computer Applications",
     institution: "Jadavpur University",
     location: "Kolkata, West Bengal",
-    period: "2024 — Completed",
-    score: "CGPA: 7.86",
-    status: "Completed",
+    period: "2024 — 2026",
+    score: "CGPA: 8.70",
+    status: "Pursuing",
     courses: [
       "Object Oriented Programming",
       "Computer Organisation & Architecture",
       "Database Management Systems",
-      "Operating Systems"
+      "Operating Systems",
+      "Bioinformatics"
     ],
     linkToPdf: ""
   },

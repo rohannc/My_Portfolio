@@ -1,6 +1,7 @@
 <script setup>
 import NavbarCustomized from "./components/NavbarCustomized.vue";
 import AboutMe from "./components/AboutMe.vue";
+import Experience from "./components/Experience.vue";
 import Skills from "./components/Skills.vue";
 import Project from "./components/Project.vue";
 import Achievements from "./components/Achievements.vue";
@@ -18,6 +19,7 @@ if ("scrollRestoration" in history) {
     <NavbarCustomized />
     <main class="flex-grow">
       <AboutMe />
+      <Experience />
       <Skills />
       <Project />
       <Achievements />

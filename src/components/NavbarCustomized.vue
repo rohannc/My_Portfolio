@@ -4,6 +4,7 @@ import { personalInfo, socialLinks } from "../data/portfolioData.js";
 
 const navItems = [
   { name: "About", url: "#about" },
+  { name: "Experience", url: "#experience" },
   { name: "Skills", url: "#skills" },
   { name: "Projects", url: "#projects" },
   { name: "Achievements", url: "#achievements" },
@@ -119,7 +120,7 @@ onUnmounted(() => {
           />
           <span
             class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-slate-950"
-            title="Available"
+            title="Software Engineer at Visa"
           ></span>
         </div>
         <div class="flex flex-col">
@@ -129,7 +130,7 @@ onUnmounted(() => {
             {{ personalInfo.name }}
           </span>
           <span class="text-[11px] font-mono text-cyan-400 hidden sm:block">
-            Software Engineer @ Visa
+            Software Engineer at <span class="visa-highlight">Visa</span>
           </span>
         </div>
       </a>
