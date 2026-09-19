@@ -40,21 +40,6 @@ h1, h2, h3, h4, .font-heading {
   text-shadow: 0 0 18px rgba(59, 130, 246, 0.7);
 }
 
-/* White Highlight Brand Style for Experience Section */
-.visa-highlight-white {
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 0.02em;
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.85), 0 0 3px #ffffff;
-  display: inline-block;
-  transition: transform 0.2s ease, text-shadow 0.2s ease;
-}
-
-.visa-highlight-white:hover {
-  transform: translateY(-1px);
-  text-shadow: 0 0 18px rgba(255, 255, 255, 1), 0 0 6px #ffffff;
-}
-
 html {
   scroll-behavior: smooth;
 }
