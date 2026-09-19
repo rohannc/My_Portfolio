@@ -24,20 +24,35 @@ h1, h2, h3, h4, .font-heading {
   font-family: var(--font-sans);
 }
 
-/* High-impact Visa Brand Highlight: Luminous White with Signature Electric Blue Glow */
+/* High-impact Visa Brand Highlight: Signature Visa Blue */
 .visa-highlight {
   font-weight: 700;
-  color: #ffffff;
+  color: #3b82f6;
   letter-spacing: 0.02em;
-  text-shadow: 0 0 12px rgba(59, 130, 246, 0.7), 0 0 3px rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 12px rgba(59, 130, 246, 0.45);
   display: inline-block;
   transition: transform 0.2s ease, text-shadow 0.2s ease, color 0.2s ease;
 }
 
 .visa-highlight:hover {
   transform: translateY(-1px);
+  color: #60a5fa;
+  text-shadow: 0 0 18px rgba(59, 130, 246, 0.7);
+}
+
+/* White Highlight Brand Style for Experience Section */
+.visa-highlight-white {
+  font-weight: 700;
   color: #ffffff;
-  text-shadow: 0 0 18px rgba(59, 130, 246, 0.95), 0 0 6px rgba(255, 255, 255, 1);
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.85), 0 0 3px #ffffff;
+  display: inline-block;
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+.visa-highlight-white:hover {
+  transform: translateY(-1px);
+  text-shadow: 0 0 18px rgba(255, 255, 255, 1), 0 0 6px #ffffff;
 }
 
 html {

@@ -29,13 +29,13 @@ import { experiences } from "../data/portfolioData.js";
           <!-- Header Bar: Visa Logo Badge, Role Title, Status Badge, Period -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-5 border-b border-white/5">
             <div class="flex items-start sm:items-center gap-4">
-              <!-- Highlighted White Visa Logo on Signature Visa Blue Badge -->
+              <!-- Highlighted White Visa Logo (No Background) -->
               <div
-                class="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gradient-to-r from-[#1434cb] via-[#1a44e8] to-[#2563eb] shadow-lg shadow-blue-600/30 border border-blue-300/40 flex items-center justify-center flex-shrink-0 group-hover:scale-105 group-hover:shadow-blue-500/50 transition-all duration-300"
+                class="flex items-center justify-center flex-shrink-0 pt-0.5"
                 title="Visa Inc."
               >
                 <svg
-                  class="h-4 sm:h-5 w-auto fill-white drop-shadow-[0_0_8px_rgba(255,255,255,0.75)]"
+                  class="h-6 sm:h-7 w-auto fill-white drop-shadow-[0_0_12px_rgba(255,255,255,0.85)] drop-shadow-[0_0_3px_#ffffff] transition-all duration-300 group-hover:drop-shadow-[0_0_18px_rgba(255,255,255,1)] group-hover:scale-105"
                   viewBox="0 0 1000 324.68"
                   xmlns="http://www.w3.org/2000/svg"
                   role="img"
@@ -64,7 +64,7 @@ import { experiences } from "../data/portfolioData.js";
                 </div>
 
                 <div class="flex items-center gap-2 text-xs sm:text-sm text-slate-300 mt-1 flex-wrap font-medium">
-                  <span class="visa-highlight">{{ exp.company }}</span>
+                  <span class="visa-highlight-white">{{ exp.company }}</span>
                   <span class="text-slate-600">•</span>
                   <span>{{ exp.employmentType }}</span>
                   <span class="text-slate-600">•</span>
