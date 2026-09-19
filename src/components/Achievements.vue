@@ -1,439 +1,132 @@
 <script setup>
-import { reactive } from 'vue';
+import { ref, computed } from "vue";
+import { achievements } from "../data/portfolioData.js";
 
-const achievements = [
-    {
-        icon1: "https://img.icons8.com/?size=100&id=VfUsAOqMZCj5&format=png&color=000000",
-        icon2: "https://img.icons8.com/?size=100&id=44831&format=png&color=000000",
-        position: "General Merit Rank: 17",
-        color: "#0d9fcf",
-        name: "WBJECA 2024",
-        institute: "West Bengal Joint Entrance Examination Board",
-        description: "",
-        medal: "",
-        participation: "",
-        view: "https://drive.google.com/file/d/1xO0XuySHLrjJ9MZeWgAh7oJokfVN_s27/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
-        message: "View"
-    },
-    {
-        icon1: "https://img.icons8.com/?size=100&id=33486&format=png&color=000000",
-        icon2: "https://img.icons8.com/?size=100&id=43966&format=png&color=000000",
-        position: "Winner",
-        color: "#ffbf00",
-        name: "EUREKA - Mystery Solving Competition 2023",
-        institute: "Ramakrishna Mission Vivekananda Centenary College, Rahara, Kolkata",
-        description: "",
-        medal: "Gold",
-        participation: "Team of Two",
-        view: "https://drive.google.com/file/d/1w1hQy0AGePx4jwjhxvmLAaQi8VFh6H43/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
-        message: "View"
-    },
-    {
-        icon1: "https://img.icons8.com/?size=100&id=33486&format=png&color=000000",
-        icon2: "https://img.icons8.com/?size=100&id=71158&format=png&color=000000",
-        position: "Winner",
-        color: "#ffbf00",
-        name: "Sherlocked, Srijan'25",
-        institute: "Faculty of Engineering and Technology, Jadavpur University",
-        description: "",
-        medal: "Gold",
-        participation: "Team of Three",
-        view: "https://drive.google.com/file/d/1PakvJlfb4XBnVtWNY-4-3HVm6JzF2b-V/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_srijanju-mca-jumca-activity-7319796457308311552-JpnY?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg",
-        message: "View"
-    },
-    {
-        icon1: "https://img.icons8.com/?size=100&id=33486&format=png&color=000000",
-        icon2: "https://img.icons8.com/?size=100&id=44831&format=png&color=000000",
-        position: "Winner",
-        color: "#ffbf00",
-        name: "Error 404, Envision 2k25",
-        institute: "Ramakrishna Mission Residential College, Narendrapur, Kolkata",
-        description: "",
-        medal: "Gold",
-        participation: "Single Player",
-        view: "https://drive.google.com/file/d/1QujfDQFttfx7SlyVsXCIlj6YIgjVBZfO/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/posts/rohanchakraborty0108_codingcompetition-error404-rkmrc-activity-7314332325641613312--KBI?utm_source=share&utm_medium=member_desktop&rcm=ACoAADmvFV8ByEhnQD5-VmVV6_1rsbq_VFrDukg",
-        message: "View"
-    },
-    {
-        icon1: "https://img.icons8.com/?size=100&id=23875&format=png&color=000000",
-        icon2: "https://img.icons8.com/?size=100&id=44831&format=png&color=000000",
-        position: "First Runner-Up",
-        color: "#bc7335",
-        name: "CodeCrafter, IgniteX 1.0",
-        institute: "International Institute of Management, Kolkata",
-        description: "",
-        medal: "Bronze",
-        participation: "Single Player",
-        view: "https://drive.google.com/file/d/10W_Kjy_E2jnggi95a_kPv4L1YwYHm1Jv/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
-        message: "View"
-    },
-    {
-        icon1: "https://img.icons8.com/?size=100&id=23875&format=png&color=000000",
-        icon2: "https://img.icons8.com/?size=100&id=44831&format=png&color=000000",
-        position: "First Runner-Up",
-        color: "#bc7335",
-        name: "Rahasyabhedi - Mystery Solving Competition, Nirdesh 2024",
-        institute: "Ramakrishna Mission Vivekananda Centenary College, Rahara, Kolkata",
-        description: "",
-        medal: "Bronze",
-        participation: "Single Player",
-        view: "https://drive.google.com/file/d/1194-dcJvEL1IchtdqhIF5-Nya_OpkuZk/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
-        message: "View"
-    },
-    {
-        icon1: "https://img.icons8.com/?size=100&id=23875&format=png&color=000000",
-        icon2: "https://img.icons8.com/?size=100&id=44831&format=png&color=000000",
-        position: "First Runner-Up",
-        color: "#bc7335",
-        name: "The Turing Show, Perceptron 2025",
-        institute: "Ramakrishna Mission Vivekananda Educational and Research Institute",
-        description: "",
-        medal: "Bronze",
-        participation: "Single Player",
-        view: "https://drive.google.com/file/d/1b_B5QMO62DZasjctaB0_I-u6IZvgMPsw/view?usp=sharing",
-        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
-        message: "View"
-    },
-    {
-        icon1: "https://img.icons8.com/?size=100&id=AbQBhN9v62Ob&format=png&color=000000",
-        icon2: "https://img.icons8.com/?size=100&id=1FdYDpqhZ86g&format=png&color=000000",
-        position: "350+ Problems Solved",
-        color: "#bc7335",
-        name: "GeeksForGeeks",
-        institute: "With a Coding Score of 1267 and Contest Rating of 1560 in 2 Contests",
-        description: "",
-        medal: "GFG",
-        participation: "",
-        view: "https://www.geeksforgeeks.org/user/rohannju/",
-        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
-        message: "Visit Profile"
-    },
-    {
-        icon1: "https://img.icons8.com/?size=100&id=On4zzIgLaBAu&format=png&color=000000",
-        icon2: "https://img.icons8.com/?size=100&id=1FdYDpqhZ86g&format=png&color=000000",
-        position: "450+ Problems Solved",
-        color: "#bc7335",
-        name: "LeetCode",
-        institute: "With a Contest Rating of 1438 in 4 Contests and Problem of the Day Streak of 220+ Days",
-        description: "",
-        medal: "Leetcode",
-        participation: "",
-        view: "https://leetcode.com/u/rohanch0108003/",
-        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
-        message: "Visit Profile"
-    },
-    {
-        icon1: "https://img.icons8.com/?size=100&id=42871&format=png&color=000000",
-        icon2: "https://img.icons8.com/?size=100&id=1FdYDpqhZ86g&format=png&color=000000",
-        position: "900+ Problems Solved",
-        color: "#bc7335",
-        name: "Coding Profile Summary",
-        institute: "Within Less Than 200 Active Days, with a Daily Streak of 135+ Days",
-        description: "",
-        medal: "Rohan Chakraborty",
-        participation: "",
-        view: "https://codolio.com/profile/Rohann/problemSolving",
-        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
-        message: "Visit Profile"
-    }
+const selectedFilter = ref("all");
+
+const filterOptions = [
+  { label: "All Milestones", value: "all" },
+  { label: "Wins (1st Place)", value: "gold" },
+  { label: "Podiums & Finalists", value: "podium" },
+  { label: "Entrance Rank", value: "rank" }
 ];
 
-// Initialize tooltipVisible with unique keys (using item.name)
-const tooltipVisible = reactive(
-    achievements.reduce((acc, item) => {
-        acc[item.name] = { 1: false, 2: false, 3: false, 4: false };
-        return acc;
-    }, {})
-);
-
-const showTooltip = (itemName, buttonId) => {
-    // Reset all tooltips for this item
-    tooltipVisible[itemName][1] = false;
-    tooltipVisible[itemName][2] = false;
-    tooltipVisible[itemName][3] = false;
-    tooltipVisible[itemName][4] = false;
-    // Show the specific tooltip
-    tooltipVisible[itemName][buttonId] = true;
-};
-
-const hideTooltip = (itemName, buttonId) => {
-    tooltipVisible[itemName][buttonId] = false;
-};
+const filteredAchievements = computed(() => {
+  if (selectedFilter.value === "all") return achievements;
+  if (selectedFilter.value === "podium") {
+    return achievements.filter((item) => item.badgeType === "bronze" || item.badgeType === "finalist");
+  }
+  return achievements.filter((item) => item.badgeType === selectedFilter.value);
+});
 </script>
 
 <template>
-    <div id="achievements"></div>
-    <div class="heading w-[90%] mx-auto mt-[15vw] mb-[2vw]">
-        <h1 class="text-[4vw] md:text-[3vw] font-bold text-center">Achievements</h1>
-    </div>
-    <!-- Desktop and iPad View -->
-    <div class="hidden md:grid mx-[2vw] grid-cols-3 gap-[2vw] p-[2vw]">
-        <div v-for="item in achievements" :key="item.name"
-            class="card-container bg-gray-800 border border-gray-800 rounded-xl shadow-sm mb-[2vw] flex flex-col h-[22rem]">
-            <div class="mx-[2vw] mt-[1vw] flex justify-between p-[1vw]">
-                <!-- Medal Button -->
-                <div class="relative" @mouseover="showTooltip(item.name, 1)" @mouseleave="hideTooltip(item.name, 1)">
-                    <button
-                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform"
-                        :aria-label="item.medal ? `Medal: ${item.medal}` : 'No Medal'">
-                        <img :src="item.icon1" alt="Medal Icon" class="w-[4rem] h-auto rounded-tl-md" />
-                    </button>
-                    <div v-if="item.medal && tooltipVisible[item.name]?.[1]"
-                        class="absolute top-[-2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
-                        role="tooltip">
-                        {{ item.medal }}
-                        <div
-                            class="absolute bottom-[-0.3rem] left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
-                        </div>
-                    </div>
-                </div>
-                <!-- Profile Button -->
-                <div class="relative" @mouseover="showTooltip(item.name, 2)" @mouseleave="hideTooltip(item.name, 2)">
-                    <button
-                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform"
-                        :aria-label="item.participation ? `Participation: ${item.participation}` : 'No Participation Info'">
-                        <img :src="item.icon2" alt="Profile Icon" class="w-[4rem] h-auto rounded-tr-md" />
-                    </button>
-                    <div v-if="item.participation && tooltipVisible[item.name]?.[2]"
-                        class="absolute top-[-2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
-                        role="tooltip">
-                        {{ item.participation }}
-                        <div
-                            class="absolute bottom-[-0.3rem] left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-content p-[1rem] text-center flex flex-col flex-grow">
-                <div class="text-content">
-                    <h5 class="mb-[0.2rem] text-[1.4rem] font-bold" :style="{ color: item.color }">
-                        {{ item.position }}
-                    </h5>
-                    <h5 class="mb-[0.7rem] text-[1.1rem] font-semibold text-[#d35757]">
-                        {{ item.name }}
-                    </h5>
-                    <h3 class="mb-[1rem] text-[0.9rem] font-normal text-[#16e607]">
-                        {{ item.institute }}
-                    </h3>
-                </div>
-                <div class="card-buttons flex gap-[4rem] justify-center pb-[0.75rem] items-center">
-                    <!-- View Button -->
-                    <div class="relative" @mouseover="showTooltip(item.name, 3)"
-                        @mouseleave="hideTooltip(item.name, 3)">
-                        <a target="_blank" :href="item.view"
-                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block"
-                            aria-label="View Achievement">
-                            <img src="https://img.icons8.com/?size=100&id=Psrfh0UtjRyD&format=png&color=000000"
-                                alt="View Icon" class="w-[2.5rem] h-auto" />
-                        </a>
-                        <div v-if="tooltipVisible[item.name]?.[3]"
-                            class="absolute bottom-[2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
-                            role="tooltip">
-                            {{ item.message }}
-                            <div
-                                class="absolute top-full left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- LinkedIn Button -->
-                    <div class="relative" @mouseover="showTooltip(item.name, 4)"
-                        @mouseleave="hideTooltip(item.name, 4)">
-                        <a :href="item.linkedin" target="_blank"
-                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block"
-                            aria-label="Visit LinkedIn">
-                            <img src="https://img.icons8.com/?size=100&id=67570&format=png&color=000000"
-                                alt="LinkedIn Icon" class="w-[3rem] h-auto" />
-                        </a>
-                        <div v-if="tooltipVisible[item.name]?.[4]"
-                            class="absolute bottom-[2.5rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.875rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
-                            role="tooltip">
-                            Visit LinkedIn
-                            <div
-                                class="absolute top-full left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <section id="achievements" class="scroll-mt-20 py-14 relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <span class="text-xs font-mono font-semibold tracking-wider text-cyan-400 uppercase">Competitive Milestones</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1.5 tracking-tight">
+          Honors & Achievements
+        </h2>
+        <p class="text-sm sm:text-base text-slate-400 mt-3">
+          State-level entrance ranks, competitive coding victories, and hackathon milestones.
+        </p>
+
+        <!-- Filter Pills -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mt-6">
+          <button
+            v-for="filter in filterOptions"
+            :key="filter.value"
+            @click="selectedFilter = filter.value"
+            type="button"
+            class="px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200"
+            :class="[
+              selectedFilter === filter.value
+                ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-600/30'
+                : 'bg-slate-900/60 text-slate-400 hover:text-white border border-white/5 hover:border-white/20'
+            ]"
+          >
+            {{ filter.label }}
+          </button>
         </div>
-    </div>
-    <!-- Mobile View -->
-    <div class="block md:hidden mx-[4vw] p-[2vw]">
-        <div v-for="item in achievements" :key="item.name"
-            class="card-container bg-gray-800 border border-gray-800 rounded-xl shadow-sm mb-[2vw] flex flex-col h-[20rem] w-[90%] mx-auto">
-            <div class="mx-[2vw] mt-[1vw] flex justify-between p-[1vw]">
-                <!-- Medal Button -->
-                <div class="relative" @click="showTooltip(item.name, 1)">
-                    <button
-                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform"
-                        :aria-label="item.medal ? `Medal: ${item.medal}` : 'No Medal'">
-                        <img :src="item.icon1" alt="Medal Icon" class="w-[3rem] h-auto rounded-tl-md" />
-                    </button>
-                    <div v-if="item.medal && tooltipVisible[item.name]?.[1]"
-                        class="absolute top-[-2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
-                        role="tooltip">
-                        {{ item.medal }}
-                        <div
-                            class="absolute bottom-[-0.3rem] left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
-                        </div>
-                    </div>
-                </div>
-                <!-- Profile Button -->
-                <div class="relative" @click="showTooltip(item.name, 2)">
-                    <button
-                        class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform"
-                        :aria-label="item.participation ? `Participation: ${item.participation}` : 'No Participation Info'">
-                        <img :src="item.icon2" alt="Profile Icon" class="w-[3rem] h-auto rounded-tr-md" />
-                    </button>
-                    <div v-if="item.participation && tooltipVisible[item.name]?.[2]"
-                        class="absolute top-[-2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
-                        role="tooltip">
-                        {{ item.participation }}
-                        <div
-                            class="absolute bottom-[-0.3rem] left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
-                        </div>
-                    </div>
-                </div>
+      </div>
+
+      <!-- Achievements Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          v-for="(item, idx) in filteredAchievements"
+          :key="idx"
+          class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between border border-white/5"
+        >
+          <div>
+            <!-- Top Badges Row -->
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <!-- Position Badge -->
+              <span
+                class="px-2.5 py-1 rounded-lg text-xs font-semibold font-mono"
+                :class="{
+                  'bg-amber-500/10 text-amber-300 border border-amber-500/30': item.badgeType === 'gold',
+                  'bg-orange-500/10 text-orange-300 border border-orange-500/30': item.badgeType === 'bronze',
+                  'bg-cyan-500/10 text-cyan-300 border border-cyan-500/30': item.badgeType === 'rank',
+                  'bg-purple-500/10 text-purple-300 border border-purple-500/30': item.badgeType === 'finalist',
+                  'bg-blue-500/10 text-blue-300 border border-blue-500/30': item.badgeType === 'participant'
+                }"
+              >
+                {{ item.position }}
+              </span>
+
+              <span class="text-xs font-mono text-slate-500">
+                {{ item.year }}
+              </span>
             </div>
-            <div class="card-content p-[0.75rem] text-center flex flex-col flex-grow">
-                <div class="text-content">
-                    <h5 class="mb-[0.2rem] text-[1.2rem] font-bold" :style="{ color: item.color }">
-                        {{ item.position }}
-                    </h5>
-                    <h5 class="mb-[0.5rem] text-[0.9rem] font-semibold text-[#d35757]">
-                        {{ item.name }}
-                    </h5>
-                    <h3 class="mb-[0.75rem] text-[0.8rem] font-normal text-[#16e607]">
-                        {{ item.institute }}
-                    </h3>
-                </div>
-                <div class="card-buttons flex gap-[4rem] justify-center pb-[0.75rem] items-center">
-                    <!-- View Button -->
-                    <div class="relative" @click="showTooltip(item.name, 3)">
-                        <a target="_blank" :href="item.view"
-                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block"
-                            aria-label="View Achievement">
-                            <img src="https://img.icons8.com/?size=100&id=Psrfh0UtjRyD&format=png&color=000000"
-                                alt="View Icon" class="w-[2rem] h-auto" />
-                        </a>
-                        <div v-if="tooltipVisible[item.name]?.[3]"
-                            class="absolute bottom-[2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
-                            role="tooltip">
-                            View
-                            <div
-                                class="absolute top-full left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- LinkedIn Button -->
-                    <div class="relative" @click="showTooltip(item.name, 4)">
-                        <a :href="item.linkedin" target="_blank"
-                            class="bg-transparent border-none cursor-pointer p-[0.5vw] hover:scale-110 transition-transform inline-block"
-                            aria-label="Visit LinkedIn">
-                            <img src="https://img.icons8.com/?size=100&id=67570&format=png&color=000000"
-                                alt="LinkedIn Icon" class="w-[2.4rem] h-auto" />
-                        </a>
-                        <div v-if="tooltipVisible[item.name]?.[4]"
-                            class="absolute bottom-[2rem] left-1/2 transform -translate-x-1/2 z-10 px-[1vw] py-[0.5vw] text-[0.75rem] text-white bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap"
-                            role="tooltip">
-                            Visit LinkedIn
-                            <div
-                                class="absolute top-full left-1/2 transform -translate-x-1/2 border-[0.3rem] border-t-gray-700 border-x-transparent border-b-transparent">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            <!-- Title & Institution -->
+            <h3 class="text-lg font-bold text-white mb-1.5 leading-snug">
+              {{ item.title }}
+            </h3>
+            <p class="text-xs font-medium text-indigo-300 mb-3">
+              {{ item.subtitle }}
+            </p>
+
+            <p class="text-xs text-slate-400 leading-relaxed mb-6">
+              {{ item.description }}
+            </p>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs">
+            <a
+              v-if="item.view"
+              :href="item.view"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 font-semibold transition-colors"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+              View Document
+            </a>
+            <span v-else class="text-slate-600">No document</span>
+
+            <a
+              v-if="item.linkedin"
+              :href="item.linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1 text-slate-400 hover:text-slate-200 transition-colors"
+              title="View on LinkedIn"
+            >
+              <span>LinkedIn</span>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
         </div>
+      </div>
     </div>
+  </section>
 </template>
-
-<style scoped>
-.card-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.card-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.text-content {
-    flex-grow: 0;
-    flex-shrink: 0;
-    min-height: 10rem;
-}
-
-.card-buttons {
-    margin-top: auto;
-    padding-bottom: 0.75rem;
-    align-items: center;
-}
-
-.card-buttons img {
-    line-height: 1;
-    vertical-align: middle;
-}
-
-/* iPad-specific adjustments */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .grid-cols-3 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .card-container {
-        height: 21rem;
-    }
-
-    .text-content {
-        min-height: 9rem;
-    }
-
-    .text-\[1\.4rem\] {
-        font-size: 1.2rem;
-    }
-
-    .text-\[1\.1rem\] {
-        font-size: 1rem;
-    }
-
-    .text-\[0\.9rem\] {
-        font-size: 0.875rem;
-    }
-
-    .w-\[4rem\] {
-        width: 3.5rem;
-        height: 3.5rem;
-    }
-
-    .w-\[2\.5rem\] {
-        width: 2rem;
-        height: 2rem;
-    }
-
-    .gap-\[4rem\] {
-        gap: 3rem;
-    }
-}
-
-/* Mobile-specific adjustments */
-@media (max-width: 767px) {
-    .text-content {
-        min-height: 8rem;
-    }
-
-    .w-\[2rem\] {
-        width: 2rem;
-        height: 2rem;
-    }
-}
-</style>

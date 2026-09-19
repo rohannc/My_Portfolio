@@ -1,177 +1,68 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-    background-color: rgb(16, 24, 40);
+  background-color: #060913;
+  color: #e2e8f0;
+  overflow-x: hidden;
 }
 
-.tabbed-paragraph {
-    text-indent: 40px;
-    /* Indent the first line */
+/* Subtle background glowing mesh */
+.bg-mesh {
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(139, 92, 246, 0.06) 0px, transparent 50%);
 }
 
-/* === BASE HEADING === */
-
-h1 .heading {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 300;
-    font-size: 40px;
-    -webkit-transition: all 0.4s ease 0s;
-    -o-transition: all 0.4s ease 0s;
-    transition: all 0.4s ease 0s;
+/* Subtle grid overlay */
+.bg-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
-h1 span .heading {
-    display: block;
-    font-size: 0.5em;
-    line-height: 1.3;
+/* Custom modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-h1 em {
-    font-style: normal;
-    font-weight: 600;
+::-webkit-scrollbar-track {
+  background: #060913;
 }
 
-.heading h1 {
-    text-align: center;
-    font-size: 30px;
-    font-weight: 300;
-    color: #f1fc1c;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-
-    display: grid;
-    grid-template-columns: 1fr max-content 1fr;
-    grid-template-rows: 27px 0;
-    grid-gap: 20px;
-    align-items: center;
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
 }
 
-.heading h1:after,
-.heading h1:before {
-    content: " ";
-    display: block;
-    border-bottom: 1px solid #fb3a84;
-    border-top: 1px solid #fb3a84;
-    height: 5px;
-    background-color: #101828;
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
 }
 
-.material-symbols-outlined {
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
+/* Glass card utility */
+.glass-card {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.comic-relief-regular {
-    font-family: "Comic Relief", system-ui;
-    font-weight: 400;
-    font-style: normal;
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.comic-relief-bold {
-    font-family: "Comic Relief", system-ui;
-    font-weight: 700;
-    font-style: normal;
-}
-
-.tagesschrift-regular {
-    font-family: "Tagesschrift", system-ui;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.roboto-mono-regular {
-    font-family: "Roboto Mono", monospace;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.montserrat-regular {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.montserrat-medium {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;   
-}
-
-.pt-serif-regular {
-    font-family: "PT Serif", serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.pt-serif-bold {
-    font-family: "PT Serif", serif;
-    font-weight: 700;
-    font-style: normal;
-}
-
-.pt-serif-regular-italic {
-    font-family: "PT Serif", serif;
-    font-weight: 400;
-    font-style: italic;
-}
-
-.pt-serif-bold-italic {
-    font-family: "PT Serif", serif;
-    font-weight: 700;
-    font-style: italic;
-}
-
-.playfair-display-regular {
-    font-family: "Playfair Display", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.playfair-display-medium {
-    font-family: "Playfair Display", serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-}
-
-.cascadia-mono-regular {
-    font-family: "Cascadia Mono", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.cascadia-mono-bold {
-    font-family: "Cascadia Mono", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
-}
-
-.libre-baskerville-regular {
-    font-family: "Libre Baskerville", serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.libre-baskerville-bold {
-    font-family: "Libre Baskerville", serif;
-    font-weight: 700;
-    font-style: normal;
-}
-
-.libre-baskerville-regular-italic {
-    font-family: "Libre Baskerville", serif;
-    font-weight: 400;
-    font-style: italic;
+.glass-card-hover:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.15);
 }
