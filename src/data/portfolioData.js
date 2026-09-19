@@ -205,19 +205,22 @@ export const featuredProject = {
   team: [
     {
       name: "Rohan Chakraborty",
-      role: "Lead Developer · Forensic Analysis, ELA & Frontend Integration",
+      role: "Forensic Analysis & ELA",
+      subRole: "Frontend Integration & System Lead",
       avatar: "ProjectIcon1Cropper.jpg",
       linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
     },
     {
       name: "Adrika Ghosh",
-      role: "Frontend Engineering & UI/UX Design",
+      role: "Frontend Engineering",
+      subRole: "UI/UX & Interface Design",
       avatar: "Adrika.jpeg",
       linkedin: "https://www.linkedin.com/in/adrika-ghosh-b07a66298/"
     },
     {
       name: "Subhashis Mondal",
-      role: "Model Training, Dataset Pipeline & Backend Architecture",
+      role: "Model Training & Datasets",
+      subRole: "Backend Architecture",
       avatar: "Subhashis.jpeg",
       linkedin: "https://www.linkedin.com/in/subhashis360/"
     }
