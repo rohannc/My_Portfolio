@@ -29,13 +29,13 @@ import { experiences } from "../data/portfolioData.js";
           <!-- Header Bar: Visa Logo Badge, Role Title, Status Badge, Period -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-5 border-b border-white/5">
             <div class="flex items-start sm:items-center gap-4">
-              <!-- Authentic Corporate Visa Brand Badge -->
+              <!-- Highlighted White Visa Logo on Signature Visa Blue Badge -->
               <div
-                class="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-white shadow-md shadow-blue-950/40 border border-white/20 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300"
+                class="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gradient-to-r from-[#1434cb] via-[#1a44e8] to-[#2563eb] shadow-lg shadow-blue-600/30 border border-blue-300/40 flex items-center justify-center flex-shrink-0 group-hover:scale-105 group-hover:shadow-blue-500/50 transition-all duration-300"
                 title="Visa Inc."
               >
                 <svg
-                  class="h-4 sm:h-5 w-auto fill-[#1434cb]"
+                  class="h-4 sm:h-5 w-auto fill-white drop-shadow-[0_0_8px_rgba(255,255,255,0.75)]"
                   viewBox="0 0 1000 324.68"
                   xmlns="http://www.w3.org/2000/svg"
                   role="img"
