@@ -6,9 +6,8 @@ const selectedFilter = ref("all");
 
 const filterOptions = [
   { label: "All Milestones", value: "all" },
-  { label: "Wins (1st Place)", value: "gold" },
-  { label: "Podiums & Finalists", value: "podium" },
-  { label: "Entrance Rank", value: "rank" }
+  { label: "Winner", value: "gold" },
+  { label: "Podiums & Finalists", value: "podium" }
 ];
 
 const filteredAchievements = computed(() => {
