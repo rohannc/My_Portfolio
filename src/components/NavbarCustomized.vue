@@ -1,319 +1,268 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import { personalInfo, socialLinks } from "../data/portfolioData.js";
 
-// Navigation items with icons
-const navItems = ref([
-    { name: "Skills", url: "#skills", active: false, icon: "light-bulb" },
-    { name: "Education", url: "#education", active: false, icon: "academic-cap" },
-    { name: "Achievements", url: "#achievements", active: false, icon: "trophy" },
-    { name: "Projects", url: "#projects", active: false, icon: "briefcase" },
-    { name: "Contact Me", url: "#contact", active: false, icon: "envelope" },
-]);
+const navItems = [
+  { name: "About", url: "#about" },
+  { name: "Skills", url: "#skills" },
+  { name: "Projects", url: "#projects" },
+  { name: "Achievements", url: "#achievements" },
+  { name: "Education", url: "#education" },
+  { name: "Contact", url: "#contact" }
+];
 
-// Mobile menu state
+const activeSection = ref("about");
 const isMenuOpen = ref(false);
+const isScrolled = ref(false);
 
-// Window width state for hiding profile name and adjusting margins
-const windowWidth = ref(window.innerWidth);
+let isManualScroll = false;
+let scrollTimeout = null;
 
-// Update window width on resize
-const updateWindowWidth = () => {
-    windowWidth.value = window.innerWidth;
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 20;
+
+  if (isManualScroll) return;
+
+  const scrollPosition = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
+
+  // If user has scrolled close to the bottom, highlight the last section (contact)
+  if (scrollPosition + windowHeight >= documentHeight - 60) {
+    activeSection.value = "contact";
+    return;
+  }
+
+  // Find which section is currently at the top (with 140px navbar offset)
+  const sections = Array.from(document.querySelectorAll("section[id]"));
+  const offset = 140;
+
+  for (let i = sections.length - 1; i >= 0; i--) {
+    const section = sections[i];
+    if (section.offsetTop - offset <= scrollPosition) {
+      activeSection.value = section.id;
+      return;
+    }
+  }
+
+  if (sections.length > 0) {
+    activeSection.value = sections[0].id;
+  }
 };
 
-// Handle navbar button click
-const handleNavClick = (clickedItem) => {
-    navItems.value.forEach((item) => {
-        item.active = item === clickedItem;
-    });
-    isMenuOpen.value = false; // Close mobile menu
+const handleNavClick = (event, url) => {
+  event.preventDefault();
+  const id = url.replace("#", "");
+  const targetElement = document.getElementById(id);
+
+  activeSection.value = id;
+  isMenuOpen.value = false;
+
+  if (targetElement) {
+    isManualScroll = true;
+    clearTimeout(scrollTimeout);
+
+    // Smooth scroll directly to the element taking scroll-margin-top into account
+    targetElement.scrollIntoView({ behavior: "smooth" });
+
+    // Update browser URL hash without jump
+    if (history.pushState) {
+      history.pushState(null, null, url);
+    } else {
+      window.location.hash = url;
+    }
+
+    // Re-enable scroll spy after smooth scroll finishes
+    scrollTimeout = setTimeout(() => {
+      isManualScroll = false;
+    }, 850);
+  }
 };
 
-// Open link in new tab
-const openLink = () => {
-    window.open('https://codolio.com/profile/Rohann', '_blank');
+const openResume = () => {
+  window.open(personalInfo.resumeUrl, "_blank");
 };
 
-// Initialize dark mode, Intersection Observer, and window width listener
 onMounted(() => {
-    document.documentElement.classList.add('dark');
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  // Initial check on load
+  handleScroll();
+});
 
-    // Set up Intersection Observer for section visibility
-    const observer = new IntersectionObserver(
-        (entries) => {
-            let isAnySectionVisible = false;
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    isAnySectionVisible = true;
-                    const sectionId = `#${entry.target.id}`;
-                    navItems.value.forEach((item) => {
-                        item.active = item.url === sectionId;
-                    });
-                }
-            });
-            // If no section is visible (e.g., at top), unhighlight all
-            if (!isAnySectionVisible) {
-                navItems.value.forEach((item) => {
-                    item.active = false;
-                });
-            }
-        },
-        { threshold: 0.5, rootMargin: '-20% 0px -20% 0px' }
-    );
-
-    // Observe each section
-    navItems.value.forEach((item) => {
-        const section = document.querySelector(item.url);
-        if (section) {
-            observer.observe(section);
-        }
-    });
-
-    // Add window resize listener
-    window.addEventListener('resize', updateWindowWidth);
-
-    // Cleanup observer and listener on unmount
-    onUnmounted(() => {
-        observer.disconnect();
-        window.removeEventListener('resize', updateWindowWidth);
-    });
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+  if (scrollTimeout) clearTimeout(scrollTimeout);
 });
 </script>
 
 <template>
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-gray-900 border-gray-200">
-        <div class="w-[96%] ml-[2%] mr-[2%] flex items-center justify-between p-4">
-            <!-- Logo Section -->
-            <a href="#" class="flex items-center space-x-3">
-                <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-500" src="../assets/ProfileImageCropped.jpg"
-                    alt="Bordered avatar">
-                <span v-if="windowWidth >= 900 || windowWidth < 768"
-                    class="self-center text-[clamp(1.125rem,2.25vw,1.5rem)] font-semibold whitespace-nowrap text-white hidden md:block">
-                    Rohan Chakraborty
-                </span>
+  <header
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+    :class="[
+      isScrolled
+        ? 'bg-slate-950/80 backdrop-blur-md border-b border-white/5 py-3 shadow-lg shadow-black/20'
+        : 'bg-transparent py-5'
+    ]"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <!-- Brand / Profile link -->
+      <a
+        href="#about"
+        @click="handleNavClick($event, '#about')"
+        class="flex items-center gap-3 group focus:outline-none cursor-pointer"
+      >
+        <div class="relative">
+          <img
+            src="../assets/ProfileImageCropped.jpg"
+            alt="Rohan Chakraborty"
+            class="w-10 h-10 rounded-full object-cover ring-2 ring-indigo-500/40 group-hover:ring-cyan-400 transition-all duration-300"
+          />
+          <span
+            class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-slate-950"
+            title="Available"
+          ></span>
+        </div>
+        <div class="flex flex-col">
+          <span
+            class="text-sm font-semibold tracking-tight text-white group-hover:text-cyan-300 transition-colors"
+          >
+            {{ personalInfo.name }}
+          </span>
+          <span class="text-[11px] font-mono text-cyan-400 hidden sm:block">
+            Software Engineer @ Visa
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-white/5 backdrop-blur-md">
+        <a
+          v-for="item in navItems"
+          :key="item.url"
+          :href="item.url"
+          @click="handleNavClick($event, item.url)"
+          class="px-3.5 py-1.5 text-xs font-medium rounded-full transition-all duration-200 cursor-pointer"
+          :class="[
+            activeSection === item.url.replace('#', '')
+              ? 'bg-gradient-to-r from-indigo-500 to-cyan-500 text-white shadow-sm shadow-indigo-500/25'
+              : 'text-slate-300 hover:text-white hover:bg-white/5'
+          ]"
+        >
+          {{ item.name }}
+        </a>
+      </nav>
+
+      <!-- Right CTAs: Socials + Resume -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a
+          href="https://github.com/rohannc"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-9 h-9 flex items-center justify-center rounded-lg border border-white/5 bg-slate-900/50 text-slate-300 hover:text-white hover:border-indigo-500/40 transition-colors"
+          title="GitHub"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+            />
+          </svg>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/rohanchakraborty0108/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-9 h-9 flex items-center justify-center rounded-lg border border-white/5 bg-slate-900/50 text-slate-300 hover:text-white hover:border-indigo-500/40 transition-colors"
+          title="LinkedIn"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path
+              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+            />
+          </svg>
+        </a>
+
+        <button
+          @click="openResume"
+          type="button"
+          class="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors shadow-sm shadow-indigo-600/30"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Resume
+        </button>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button
+        @click="isMenuOpen = !isMenuOpen"
+        type="button"
+        class="md:hidden p-2 rounded-lg text-slate-300 hover:text-white bg-slate-900/50 border border-white/5 focus:outline-none"
+        aria-label="Toggle navigation menu"
+      >
+        <svg v-if="!isMenuOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <transition
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="opacity-0 -translate-y-2"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition duration-150 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 -translate-y-2"
+    >
+      <div
+        v-if="isMenuOpen"
+        class="md:hidden mt-2 mx-4 p-4 rounded-2xl bg-slate-900/95 border border-white/10 backdrop-blur-xl shadow-2xl flex flex-col gap-2"
+      >
+        <a
+          v-for="item in navItems"
+          :key="item.url"
+          :href="item.url"
+          @click="handleNavClick($event, item.url)"
+          class="px-4 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer"
+          :class="[
+            activeSection === item.url.replace('#', '')
+              ? 'bg-indigo-600/20 text-indigo-300 font-semibold border border-indigo-500/30'
+              : 'text-slate-300 hover:text-white hover:bg-white/5'
+          ]"
+        >
+          {{ item.name }}
+        </a>
+
+        <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+          <button
+            @click="openResume"
+            class="flex-1 mr-2 py-2 text-center text-xs font-semibold text-white bg-indigo-600 rounded-lg"
+          >
+            View Resume
+          </button>
+          <div class="flex items-center gap-2">
+            <a
+              href="https://github.com/rohannc"
+              target="_blank"
+              class="p-2 rounded-lg bg-slate-800 text-slate-300"
+            >
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
             </a>
-            <!-- Navigation and Toggle -->
-            <div class="flex items-center space-x-8">
-                <!-- Desktop Navigation -->
-                <ul class="hidden md:flex space-x-8 font-medium text-[clamp(0.875rem,1.5vw,1rem)]">
-                    <li v-for="(item, index) in navItems" :key="index">
-                        <a :href="item.url" @click="handleNavClick(item)"
-                            class="inline-flex items-center space-x-2 whitespace-nowrap" :class="[
-                                item.active
-                                    ? 'text-blue-500'
-                                    : 'text-white hover:text-blue-500'
-                            ]">
-                            <svg v-if="item.icon"
-                                :class="['w-[clamp(1.125rem,2vw,1.25rem)] h-[clamp(1.125rem,2vw,1.25rem)]', item.active ? 'text-blue-500' : 'text-white']"
-                                fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path v-if="item.icon === 'light-bulb'" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                <path v-if="item.icon === 'academic-cap'" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998a12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                                <path v-if="item.icon === 'trophy'" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                                <path v-if="item.icon === 'briefcase'" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                <path v-if="item.icon === 'envelope'" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                            <span>{{ item.name }}</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- Link Button with Tooltip -->
-                <button @click="openLink" class="md:ml-4 mb-1.5 mr-8 relative" data-tooltip="Coding Profile">
-                    <img src="https://img.icons8.com/?size=100&id=xXaeGQn5sAFy&format=png&color=000000" alt="Link icon"
-                        class="w-[30px] h-[30px]">
-                </button>
-                <!-- Hamburger Menu for Mobile -->
-                <div class="md:hidden fixed top-4.5 right-4 z-60">
-                    <input id="checkbox2" type="checkbox" class="hidden" v-model="isMenuOpen">
-                    <label class="toggle2" for="checkbox2">
-                        <div id="bar4" class="bars"></div>
-                        <div id="bar5" class="bars"></div>
-                        <div id="bar6" class="bars"></div>
-                    </label>
-                </div>
-            </div>
+            <a
+              href="https://www.linkedin.com/in/rohanchakraborty0108/"
+              target="_blank"
+              class="p-2 rounded-lg bg-slate-800 text-slate-300"
+            >
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
         </div>
-        <!-- Mobile Menu -->
-        <div class="fixed top-0 left-0 w-full bg-gray-900/90 z-40 transform transition-transform duration-300 ease-in-out"
-            :class="{ 'translate-y-0': isMenuOpen, '-translate-y-full': !isMenuOpen }">
-            <ul class="flex flex-col items-center py-6 space-y-4 font-medium h-fit max-h-[80vh] mt-16">
-                <li v-for="(item, index) in navItems" :key="index">
-                    <a :href="item.url" @click="handleNavClick(item)" class="inline-flex items-center space-x-2" :class="[
-                        item.active
-                            ? 'text-blue-500'
-                            : 'text-white hover:text-blue-500'
-                    ]">
-                        <svg v-if="item.icon" :class="['w-5 h-5', item.active ? 'text-blue-500' : 'text-white']"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path v-if="item.icon === 'light-bulb'" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                            <path v-if="item.icon === 'academic-cap'" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998a12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                            <path v-if="item.icon === 'trophy'" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                            <path v-if="item.icon === 'briefcase'" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            <path v-if="item.icon === 'envelope'" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                        <span class="md:hidden">{{ item.name }}</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+      </div>
+    </transition>
+  </header>
 </template>
-
-<style scoped>
-/* Ensure navbar is above other elements */
-.z-50 {
-    z-index: 50;
-}
-
-/* Navbar Styles */
-#navbar {
-    background-color: #1f2937;
-    border-color: #374151;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Logo Section */
-#navbar .flex.items-center.space-x-3 img {
-    ring-color: #6b7280;
-}
-
-#navbar .flex.items-center.space-x-3 span {
-    color: #ffffff;
-}
-
-/* Navigation Links */
-#navbar ul li a {
-    color: #ffffff;
-}
-
-#navbar ul li a:hover {
-    color: #3b82f6;
-}
-
-#navbar ul li a.text-blue-500 {
-    color: #3b82f6;
-}
-
-#navbar ul li a svg {
-    stroke: #ffffff;
-}
-
-#navbar ul li a.text-blue-500 svg {
-    stroke: #3b82f6;
-}
-
-/* Link Button with Tooltip */
-#navbar button[data-tooltip] {
-    cursor: pointer;
-    position: relative;
-}
-
-#navbar button[data-tooltip]::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #374151;
-    color: #ffffff;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-    z-index: 100;
-}
-
-#navbar button[data-tooltip]:hover::after {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Mobile Menu */
-#navbar .fixed.top-0.left-0.w-full {
-    background-color: rgba(31, 41, 55, 0.9);
-}
-
-/* Hamburger Menu */
-#checkbox2 {
-    display: none;
-}
-
-.toggle2 {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    transition-duration: .5s;
-}
-
-.bars {
-    width: 100%;
-    height: 3px;
-    background-color: #5cb0ff;
-    border-radius: 3px;
-}
-
-#bar5 {
-    transition-duration: .8s;
-}
-
-#bar4,
-#bar6 {
-    width: 80%;
-}
-
-#checkbox2:checked+.toggle2 .bars {
-    position: absolute;
-    transition-duration: .5s;
-}
-
-#checkbox2:checked+.toggle2 #bar5 {
-    transform: scaleX(0);
-    transition-duration: .5s;
-}
-
-#checkbox2:checked+.toggle2 #bar4 {
-    width: 100%;
-    transform: rotate(45deg);
-    transition-duration: .5s;
-}
-
-#checkbox2:checked+.toggle2 #bar6 {
-    width: 100%;
-    transform: rotate(-45deg);
-    transition-duration: .5s;
-}
-
-#checkbox2:checked+.toggle2 {
-    transition-duration: .5s;
-    transform: rotate(180deg);
-}
-</style>

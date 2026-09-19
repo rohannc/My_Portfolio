@@ -1,478 +1,212 @@
 <script setup>
-import { reactive } from 'vue';
-import { init, send } from '@emailjs/browser';
+import { reactive, ref } from "vue";
+import { init, send } from "@emailjs/browser";
+import { personalInfo, socialLinks } from "../data/portfolioData.js";
 
-// Initialize EmailJS with your User ID
-init('VVFBHi65kAeNjynhZ');
+// Initialize EmailJS with Rohan's User ID
+init("VVFBHi65kAeNjynhZ");
 
-// Social media links
-const socialLinks = [
-    {
-        name: 'LinkedIn',
-        url: 'https://www.linkedin.com/in/rohanchakraborty0108/',
-        icon: 'https://img.icons8.com/?size=100&id=44019&format=png&color=000000',
-        tooltip: 'Visit LinkedIn'
-    },
-    {
-        name: 'GitHub',
-        url: 'https://github.com/rohannc',
-        icon: 'https://img.icons8.com/?size=100&id=12598&format=png&color=000000',
-        tooltip: 'Visit GitHub'
-    },
-    {
-        name: 'Email',
-        url: 'mailto:chakrabortyrohan.abc01@gmail.com',
-        icon: 'https://img.icons8.com/?size=100&id=YbPqIO0gOrT3&format=png&color=000000',
-        tooltip: 'Mail Me'
-    },
-    {
-        name: 'Discord',
-        url: 'https://discordapp.com/users/rohanchakraborty.',
-        icon: 'https://img.icons8.com/?size=100&id=zdrZ4QdvVaBZ&format=png&color=000000',
-        tooltip: 'Visit Discord'
-    },
-    {
-        name: 'X',
-        url: 'https://x.com/RohanCh07687035',
-        icon: 'https://img.icons8.com/?size=100&id=bG29Ckcdp6YP&format=png&color=000000',
-        tooltip: 'Visit X'
-    }
-];
-
-// Reactive state for tooltips and form
-const tooltipVisible = reactive({});
-const formState = reactive({
-    email: '',
-    first_name: '',
-    last_name: '',
-    phone: '',
-    company: '',
-    message: '',
-    loading: false,
-    error: null,
-    success: null
+const form = reactive({
+  name: "",
+  email: "",
+  subject: "",
+  message: ""
 });
 
-// Tooltip handlers
-const showTooltip = (index, buttonId) => {
-    if (!tooltipVisible[index]) {
-        tooltipVisible[index] = {};
-    }
-    Object.keys(tooltipVisible[index]).forEach(key => {
-        tooltipVisible[index][key] = false;
+const isSubmitting = ref(false);
+const statusMessage = ref("");
+const isSuccess = ref(false);
+
+const handleFormSubmit = async () => {
+  if (!form.name || !form.email || !form.message) {
+    statusMessage.value = "Please complete your name, email, and message.";
+    isSuccess.value = false;
+    return;
+  }
+
+  isSubmitting.value = true;
+  statusMessage.value = "";
+
+  try {
+    const names = form.name.trim().split(" ");
+    const firstName = names[0] || form.name;
+    const lastName = names.slice(1).join(" ") || "";
+
+    await send("service_8kwda1d", "template_9lrlp3m", {
+      first_name: firstName,
+      last_name: lastName,
+      email: form.email,
+      phone: form.subject || "Portfolio Inquiry",
+      company: form.subject || "General Inquiry",
+      message: form.message
     });
-    tooltipVisible[index][buttonId] = true;
-};
 
-const hideTooltip = (index, buttonId) => {
-    if (tooltipVisible[index]) {
-        tooltipVisible[index][buttonId] = false;
-    }
-};
-
-// Form submission handler
-const handleSubmit = async (event) => {
-    event.preventDefault();
-    formState.loading = true;
-    formState.error = null;
-    formState.success = null;
-
-    // Basic validation
-    if (
-        !formState.email ||
-        !formState.first_name ||
-        !formState.last_name ||
-        !formState.phone ||
-        !formState.company ||
-        !formState.message
-    ) {
-        formState.error = 'Please fill in all required fields.';
-        formState.loading = false;
-        return;
-    }
-
-    try {
-        // Send email via EmailJS
-        const response = await send(
-            'service_8kwda1d', // Replace with your EmailJS Service ID
-            'template_9lrlp3m', // Replace with your EmailJS Template ID
-            {
-                email: formState.email,
-                first_name: formState.first_name,
-                last_name: formState.last_name,
-                phone: formState.phone,
-                company: formState.company,
-                message: formState.message
-            }
-        );
-        formState.success = 'Email sent successfully!';
-        // Reset form
-        formState.email = '';
-        formState.first_name = '';
-        formState.last_name = '';
-        formState.phone = '';
-        formState.company = '';
-        formState.message = '';
-    } catch (error) {
-        formState.error = 'Failed to send email. Please try again.';
-        console.error('EmailJS error:', error);
-    } finally {
-        formState.loading = false;
-    }
+    isSuccess.value = true;
+    statusMessage.value = "Thank you! Your message has been sent successfully.";
+    form.name = "";
+    form.email = "";
+    form.subject = "";
+    form.message = "";
+  } catch (err) {
+    console.error("EmailJS submission error:", err);
+    isSuccess.value = false;
+    statusMessage.value = "Failed to send message. You can also reach me directly at " + personalInfo.email;
+  } finally {
+    isSubmitting.value = false;
+  }
 };
 </script>
 
 <template>
-    <div id="contact"></div>
-    <div class="container mx-auto px-7 py-8 mt-50">
-        <div class="grid grid-cols-3 gap-6">
-            <!-- Mobile View: Social Icons -->
-            <div class="md:hidden col-span-3 bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col">
-                <h2 class="text-2xl font-bold text-white mb-4 mx-auto">Contact Me</h2>
-                <div class="flex justify-center gap-3 pt-6 pb-6">
-                    <div v-for="(link, btnIndex) in socialLinks" :key="btnIndex" class="relative"
-                        @mouseover="showTooltip(0, btnIndex)" @mouseleave="hideTooltip(0, btnIndex)">
-                        <a :href="link.url" target="_blank">
-                            <button
-                                class="bg-transparent border-none cursor-pointer p-2 hover:scale-110 transition-transform">
-                                <img :src="link.icon" :alt="link.name" class="w-8" />
-                            </button>
-                        </a>
-                        <div v-if="tooltipVisible[0]?.[btnIndex]"
-                            class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 z-10 px-3 py-1 text-sm text-gray-100 bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
-                            {{ link.tooltip }}
-                            <div
-                                class="absolute top-full left-1/2 -translate-x-1/2 border-5 border-t-gray-700 border-x-transparent border-b-transparent">
-                            </div>
-                        </div>
-                    </div>
+  <section id="contact" class="scroll-mt-20 py-14 relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <span class="text-xs font-mono font-semibold tracking-wider text-cyan-400 uppercase">Get In Touch</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1.5 tracking-tight">
+          Let's Connect & Collaborate
+        </h2>
+        <p class="text-sm sm:text-base text-slate-400 mt-3">
+          Have an interesting project, opportunity, or research idea? Feel free to reach out directly.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <!-- Left Column: Contact Channels & Cards -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="glass-card rounded-2xl p-6 border border-white/5">
+            <h3 class="text-lg font-bold text-white mb-2">Direct Contact Channels</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-6">
+              I am usually quickest to reply on LinkedIn and Email.
+            </p>
+
+            <div class="space-y-3">
+              <a
+                v-for="link in socialLinks"
+                :key="link.name"
+                :href="link.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-white/5 hover:border-indigo-500/30 hover:bg-slate-800/70 transition-all duration-200 group"
+              >
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-mono text-xs group-hover:text-cyan-300">
+                    {{ link.name.charAt(0) }}
+                  </div>
+                  <div>
+                    <span class="block text-xs font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors">
+                      {{ link.name }}
+                    </span>
+                    <span class="block text-[11px] text-slate-400 font-mono">
+                      {{ link.handle }}
+                    </span>
+                  </div>
                 </div>
-            </div>
 
-            <!-- Mobile View: Form -->
-            <div class="md:hidden col-span-3 bg-gray-800 rounded-xl shadow-lg p-4">
-                <form class="max-w-md mx-auto" @submit="handleSubmit">
-                    <div class="relative z-0 w-full mb-5 group">
-                        <input type="email" name="floating_email" id="floating_email" v-model="formState.email"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                            placeholder=" " required />
-                        <label for="floating_email"
-                            class="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
-                            address</label>
-                    </div>
-                    <div class="grid md:grid-cols-2 md:gap-6">
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="floating_first_name" id="floating_first_name"
-                                v-model="formState.first_name"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required />
-                            <label for="floating_first_name"
-                                class="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
-                                name</label>
-                        </div>
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="floating_last_name" id="floating_last_name"
-                                v-model="formState.last_name"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required />
-                            <label for="floating_last_name"
-                                class="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
-                                name</label>
-                        </div>
-                    </div>
-                    <div class="grid md:grid-cols-2 md:gap-6">
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="tel" pattern="[6-9][0-9]{9}" name="floating_phone" id="floating_phone"
-                                v-model="formState.phone"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required />
-                            <label for="floating_phone"
-                                class="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone
-                                number</label>
-                        </div>
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="floating_company" id="floating_company" v-model="formState.company"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required />
-                            <label for="floating_company"
-                                class="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company
-                            </label>
-                        </div>
-                    </div>
-                    <div class="relative z-0 w-full mb-5 group">
-                        <textarea id="message" name="message" v-model="formState.message"
-                            class="block py-2.5 px-2 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer resize-none"
-                            placeholder=" " required></textarea>
-                        <label for="message"
-                            class="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Your
-                            message</label>
-                    </div>
-                    <div class="flex justify-center mt-6">
-                        <button class="Subscribe-btn" :disabled="formState.loading">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="10" viewBox="0 0 38 15"
-                                class="arrow">
-                                <path
-                                    d="M10 7.519l-.939-.344h0l.939.344zm14.386-1.205l-.981-.192.981.192zm1.276 5.509l.537.843.148-.094.107-.139-.792-.611zm4.819-4.304l-.385-.923h0l.385.923zm7.227.707a1 1 0 0 0 0-1.414L31.343.448a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414l5.657 5.657-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364zM1 7.519l.554.833.029-.019.094-.061.361-.23 1.277-.77c1.054-.609 2.397-1.32 3.629-1.787.617-.234 1.17-.392 1.623-.455.477-.066.707-.008.788.034.025.013.031.021.039.034a.56.56 0 0 1 .058.235c.029.327-.047.906-.39 1.842l1.878.689c.383-1.044.571-1.949.505-2.705-.072-.815-.45-1.493-1.16-1.865-.627-.329-1.358-.332-1.993-.244-.659.092-1.367.305-2.056.566-1.381.523-2.833 1.297-3.921 1.925l-1.341.808-.385.245-.104.068-.028.018c-.011.007-.011.007.543.84zm8.061-.344c-.198.54-.328 1.038-.36 1.484-.032.441.024.94.325 1.364.319.45.786.64 1.21.697.403.054.824-.001 1.21-.09.775-.179 1.694-.566 2.633-1.014l3.023-1.554c2.115-1.122 4.107-2.168 5.476-2.524.329-.086.573-.117.742-.115s.195.038.161.014c-.150-.105.085-.139-.076.685l1.963.384c.192-.98.152-2.083-.74-2.707-.405-.283-.868-.37-1.28-.376s-.849.069-1.274.179c-1.65.43-3.888 1.621-5.909 2.693l-2.948 1.517c-.920.439-1.673.743-2.221.870-.276.064-.429.065-.492.057-.043-.006.066.003.155.127.070.099.024.131.038-.063.014-.187.078-.49.243-.94l-1.878-.689zm14.343-1.053c-.361 1.844-.474 3.185-.413 4.161.059.950.294 1.72.811 2.215.567.544 1.242.546 1.664.459a2.34 2.34 0 0 0 .502-.167l.150-.076.049-.028.018-.011c.013-.008.013-.008-.524-.852l-.536-.844.019-.012c-.038.018-.064.027-.084.032-.037.008.053-.013.125.056.021.020-.151-.135-.198-.895-.046-.734.034-1.887.380-3.652l-1.963-.384zm2.257 5.701l.791.611.024-.031.080-.101.311-.377 1.093-1.213c.922-.954 2.005-1.894 2.904-2.27l-.771-1.846c-1.31.547-2.637 1.758-3.572 2.725l-1.184 1.314-.341.414-.093.117-.025.032c-.100.013-.010.013.781.624zm5.204-3.381c.989-.413 1.791-.420 2.697-.307.871.108 2.083.385 3.437.385v-2c-1.197 0-2.041-.226-3.19-.369-1.114-.139-2.297-.146-3.715.447l.771 1.846z">
-                                </path>
-                            </svg>
-                            Send
-                        </button>
-                    </div>
-                    <!-- Feedback Messages -->
-                    <div v-if="formState.error" class="mt-4 text-red-500 text-center text-sm">
-                        {{ formState.error }}
-                    </div>
-                    <div v-if="formState.success" class="mt-4 text-green-500 text-center text-sm">
-                        {{ formState.success }}
-                    </div>
-                </form>
+                <svg class="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </a>
             </div>
+          </div>
 
-            <!-- Desktop View: First Card (2/3 width) -->
-            <div
-                class="contact-card hidden md:flex col-span-2 bg-gray-800 rounded-xl shadow-lg p-6 flex-col max-h-[500px] md:p-6 md:max-h-[500px]">
-                <h2 class="text-2xl md:text-3xl font-bold text-white mb-4 mx-auto">Contact Me</h2>
-                <p class="text-lg text-gray-500 dark:text-gray-400">
-                    Hello, I'm Rohan Chakraborty!
-                </p>
-                <p class="text-base text-gray-500 dark:text-gray-400 tabbed-paragraph my-2">
-                    I'm currently pursuing my Master of Computer Applications (MCA) at Jadavpur University, building on
-                    my 2024 graduation from Bangabasi College, Kolkata. Passionate about technology, innovation, and
-                    creating impactful solutions, I’m always eager to explore new challenges and collaborate on exciting
-                    projects.
-                </p>
-                <p class="text-base text-gray-500 dark:text-gray-400">
-                    Whether you have a project idea, a collaboration opportunity, or just want to connect, I’d love to
-                    hear from you! Let’s work together to turn ideas into reality or discuss the latest in tech. Feel
-                    free to reach out via email or connect with me on LinkedIn.
-                </p>
-                <div class="mt-auto flex justify-center gap-6 pt-6 md:gap-6 md:pt-6 md:pb-6">
-                    <div v-for="(link, btnIndex) in socialLinks" :key="btnIndex" class="relative"
-                        @mouseover="showTooltip(0, btnIndex)" @mouseleave="hideTooltip(0, btnIndex)">
-                        <a :href="link.url" target="_blank">
-                            <button
-                                class="bg-transparent border-none cursor-pointer p-2 hover:scale-110 transition-transform md:p-2">
-                                <img :src="link.icon" :alt="link.name" class="w-6 h-6 md:w-8 md:h-8" />
-                            </button>
-                        </a>
-                        <div v-if="tooltipVisible[0]?.[btnIndex]"
-                            class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 z-10 px-3 py-1 text-sm text-gray-100 bg-gray-700 rounded shadow opacity-100 transition-opacity whitespace-nowrap">
-                            {{ link.tooltip }}
-                            <div
-                                class="absolute top-full left-1/2 -translate-x-1/2 border-5 border-t-gray-700 border-x-transparent border-b-transparent">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <!-- Location & Availability Badge -->
+          <div class="glass-card rounded-2xl p-5 border border-white/5 flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
             </div>
-
-            <!-- Desktop View: Second Card (1/3 width) -->
-            <div class="hidden md:block col-span-1 bg-gray-800 rounded-xl shadow-lg p-6">
-                <form class="max-w-md mx-auto" @submit="handleSubmit">
-                    <div class="relative z-0 w-full mb-5 group">
-                        <input type="email" name="floating_email" id="floating_email" v-model="formState.email"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                            placeholder=" " required />
-                        <label for="floating_email"
-                            class="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
-                            address</label>
-                    </div>
-                    <div class="grid md:grid-cols-2 md:gap-6">
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="floating_first_name" id="floating_first_name"
-                                v-model="formState.first_name"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required />
-                            <label for="floating_first_name"
-                                class="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
-                                name</label>
-                        </div>
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="floating_last_name" id="floating_last_name"
-                                v-model="formState.last_name"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required />
-                            <label for="floating_last_name"
-                                class="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
-                                name</label>
-                        </div>
-                    </div>
-                    <div class="grid md:grid-cols-2 md:gap-6">
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="tel" pattern="[6-9][0-9]{9}" name="floating_phone" id="floating_phone"
-                                v-model="formState.phone"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required />
-                            <label for="floating_phone"
-                                class="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone
-                                </label>
-                        </div>
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="floating_company" id="floating_company" v-model="formState.company"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required />
-                            <label for="floating_company"
-                                class="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company
-                            </label>
-                        </div>
-                    </div>
-                    <div class="relative z-0 w-full mb-5 group">
-                        <textarea id="message" name="message" v-model="formState.message"
-                            class="block py-2.5 px-2 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer resize-none"
-                            placeholder=" " required></textarea>
-                        <label for="message"
-                            class="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Your
-                            message</label>
-                    </div>
-                    <div class="flex justify-center mt-6">
-                        <button class="Subscribe-btn" :disabled="formState.loading">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="10" viewBox="0 0 38 15"
-                                class="arrow">
-                                <path
-                                    d="M10 7.519l-.939-.344h0l.939.344zm14.386-1.205l-.981-.192.981.192zm1.276 5.509l.537.843.148-.094.107-.139-.792-.611zm4.819-4.304l-.385-.923h0l.385.923zm7.227.707a1 1 0 0 0 0-1.414L31.343.448a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414l5.657 5.657-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364zM1 7.519l.554.833.029-.019.094-.061.361-.23 1.277-.77c1.054-.609 2.397-1.32 3.629-1.787.617-.234 1.17-.392 1.623-.455.477-.066.707-.008.788.034.025.013.031.021.039.034a.56.56 0 0 1 .058.235c.029.327-.047.906-.39 1.842l1.878.689c.383-1.044.571-1.949.505-2.705-.072-.815-.45-1.493-1.16-1.865-.627-.329-1.358-.332-1.993-.244-.659.092-1.367.305-2.056.566-1.381.523-2.833 1.297-3.921 1.925l-1.341.808-.385.245-.104.068-.028.018c-.011.007-.011.007.543.84zm8.061-.344c-.198.54-.328 1.038-.36 1.484-.032.441.024.94.325 1.364.319.45.786.64 1.21.697.403.054.824-.001 1.21-.09.775-.179 1.694-.566 2.633-1.014l3.023-1.554c2.115-1.122 4.107-2.168 5.476-2.524.329-.086.573-.117.742-.115s.195.038.161.014c-.150-.105.085-.139-.076.685l1.963.384c.192-.98.152-2.083-.74-2.707-.405-.283-.868-.37-1.28-.376s-.849.069-1.274.179c-1.65.43-3.888 1.621-5.909 2.693l-2.948 1.517c-.920.439-1.673.743-2.221.870-.276.064-.429.065-.492.057-.043-.006.066.003.155.127.070.099.024.131.038-.063.014-.187.078-.49.243-.94l-1.878-.689zm14.343-1.053c-.361 1.844-.474 3.185-.413 4.161.059.950.294 1.72.811 2.215.567.544 1.242.546 1.664.459a2.34 2.34 0 0 0 .502-.167l.150-.076.049-.028.018-.011c.013-.008.013-.008-.524-.852l-.536-.844.019-.012c-.038.018-.064.027-.084.032-.037.008.053-.013.125.056.021.020-.151-.135-.198-.895-.046-.734.034-1.887.380-3.652l-1.963-.384zm2.257 5.701l.791.611.024-.031.080-.101.311-.377 1.093-1.213c.922-.954 2.005-1.894 2.904-2.27l-.771-1.846c-1.31.547-2.637 1.758-3.572 2.725l-1.184 1.314-.341.414-.093.117-.025.032c-.100.013-.010.013.781.624zm5.204-3.381c.989-.413 1.791-.420 2.697-.307.871.108 2.083.385 3.437.385v-2c-1.197 0-2.041-.226-3.19-.369-1.114-.139-2.297-.146-3.715.447l.771 1.846z">
-                                </path>
-                            </svg>
-                            Send
-                        </button>
-                    </div>
-                    <!-- Feedback Messages -->
-                    <div v-if="formState.error" class="mt-4 text-red-500 text-center text-sm">
-                        {{ formState.error }}
-                    </div>
-                    <div v-if="formState.success" class="mt-4 text-green-500 text-center text-sm">
-                        {{ formState.success }}
-                    </div>
-                </form>
+            <div>
+              <span class="block text-xs font-semibold text-slate-200">Based in Kolkata, India</span>
+              <span class="block text-[11px] text-slate-400">Open for full-time engineering and internship roles</span>
             </div>
+          </div>
         </div>
+
+        <!-- Right Column: Interactive Contact Form -->
+        <div class="lg:col-span-7">
+          <div class="glass-card rounded-2xl p-7 sm:p-8 border border-white/5">
+            <h3 class="text-xl font-bold text-white mb-1">Send a Message</h3>
+            <p class="text-xs text-slate-400 mb-6">
+              Fill in the details below to send an email straight to my inbox.
+            </p>
+
+            <form @submit.prevent="handleFormSubmit" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-medium text-slate-300 mb-1.5">Your Name *</label>
+                  <input
+                    v-model="form.name"
+                    type="text"
+                    required
+                    placeholder="e.g. Alex Morgan"
+                    class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/80 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-medium text-slate-300 mb-1.5">Email Address *</label>
+                  <input
+                    v-model="form.email"
+                    type="email"
+                    required
+                    placeholder="alex@example.com"
+                    class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/80 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1.5">Subject / Topic</label>
+                <input
+                  v-model="form.subject"
+                  type="text"
+                  placeholder="e.g. Project Collaboration / Opportunity"
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/80 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1.5">Message *</label>
+                <textarea
+                  v-model="form.message"
+                  required
+                  rows="4"
+                  placeholder="Write your message here..."
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/80 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors resize-none"
+                ></textarea>
+              </div>
+
+              <!-- Feedback alert -->
+              <div
+                v-if="statusMessage"
+                class="p-3 rounded-xl text-xs font-medium"
+                :class="[
+                  isSuccess
+                    ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/30'
+                    : 'bg-rose-500/10 text-rose-300 border border-rose-500/30'
+                ]"
+              >
+                {{ statusMessage }}
+              </div>
+
+              <button
+                type="submit"
+                :disabled="isSubmitting"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl font-semibold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 disabled:opacity-50 transition-all duration-200 shadow-md shadow-indigo-500/20"
+              >
+                <svg v-if="isSubmitting" class="animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+                <span>{{ isSubmitting ? "Sending..." : "Send Message" }}</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 </template>
-
-<style scoped>
-/* Ensure tooltips are styled consistently */
-.tooltip {
-    opacity: 1;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
-
-    .col-span-3 {
-        grid-column: span 1;
-    }
-}
-
-.Subscribe-btn {
-    height: 45px;
-    width: 95px;
-    border: none;
-    border-radius: 15px;
-    color: rgb(0, 0, 0);
-    cursor: pointer;
-    background-color: #ffffff;
-    font-weight: 500;
-    font-size: 14px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    transition: all 0.3s;
-}
-
-.Subscribe-btn:hover {
-    color: #F0F2F5;
-}
-
-.Subscribe-btn:active {
-    transform: scale(0.9);
-}
-
-.Subscribe-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.arrow {
-    position: absolute;
-    margin-right: 150px;
-    transition: all 0.3s;
-}
-
-.Subscribe-btn:hover .arrow {
-    margin-right: 0;
-    animation: jello-vertical 0.9s both;
-    transform-origin: right;
-}
-
-@keyframes jello-vertical {
-    0% {
-        transform: scale3d(1, 1, 1);
-    }
-
-    30% {
-        transform: scale3d(0.75, 1.25, 1);
-    }
-
-    40% {
-        transform: scale3d(1.25, 0.75, 1);
-    }
-
-    50% {
-        transform: scale3d(0.85, 1.15, 1);
-    }
-
-    65% {
-        transform: scale3d(1.05, 0.95, 1);
-    }
-
-    75% {
-        transform: scale3d(0.95, 1.05, 1);
-    }
-
-    100% {
-        transform: scale3d(1, 1, 1);
-    }
-}
-
-textarea#message {
-    height: 96px;
-    resize: none;
-    overflow-y: auto;
-    padding-left: 8px;
-    padding-right: 8px;
-}
-
-textarea#message::-webkit-scrollbar {
-    width: 6px;
-}
-
-textarea#message::-webkit-scrollbar-track {
-    background: #e5e7eb;
-    border-radius: 3px;
-}
-
-textarea#message::-webkit-scrollbar-thumb {
-    background: #2563eb;
-    border-radius: 3px;
-}
-
-textarea#message::-webkit-scrollbar-thumb:hover {
-    background: #1d4ed8;
-}
-
-.dark textarea#message::-webkit-scrollbar-track {
-    background: #4b5563;
-}
-
-.dark textarea#message::-webkit-scrollbar-thumb {
-    background: #3b82f6;
-}
-
-.dark textarea#message::-webkit-scrollbar-thumb:hover {
-    background: #2563eb;
-}
-</style>

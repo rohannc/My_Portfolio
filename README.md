@@ -7,34 +7,28 @@
 
 ## 📋 Overview
 
-Welcome to my professional portfolio repository! This project showcases my skills, projects, and professional experience in a clean, responsive web application.
+Welcome to my professional developer portfolio! This repository showcases my academic journey, technical skills, competitive programming achievements, and engineering projects in a sleek, responsive web application.
 
-[Click to Visit - Live Demo](https://rohann.xyz) <!-- Add your deployed site URL when available -->
+[Live Demo](https://rohann.xyz)
 
-![Portfolio Preview](src/assets/portfolio-preview.jpg) <!-- Create and add a preview image of your site -->
+![Portfolio Preview](src/assets/portfolio-preview.jpg)
 
 ## ✨ Features
 
-- **Responsive Design**: Optimized for all devices from mobile to desktop
-- **Modern UI/UX**: Clean, intuitive interface with smooth animations
-- **Project Showcase**: Detailed presentation of my technical projects
-- **Skills Section**: Visual representation of my technical expertise
-- **Contact Form**: Direct way to reach out for opportunities
-- **Dark/Light Mode**: Toggle between viewing preferences
+- **Sleek Minimalist Dark UI**: Built with modern typography, glassmorphism cards, and subtle glow accents
+- **Centralized Data Store**: All content (projects, achievements, skills, credentials) is managed cleanly via `src/data/portfolioData.js`
+- **Responsive Navigation**: Glassmorphic sticky header with active scroll-section detection and mobile drawer menu
+- **Interactive Project Showcase**: Deep dive into the DeepFake Image Detection System with screenshot carousel and research team highlights
+- **Filterable Achievements**: Competitive honors filterable by wins, runner-up, and entrance exams
+- **Connected Academic Timeline**: Clean chronology of education at Jadavpur University, Bangabasi College, and high school
+- **Direct EmailJS Integration**: Interactive contact form with client-side feedback and validation
 
 ## 🛠️ Technologies Used
 
-- **Frontend**:
-  - HTML5, CSS3, JavaScript
-  - Vue.js
-  - Tailwind CSS
-
-- **Deployment**:
-  - Netlify
-
-- **Tools**:
-  - Git & GitHub
-  - VS Code
+- **Frontend**: Vue.js 3 (Composition API / `<script setup>`), Tailwind CSS v4, Swiper.js
+- **Services**: EmailJS (`@emailjs/browser`)
+- **Tooling & Bundler**: Vite 6
+- **Typography**: Inter & JetBrains Mono
 
 ## 🚀 Installation & Setup
 
@@ -51,7 +45,7 @@ Welcome to my professional portfolio repository! This project showcases my skill
 
 3. **Run development server**
    ```bash
-   npm start
+   npm run dev
    ```
 
 4. **Build for production**
@@ -59,67 +53,45 @@ Welcome to my professional portfolio repository! This project showcases my skill
    npm run build
    ```
 
+5. **Preview production build**
+   ```bash
+   npm run preview
+   ```
+
 ## 📂 Project Structure
 
 ```
 My_Portfolio/
 ├── public/
-│   ├──
 ├── src/
-│   ├── components/
-│   │   ├── About Me
-│   │   ├── Projects
-│   │   ├── Skills
-│   │   ├── Education
-│   │   ├── Contact
-│   │   └── Footer
-│   ├── assets/
-│   │   ├── images
-│   ├── App.js
-├── package.json
-├── index.html
+│   ├── assets/             # Project screenshots, avatars & preview media
+│   ├── components/         # Modular Vue 3 components
+│   │   ├── AboutMe.vue     # Hero section & core engineering focus
+│   │   ├── Achievements.vue # Honors, competitions & state ranks
+│   │   ├── ContactMe.vue   # Contact channels & EmailJS form
+│   │   ├── Education.vue   # Connected academic timeline
+│   │   ├── Footer.vue      # Footer & quick navigation
+│   │   ├── NavbarCustomized.vue # Glass navbar with section tracking
+│   │   ├── Project.vue     # Featured project deep-dive & Swiper slider
+│   │   └── Skills.vue      # Categorized technical competencies
+│   ├── data/
+│   │   └── portfolioData.js # Centralized portfolio content
+│   ├── App.vue             # Root component
+│   ├── main.js             # Vue application bootstrap
+│   └── style.css           # Tailwind v4 theme & glassmorphic utilities
+├── index.html              # HTML5 entry with SEO tags & fonts
+├── package.json            # Project dependencies & scripts
+├── vite.config.js          # Vite configuration
 └── README.md
 ```
 
-## 📱 Features Overview
-
-### About Me
-A concise biography highlighting my background, education, and professional journey in the tech industry.
-
-### Projects
-Showcase of my best work with:
-- Project screenshots
-- Tech stack details
-- GitHub repository links
-
-### Skills
-Visualization of my technical skills categorized by:
-- Programming languages
-- Frameworks & libraries
-- Tools & technologies
-
-### Education
-Timeline of my education.
-
-### Contact
-A contact form and links to my professional profiles.
-
-## 🔍 Future Enhancements
-
-- Blog section to share technical articles
-- Integration with GitHub API to show real-time project stats
-- Testimonials section
-- Multi-language support
-
-## 👨‍💻 About Me
-
-I am a passionate software developer with expertise in Machine Learning. I enjoy building innovative solutions and continuously learning new technologies. I'm open to freelance opportunities and collaborations.
-
-## 📬 Contact
+## 📬 Contact & Socials
 
 - **Email**: [chakrabortyrohan.abc01@gmail.com](mailto:chakrabortyrohan.abc01@gmail.com)
 - **LinkedIn**: [rohanchakraborty0108](https://www.linkedin.com/in/rohanchakraborty0108/)
+- **GitHub**: [rohannc](https://github.com/rohannc)
+- **Codolio**: [Rohann](https://codolio.com/profile/Rohann)
 
 ---
 
-⭐️ From [Rohan](https://github.com/rohannc)
+⭐️ Maintained by [Rohan Chakraborty](https://github.com/rohannc)

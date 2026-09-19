@@ -1,308 +1,285 @@
 <script setup>
 import { ref } from "vue";
+import { personalInfo } from "../data/portfolioData.js";
 
-const designationLine1 = ref("Rohan Chakraborty");
-const designationLine2 = ref("Computer Science Graduate || Software Developer || AI Enthusiast");
-const textContent = ref("I’m an MCA student at Jadavpur University, with a love for cracking tough problems through code. My journey with Computer started at Bangabasi College, and now I’m diving deep into tech. I built a DeepFake detection tool with my team that hit 99.98% accuracy using Python and TensorFlow. I thrive in the buzz of hackathons like DoubleSlash 3.0 and coding contests like CodeCrafter, having tackled over 450 problems on LeetCode and GeeksforGeeks and other platforms. I’m always curious, always creating, and excited for what’s next—can’t wait to share more!");
-const downloadGIF = ref("https://img.icons8.com/?size=100&id=aO3W9kKC9PMv&format=png&color=000000");
+const copied = ref(false);
 
-// New reactive variable for alternate color
-const useAltColor = ref(false);
-
-// Function to toggle alternate color (can be called externally)
-const toggleAltColor = () => {
-    useAltColor.value = !useAltColor.value;
+const copySnippet = () => {
+  const code = `const engineer = {
+  name: "${personalInfo.name}",
+  company: "Visa",
+  role: "Software Engineer",
+  location: "Bengaluru, India",
+  education: "MCA @ Jadavpur University",
+  focus: ["Autonomous AI Agents", "LangGraph", "MCP"],
+  sdlc: "Human-In-The-Loop CI/CD & Remediation",
+  rank: "AIR 17 (WBJECA 2024)",
+  dsaSolved: "450+ problems"
+};`;
+  navigator.clipboard.writeText(code).then(() => {
+    copied.value = true;
+    setTimeout(() => {
+      copied.value = false;
+    }, 2000);
+  });
 };
 
-const downloadResume = () => {
-    window.open('https://drive.google.com/file/d/1dKuI_YY-HckpBuQ7AobFZnZBvkvHWCpg/view?usp=sharing', '_blank');
-}
+const openResume = () => {
+  window.open(personalInfo.resumeUrl, "_blank");
+};
+
+const openCodolio = () => {
+  window.open(personalInfo.codolioUrl, "_blank");
+};
 </script>
 
 <template>
-    <div
-        class="flex flex-col md:flex-row px-[clamp(1rem,2vw,2rem)] mx-[clamp(1rem,2vw,2.5rem)] mb-[clamp(10rem,20vw,12.5rem)] mt-[clamp(5rem,8vw,6rem)] gap-[clamp(1rem,2vw,1.5rem)] typing-container">
-        <!-- Right Div (part2) - Top on Mobile, Right on Desktop -->
-        <div class="part2 div-border rounded-lg order-1 md:order-2 transition-colors duration-300"
-            :class="{ 'alt-color': useAltColor }">
-            <div class="pt-6 md:pt-10 w-full rounded-lg overflow-hidden text-center px-4">
-                <div class="h-[clamp(10rem,30vw,14rem)] w-[clamp(10rem,30vw,14rem)] mx-auto rounded-lg">
-                    <img src="../assets/ProfileImageCropped.jpg"
-                        class="w-full h-full object-cover rounded-full border-[clamp(0.125rem,0.25vw,0.1875rem)] border-gray-500 light-mode:border-gray-300 transition-colors duration-300"
-                        alt="Profile Image">
-                </div>
-                <div class="p-2 pt-4 mt-4 md:mt-6">
-                    <p
-                        class="m-0 text-[clamp(1.25rem,2.5vw,1.75rem)] pt-serif-bold-italic font-semibold text-gray-300 light-mode:text-gray-900 whitespace-nowrap transition-colors duration-300">
-                        {{ designationLine1 }}
-                    </p>
-                    <p
-                        class="mb-6 md:mb-10 text-[clamp(0.625rem,1.25vw,0.75rem)] pt-serif-bold-italic font-semibold text-gray-300 light-mode:text-gray-900 transition-colors duration-300">
-                        {{ designationLine2 }}</p>
-                </div>
-                <!-- Download Resume Button (Mobile Only) -->
-                <div class="pb-6 flex justify-center md:hidden">
-                    <button @click="downloadResume" type="button"
-                        class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-800 light-mode:bg-gradient-to-r light-mode:from-emerald-500 light-mode:via-emerald-600 light-mode:to-emerald-700 light-mode:focus:ring-emerald-300 pt-serif-bold-italic font-medium rounded-lg text-[clamp(0.625rem,1.25vw,0.75rem)] px-4 py-2 text-center transition-colors duration-300">
-                        Resume
-                    </button>
-                </div>
-            </div>
+  <section id="about" class="scroll-mt-20 relative pt-24 pb-12 md:pt-32 md:pb-14 overflow-hidden bg-mesh bg-grid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Top Hero Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <!-- Left: Text & Pitch -->
+        <div class="lg:col-span-7 flex flex-col items-start text-left">
+          <!-- Role & Status Pill -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/70 border border-indigo-500/30 text-indigo-300 text-xs font-medium mb-4 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="font-semibold text-white">Software Engineer @ Visa</span>
+            <span class="text-slate-500">·</span>
+            <span class="text-cyan-300 font-mono">MCA @ Jadavpur University</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight mb-3">
+            Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400">Rohan Chakraborty</span>
+          </h1>
+
+          <p class="text-base sm:text-lg font-medium text-slate-200 mb-4">
+            Software Engineer at <span class="text-indigo-400 font-semibold">Visa</span> in Bengaluru · AI & Agentic Systems Enthusiast
+          </p>
+
+          <!-- Bio with Visa experience and competitive background -->
+          <div class="space-y-3 text-slate-400 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl">
+            <p>
+              I am a Software Engineer at <span class="text-white font-medium">Visa</span> in Bengaluru, having completed my Master of Computer Applications (MCA) degree from <span class="text-white font-medium">Jadavpur University</span>.
+            </p>
+            <p>
+              During my journey at Visa, I focused on optimizing the SDLC by engineering <span class="text-cyan-300 font-medium">autonomous AI agents</span> (Python, LangGraph, MCP) and building secure, <span class="text-indigo-300 font-medium">Human-In-The-Loop CI/CD pipelines</span> to automate vulnerability remediation and accelerate feature delivery.
+            </p>
+            <p class="text-xs sm:text-sm text-slate-400">
+              Beyond enterprise software, I am deeply passionate about competitive programming, hackathons, and analytical problem-solving — holding <span class="text-amber-300 font-semibold">General Merit Rank 17 in WBJECA</span>, over 450 solved DSA challenges, and multiple collegiate coding championship victories.
+            </p>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+            <a
+              href="#projects"
+              class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 transition-all duration-200 shadow-md shadow-indigo-500/25"
+            >
+              Explore Featured Project
+              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+
+            <button
+              @click="openResume"
+              type="button"
+              class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-indigo-500/40 transition-all duration-200"
+            >
+              <svg class="mr-2 w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              Resume (PDF)
+            </button>
+
+            <button
+              @click="openCodolio"
+              type="button"
+              class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-300 bg-slate-900/50 hover:bg-slate-800 border border-white/5 hover:border-white/20 transition-all duration-200"
+              title="View Codolio Profile"
+            >
+              <span>Codolio Profile</span>
+              <svg class="ml-1.5 w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </button>
+          </div>
         </div>
-        <!-- Left Div (part1) - Bottom on Mobile, Left on Desktop -->
-        <div class="part1 div-border flex flex-col justify-between rounded-lg p-4 md:p-6 text-gray-300 text-left order-2 md:order-1 transition-colors duration-300"
-            :class="{ 'alt-color': useAltColor }">
-            <div class="mt-4 md:mt-8">
-                <h1
-                    class="pl-4 md:pl-6 text-[clamp(1.5rem,3vw,2rem)] playfair-display-regular light-mode:text-gray-900 transition-colors duration-300">
-                    Hi, I'm Rohan Chakraborty
-                </h1>
-                <p
-                    class="pl-4 md:pl-6 pt-4 md:pt-8 text-[clamp(0.875rem,1.75vw,1rem)] playfair-display-regular text-left tabbed-paragraph light-mode:text-gray-900 transition-colors duration-300">
-                    {{ textContent }}
-                </p>
-            </div>
-            <!-- Download Resume Button (Desktop Only) -->
-            <div class="pt-4 md:pt-6 flex justify-center hidden md:flex">
-                <button @click="downloadResume"
-                    class="hover-button relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-[clamp(0.75rem,1.5vw,0.875rem)] pt-serif-bold-italic font-medium text-white light-mode:text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 light-mode:from-violet-600 light-mode:to-blue-600 light-mode:group-hover:from-violet-600 light-mode:group-hover:to-blue-600 hover:text-white transition-colors duration-300">
-                    <span
-                        class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-gray-900 light-mode:bg-white rounded-md group-hover:bg-transparent">
-                        <img class="icon" :src="downloadGIF" alt="Download" height="20px" width="20px">
-                        <span class="hideText">Resume</span>
+
+        <!-- Right: Enhanced Profile Card with Medium Sized Image & Code Dossier -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md">
+            <!-- Ambient Glow Aura -->
+            <div class="absolute -inset-2 rounded-3xl bg-gradient-to-r from-indigo-500/25 via-cyan-500/20 to-purple-500/25 blur-2xl"></div>
+
+            <div class="relative glass-card rounded-3xl p-5 sm:p-6 border border-white/10 shadow-2xl space-y-4">
+              <!-- Top Profile Layout: Prominent Medium Avatar + Bio Details -->
+              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 p-4 rounded-2xl bg-slate-900/80 border border-white/5">
+                <!-- Medium Enlaraged Image (140px/w-36) with Ambient Ring -->
+                <div class="relative w-32 h-32 sm:w-36 sm:h-36 rounded-2xl overflow-hidden flex-shrink-0 ring-2 ring-indigo-500/50 shadow-xl group">
+                  <img
+                    src="../assets/ProfileImageCropped.jpg"
+                    alt="Rohan Chakraborty"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
+                  <div class="absolute bottom-1.5 left-2 right-2 text-center">
+                    <span class="inline-block px-2 py-0.5 rounded-full bg-indigo-600/90 text-[10px] font-mono font-medium text-white shadow">
+                      Visa Engineer
                     </span>
-                </button>
+                  </div>
+                </div>
+
+                <!-- Identity info -->
+                <div class="flex-1 min-w-0 text-center sm:text-left">
+                  <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono text-emerald-300 font-semibold mb-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <span>Software Engineer</span>
+                  </div>
+                  <h2 class="text-lg sm:text-xl font-bold text-white leading-snug">{{ personalInfo.name }}</h2>
+                  <p class="text-xs font-mono text-cyan-300 mt-0.5">Visa · Bengaluru</p>
+                  <p class="text-[11px] text-slate-400 mt-1">MCA, Jadavpur University</p>
+
+                  <div class="mt-2.5 flex flex-wrap gap-1 justify-center sm:justify-start">
+                    <span class="px-2 py-0.5 rounded-md bg-slate-800 text-[10px] font-mono text-slate-300 border border-white/5">
+                      Python
+                    </span>
+                    <span class="px-2 py-0.5 rounded-md bg-slate-800 text-[10px] font-mono text-slate-300 border border-white/5">
+                      LangGraph
+                    </span>
+                    <span class="px-2 py-0.5 rounded-md bg-slate-800 text-[10px] font-mono text-slate-300 border border-white/5">
+                      MCP
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating Metric Badges Row -->
+              <div class="grid grid-cols-2 gap-2">
+                <div class="p-2.5 rounded-xl bg-slate-900/60 border border-amber-500/25 flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-sm">
+                    🏆
+                  </div>
+                  <div class="min-w-0">
+                    <span class="block text-[10px] font-mono text-slate-400 uppercase">Entrance Exam</span>
+                    <span class="text-xs font-bold text-amber-300 font-mono truncate block">AIR 17 · WBJECA</span>
+                  </div>
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-slate-900/60 border border-cyan-500/25 flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-sm">
+                    ⚡
+                  </div>
+                  <div class="min-w-0">
+                    <span class="block text-[10px] font-mono text-slate-400 uppercase">Competitive DSA</span>
+                    <span class="text-xs font-bold text-cyan-300 font-mono truncate block">450+ Solved</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Terminal Dossier Card -->
+              <div class="rounded-2xl bg-slate-950/95 border border-white/10 overflow-hidden font-mono text-xs shadow-inner">
+                <!-- Terminal Titlebar -->
+                <div class="px-3.5 py-2 bg-slate-900/90 border-b border-white/5 flex items-center justify-between">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
+                    <span class="ml-2 text-[11px] text-slate-400">rohan.config.ts</span>
+                  </div>
+                  <button
+                    @click="copySnippet"
+                    type="button"
+                    class="text-[10px] text-slate-400 hover:text-cyan-300 transition-colors flex items-center gap-1"
+                    title="Copy snippet"
+                  >
+                    <span>{{ copied ? "Copied!" : "Copy" }}</span>
+                    <svg v-if="!copied" class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Code Body -->
+                <div class="p-3 text-[11px] leading-relaxed text-slate-300 space-y-0.5 select-all">
+                  <div><span class="text-purple-400">const</span> <span class="text-cyan-300">engineer</span> = {</div>
+                  <div class="pl-3"><span class="text-slate-400">company:</span> <span class="text-emerald-300">"Visa"</span>,</div>
+                  <div class="pl-3"><span class="text-slate-400">role:</span> <span class="text-emerald-300">"Software Engineer"</span>,</div>
+                  <div class="pl-3"><span class="text-slate-400">education:</span> <span class="text-amber-300">"MCA @ Jadavpur University"</span>,</div>
+                  <div class="pl-3"><span class="text-slate-400">agenticAI:</span> [<span class="text-cyan-300">"LangGraph"</span>, <span class="text-cyan-300">"MCP"</span>],</div>
+                  <div class="pl-3"><span class="text-slate-400">pipeline:</span> <span class="text-emerald-300">"Human-In-The-Loop CI/CD"</span></div>
+                  <div>};</div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Quick Stats Counter Grid -->
+      <div class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+        <div
+          v-for="stat in personalInfo.stats"
+          :key="stat.label"
+          class="glass-card glass-card-hover rounded-2xl p-4 text-center sm:text-left"
+        >
+          <span class="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
+            {{ stat.value }}
+          </span>
+          <span class="block text-xs sm:text-sm font-semibold text-slate-200 mt-1">{{ stat.label }}</span>
+          <span class="block text-[11px] text-slate-400 mt-0.5">{{ stat.desc }}</span>
+        </div>
+      </div>
+
+      <!-- Core Pillars / What I Focus On -->
+      <div class="mt-12">
+        <div class="text-center max-w-xl mx-auto mb-6">
+          <span class="text-xs font-mono font-semibold tracking-wider text-cyan-400 uppercase">Core Engineering Pillars</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">What I Bring to the Table</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Pillar 1: Agentic AI & SDLC Automation -->
+          <div class="glass-card glass-card-hover rounded-2xl p-5 sm:p-6 border-t-2 border-t-cyan-500">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-bold text-white mb-1.5">Agentic AI & SDLC Automation</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              Engineering autonomous AI agents (Python, LangGraph, Model Context Protocol) and Human-In-The-Loop CI/CD pipelines at Visa to remediate vulnerabilities and accelerate releases.
+            </p>
+          </div>
+
+          <!-- Pillar 2: Computer Vision & Forensic AI -->
+          <div class="glass-card glass-card-hover rounded-2xl p-5 sm:p-6 border-t-2 border-t-indigo-500">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-bold text-white mb-1.5">Computer Vision & Forensics</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              Deep experience in image forensic verification, Error Level Analysis (ELA), and dual-stream CNNs — achieving 99.98% validation accuracy on DeepFake detection benchmarks.
+            </p>
+          </div>
+
+          <!-- Pillar 3: Competitive Programming & DSA -->
+          <div class="glass-card glass-card-hover rounded-2xl p-5 sm:p-6 border-t-2 border-t-purple-500">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-bold text-white mb-1.5">Competitive Problem Solving</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              450+ solved problems across LeetCode and GeeksforGeeks, General Merit Rank 17 in WBJECA 2024, and 9+ contest milestones across regional hackathons and mystery-solving championships.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 </template>
-
-<style>
-/* Part1 and Part2 Background */
-.part1,
-.part2 {
-    background-color: #1e2939;
-    /* Dark gray for dark mode */
-    transition: background-color 0.3s ease;
-}
-
-/* Hover Button Styles */
-.hover-button {
-    align-items: center;
-    justify-content: center;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-.hover-button .hideText {
-    position: relative;
-}
-
-.hover-button .icon {
-    position: absolute;
-    opacity: 0;
-}
-
-.hover-button:hover .hideText {
-    opacity: 0;
-    position: absolute;
-}
-
-.hover-button:hover .icon {
-    opacity: 1;
-    position: relative;
-}
-
-.hover-button .icon img {
-    height: 24px;
-    width: 24px;
-}
-
-/* Part1 and Part2 Layout */
-.part1 {
-    flex: clamp(1.5, 2 + 0.5 * ((100vw - 768px) / 1152), 2.5);
-}
-
-.part2 {
-    flex: clamp(0.75, 1 + 0.25 * ((100vw - 768px) / 1152), 1.25);
-}
-
-/* Whitespace */
-.whitespace-nowrap {
-    white-space: nowrap;
-}
-
-/* Light Mode Styles */
-.light-mode .part1,
-.light-mode .part2 {
-    background-color: #ffffff;
-    /* White background for light mode */
-    transition: background-color 0.3s ease;
-}
-
-.light-mode .part1 h1,
-.light-mode .part1 p,
-.light-mode .part2 p {
-    color: #1f2937;
-    /* Dark gray text for light mode */
-    transition: color 0.3s ease;
-}
-
-.light-mode .part2 img {
-    border-color: #d1d5db;
-    /* Light gray border for profile image */
-    transition: border-color 0.3s ease;
-}
-
-.light-mode .hover-button {
-    color: #1f2937;
-    /* Dark gray text for light mode */
-    background-image: linear-gradient(to bottom right, #7c3aed, #3b82f6);
-    /* Purple to blue gradient */
-    transition: color 0.3s ease, background-image 0.3s ease;
-}
-
-.light-mode .hover-button span {
-    background-color: #ffffff;
-    /* White background for button content */
-    transition: background-color 0.3s ease;
-}
-
-.light-mode .hover-button:hover span {
-    background-color: transparent;
-    /* Transparent on hover */
-}
-
-.light-mode .hover-button:hover {
-    color: #ffffff;
-    /* White text on hover */
-}
-
-.light-mode .part2 button {
-    background-image: linear-gradient(to right, #10b981, #34d399, #6ee7b7);
-    /* Green gradient for mobile button */
-    transition: background-image 0.3s ease;
-}
-
-.light-mode .part2 button:focus {
-    --tw-ring-color: #6ee7b7;
-    /* Light green ring for focus */
-}
-
-/* Alternate Color Styles */
-.alt-color.part1,
-.alt-color.part2 {
-    background-color: #4b5e8e;
-    /* Darker blue-gray for dark mode */
-    transition: background-color 0.3s ease;
-}
-
-.light-mode .alt-color.part1,
-.light-mode .alt-color.part2 {
-    background-color: #e0e7ff;
-    /* Soft blue-gray for light mode */
-}
-
-.alt-color.part1 h1,
-.alt-color.part1 p {
-    color: #e5e7eb;
-    /* Light gray text in dark mode */
-    font-family: 'Playfair Display', serif;
-    transition: color 0.3s ease;
-}
-
-.alt-color.part2 p {
-    color: #e5e7eb;
-    /* Light gray text in dark mode */
-    font-family: 'PT Serif', serif;
-    font-weight: 700;
-    font-style: italic;
-    transition: color 0.3s ease;
-}
-
-.light-mode .alt-color.part1 h1,
-.light-mode .alt-color.part1 p {
-    color: #1f2937;
-    /* Dark gray text in light mode */
-    font-family: 'Playfair Display', serif;
-}
-
-.light-mode .alt-color.part2 p {
-    color: #1f2937;
-    /* Dark gray text in light mode */
-    font-family: 'PT Serif', serif;
-    font-weight: 700;
-    font-style: italic;
-}
-
-.alt-color.part2 img {
-    border-color: #9ca3af;
-    /* Gray border in dark mode */
-    transition: border-color 0.3s ease;
-}
-
-.light-mode .alt-color.part2 img {
-    border-color: #c7d2fe;
-    /* Slightly darker blue-gray border in light mode */
-}
-
-/* Contrast Color Styles */
-.contrast-color.part1,
-.contrast-color.part2 {
-    background-color: #64748b;
-    /* Slate gray for dark mode */
-    transition: background-color 0.3s ease;
-}
-
-.light-mode .contrast-color.part1,
-.light-mode .contrast-color.part2 {
-    background-color: #dbeafe;
-    /* Light blue for light mode */
-}
-
-.contrast-color.part1 h1,
-.contrast-color.part1 p {
-    color: #e5e7eb;
-    /* Light gray text in dark mode */
-    font-family: 'Playfair Display', serif;
-    transition: color 0.3s ease;
-}
-
-.contrast-color.part2 p {
-    color: #e5e7eb;
-    /* Light gray text in dark mode */
-    font-family: 'PT Serif', serif;
-    font-weight: 700;
-    font-style: italic;
-    transition: color 0.3s ease;
-}
-
-.light-mode .contrast-color.part1 h1,
-.light-mode .contrast-color.part1 p {
-    color: #1f2937;
-    /* Dark gray text in light mode */
-    font-family: 'Playfair Display', serif;
-}
-
-.light-mode .contrast-color.part2 p {
-    color: #1f2937;
-    /* Dark gray text in light mode */
-    font-family: 'PT Serif', serif;
-    font-weight: 700;
-    font-style: italic;
-}
-
-.contrast-color.part2 img {
-    border-color: #9ca3af;
-    /* Gray border in dark mode */
-    transition: border-color 0.3s ease;
-}
-
-.light-mode .contrast-color.part2 img {
-    border-color: #bfdbfe;
-    /* Slightly darker blue border in light mode */
-}
-</style>
