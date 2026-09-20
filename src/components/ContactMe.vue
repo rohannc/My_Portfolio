@@ -16,6 +16,7 @@ const form = reactive({
 
 const isSubmitting = ref(false);
 const isSuccess = ref(false);
+let successTimeout = null;
 
 const resetForm = () => {
   form.name = "";
@@ -23,6 +24,10 @@ const resetForm = () => {
   form.subject = "";
   form.message = "";
   isSuccess.value = false;
+  if (successTimeout) {
+    clearTimeout(successTimeout);
+    successTimeout = null;
+  }
 };
 
 const handleFormSubmit = async () => {
@@ -52,6 +57,9 @@ const handleFormSubmit = async () => {
     );
 
     isSuccess.value = true;
+    successTimeout = setTimeout(() => {
+      resetForm();
+    }, 5000);
   } catch (err) {
     console.error("EmailJS submission error:", err);
     toast.error("Failed to send message. You can also reach me directly at " + personalInfo.email);
