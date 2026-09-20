@@ -194,9 +194,9 @@ export const featuredProject = {
   id: "deepfake-detection",
   title: "DeepFake Image Detection System",
   tagline: "Leveraging AI and Forensic Error Level Analysis ( ELA )",
-  accuracy: "99.98%",
-  summary: "A high-precision forensic platform developed to identify manipulated and synthetically generated facial imagery in the age of generative media.",
-  description: "By marrying forensic Error Level Analysis ( ELA ) with modern convolutional neural networks, this tool identifies subtle compression anomalies and digital inconsistencies imperceptible to the human eye. Evaluated against challenging benchmarks, it reaches up to 99.98% validation accuracy.",
+  accuracy: "98%",
+  summary: "A robust web-based application designed to detect deepfake images using a combination of advanced AI techniques and Error Level Analysis (ELA).",
+  description: "The system boasts an accuracy of approximately 98% in identifying manipulated images using dual detection methods: an AI-powered deep learning model trained on a dataset of over 80,000 images, and Error Level Analysis (ELA) as a secondary verification technique. It offers flexible inputs, allowing users to either upload an image directly from their device or submit an image URL for analysis. Privacy and security are ensured, as all uploaded images are processed securely without permanent data storage.",
   githubUrl: "https://github.com/rohannc/FinalYearProject_DeepFakeImageDetection",
   team: [
     {
@@ -228,28 +228,25 @@ export const featuredProject = {
     { name: "PIL", category: "Forensics" },
     { name: "Scikit-learn", category: "Metrics" },
     { name: "Flask", category: "Backend" },
-    { name: "JavaScript", category: "Frontend" },
-    { name: "Bootstrap", category: "Styling" }
+    { name: "HTML5", category: "Frontend" },
+    { name: "CSS3", category: "Styling" },
+    { name: "JavaScript", category: "Frontend" }
   ],
   keyFeatures: [
-    "Error Level Analysis ( ELA ) preprocessing to highlight compression differences",
-    "Dual-stream CNN architecture combining RGB and ELA feature spaces",
-    "Real-time image upload and interactive forensic analysis reports",
-    "High robustness across diverse compression qualities and resolutions",
-    "Comprehensive team collaboration and reproducible experimental setup"
+    "Dual Detection Methods: AI-powered deep learning combined with Error Level Analysis (ELA)",
+    "Model trained on a diverse dataset of over 80,000 images",
+    "Flexible Inputs: Direct image upload or image URL submission",
+    "Privacy & Security: Secure processing with zero permanent user data storage",
+    "Real-time processing with an intuitive web interface and clear result visualization"
   ],
   screenshots: [
-    { file: "Website01.png", caption: "Landing Page & System Architecture Overview" },
-    { file: "Website02.png", caption: "Model Analysis & Detection Engine View" },
-    { file: "Website03.png", caption: "Forensic Image Upload & Verification Portal" },
-    { file: "Website04.png", caption: "Error Level Analysis ( ELA ) Heatmap Visualization" },
-    { file: "Website05.png", caption: "Confidence Breakdown & Probabilistic Metrics" },
-    { file: "Website06.png", caption: "Feature Map Inspection & Inspection Logs" },
-    { file: "Website07.png", caption: "Dataset Benchmarking & Model Evaluation Curves" },
-    { file: "Website08.png", caption: "Comparative Evaluation Across ResNet & Custom CNN" },
-    { file: "Website09.png", caption: "Forensic Report Generation & Download View" },
-    { file: "Website10.png", caption: "Interactive Forensic Parameter Adjustment" },
-    { file: "Website11.png", caption: "Team & Research Contribution Summary" }
+    { file: "Website01.png", caption: "Landing Page" },
+    { file: "Website02.png", caption: "System Architecture Overview" },
+    { file: "Website03.png", caption: "Knowledge Base" },
+    { file: "Website04.png", caption: "Support & Contact" },
+    { file: "Website05.png", caption: "Forensic Image Upload & Verification Portal" },
+    { file: "Website06.png", caption: "Error Level Analysis ( ELA ) Heatmap Visualization" },
+    { file: "Website07.png", caption: "Confidence Breakdown & Probabilistic Metrics" }
   ]
 };
 
