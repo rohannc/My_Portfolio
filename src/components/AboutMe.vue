@@ -19,18 +19,20 @@ const openCodolio = () => {
 </script>
 
 <template>
-  <section id="about" class="scroll-mt-20 relative pt-24 pb-12 md:pt-32 md:pb-14 overflow-hidden bg-mesh bg-grid">
+  <section id="about" class="scroll-mt-20 relative pt-20 pb-10 sm:pt-32 sm:pb-14 overflow-hidden bg-mesh bg-grid">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Top Hero Section -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
         <!-- Left: Text & Pitch -->
         <div class="lg:col-span-7 flex flex-col items-start text-left">
           <!-- Role & Status Pill: Reversed Fonts -->
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/70 border border-indigo-500/30 text-xs mb-4 shadow-sm">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span class="font-mono text-cyan-300">Software Engineer at <span class="visa-highlight">Visa</span></span>
-            <span class="text-slate-500">·</span>
-            <span class="font-sans font-semibold text-white">Master of Computer Applications, Jadavpur University</span>
+          <div class="inline-flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2 px-4 py-2 sm:px-3.5 sm:py-1.5 rounded-2xl sm:rounded-full bg-indigo-950/70 border border-indigo-500/30 text-xs mb-4 shadow-sm">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
+              <span class="font-mono text-cyan-300">Software Engineer at <span class="visa-highlight">Visa</span></span>
+              <span class="text-slate-500 hidden sm:inline">·</span>
+            </div>
+            <span class="font-sans font-semibold text-white sm:pl-0 pl-4">Master of Computer Applications, Jadavpur University</span>
           </div>
 
           <!-- Headline -->
@@ -56,10 +58,10 @@ const openCodolio = () => {
           </div>
 
           <!-- CTAs -->
-          <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
             <a
               href="#projects"
-              class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 transition-all duration-200 shadow-md shadow-indigo-500/25"
+              class="inline-flex items-center justify-center w-full sm:w-auto px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 transition-all duration-200 shadow-md shadow-indigo-500/25"
             >
               Explore Featured Project
             </a>
@@ -67,7 +69,7 @@ const openCodolio = () => {
             <button
               @click="downloadResume"
               type="button"
-              class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-indigo-500/40 transition-all duration-200"
+              class="inline-flex items-center justify-center w-full sm:w-auto px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-indigo-500/40 transition-all duration-200"
             >
               <svg class="mr-2 w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -78,7 +80,7 @@ const openCodolio = () => {
             <button
               @click="openCodolio"
               type="button"
-              class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-300 bg-slate-900/50 hover:bg-slate-800 border border-white/5 hover:border-white/20 transition-all duration-200"
+              class="inline-flex items-center justify-center w-full sm:w-auto px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-300 bg-slate-900/50 hover:bg-slate-800 border border-white/5 hover:border-white/20 transition-all duration-200"
               title="View Codolio Profile"
             >
               <span>Codolio Profile</span>
@@ -182,11 +184,11 @@ const openCodolio = () => {
       </div>
 
       <!-- Quick Stats Counter Grid: Sleek modern font styling -->
-      <div class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+      <div class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
         <div
           v-for="stat in personalInfo.stats"
           :key="stat.label"
-          class="glass-card glass-card-hover rounded-2xl p-4 sm:p-5 text-center sm:text-left border border-white/5 hover:border-cyan-500/30 transition-all duration-300"
+          class="glass-card glass-card-hover rounded-2xl p-3 sm:p-5 text-center sm:text-left border border-white/5 hover:border-cyan-500/30 transition-all duration-300"
         >
           <span
             class="font-space text-2xl sm:text-3xl font-bold tracking-tight block"

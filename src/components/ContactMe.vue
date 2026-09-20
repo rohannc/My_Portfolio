@@ -70,7 +70,7 @@ const handleFormSubmit = async () => {
 </script>
 
 <template>
-  <section id="contact" class="scroll-mt-20 py-14 relative border-t border-white/5">
+  <section id="contact" class="scroll-mt-20 py-10 sm:py-14 relative border-t border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-8">
