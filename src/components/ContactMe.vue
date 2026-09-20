@@ -79,8 +79,8 @@ const handleFormSubmit = async () => {
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-6">
         <!-- Rectangle 1: Contact Channels -->
         <div class="lg:col-span-5 flex flex-col">
-          <div class="glass-card rounded-2xl p-6 sm:p-7 border border-white/5 h-full flex flex-col justify-between">
-            <div>
+          <div class="glass-card rounded-2xl p-6 sm:p-7 border border-white/5 h-full flex flex-col">
+            <div class="mb-5">
               <div class="flex items-center gap-2.5 mb-2">
                 <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,8 +92,9 @@ const handleFormSubmit = async () => {
               <p class="text-xs text-slate-400 leading-relaxed mb-5">
                 I am usually quickest to reply on LinkedIn and Email.
               </p>
+            </div>
 
-              <div class="space-y-3">
+            <div class="flex flex-col flex-1 justify-between gap-3">
                 <a
                   v-for="link in socialLinks"
                   :key="link.name"
@@ -146,7 +147,6 @@ const handleFormSubmit = async () => {
                   </svg>
                 </a>
               </div>
-            </div>
           </div>
         </div>
 
@@ -158,7 +158,8 @@ const handleFormSubmit = async () => {
               Fill in the details below to send an email straight to my inbox.
             </p>
 
-            <form v-if="!isSuccess" @submit.prevent="handleFormSubmit" class="space-y-4">
+            <div class="relative">
+            <form :class="{ 'opacity-0 pointer-events-none scale-95': isSuccess, 'opacity-100 scale-100': !isSuccess }" @submit.prevent="handleFormSubmit" class="space-y-4 transition-all duration-500">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-xs font-medium text-slate-300 mb-1.5">Your Name *</label>
@@ -220,7 +221,7 @@ const handleFormSubmit = async () => {
             </form>
 
             <!-- Success State UI -->
-            <div v-else class="flex flex-col items-center justify-center py-8 text-center animate-in fade-in zoom-in duration-500">
+            <div :class="{ 'opacity-100 scale-100 pointer-events-auto': isSuccess, 'opacity-0 scale-95 pointer-events-none': !isSuccess }" class="absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-500">
               <div class="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mb-5 text-emerald-400 shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
@@ -236,6 +237,7 @@ const handleFormSubmit = async () => {
               >
                 Send Another Message
               </button>
+            </div>
             </div>
           </div>
         </div>
