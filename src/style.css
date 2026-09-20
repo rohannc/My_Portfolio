@@ -125,24 +125,50 @@ body {
   --color-slate-950: #f8fafc;
   --color-slate-900: #f1f5f9;
   --color-slate-800: #e2e8f0;
-  --color-slate-700: #cbd5e1;
-  --color-slate-600: #94a3b8;
-  --color-slate-500: #64748b;
-  --color-slate-400: #475569;
-  --color-slate-300: #334155;
-  --color-slate-200: #1e293b;
-  --color-slate-100: #0f172a;
-  --color-slate-50: #020617;
+  --color-slate-700: #94a3b8; /* Darker border color */
+  --color-slate-600: #64748b;
+  --color-slate-500: #475569;
+  --color-slate-400: #334155; /* Much darker font for text-slate-400 */
+  --color-slate-300: #1e293b;
+  --color-slate-200: #0f172a;
+  --color-slate-100: #020617;
+  --color-slate-50: #000000;
   
-  --color-white: #0f172a; /* Make text-white become text-slate-900 */
+  --color-white: #020617; /* Very dark for headings */
   
   background-color: #f8fafc !important;
-  color: #0f172a !important;
+  color: #020617 !important;
+}
+
+/* Better readable accent texts in light mode */
+.light-mode .text-cyan-200,
+.light-mode .text-cyan-300,
+.light-mode .text-cyan-400 {
+  color: #0e7490 !important; /* cyan-700 */
+}
+
+.light-mode .text-blue-200,
+.light-mode .text-blue-300,
+.light-mode .text-blue-400 {
+  color: #1d4ed8 !important; /* blue-700 */
+}
+
+.light-mode .text-indigo-200,
+.light-mode .text-indigo-300,
+.light-mode .text-indigo-400 {
+  color: #4338ca !important; /* indigo-700 */
+}
+
+.light-mode .text-purple-200,
+.light-mode .text-purple-300,
+.light-mode .text-purple-400 {
+  color: #7e22ce !important; /* purple-700 */
 }
 
 .light-mode .glass-card {
-  background: rgba(255, 255, 255, 0.7) !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
 }
 
 .light-mode .bg-mesh {
