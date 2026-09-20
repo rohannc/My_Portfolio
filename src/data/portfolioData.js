@@ -11,6 +11,7 @@ export const personalInfo = {
   location: "Bengaluru, Karnataka, India",
   email: "chakrabortyrohan.abc01@gmail.com",
   resumeUrl: "https://drive.google.com/file/d/19UzkhTtntELmvFp6c0OTfz8GoNirav87/view?usp=sharing",
+  resumeDownloadUrl: "https://drive.google.com/uc?export=download&id=19UzkhTtntELmvFp6c0OTfz8GoNirav87",
   codolioUrl: "https://codolio.com/profile/Rohann",
   about: `I am a Software Engineer at Visa in Bengaluru, having completed my Master of Computer Applications degree from Jadavpur University. During my journey at Visa, I focused on optimizing the SDLC by engineering Autonomous AI Agents ( Python, LangGraph, MCP ) and building secure, CI/CD pipelines with Human-In-The-Loop to automate vulnerability remediation and accelerate feature delivery. Beyond software engineering, I am deeply passionate about competitive programming, hackathons, and analytical problem-solving with ${codolioStats.totalSolved} DSA problems solved and multiple collegiate championships.`,
   stats: [

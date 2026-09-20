@@ -31,6 +31,7 @@ const STATS_FILE = path.join(process.cwd(), 'src', 'data', 'codolioStats.json');
       let rating = null;
       let maxStreak = null;
       let contestsAttended = null;
+      let activeDays = null;
       
       for (let el of elements) {
         if (!el.innerText) continue;
@@ -90,6 +91,16 @@ const STATS_FILE = path.join(process.cwd(), 'src', 'data', 'codolioStats.json');
             }
           }
         }
+        // Match Active Days
+        if (/active\s*days?/i.test(el.innerText)) {
+          const numbers = el.innerText.match(/\d+/g);
+          if (numbers) {
+            for (let numStr of numbers) {
+              const num = parseInt(numStr, 10);
+              if (num > 0 && num < 2000) activeDays = numStr;
+            }
+          }
+        }
       }
       
       return {
@@ -97,7 +108,8 @@ const STATS_FILE = path.join(process.cwd(), 'src', 'data', 'codolioStats.json');
         globalRank,
         rating,
         maxStreak,
-        contestsAttended
+        contestsAttended,
+        activeDays
       };
     });
 
