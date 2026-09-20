@@ -52,10 +52,10 @@ import { experiences } from "../data/portfolioData.js";
                   </h3>
                   <!-- Badge -->
                   <span
-                    class="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold inline-flex items-center gap-1.5"
+                    class="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold items-center gap-1.5"
                     :class="exp.current
-                      ? 'bg-blue-500/15 text-blue-400 border border-blue-500/30'
-                      : 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/30'"
+                      ? 'inline-flex bg-blue-500/15 text-blue-400 border border-blue-500/30'
+                      : 'hidden sm:inline-flex bg-cyan-500/15 text-cyan-300 border border-cyan-500/30'"
                   >
                     <span v-if="exp.current" class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
                     <span v-else class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
