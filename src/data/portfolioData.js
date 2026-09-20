@@ -74,7 +74,7 @@ export const experiences = [
         desc: "Advancing internal engineering workflows by integrating autonomous agentic tooling, real-time code analysis, and high-assurance delivery practices."
       }
     ],
-    skills: ["Python", "Java", "Autonomous AI Agents", "LangGraph", "Model Context Protocol (MCP)", "CI/CD", "DevSecOps", "Claude Code", "Claude Skills", "Kubernetes", "Hazlecast", "Mountebank", "Kafka", "SSO"]
+    skills: ["Python", "Java", "Autonomous AI Agents", "LangGraph", "Model Context Protocol ( MCP )", "CI/CD", "DevSecOps", "Claude Code", "Claude Skills", "Kubernetes", "Hazlecast", "Mountebank", "Kafka", "SSO"]
   },
   {
     role: "Software Engineer Intern",
@@ -88,15 +88,15 @@ export const experiences = [
     contributions: [
       {
         title: "AI & Workflow Automation",
-        desc: "Engineered autonomous AI agents using Python Asyncio, LangGraph, and the Model Context Protocol (MCP) to streamline complex workflows, including automated Jira requirement extraction, Test-Driven Development (TDD) implementation, and Git management."
+        desc: "Engineered autonomous AI agents using Python Asyncio, LangGraph, and the Model Context Protocol ( MCP ) to streamline complex workflows, including automated Jira requirement extraction, Test-Driven Development ( TDD ) implementation, and Git management."
       },
       {
         title: "CI/CD & DevSecOps",
-        desc: "Architected Human-In-The-Loop (HITL) CI/CD pipelines by integrating Jenkins and Claude CLI."
+        desc: "Architected Human-In-The-Loop ( HITL ) CI/CD pipelines by integrating Jenkins and Claude CLI."
       },
       {
         title: "Automated Security",
-        desc: "Integrated enterprise security tools (SonarQube, Checkmarx, Nexus IQ) directly into the pipeline to automate vulnerability scanning and remediation, drastically reducing delivery bottlenecks."
+        desc: "Integrated enterprise security tools ( SonarQube, Checkmarx, Nexus IQ ) directly into the pipeline to automate vulnerability scanning and remediation, drastically reducing delivery bottlenecks."
       }
     ],
     skills: ["Python Asyncio", "LangGraph", "MCP", "Claude CLI", "Jenkins", "SonarQube", "Checkmarx", "Nexus IQ", "Jira Automation", "TDD", "Git"]
@@ -182,7 +182,7 @@ export const skillCategories = [
       { name: "Model Context Protocol", level: "MCP Standards", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/anthropic.svg", invertIcon: true },
       { name: "Vulnerability Remediation", level: "Enterprise Security", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/sonarqube.svg", invertIcon: true },
       { name: "SDLC Optimization", level: "Pipeline Automation", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/githubactions.svg", invertIcon: true },
-      { name: "Error Level Analysis (ELA)", level: "Forensics", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" },
+      { name: "Error Level Analysis ( ELA )", level: "Forensics", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" },
       { name: "Competitive Programming", level: `${codolioStats.totalSolved} DSA Solved`, icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/leetcode.svg", invertIcon: true },
       { name: "Test Driven Development", level: "Software Quality", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/junit5.svg", invertIcon: true },
       { name: "Algorithmic Problem Solving", level: "Logic & Complexity", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/geeksforgeeks.svg", invertIcon: true }
@@ -193,10 +193,10 @@ export const skillCategories = [
 export const featuredProject = {
   id: "deepfake-detection",
   title: "DeepFake Image Detection System",
-  tagline: "Leveraging AI and Forensic Error Level Analysis (ELA)",
+  tagline: "Leveraging AI and Forensic Error Level Analysis ( ELA )",
   accuracy: "99.98%",
   summary: "A high-precision forensic platform developed to identify manipulated and synthetically generated facial imagery in the age of generative media.",
-  description: "By marrying forensic Error Level Analysis (ELA) with modern convolutional neural networks, this tool identifies subtle compression anomalies and digital inconsistencies imperceptible to the human eye. Evaluated against challenging benchmarks, it reaches up to 99.98% validation accuracy.",
+  description: "By marrying forensic Error Level Analysis ( ELA ) with modern convolutional neural networks, this tool identifies subtle compression anomalies and digital inconsistencies imperceptible to the human eye. Evaluated against challenging benchmarks, it reaches up to 99.98% validation accuracy.",
   githubUrl: "https://github.com/rohannc/FinalYearProject_DeepFakeImageDetection",
   team: [
     {
@@ -232,7 +232,7 @@ export const featuredProject = {
     { name: "Bootstrap", category: "Styling" }
   ],
   keyFeatures: [
-    "Error Level Analysis (ELA) preprocessing to highlight compression differences",
+    "Error Level Analysis ( ELA ) preprocessing to highlight compression differences",
     "Dual-stream CNN architecture combining RGB and ELA feature spaces",
     "Real-time image upload and interactive forensic analysis reports",
     "High robustness across diverse compression qualities and resolutions",
@@ -242,7 +242,7 @@ export const featuredProject = {
     { file: "Website01.png", caption: "Landing Page & System Architecture Overview" },
     { file: "Website02.png", caption: "Model Analysis & Detection Engine View" },
     { file: "Website03.png", caption: "Forensic Image Upload & Verification Portal" },
-    { file: "Website04.png", caption: "Error Level Analysis (ELA) Heatmap Visualization" },
+    { file: "Website04.png", caption: "Error Level Analysis ( ELA ) Heatmap Visualization" },
     { file: "Website05.png", caption: "Confidence Breakdown & Probabilistic Metrics" },
     { file: "Website06.png", caption: "Feature Map Inspection & Inspection Logs" },
     { file: "Website07.png", caption: "Dataset Benchmarking & Model Evaluation Curves" },
@@ -264,12 +264,12 @@ export const achievements = [
     year: "2024",
     view: "https://drive.google.com/file/d/1xO0XuySHLrjJ9MZeWgAh7oJokfVN_s27/view?usp=sharing",
     linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
-    description: "Secured General Merit Rank 17 state-wide in WBJECA 2024 (West Bengal Joint Entrance Examination for Master of Computer Applications)."
+    description: "Secured General Merit Rank 17 state-wide in WBJECA 2024 ( West Bengal Joint Entrance Examination for Master of Computer Applications )."
   },
   {
     title: "Error 404, Envision 2k25",
-    subtitle: "Ramakrishna Mission Residential College (Autonomous), Narendrapur",
-    position: "Winner (1st Place)",
+    subtitle: "Ramakrishna Mission Residential College ( Autonomous ), Narendrapur",
+    position: "Winner ( 1st Place )",
     category: "Coding",
     badgeType: "gold",
     badgeColor: "amber",
@@ -282,7 +282,7 @@ export const achievements = [
   {
     title: "Eureka — Mystery Solving Competition",
     subtitle: "Ramakrishna Mission Vivekananda Centenary College, Rahara",
-    position: "Winner (1st Place)",
+    position: "Winner ( 1st Place )",
     category: "Competition",
     badgeType: "gold",
     badgeColor: "amber",
@@ -295,7 +295,7 @@ export const achievements = [
   {
     title: "Sherlocked, Srijan '25",
     subtitle: "Faculty of Engineering & Technology, Jadavpur University, Kolkata",
-    position: "Team Winner (1st Place)",
+    position: "Team Winner ( 1st Place )",
     category: "Competition",
     badgeType: "gold",
     badgeColor: "amber",
@@ -307,8 +307,8 @@ export const achievements = [
   },
   {
     title: "CodeCrafter, IgniteX 1.0",
-    subtitle: "International Management Institute (IMI), Kolkata",
-    position: "Second Runner-Up (3rd Place)",
+    subtitle: "International Management Institute ( IMI ), Kolkata",
+    position: "Second Runner-Up ( 3rd Place )",
     category: "Coding",
     badgeType: "bronze",
     badgeColor: "orange",
@@ -316,11 +316,11 @@ export const achievements = [
     participation: "Solo",
     view: "https://drive.google.com/file/d/10W_Kjy_E2jnggi95a_kPv4L1YwYHm1Jv/view?usp=sharing",
     linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/",
-    description: "Finished in 3rd place (Second Runner-Up) in the collegiate algorithmic coding sprint."
+    description: "Finished in 3rd place ( Second Runner-Up ) in the collegiate algorithmic coding sprint."
   },
   {
     title: "The Turing Show, Perceptron 2025",
-    subtitle: "Ramakrishna Mission Vivekananda Educational and Research Institute (RKMVERI)",
+    subtitle: "Ramakrishna Mission Vivekananda Educational and Research Institute ( RKMVERI )",
     position: "3rd Position",
     category: "Competition",
     badgeType: "bronze",
@@ -390,7 +390,7 @@ export const educationHistory = [
     linkToPdf: ""
   },
   {
-    degree: "B.Sc. in Computer Science (Honours)",
+    degree: "B.Sc. in Computer Science ( Honours )",
     institution: "Bangabasi College, University of Calcutta",
     location: "Kolkata, West Bengal",
     period: "2021 — 2024",
@@ -408,8 +408,8 @@ export const educationHistory = [
     linkToPdf: "https://drive.google.com/file/d/1HKULzIIvT1GUxDIiueGjRIQunCXbDHm7/view?usp=drive_link"
   },
   {
-    degree: "Higher Secondary (10+2 Science)",
-    institution: "Halisahar High School (WBCHSE)",
+    degree: "Higher Secondary ( 10+2 Science )",
+    institution: "Halisahar High School ( WBCHSE )",
     location: "North 24 Parganas, West Bengal",
     period: "2018 — 2019",
     score: "82.43%",

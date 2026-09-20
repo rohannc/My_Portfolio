@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 
 // Calculate hue rotation relative to base Cyan (Hue ~190°)
 const themes = [
-  { name: 'Cyan (Default)', hue: 0, color: '#06b6d4' },
+  { name: 'Cyan ( Default )', hue: 0, color: '#06b6d4' },
   { name: 'Emerald', hue: -30, color: '#10b981' },
   { name: 'Blue', hue: 27, color: '#3b82f6' },
   { name: 'Fuchsia', hue: 102, color: '#d946ef' },

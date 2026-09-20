@@ -4,7 +4,7 @@ import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 const isOpen = ref(false);
 const inputCommand = ref('');
 const output = ref([
-  { type: 'system', text: 'RohanOS v1.0.0 (tty1)' },
+  { type: 'system', text: 'RohanOS v1.0.0 ( tty1 )' },
   { type: 'system', text: 'Type "help" to see available commands.' }
 ]);
 const terminalInput = ref(null);
@@ -81,7 +81,7 @@ const executeCommand = () => {
       output.value.push({ type: 'system', text: '✓ CI/CD & DevSecOps' });
       break;
     case 'clear':
-      output.value = [{ type: 'system', text: 'RohanOS v1.0.0 (tty1)' }];
+      output.value = [{ type: 'system', text: 'RohanOS v1.0.0 ( tty1 )' }];
       break;
     case 'sudo':
       if (args[1] === 'rm' && args[2] === '-rf' && args[3] === '/') {
