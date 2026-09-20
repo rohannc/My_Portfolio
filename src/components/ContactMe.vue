@@ -1,10 +1,11 @@
 <script setup>
 import { reactive, ref } from "vue";
 import { init, send } from "@emailjs/browser";
+import { toast } from "vue3-toastify";
 import { personalInfo, socialLinks } from "../data/portfolioData.js";
 
-// Initialize EmailJS with Rohan's User ID
-init("VVFBHi65kAeNjynhZ");
+// Initialize EmailJS with Environment Variables
+init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
 const form = reactive({
   name: "",
@@ -14,43 +15,46 @@ const form = reactive({
 });
 
 const isSubmitting = ref(false);
-const statusMessage = ref("");
 const isSuccess = ref(false);
+
+const resetForm = () => {
+  form.name = "";
+  form.email = "";
+  form.subject = "";
+  form.message = "";
+  isSuccess.value = false;
+};
 
 const handleFormSubmit = async () => {
   if (!form.name || !form.email || !form.message) {
-    statusMessage.value = "Please complete your name, email, and message.";
-    isSuccess.value = false;
+    toast.warning("Please complete your name, email, and message.");
     return;
   }
 
   isSubmitting.value = true;
-  statusMessage.value = "";
 
   try {
     const names = form.name.trim().split(" ");
     const firstName = names[0] || form.name;
     const lastName = names.slice(1).join(" ") || "";
 
-    await send("service_8kwda1d", "template_9lrlp3m", {
-      first_name: firstName,
-      last_name: lastName,
-      email: form.email,
-      phone: form.subject || "Portfolio Inquiry",
-      company: form.subject || "General Inquiry",
-      message: form.message
-    });
+    await send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      {
+        first_name: firstName,
+        last_name: lastName,
+        email: form.email,
+        phone: form.subject || "Portfolio Inquiry",
+        company: form.subject || "General Inquiry",
+        message: form.message
+      }
+    );
 
     isSuccess.value = true;
-    statusMessage.value = "Thank you! Your message has been sent successfully.";
-    form.name = "";
-    form.email = "";
-    form.subject = "";
-    form.message = "";
   } catch (err) {
     console.error("EmailJS submission error:", err);
-    isSuccess.value = false;
-    statusMessage.value = "Failed to send message. You can also reach me directly at " + personalInfo.email;
+    toast.error("Failed to send message. You can also reach me directly at " + personalInfo.email);
   } finally {
     isSubmitting.value = false;
   }
@@ -154,7 +158,7 @@ const handleFormSubmit = async () => {
               Fill in the details below to send an email straight to my inbox.
             </p>
 
-            <form @submit.prevent="handleFormSubmit" class="space-y-4">
+            <form v-if="!isSuccess" @submit.prevent="handleFormSubmit" class="space-y-4">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-xs font-medium text-slate-300 mb-1.5">Your Name *</label>
@@ -200,18 +204,7 @@ const handleFormSubmit = async () => {
                 ></textarea>
               </div>
 
-              <!-- Feedback alert -->
-              <div
-                v-if="statusMessage"
-                class="p-3 rounded-xl text-xs font-medium"
-                :class="[
-                  isSuccess
-                    ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/30'
-                    : 'bg-rose-500/10 text-rose-300 border border-rose-500/30'
-                ]"
-              >
-                {{ statusMessage }}
-              </div>
+
 
               <button
                 type="submit"
@@ -225,6 +218,25 @@ const handleFormSubmit = async () => {
                 <span>{{ isSubmitting ? "Sending..." : "Send Message" }}</span>
               </button>
             </form>
+
+            <!-- Success State UI -->
+            <div v-else class="flex flex-col items-center justify-center py-8 text-center animate-in fade-in zoom-in duration-500">
+              <div class="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mb-5 text-emerald-400 shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h4 class="text-xl font-bold text-white mb-2 tracking-tight">Message Sent Successfully!</h4>
+              <p class="text-sm text-slate-400 mb-7 max-w-sm">
+                Thank you for reaching out. I have received your message and will get back to you as soon as possible.
+              </p>
+              <button 
+                @click="resetForm" 
+                class="px-6 py-2.5 rounded-xl font-semibold text-xs uppercase tracking-wider text-slate-300 bg-slate-800/80 hover:bg-slate-700 hover:text-white border border-white/10 transition-all duration-200"
+              >
+                Send Another Message
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -253,10 +265,7 @@ const handleFormSubmit = async () => {
             </div>
           </div>
 
-          <!-- Professional Expertise & Collaboration Badges -->
-          <div class="flex flex-wrap items-center justify-center gap-2.5">
-            <!-- Badge Removed -->
-          </div>
+
         </div>
       </div>
     </div>
