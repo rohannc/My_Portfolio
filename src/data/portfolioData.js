@@ -1,4 +1,6 @@
 // Portfolio Centralized Data
+import codolioStats from './codolioStats.json';
+
 export const personalInfo = {
   name: "Rohan Chakraborty",
   tagline: "Software Engineer at Visa || Master of Computer Applications from Jadavpur University || AI & Agentic Systems",
@@ -10,12 +12,16 @@ export const personalInfo = {
   email: "chakrabortyrohan.abc01@gmail.com",
   resumeUrl: "https://drive.google.com/file/d/19UzkhTtntELmvFp6c0OTfz8GoNirav87/view?usp=sharing",
   codolioUrl: "https://codolio.com/profile/Rohann",
-  about: `I am a Software Engineer at Visa in Bengaluru, having completed my Master of Computer Applications degree from Jadavpur University. During my journey at Visa, I focused on optimizing the SDLC by engineering Autonomous AI Agents ( Python, LangGraph, MCP ) and building secure, CI/CD pipelines with Human-In-The-Loop to automate vulnerability remediation and accelerate feature delivery. Beyond software engineering, I am deeply passionate about competitive programming, hackathons, and analytical problem-solving with 1700+ DSA problems solved and multiple collegiate championships.`,
+  about: `I am a Software Engineer at Visa in Bengaluru, having completed my Master of Computer Applications degree from Jadavpur University. During my journey at Visa, I focused on optimizing the SDLC by engineering Autonomous AI Agents ( Python, LangGraph, MCP ) and building secure, CI/CD pipelines with Human-In-The-Loop to automate vulnerability remediation and accelerate feature delivery. Beyond software engineering, I am deeply passionate about competitive programming, hackathons, and analytical problem-solving with ${codolioStats.totalSolved} DSA problems solved and multiple collegiate championships.`,
   stats: [
     { label: "Current Role", value: "Visa", desc: "Software Engineer, Bengaluru" },
     { label: "WBJECA Rank", value: "Rank 17", desc: "State Entrance Exam 2024" },
-    { label: "Problems Solved", value: "1700+", desc: "LeetCode & GeeksforGeeks" },
-    { label: "Contest Milestones", value: "9+", desc: "Hackathon, Winner & Finalist" }
+    { label: "Problems Solved", value: codolioStats.totalSolved || "1700+", desc: "LeetCode & GFG" },
+    { label: "Global Rank", value: codolioStats.globalRank || "-", desc: "Codolio Platform" },
+    { label: "Codolio Rating", value: codolioStats.rating || "-", desc: "Max Rating" },
+    { label: "Max Streak", value: (codolioStats.maxStreak || "0") + " Days", desc: "Consistency" },
+    { label: "Contests", value: codolioStats.contestsAttended || "-", desc: "Global Contests Attended" },
+    { label: "Milestones", value: "9+", desc: "Hackathons & Championships" }
   ]
 };
 
@@ -67,7 +73,7 @@ export const experiences = [
         desc: "Advancing internal engineering workflows by integrating autonomous agentic tooling, real-time code analysis, and high-assurance delivery practices."
       }
     ],
-    skills: ["Python", "Java", "Spring Boot", "Autonomous AI Agents", "LangGraph", "Model Context Protocol (MCP)", "CI/CD", "DevSecOps"]
+    skills: ["Python", "Java", "Autonomous AI Agents", "LangGraph", "Model Context Protocol (MCP)", "CI/CD", "DevSecOps", "Claude Code", "Claude Skills", "Kubernetes", "Hazlecast", "Mountebank", "Kafka", "SSO"]
   },
   {
     role: "Software Engineer Intern",
@@ -156,25 +162,14 @@ export const skillCategories = [
     title: "Cloud, Containers & Streaming",
     icon: "cloud",
     skills: [
-      {
-        name: "Docker",
-        level: "Containerization",
-        desc: "Container runtime & image virtualization",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-      },
-      {
-        name: "Kubernetes",
-        level: "Container Orchestration",
-        desc: "Automated scaling & pod cluster management",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"
-      },
-      {
-        name: "Apache Kafka",
-        level: "Event Streaming",
-        desc: "High-throughput distributed publish-subscribe pipelines",
-        icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/apachekafka.svg",
-        invertIcon: true
-      }
+      { name: "Claude Code", level: "AI Agent", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/anthropic.svg", invertIcon: true },
+      { name: "Claude Skills", level: "AI Tooling", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/anthropic.svg", invertIcon: true },
+      { name: "Kubernetes", level: "Orchestration", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
+      { name: "Hazelcast", level: "In-Memory Grid", icon: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322d3ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='7' height='7'></rect><rect x='14' y='3' width='7' height='7'></rect><rect x='14' y='14' width='7' height='7'></rect><rect x='3' y='14' width='7' height='7'></rect></svg>" },
+      { name: "Mountebank", level: "API Testing", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/testinglibrary.svg", invertIcon: true },
+      { name: "Kafka", level: "Streaming", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/apachekafka.svg", invertIcon: true },
+      { name: "SSO", level: "Security", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/auth0.svg", invertIcon: true },
+      { name: "Rocks DB", level: "Database", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/surrealdb.svg", invertIcon: true }
     ]
   },
   {
@@ -187,7 +182,7 @@ export const skillCategories = [
       { name: "Vulnerability Remediation", level: "Enterprise Security", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/sonarqube.svg", invertIcon: true },
       { name: "SDLC Optimization", level: "Pipeline Automation", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/githubactions.svg", invertIcon: true },
       { name: "Error Level Analysis (ELA)", level: "Forensics", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" },
-      { name: "Competitive Programming", level: "1700+ DSA Solved", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/leetcode.svg", invertIcon: true },
+      { name: "Competitive Programming", level: `${codolioStats.totalSolved} DSA Solved`, icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/leetcode.svg", invertIcon: true },
       { name: "Test Driven Development", level: "Software Quality", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/junit5.svg", invertIcon: true },
       { name: "Algorithmic Problem Solving", level: "Logic & Complexity", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/geeksforgeeks.svg", invertIcon: true }
     ]
