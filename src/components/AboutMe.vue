@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { personalInfo } from "../data/portfolioData.js";
+import codolioStats from "../data/codolioStats.json";
 
 
 
@@ -46,7 +47,7 @@ const openCodolio = () => {
               During my journey at <span class="visa-highlight">Visa</span>, I focused on optimizing the SDLC by engineering <span class="text-cyan-300 font-medium">Autonomous AI Agents</span> ( Python, LangGraph, MCP ) and building secure, <span class="text-indigo-300 font-medium">CI/CD pipelines with Human-In-The-Loop</span> to automate vulnerability remediation and accelerate feature delivery.
             </p>
             <p>
-              Beyond enterprise software, I am deeply passionate about competitive programming, hackathons, and analytical problem-solving — holding <span class="text-amber-300 font-semibold">Rank 17 in WBJECA</span>, over 1700+ solved DSA challenges, and multiple collegiate coding championship victories.
+              Beyond enterprise software, I am deeply passionate about competitive programming, hackathons, and analytical problem-solving — holding <span class="text-amber-300 font-semibold">Rank 17 in WBJECA</span>, over {{ codolioStats.totalSolved }} solved DSA challenges, and multiple collegiate coding championship victories.
             </p>
           </div>
 
@@ -57,9 +58,6 @@ const openCodolio = () => {
               class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 transition-all duration-200 shadow-md shadow-indigo-500/25"
             >
               Explore Featured Project
-              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
             </a>
 
             <button
@@ -136,7 +134,7 @@ const openCodolio = () => {
                   </div>
                   <div class="min-w-0">
                     <span class="block text-[10px] font-mono text-slate-400 uppercase">Competitive DSA</span>
-                    <span class="text-xs font-bold text-cyan-300 font-mono truncate block">1700+ Solved</span>
+                    <span class="text-xs font-bold text-cyan-300 font-mono truncate block">{{ codolioStats.totalSolved }} Solved</span>
                   </div>
                 </div>
               </div>
@@ -244,7 +242,7 @@ const openCodolio = () => {
             </div>
             <h3 class="text-base font-bold text-white mb-1.5">Competitive Problem Solving</h3>
             <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              1700+ solved problems across LeetCode and GeeksforGeeks, Rank 17 in WBJECA 2024, and 9+ contest milestones across regional hackathons and mystery-solving championships.
+              {{ codolioStats.totalSolved }} solved problems across LeetCode and GeeksforGeeks, Rank 17 in WBJECA 2024, and 9+ contest milestones across regional hackathons and mystery-solving championships.
             </p>
           </div>
         </div>

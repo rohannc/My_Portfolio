@@ -255,9 +255,7 @@ const handleFormSubmit = async () => {
 
           <!-- Professional Expertise & Collaboration Badges -->
           <div class="flex flex-wrap items-center justify-center gap-2.5">
-            <span class="px-3.5 py-1.5 rounded-xl text-xs font-mono bg-slate-800/80 text-cyan-300 border border-cyan-500/20 flex items-center gap-1.5">
-              <span>💡</span> Open for Tech Collaborations
-            </span>
+            <!-- Badge Removed -->
           </div>
         </div>
       </div>
