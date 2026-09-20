@@ -38,16 +38,28 @@ const handleScroll = () => {
   const sections = Array.from(document.querySelectorAll("section[id]"));
   const offset = 140;
 
+  const validIds = navItems.map(item => item.url.replace("#", ""));
+  let foundId = null;
+
   for (let i = sections.length - 1; i >= 0; i--) {
     const section = sections[i];
-    if (section.offsetTop - offset <= scrollPosition) {
-      activeSection.value = section.id;
-      return;
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+    
+    if (sectionTop - offset <= scrollPosition) {
+      if (validIds.includes(section.id)) {
+        foundId = section.id;
+        break;
+      } else if (section.id === 'heatmap') {
+        foundId = 'about';
+        break;
+      }
     }
   }
 
-  if (sections.length > 0) {
-    activeSection.value = sections[0].id;
+  if (foundId) {
+    activeSection.value = foundId;
+  } else if (sections.length > 0) {
+    activeSection.value = "about";
   }
 };
 

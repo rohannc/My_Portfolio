@@ -97,7 +97,7 @@ const monthLabels = computed(() => {
 <template>
   <div class="relative w-full overflow-x-auto custom-scrollbar pb-4">
     <div class="min-w-fit flex justify-center">
-      <svg width="980" height="150" class="heatmap-svg mx-auto">
+      <svg width="980" height="164" class="heatmap-svg mx-auto">
         <g transform="translate(16, 16)">
           
           <!-- Month Labels -->
