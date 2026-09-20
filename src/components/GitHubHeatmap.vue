@@ -4,7 +4,7 @@ import ActivityHeatmapGrid from './ActivityHeatmapGrid.vue';
 </script>
 
 <template>
-  <section id="heatmap" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+  <section id="heatmap" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-16">
     <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white/5 relative overflow-hidden group">
       <!-- Ambient Glow -->
       <div class="absolute -inset-x-20 -top-20 bg-cyan-500/10 blur-[100px] rounded-full h-64 pointer-events-none transition-opacity group-hover:opacity-100 opacity-50"></div>
@@ -20,7 +20,7 @@ import ActivityHeatmapGrid from './ActivityHeatmapGrid.vue';
             </h3>
             <p class="text-sm text-slate-400">A visual overview of my coding activity and commits over the past year. <span class="text-cyan-400">Darker shades indicate more activity.</span></p>
           </div>
-          <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20 w-fit">
+          <div class="flex items-center justify-center sm:justify-start gap-2 px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20 w-full sm:w-fit">
             <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
             <span class="text-sm font-semibold text-cyan-300">{{ codolioStats.activeDays || '682' }} Active Days</span>
             <span class="text-xs text-slate-400 font-mono">(Codolio)</span>

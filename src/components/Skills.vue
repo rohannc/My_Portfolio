@@ -81,7 +81,7 @@ function handleChipLeave(event) {
 </script>
 
 <template>
-  <section id="skills" class="scroll-mt-20 py-14 relative border-t border-white/5">
+  <section id="skills" class="scroll-mt-20 py-10 sm:py-14 relative border-t border-white/5 bg-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-10">
@@ -95,7 +95,7 @@ function handleChipLeave(event) {
       </div>
 
       <!-- Categories Grid: 2 columns on tablet/desktop, perfectly balanced with 6 cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
         <div
           v-for="(category, catIdx) in skillCategories"
           :key="catIdx"
@@ -136,7 +136,7 @@ function handleChipLeave(event) {
                   {{ category.title }}
                 </h3>
               </div>
-              <span class="text-xs font-mono text-cyan-400/80 bg-cyan-950/40 border border-cyan-500/20 px-2.5 py-0.5 rounded-full">
+              <span class="text-xs font-mono text-cyan-400/80 bg-cyan-950/40 border border-cyan-500/20 px-2.5 py-0.5 rounded-full whitespace-nowrap">
                 {{ category.skills.length }} {{ category.title.includes('Coursework') ? 'topics' : category.title.includes('Methodologies') ? 'concepts' : 'technologies' }}
               </span>
             </div>
@@ -153,7 +153,7 @@ function handleChipLeave(event) {
                 :title="skill.name"
                 @mouseenter="handleChipEnter"
                 @mouseleave="handleChipLeave"
-                class="group flex items-start gap-3.5 p-3.5 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/40 hover:bg-slate-800/80 transition-all duration-200 overflow-hidden cursor-pointer"
+                class="group flex items-start gap-2.5 sm:gap-3.5 p-3 sm:p-3.5 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/40 hover:bg-slate-800/80 transition-all duration-200 overflow-hidden cursor-pointer"
               >
                 <div class="w-10 h-10 rounded-lg bg-slate-800 p-2 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform mt-0.5">
                   <img

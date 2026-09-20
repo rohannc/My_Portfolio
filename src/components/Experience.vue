@@ -3,7 +3,7 @@ import { experiences } from "../data/portfolioData.js";
 </script>
 
 <template>
-  <section id="experience" class="scroll-mt-20 py-16 relative border-t border-white/5">
+  <section id="experience" class="scroll-mt-20 relative py-10 sm:py-16 border-t border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-12">
@@ -17,7 +17,7 @@ import { experiences } from "../data/portfolioData.js";
       </div>
 
       <!-- Experience Cards Stack -->
-      <div class="max-w-5xl mx-auto space-y-8">
+      <div class="max-w-5xl mx-auto space-y-6 sm:space-y-8">
         <div
           v-for="exp in experiences"
           :key="exp.role + exp.period"
@@ -28,7 +28,7 @@ import { experiences } from "../data/portfolioData.js";
         >
           <!-- Header Bar: Visa Logo Badge, Role Title, Status Badge, Period -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-5 border-b border-white/5">
-            <div class="flex items-start sm:items-center gap-4">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
               <!-- Highlighted White Visa Logo (No Background, Compact Size) -->
               <div
                 class="flex items-center justify-center flex-shrink-0 pt-0.5"
@@ -80,8 +80,8 @@ import { experiences } from "../data/portfolioData.js";
             </div>
 
             <!-- Date Period Badge -->
-            <div class="flex-shrink-0 self-start sm:self-center">
-              <span class="px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium bg-slate-800/90 text-cyan-300 border border-white/5 inline-block">
+            <div class="w-full sm:w-auto mt-2 sm:mt-0">
+              <span class="inline-flex items-center justify-center w-full sm:w-auto px-4 py-2 sm:px-3.5 sm:py-1.5 rounded-xl text-xs font-mono font-medium bg-slate-800/90 text-cyan-300 border border-white/5">
                 {{ exp.period }}
               </span>
             </div>

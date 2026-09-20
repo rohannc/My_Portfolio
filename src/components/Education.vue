@@ -30,7 +30,7 @@ const getTierAccent = (idx) => {
 </script>
 
 <template>
-  <section id="education" class="scroll-mt-20 py-16 relative border-t border-white/5 bg-slate-950/40">
+  <section id="education" class="scroll-mt-20 py-10 sm:py-16 relative border-t border-white/5 bg-slate-950/40">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-10">
