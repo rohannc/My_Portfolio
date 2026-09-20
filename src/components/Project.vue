@@ -32,7 +32,7 @@ const openGitHub = () => {
           DeepFake Image Detection
         </h2>
         <p class="text-sm sm:text-base text-slate-400 mt-3">
-          A high-precision forensic platform combining Error Level Analysis (ELA) and Deep Learning to spot synthetic and manipulated facial imagery.
+          A high-precision forensic platform combining Error Level Analysis ( ELA ) and Deep Learning to spot synthetic and manipulated facial imagery.
         </p>
       </div>
 
@@ -92,7 +92,7 @@ const openGitHub = () => {
                     loading="lazy"
                   />
                   <!-- Caption overlay -->
-                  <div class="absolute inset-x-0 bottom-0 py-2.5 px-4 bg-slate-950/80 backdrop-blur-sm border-t border-white/5 text-center text-xs font-mono text-slate-300">
+                  <div class="absolute inset-x-0 bottom-0 pt-2.5 pb-7 px-4 bg-slate-950/90 backdrop-blur-sm border-t border-white/5 text-center text-xs font-mono text-slate-300 z-0">
                     {{ screen.caption }}
                   </div>
                 </swiper-slide>
@@ -101,53 +101,67 @@ const openGitHub = () => {
 
             <!-- Slide counter notice -->
             <p class="text-center text-xs text-slate-400 mt-3 font-mono">
-              11 Interactive system views & forensic evaluation charts
+              {{ featuredProject.screenshots.length }} Interactive system views & forensic evaluation charts
             </p>
           </div>
 
           <!-- Right Col: Technical Breakdown & Features -->
-          <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between">
+          <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between relative z-10">
             <div>
-              <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">
+              <h3 class="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-slate-400 mb-3">
                 {{ featuredProject.title }}
               </h3>
-              <p class="text-xs font-mono text-indigo-400 mb-4">
-                {{ featuredProject.tagline }}
-              </p>
+              
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-6">
+                 <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                 <span class="text-[11px] font-mono text-indigo-300 font-semibold tracking-wide">
+                  {{ featuredProject.tagline }}
+                 </span>
+              </div>
 
-              <p class="text-sm text-slate-300 leading-relaxed mb-6">
-                {{ featuredProject.description }}
-              </p>
+              <div class="relative mb-8">
+                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-cyan-500 to-indigo-500 rounded-full"></div>
+                <p class="text-sm text-slate-300 leading-relaxed pl-5">
+                  {{ featuredProject.description }}
+                </p>
+              </div>
 
               <!-- Key Architecture Points -->
-              <div class="mb-6">
-                <span class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold block mb-3">
-                  Key Capabilities
-                </span>
-                <ul class="space-y-2">
+              <div class="mb-8">
+                <div class="flex items-center gap-3 mb-5">
+                  <div class="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold">
+                    Key Capabilities
+                  </span>
+                  <div class="h-[1px] flex-1 bg-gradient-to-l from-white/10 to-transparent"></div>
+                </div>
+                
+                <ul class="grid grid-cols-1 gap-2.5">
                   <li
                     v-for="(feat, idx) in featuredProject.keyFeatures"
                     :key="idx"
-                    class="flex items-start text-xs text-slate-300 gap-2.5"
+                    class="group flex items-start gap-3 p-3.5 rounded-xl bg-slate-900/40 border border-white/5 hover:bg-slate-800/80 hover:border-cyan-500/30 transition-all duration-300 shadow-sm"
                   >
-                    <svg class="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    <span>{{ feat }}</span>
+                    <div class="mt-0.5 p-1 rounded-md bg-cyan-500/10 text-cyan-400 group-hover:bg-cyan-400 group-hover:text-slate-900 transition-colors shrink-0">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    </div>
+                    <span class="text-xs text-slate-300 group-hover:text-slate-200 leading-relaxed">{{ feat }}</span>
                   </li>
                 </ul>
               </div>
 
               <!-- Tech Stack Badges -->
               <div>
-                <span class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold block mb-2.5">
-                  Tech Stack
+                <span class="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold block mb-3 pl-1">
+                  Powered By
                 </span>
-                <div class="flex flex-wrap gap-1.5">
+                <div class="flex flex-wrap gap-2">
                   <span
                     v-for="tech in featuredProject.techStack"
                     :key="tech.name"
-                    class="px-2.5 py-1 rounded-lg text-xs font-mono bg-slate-900 border border-white/5 text-cyan-300"
+                    class="px-3 py-1.5 rounded-lg text-[11px] font-medium font-mono bg-slate-950/60 border border-slate-800 text-slate-400 shadow-sm hover:border-indigo-500/50 hover:text-indigo-300 hover:shadow-[0_0_12px_rgba(99,102,241,0.15)] transition-all duration-300 cursor-default"
                   >
                     {{ tech.name }}
                   </span>
@@ -226,5 +240,10 @@ const openGitHub = () => {
   opacity: 1;
   width: 20px;
   border-radius: 4px;
+}
+
+:deep(.swiper-pagination) {
+  bottom: 6px !important;
+  z-index: 10 !important;
 }
 </style>
