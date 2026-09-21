@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import { achievements } from "../data/portfolioData.js";
+import { achievements, codolioBadges } from "../data/portfolioData.js";
 
 const selectedFilter = ref("all");
 
@@ -124,6 +124,36 @@ const filteredAchievements = computed(() => {
               </svg>
             </a>
           </div>
+        </div>
+      </div>
+
+      <!-- Badges Section -->
+      <div class="mt-16 max-w-5xl mx-auto">
+        <div class="text-center mb-8">
+          <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Platform Badges</h3>
+          <p class="text-sm text-slate-400 mt-2">A collection of badges earned across various coding platforms like LeetCode, HackerRank, and CodeChef.</p>
+        </div>
+        
+        <div class="glass-card rounded-2xl p-6 border border-white/5 relative overflow-hidden">
+          <!-- Scrollable Container -->
+          <div class="flex overflow-x-auto pb-4 pt-2 gap-6 items-center snap-x" style="scrollbar-width: thin;">
+            <div 
+              v-for="(badge, idx) in codolioBadges" 
+              :key="idx"
+              class="flex-shrink-0 flex flex-col items-center justify-center gap-3 w-28 group snap-center"
+            >
+              <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-slate-800/50 border border-white/10 group-hover:border-cyan-500/50 group-hover:bg-slate-800 transition-all duration-300 p-2 shadow-lg">
+                <img :src="badge.url" :alt="badge.name" class="w-full h-full object-contain filter drop-shadow-md group-hover:scale-110 transition-transform duration-300" />
+              </div>
+              <span class="text-[10px] sm:text-xs text-center font-medium text-slate-300 group-hover:text-cyan-400 transition-colors line-clamp-2 px-1">
+                {{ badge.name }}
+              </span>
+            </div>
+          </div>
+          
+          <!-- Fade edges for scroll indication -->
+          <div class="absolute top-0 bottom-0 left-0 w-12 bg-gradient-to-r from-[#0f172a] to-transparent pointer-events-none"></div>
+          <div class="absolute top-0 bottom-0 right-0 w-12 bg-gradient-to-l from-[#0f172a] to-transparent pointer-events-none"></div>
         </div>
       </div>
     </div>
