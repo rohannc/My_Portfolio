@@ -21,7 +21,7 @@ if ("scrollRestoration" in history) {
   <div class="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-cyan-500/20 selection:text-cyan-200">
     <div id="theme-content" class="flex flex-col flex-grow">
       <NavbarCustomized />
-      <main class="flex-grow overflow-x-hidden">
+      <main class="flex-grow">
       <AboutMe />
       <div data-aos="fade-up">
         <GitHubHeatmap />
