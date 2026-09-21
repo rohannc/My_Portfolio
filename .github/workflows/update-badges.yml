@@ -1,0 +1,35 @@
+name: Scrape Codolio Badges
+
+on:
+  schedule:
+    - cron: '0 0 1 * *' # Run at midnight on the first day of every month UTC
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Badge Scraper
+        run: npm run scrape-badges
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/codolioBadges.json
+          git commit -m "chore: auto-update codolio badges" || exit 0
+          git push
