@@ -20,7 +20,7 @@ let isManualScroll = false;
 let scrollTimeout = null;
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 20;
+  isScrolled.value = window.scrollY > 0;
 
   if (isManualScroll) return;
 

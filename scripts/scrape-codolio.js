@@ -7,8 +7,17 @@ const STATS_FILE = path.join(process.cwd(), 'src', 'data', 'codolioStats.json');
 (async () => {
   let browser;
   try {
+    let previousStats = {};
+    if (fs.existsSync(STATS_FILE)) {
+      try {
+        previousStats = JSON.parse(fs.readFileSync(STATS_FILE, 'utf8'));
+      } catch (e) {
+        console.warn("Could not read previous stats, proceeding without them.");
+      }
+    }
+
     browser = await puppeteer.launch({
-      headless: "new",
+      headless: true,
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
     const page = await browser.newPage();
@@ -114,16 +123,25 @@ const STATS_FILE = path.join(process.cwd(), 'src', 'data', 'codolioStats.json');
     });
 
     if (stats.totalSolved) {
-      console.log(`Successfully scraped stats:`, stats);
-      fs.writeFileSync(STATS_FILE, JSON.stringify(stats, null, 2));
+      const currentSolved = parseInt(stats.totalSolved, 10);
+      const previousSolved = previousStats.totalSolved ? parseInt(previousStats.totalSolved, 10) : 0;
+      
+      if (!isNaN(currentSolved) && currentSolved >= previousSolved) {
+        console.log(`Successfully scraped stats:`, stats);
+        fs.writeFileSync(STATS_FILE, JSON.stringify(stats, null, 2));
+      } else {
+        console.warn(`Validation failed: current solved (${currentSolved}) is not a number or less than previous (${previousSolved}). Politely skipping.`);
+        // Not throwing error, just exit gracefully
+      }
     } else {
-      console.warn("Could not find total solved. Assuming layout changed or page failed to load.");
+      console.warn("Could not find total solved. Assuming layout changed or page failed to load. Politely skipping.");
       console.warn("Raw extracted:", stats);
       // Do not overwrite with a blank value, keep the old file if it fails to scrape
     }
   } catch (error) {
     console.error("Error scraping Codolio:", error);
-    process.exit(1);
+    console.log("Politely skipping due to error.");
+    process.exit(0);
   } finally {
     if (browser) await browser.close();
   }
