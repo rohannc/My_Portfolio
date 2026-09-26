@@ -31,5 +31,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/codolioStats.json
-          git commit -m "chore: auto-update codolio stats" || exit 0
+          git commit -m "Sync: Refresh codolio stats and heatmap data" || exit 0
           git push
