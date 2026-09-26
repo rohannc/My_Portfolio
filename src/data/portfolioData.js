@@ -1,6 +1,7 @@
-// Portfolio Centralized Data
 import codolioStats from './codolioStats.json';
 import codolioBadges from './codolioBadges.json';
+
+export { codolioStats, codolioBadges };
 
 export const personalInfo = {
   name: "Rohan Chakraborty",

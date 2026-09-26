@@ -11,22 +11,23 @@ Welcome to my professional developer portfolio! This repository showcases my aca
 
 [Live Demo](https://rohann.xyz)
 
-![Portfolio Preview](src/assets/portfolio-preview.jpg)
-
 ## ✨ Features
 
 - **Sleek Minimalist Dark UI**: Built with modern typography, glassmorphism cards, and subtle glow accents
 - **Centralized Data Store**: All content (projects, achievements, skills, credentials) is managed cleanly via `src/data/portfolioData.js`
+- **Automated Stats Scraping**: Node.js/Puppeteer scripts that automatically fetch the latest Codolio competitive programming stats, heatmaps, and badges
 - **Responsive Navigation**: Glassmorphic sticky header with active scroll-section detection and mobile drawer menu
 - **Interactive Project Showcase**: Deep dive into the DeepFake Image Detection System with screenshot carousel and research team highlights
 - **Filterable Achievements**: Competitive honors filterable by wins, runner-up, and entrance exams
 - **Connected Academic Timeline**: Clean chronology of education at Jadavpur University, Bangabasi College, and high school
-- **Direct EmailJS Integration**: Interactive contact form with client-side feedback and validation
+- **Direct EmailJS Integration**: Interactive contact form with client-side feedback, validation, and toast notifications
 
 ## 🛠️ Technologies Used
 
-- **Frontend**: Vue.js 3 (Composition API / `<script setup>`), Tailwind CSS v4, Swiper.js
+- **Frontend**: Vue.js 3 (Composition API / `<script setup>`), Tailwind CSS v4
+- **Animations & UI components**: Swiper.js, AOS (Animate on Scroll), Vue3 Toastify
 - **Services**: EmailJS (`@emailjs/browser`)
+- **Automation Tools**: Puppeteer (for scraping Codolio stats & badges)
 - **Tooling & Bundler**: Vite 6
 - **Typography**: Inter & JetBrains Mono
 
