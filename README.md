@@ -9,8 +9,6 @@
 
 Welcome to my professional developer portfolio! This repository showcases my academic journey, technical skills, competitive programming achievements, and engineering projects in a sleek, responsive web application.
 
-[Live Demo](https://rohann.xyz)
-
 ## ✨ Features
 
 - **Sleek Minimalist Dark UI**: Built with modern typography, glassmorphism cards, and subtle glow accents
