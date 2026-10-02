@@ -1,11 +1,26 @@
-import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
+import https from 'https';
 
 const STATS_FILE = path.join(process.cwd(), 'src', 'data', 'codolioStats.json');
 
+const fetchJson = (url) => {
+  return new Promise((resolve, reject) => {
+    https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try {
+          resolve(JSON.parse(data));
+        } catch (e) {
+          reject(e);
+        }
+      });
+    }).on('error', reject);
+  });
+};
+
 (async () => {
-  let browser;
   try {
     let previousStats = {};
     if (fs.existsSync(STATS_FILE)) {
@@ -16,133 +31,87 @@ const STATS_FILE = path.join(process.cwd(), 'src', 'data', 'codolioStats.json');
       }
     }
 
-    browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
-    const page = await browser.newPage();
-    
-    // Modern user agent to prevent blocks
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36');
-    
-    console.log("Navigating to Codolio profile...");
-    await page.goto('https://codolio.com/profile/Rohann', { waitUntil: 'networkidle2', timeout: 30000 });
-    
-    // Wait for the SPA to render the data
-    await new Promise(r => setTimeout(r, 8000)); 
+    console.log("Fetching Codolio profile and leaderboard data via API...");
+    const [profileRes, leaderboardRes] = await Promise.all([
+      fetchJson('https://api.codolio.com/profile?userKey=Rohann'),
+      fetchJson('https://node.codolio.com/api/leaderboard/v1/get-user-leaderboard?userId=19268')
+    ]);
 
-    // Extract all stats
-    const stats = await page.evaluate(() => {
-      const elements = Array.from(document.querySelectorAll('*'));
-      
-      let totalSolved = null;
-      let globalRank = null;
-      let rating = null;
-      let maxStreak = null;
-      let contestsAttended = null;
-      let activeDays = null;
-      
-      for (let el of elements) {
-        if (!el.innerText) continue;
-        
-        // Match Questions Solved
-        if (/(?:problems?|questions?)\s*solved/i.test(el.innerText)) {
-          const numbers = el.innerText.match(/\d+/g);
-          if (numbers) {
-            for (let numStr of numbers) {
-              const num = parseInt(numStr, 10);
-              if (num > 1000 && num < 10000) totalSolved = numStr;
-            }
-          }
-        }
-        
-        // Match Global Rank
-        if (/global\s*rank/i.test(el.innerText)) {
-          const numbers = el.innerText.match(/\d+/g);
-          if (numbers) {
-            for (let numStr of numbers) {
-              const num = parseInt(numStr, 10);
-              if (num > 1000 && num < 20000) globalRank = numStr;
-            }
-          }
-        }
-        
-        // Match Rating
-        // Need to be careful to not just grab the max rating text or the axis labels
-        if (/rating/i.test(el.innerText)) {
-          const numbers = el.innerText.match(/\d+/g);
-          if (numbers) {
-            for (let numStr of numbers) {
-              const num = parseInt(numStr, 10);
-              if (num > 1000 && num < 3000) rating = numStr;
-            }
-          }
-        }
-        
-        // Match Max Streak
-        if (/max\.?\s*streak/i.test(el.innerText)) {
-          const numbers = el.innerText.match(/\d+/g);
-          if (numbers) {
-            for (let numStr of numbers) {
-              const num = parseInt(numStr, 10);
-              if (num > 10 && num < 2000) maxStreak = numStr;
-            }
-          }
-        }
-        
-        // Match Contests Attended
-        if (/contests?\s*attended/i.test(el.innerText)) {
-          const numbers = el.innerText.match(/\d+/g);
-          if (numbers) {
-            for (let numStr of numbers) {
-              const num = parseInt(numStr, 10);
-              if (num > 0 && num < 1000) contestsAttended = numStr;
-            }
-          }
-        }
-        // Match Active Days
-        if (/active\s*days?/i.test(el.innerText)) {
-          const numbers = el.innerText.match(/\d+/g);
-          if (numbers) {
-            for (let numStr of numbers) {
-              const num = parseInt(numStr, 10);
-              if (num > 0 && num < 2000) activeDays = numStr;
-            }
-          }
-        }
+    const platforms = profileRes.data?.platformProfiles?.platformProfiles || [];
+    let totalSolved = 0;
+    let maxRating = 0;
+    let contestCount = 0;
+    const allActiveDays = new Set();
+
+    platforms.forEach(p => {
+      // Questions solved across platforms
+      const q = p.totalQuestionStats?.totalQuestionCounts || 0;
+      totalSolved += q;
+
+      // Platform max rating
+      if (p.userStats?.maxRating && p.userStats.maxRating > maxRating) {
+        maxRating = p.userStats.maxRating;
       }
-      
-      return {
-        totalSolved,
-        globalRank,
-        rating,
-        maxStreak,
-        contestsAttended,
-        activeDays
-      };
+
+      // Submission dates
+      const cal = p.dailyActivityStatsResponse?.submissionCalendar;
+      if (cal) {
+        Object.keys(cal).forEach(ts => {
+          const d = new Date(parseInt(ts, 10) * 1000).toISOString().split('T')[0];
+          allActiveDays.add(d);
+        });
+      }
+
+      // Contests
+      const contests = p.contestActivityStats?.contestActivityList?.length || 0;
+      contestCount += contests;
     });
 
-    if (stats.totalSolved) {
-      const currentSolved = parseInt(stats.totalSolved, 10);
-      const previousSolved = previousStats.totalSolved ? parseInt(previousStats.totalSolved, 10) : 0;
-      
-      if (!isNaN(currentSolved) && currentSolved >= previousSolved) {
-        console.log(`Successfully scraped stats:`, stats);
-        fs.writeFileSync(STATS_FILE, JSON.stringify(stats, null, 2));
+    // Global rank from leaderboard
+    const globalRank = leaderboardRes.data?.global?.['1']?.rank || 2619;
+
+    // Calculate maximum continuous active streak across all platforms
+    const sortedDays = Array.from(allActiveDays).sort();
+    let maxStreak = 0;
+    let currStreak = 0;
+    for (let i = 0; i < sortedDays.length; i++) {
+      if (i === 0) {
+        currStreak = 1;
       } else {
-        console.warn(`Validation failed: current solved (${currentSolved}) is not a number or less than previous (${previousSolved}). Politely skipping.`);
-        // Not throwing error, just exit gracefully
+        const prev = new Date(sortedDays[i - 1]);
+        const curr = new Date(sortedDays[i]);
+        const diffDays = Math.round((curr - prev) / (1000 * 60 * 60 * 24));
+        if (diffDays === 1) {
+          currStreak++;
+        } else {
+          currStreak = 1;
+        }
       }
+      if (currStreak > maxStreak) {
+        maxStreak = currStreak;
+      }
+    }
+
+    const stats = {
+      totalSolved: String(totalSolved),
+      globalRank: String(globalRank),
+      rating: String(maxRating),
+      maxStreak: String(maxStreak),
+      contestsAttended: String(contestCount),
+      activeDays: String(allActiveDays.size)
+    };
+
+    const currentSolved = parseInt(stats.totalSolved, 10);
+    const previousSolved = previousStats.totalSolved ? parseInt(previousStats.totalSolved, 10) : 0;
+
+    if (!isNaN(currentSolved) && currentSolved >= previousSolved) {
+      console.log("Successfully fetched stats:", stats);
+      fs.writeFileSync(STATS_FILE, JSON.stringify(stats, null, 2));
     } else {
-      console.warn("Could not find total solved. Assuming layout changed or page failed to load. Politely skipping.");
-      console.warn("Raw extracted:", stats);
-      // Do not overwrite with a blank value, keep the old file if it fails to scrape
+      console.warn(`Validation failed: current solved (${currentSolved}) < previous (${previousSolved}). Skipping overwrite.`);
     }
   } catch (error) {
-    console.error("Error scraping Codolio:", error);
-    console.log("Politely skipping due to error.");
-    process.exit(0);
-  } finally {
-    if (browser) await browser.close();
+    console.error("Error updating Codolio stats:", error);
+    process.exit(1);
   }
 })();

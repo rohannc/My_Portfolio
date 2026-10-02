@@ -1,23 +1,38 @@
 import fs from 'fs';
 import https from 'https';
-import puppeteer from 'puppeteer';
 import path from 'path';
+
+const fetchJson = (url) => {
+  return new Promise((resolve, reject) => {
+    https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try {
+          resolve(JSON.parse(data));
+        } catch (e) {
+          reject(e);
+        }
+      });
+    }).on('error', reject);
+  });
+};
 
 const getGithubData = () => {
   return new Promise((resolve, reject) => {
-    https.get('https://github.com/users/rohannc/contributions', (res) => {
+    https.get('https://github.com/users/rohannc/contributions', { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
         const stats = {};
         const tooltips = {};
-        
+
         const tooltipMatches = data.match(/<tool-tip[^>]*for="([^"]+)"[^>]*>([^<]+)<\/tool-tip>/g) || [];
         tooltipMatches.forEach(t => {
           const idMatch = t.match(/for="([^"]+)"/);
           const textMatch = t.match(/>([^<]+)</);
           if (idMatch && textMatch) {
-            tooltips[idMatch[1]] = textMatch[1]; 
+            tooltips[idMatch[1]] = textMatch[1];
           }
         });
 
@@ -46,48 +61,22 @@ const getGithubData = () => {
 };
 
 const getCodolioData = async () => {
-  const browser = await puppeteer.launch({ headless: 'new' });
-  const page = await browser.newPage();
-  console.log('Loading Codolio profile...');
-  await page.goto('https://codolio.com/profile/Rohann', { waitUntil: 'domcontentloaded', timeout: 30000 });
-  try {
-    await page.waitForSelector('rect', { timeout: 15000 });
-    console.log('Heatmap loaded.');
-  } catch (e) {
-    console.log('Timeout waiting for heatmap to load. Proceeding with DOM content anyway.');
-  }
-  await new Promise(r => setTimeout(r, 2000)); // wait a bit more for tooltips
-  const html = await page.content();
-  console.log(`HTML Length: ${html.length}`);
-  await browser.close();
+  console.log('Fetching Codolio platform submission calendars via API...');
+  const profileRes = await fetchJson('https://api.codolio.com/profile?userKey=Rohann');
+  const platforms = profileRes.data?.platformProfiles?.platformProfiles || [];
 
   const stats = {};
-  const rectMatches = html.match(/<rect[^>]*data-tooltip-content="([^"]+)"[^>]*>/g) || [];
-  rectMatches.forEach(rect => {
-    const textMatch = rect.match(/data-tooltip-content="([^"]+)"/);
-    if (textMatch) {
-      const text = textMatch[1];
-      const parts = text.split(' on ');
-      if (parts.length === 2) {
-        let countText = parts[0];
-        let dateText = parts[1]; // DD/MM/YYYY
-        
-        let count = 0;
-        if (!countText.toLowerCase().includes('no ')) {
-          count = parseInt(countText.split(' ')[0], 10) || 0;
-        }
-        
-        // Convert DD/MM/YYYY to YYYY-MM-DD
-        const dateParts = dateText.split('/');
-        if (dateParts.length === 3) {
-          const [d, m, y] = dateParts;
-          const formattedDate = `${y}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
-          stats[formattedDate] = count;
-        }
-      }
+  platforms.forEach(p => {
+    const calendar = p.dailyActivityStatsResponse?.submissionCalendar;
+    if (calendar) {
+      Object.entries(calendar).forEach(([timestamp, count]) => {
+        const date = new Date(parseInt(timestamp, 10) * 1000).toISOString().split('T')[0];
+        stats[date] = (stats[date] || 0) + (parseInt(count, 10) || 0);
+      });
     }
   });
-  console.log(`Fetched ${Object.keys(stats).length} days of Codolio data`);
+
+  console.log(`Aggregated Codolio submissions across ${Object.keys(stats).length} unique active days`);
   return stats;
 };
 
@@ -95,16 +84,18 @@ const main = async () => {
   try {
     console.log('Fetching GitHub Data...');
     const githubData = await getGithubData();
-    
+
     console.log('Fetching Codolio Data...');
     const codolioData = await getCodolioData();
 
-    // Merge data by date using GitHub as the primary timeline (365 days)
-    const mergedData = [];
-    
-    // Sort all available dates from github
+    // Use GitHub's standard 365-day rolling timeline
     const allDates = Object.keys(githubData).sort();
+    if (allDates.length === 0) {
+      throw new Error("No dates retrieved from GitHub contributions");
+    }
+
     let maxTotal = 0;
+    const mergedData = [];
 
     for (const date of allDates) {
       const ghCount = githubData[date] || 0;
@@ -120,7 +111,6 @@ const main = async () => {
       });
     }
 
-    // Output to src/data/heatmapStats.json
     const outputPath = path.join(process.cwd(), 'src', 'data', 'heatmapStats.json');
     const finalData = {
       maxTotal,
@@ -128,10 +118,9 @@ const main = async () => {
     };
 
     fs.writeFileSync(outputPath, JSON.stringify(finalData, null, 2));
-    console.log(`Successfully wrote heatmap data to ${outputPath}`);
-
+    console.log(`Successfully wrote heatmap data for ${mergedData.length} days to ${outputPath}`);
   } catch (error) {
-    console.error('Error running scraper:', error);
+    console.error('Error running heatmap generator:', error);
     process.exit(1);
   }
 };
