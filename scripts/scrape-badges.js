@@ -1,11 +1,26 @@
-import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
+import https from 'https';
 
 const BADGES_FILE = path.join(process.cwd(), 'src', 'data', 'codolioBadges.json');
 
+const fetchJson = (url) => {
+  return new Promise((resolve, reject) => {
+    https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try {
+          resolve(JSON.parse(data));
+        } catch (e) {
+          reject(e);
+        }
+      });
+    }).on('error', reject);
+  });
+};
+
 (async () => {
-  let browser;
   try {
     let previousBadges = [];
     if (fs.existsSync(BADGES_FILE)) {
@@ -16,68 +31,64 @@ const BADGES_FILE = path.join(process.cwd(), 'src', 'data', 'codolioBadges.json'
       }
     }
 
-    browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
-    const page = await browser.newPage();
-    
-    // Modern user agent to prevent blocks
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36');
-    
-    console.log("Navigating to Codolio profile to scrape badges...");
-    await page.goto('https://codolio.com/profile/Rohann', { waitUntil: 'networkidle2', timeout: 30000 });
-    
-    // Wait for the SPA to render the data and the Awards section to load
-    await new Promise(r => setTimeout(r, 8000)); 
+    console.log("Fetching Codolio badges directly from API...");
+    const profileRes = await fetchJson('https://api.codolio.com/profile?userKey=Rohann');
+    const platforms = profileRes.data?.platformProfiles?.platformProfiles || [];
 
-    // Extract all badges
-    const badges = await page.evaluate(() => {
-      const results = [];
-      const imgElements = Array.from(document.querySelectorAll('img'));
-      
-      for (const img of imgElements) {
-        const src = img.src || '';
-        const alt = img.alt || '';
-        
-        // Find if this image is inside a flex column with a date span
-        const container = img.closest('.relative.flex.flex-col');
-        let dateText = "01 Jan 1970";
-        let foundDate = false;
-        
-        if (container) {
-          const spans = Array.from(container.querySelectorAll('span'));
-          for (const span of spans) {
-            // Check if span text looks like a date (e.g. "30 Apr 2026")
-            if (/\d{1,2}\s+[A-Za-z]{3}\s+\d{4}/.test(span.innerText)) {
-              dateText = span.innerText;
-              foundDate = true;
-              break;
-            }
+    const extractedBadges = [];
+
+    // Fallbacks for known badge assets that may not have direct icons in the JSON
+    const knownIcons = {
+      'c': 'https://hrcdn.net/fcore/assets/badges/c-d1985901e6.svg',
+      'python': 'https://hrcdn.net/fcore/assets/badges/python-f70befd824.svg',
+      'problem solving': 'https://hrcdn.net/fcore/assets/badges/problem-solving-ecaf59a612.svg',
+      'arrays': 'https://codolio.com/badges/codestudio_achiever.svg'
+    };
+
+    platforms.forEach(p => {
+      const list = p.badgeStats?.badgeList || [];
+      list.forEach(b => {
+        const name = b.displayName || b.name || b.shortName;
+        let url = b.icon;
+
+        // Resolve relative LeetCode image paths
+        if (url && url.startsWith('/')) {
+          url = 'https://assets.leetcode.com' + url;
+        }
+
+        // Apply known icon fallback if icon is missing
+        if (!url && name) {
+          const key = name.trim().toLowerCase();
+          if (knownIcons[key]) {
+            url = knownIcons[key];
+          } else if (p.platform === 'hackerrank') {
+            const slug = name.toLowerCase().replace(/\s+/g, '-');
+            url = `https://hrcdn.net/fcore/assets/badges/${slug}.svg`;
+          } else if (p.platform === 'codestudio') {
+            url = 'https://codolio.com/badges/codestudio_achiever.svg';
           }
         }
-        
-        // Filter out non-badge images. Badges usually have alt text, or specific src keywords
-        if (alt && src && (src.includes('badges') || src.includes('others') || src.includes('marketing') || foundDate)) {
-            // Some layout images might have 'badges' in URL, let's also require it's not empty alt
-            results.push({ name: alt, url: src, dateStr: dateText });
+
+        if (name && url) {
+          extractedBadges.push({
+            name,
+            url,
+            creationDate: b.creationDate || 0,
+            platform: p.platform
+          });
         }
-      }
-      return results;
+      });
     });
 
-    if (badges.length > 0) {
-      // Sort badges by date descending
-      badges.sort((a, b) => {
-        const dateA = new Date(a.dateStr).getTime() || 0;
-        const dateB = new Date(b.dateStr).getTime() || 0;
-        return dateB - dateA;
-      });
+    if (extractedBadges.length > 0) {
+      // Sort badges by creationDate descending
+      extractedBadges.sort((a, b) => (b.creationDate || 0) - (a.creationDate || 0));
 
-      // Remove the temporary dateStr field to match the original schema
-      const finalBadges = badges.map(b => {
-        return { name: b.name, url: b.url };
-      });
+      // Remove temporary metadata to match expected schema
+      const finalBadges = extractedBadges.map(b => ({
+        name: b.name,
+        url: b.url
+      }));
 
       // Deduplicate by URL
       const uniqueBadges = [];
@@ -89,22 +100,21 @@ const BADGES_FILE = path.join(process.cwd(), 'src', 'data', 'codolioBadges.json'
         }
       }
 
-      console.log(`Successfully scraped ${uniqueBadges.length} unique badges.`);
-      
-      // If we got fewer badges than before by a huge margin, something might have broken
-      if (uniqueBadges.length < previousBadges.length - 5) {
-        console.warn(`Warning: Found significantly fewer badges (${uniqueBadges.length}) than before (${previousBadges.length}). Overwriting anyway, but might be a scraping issue.`);
+      console.log(`Successfully fetched ${uniqueBadges.length} unique badges.`);
+
+      // Guard: never overwrite if we got significantly fewer badges
+      if (previousBadges.length > 0 && uniqueBadges.length < previousBadges.length - 5) {
+        console.warn(`Warning: Found fewer badges (${uniqueBadges.length}) than before (${previousBadges.length}). Aborting overwrite to prevent data loss.`);
+        return;
       }
 
       fs.writeFileSync(BADGES_FILE, JSON.stringify(uniqueBadges, null, 2));
+      console.log(`Updated ${BADGES_FILE} with ${uniqueBadges.length} badges.`);
     } else {
-      console.warn("Could not find any badges. Assuming layout changed or page failed to load. Politely skipping.");
+      console.warn("Could not find any badges from API. Skipping overwrite.");
     }
   } catch (error) {
-    console.error("Error scraping Codolio badges:", error);
-    console.log("Politely skipping due to error.");
-    process.exit(0);
-  } finally {
-    if (browser) await browser.close();
+    console.error("Error fetching Codolio badges:", error);
+    process.exit(1);
   }
 })();
