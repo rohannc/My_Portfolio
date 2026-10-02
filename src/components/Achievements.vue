@@ -136,7 +136,7 @@ const filteredAchievements = computed(() => {
         
         <div class="glass-card rounded-2xl p-6 border border-white/5 relative overflow-hidden">
           <!-- Scrollable Container -->
-          <div class="flex overflow-x-auto pb-4 pt-2 gap-6 items-center snap-x" style="scrollbar-width: thin;">
+          <div class="flex overflow-x-auto pb-4 pt-2 gap-6 items-center snap-x badge-scrollbar" style="scroll-behavior: smooth;">
             <div 
               v-for="(badge, idx) in codolioBadges" 
               :key="idx"
@@ -167,3 +167,33 @@ const filteredAchievements = computed(() => {
     </div>
   </section>
 </template>
+
+<style scoped>
+.badge-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(6, 182, 212, 0.45) rgba(15, 23, 42, 0.6);
+}
+
+.badge-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+
+.badge-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 9999px;
+  margin: 0 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.badge-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #06b6d4, #6366f1);
+  border-radius: 9999px;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  transition: all 0.3s ease;
+}
+
+.badge-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #22d3ee, #818cf8);
+  box-shadow: 0 0 14px rgba(34, 211, 238, 0.8);
+}
+</style>
