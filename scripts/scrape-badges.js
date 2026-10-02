@@ -51,8 +51,10 @@ const fetchJson = (url) => {
         const name = b.displayName || b.name || b.shortName;
         let url = b.icon;
 
-        // Resolve relative LeetCode image paths
-        if (url && url.startsWith('/')) {
+        // Resolve relative LeetCode image paths with the correct static_assets CDN domain
+        if (url && url.startsWith('/static/images/badges/')) {
+          url = 'https://assets.leetcode.com/static_assets/public/images/badges/' + url.replace('/static/images/badges/', '');
+        } else if (url && url.startsWith('/')) {
           url = 'https://assets.leetcode.com' + url;
         }
 

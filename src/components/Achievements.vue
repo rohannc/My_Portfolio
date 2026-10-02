@@ -143,7 +143,15 @@ const filteredAchievements = computed(() => {
               class="flex-shrink-0 flex flex-col items-center justify-center gap-3 w-28 group snap-center"
             >
               <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-slate-800/50 border border-white/10 group-hover:border-cyan-500/50 group-hover:bg-slate-800 transition-all duration-300 p-2 shadow-lg">
-                <img :src="badge.url" :alt="badge.name" class="w-full h-full object-contain filter drop-shadow-md group-hover:scale-110 transition-transform duration-300" />
+                <img 
+                  :src="badge.url" 
+                  :alt="badge.name" 
+                  loading="lazy"
+                  decoding="async"
+                  crossorigin="anonymous"
+                  class="w-full h-full object-contain filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                  @error="(e) => e.target.style.opacity = '0.5'"
+                />
               </div>
               <span class="text-[10px] sm:text-xs text-center font-medium text-slate-300 group-hover:text-cyan-400 transition-colors line-clamp-2 px-1">
                 {{ badge.name }}
