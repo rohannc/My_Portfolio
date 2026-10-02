@@ -140,7 +140,7 @@ const filteredAchievements = computed(() => {
             <div 
               v-for="(badge, idx) in codolioBadges" 
               :key="idx"
-              class="flex-shrink-0 flex flex-col items-center justify-center gap-3 w-28 group snap-center"
+              class="flex-shrink-0 flex flex-col items-center justify-center gap-3 w-28 group snap-center cursor-pointer select-none"
             >
               <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-slate-800/50 border border-white/10 group-hover:border-cyan-500/50 group-hover:bg-slate-800 transition-all duration-300 p-2 shadow-lg">
                 <img 
