@@ -44,7 +44,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Ensure all clickable buttons and links display pointer cursor on hover */
+/* Ensure all clickable buttons, links, cards, and interactive elements display pointer cursor on hover */
 button,
 a,
 [role="button"],
@@ -52,7 +52,9 @@ input[type="button"],
 input[type="submit"],
 input[type="reset"],
 select,
-.cursor-pointer {
+summary,
+.cursor-pointer,
+.glass-card-hover {
   cursor: pointer !important;
 }
 
