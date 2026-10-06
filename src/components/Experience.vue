@@ -17,25 +17,25 @@ import { experiences } from "../data/portfolioData.js";
       </div>
 
       <!-- Experience Cards Stack -->
-      <div class="max-w-5xl mx-auto space-y-6 sm:space-y-8">
+      <div class="max-w-5xl mx-auto space-y-5 sm:space-y-8">
         <div
           v-for="exp in experiences"
           :key="exp.role + exp.period"
-          class="glass-card rounded-2xl p-6 sm:p-8 transition-all duration-300 relative overflow-hidden"
+          class="glass-card rounded-2xl p-4 sm:p-8 transition-all duration-300 relative overflow-hidden"
           :class="exp.current
             ? 'border border-blue-500/30 border-t-4 border-t-blue-500 bg-gradient-to-br from-slate-900/95 via-blue-950/20 to-slate-900/95 shadow-xl hover:border-blue-500/50'
             : 'border border-white/5 border-t-4 border-t-cyan-500 bg-slate-900/80 shadow-lg hover:border-cyan-500/30'"
         >
           <!-- Header Bar: Visa Logo Badge, Role Title, Status Badge, Period -->
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-5 border-b border-white/5">
-            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
-              <!-- Highlighted White Visa Logo (No Background, Compact Size) -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-5 mb-4 sm:mb-5 border-b border-white/5">
+            <div class="flex items-start sm:items-center gap-3 sm:gap-4">
+              <!-- Highlighted White Visa Logo (Compact Container) -->
               <div
-                class="flex items-center justify-center flex-shrink-0 pt-0.5"
+                class="flex items-center justify-center flex-shrink-0 pt-1 sm:pt-0.5 px-2 py-1.5 sm:px-0 sm:py-0 rounded-lg bg-white/[0.03] sm:bg-transparent border border-white/5 sm:border-0"
                 title="Visa Inc."
               >
                 <svg
-                  class="h-[18px] sm:h-[21px] w-auto fill-white drop-shadow-[0_0_8px_rgba(255,255,255,0.85)] drop-shadow-[0_0_2px_#ffffff] transition-all duration-300 group-hover:drop-shadow-[0_0_14px_rgba(255,255,255,1)] group-hover:scale-105"
+                  class="h-[16px] sm:h-[21px] w-auto fill-white drop-shadow-[0_0_8px_rgba(255,255,255,0.85)] drop-shadow-[0_0_2px_#ffffff] transition-all duration-300 group-hover:drop-shadow-[0_0_14px_rgba(255,255,255,1)] group-hover:scale-105"
                   viewBox="0 0 1000 324.68"
                   xmlns="http://www.w3.org/2000/svg"
                   role="img"
@@ -45,31 +45,31 @@ import { experiences } from "../data/portfolioData.js";
                 </svg>
               </div>
 
-              <div>
-                <div class="flex items-center gap-2.5 flex-wrap">
-                  <h3 class="text-lg sm:text-2xl font-extrabold text-white tracking-tight">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="text-base sm:text-2xl font-extrabold text-white tracking-tight">
                     {{ exp.role }}
                   </h3>
                   <!-- Badge -->
                   <span
-                    class="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold items-center gap-1.5"
+                    class="px-2 py-0.5 rounded-full text-[11px] sm:text-xs font-mono font-semibold inline-flex items-center gap-1.5"
                     :class="exp.current
-                      ? 'inline-flex bg-blue-500/15 text-blue-400 border border-blue-500/30'
-                      : 'hidden sm:inline-flex bg-cyan-500/15 text-cyan-300 border border-cyan-500/30'"
+                      ? 'bg-blue-500/15 text-blue-400 border border-blue-500/30'
+                      : 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/30'"
                   >
-                    <span v-if="exp.current" class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                    <span v-if="exp.current" class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
                     <span v-else class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
                     {{ exp.badge }}
                   </span>
                 </div>
 
-                <div class="flex items-center gap-2 text-xs sm:text-sm text-slate-300 mt-1 flex-wrap font-medium">
+                <div class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 mt-1 flex-wrap font-medium">
                   <span class="visa-highlight">{{ exp.company }}</span>
                   <span class="text-slate-600">•</span>
                   <span>{{ exp.employmentType }}</span>
                   <span class="text-slate-600">•</span>
                   <span class="text-slate-400 flex items-center gap-1">
-                    <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                     </svg>
@@ -80,8 +80,8 @@ import { experiences } from "../data/portfolioData.js";
             </div>
 
             <!-- Date Period Badge -->
-            <div class="self-start sm:self-center mt-1 sm:mt-0">
-              <span class="inline-flex items-center px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-xl text-xs font-mono font-medium bg-slate-800/90 text-cyan-300 border border-white/5 shadow-sm">
+            <div class="self-start sm:self-center">
+              <span class="inline-flex items-center px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-mono font-medium bg-slate-800/90 text-cyan-300 border border-white/5 shadow-sm">
                 {{ exp.period }}
               </span>
             </div>
@@ -91,9 +91,9 @@ import { experiences } from "../data/portfolioData.js";
           <!-- Full-Time Role Banner -->
           <div
             v-if="exp.current"
-            class="flex items-center gap-3 p-3.5 rounded-xl bg-blue-500/10 border border-blue-500/20 mb-5 text-xs sm:text-sm text-blue-200"
+            class="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-3.5 rounded-xl bg-blue-500/10 border border-blue-500/20 mb-4 sm:mb-5 text-xs sm:text-sm text-blue-200"
           >
-            <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 font-bold text-sm">
+            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 font-bold text-xs sm:text-sm">
               ⚡
             </div>
             <p class="font-medium leading-relaxed">
@@ -104,9 +104,9 @@ import { experiences } from "../data/portfolioData.js";
           <!-- Internship Transition Banner -->
           <div
             v-else
-            class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-950/70 border border-cyan-500/20 mb-5 text-xs sm:text-sm text-slate-200"
+            class="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-3.5 rounded-xl bg-slate-950/70 border border-cyan-500/20 mb-4 sm:mb-5 text-xs sm:text-sm text-slate-200"
           >
-            <div class="w-7 h-7 rounded-lg bg-cyan-500/15 text-cyan-400 flex items-center justify-center flex-shrink-0 font-bold text-sm mt-0.5">
+            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-cyan-500/15 text-cyan-400 flex items-center justify-center flex-shrink-0 font-bold text-xs sm:text-sm mt-0.5">
               💡
             </div>
             <p class="leading-relaxed">
@@ -115,23 +115,23 @@ import { experiences } from "../data/portfolioData.js";
           </div>
 
           <!-- Structured Key Contributions Grid (for Internship) -->
-          <div v-if="exp.contributions && exp.contributions.length > 0" class="mb-6">
-            <h4 class="text-xs font-mono font-semibold tracking-wider text-slate-400 uppercase mb-3 flex items-center gap-2">
+          <div v-if="exp.contributions && exp.contributions.length > 0" class="mb-5 sm:mb-6">
+            <h4 class="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-slate-400 uppercase mb-2.5 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
               <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
               Key Contributions & Technical Impact
             </h4>
 
-            <div class="grid grid-cols-1 gap-3">
+            <div class="grid grid-cols-1 gap-2.5 sm:gap-3">
               <div
                 v-for="(contrib, cIdx) in exp.contributions"
                 :key="cIdx"
-                class="p-4 rounded-xl bg-slate-900/60 border border-white/5 hover:border-white/10 transition-colors"
+                class="p-3 sm:p-4 rounded-xl bg-slate-900/60 border border-white/5 hover:border-white/10 transition-colors"
               >
-                <div class="flex items-center gap-2 mb-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                  <h5 class="text-sm font-bold text-white tracking-tight">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0"></span>
+                  <h5 class="text-xs sm:text-sm font-bold text-white tracking-tight">
                     {{ contrib.title }}
                   </h5>
                 </div>
@@ -143,7 +143,7 @@ import { experiences } from "../data/portfolioData.js";
           </div>
 
           <!-- Full-Time Role Overview Description -->
-          <div v-else-if="exp.description" class="mb-6">
+          <div v-else-if="exp.description" class="mb-5 sm:mb-6">
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
               {{ exp.description }}
             </p>
@@ -151,12 +151,12 @@ import { experiences } from "../data/portfolioData.js";
 
           <!-- Technologies & Core Tooling -->
           <div>
-            <div class="text-[11px] font-mono text-slate-500 uppercase mb-2">Technologies & Core Tooling</div>
+            <div class="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase mb-2">Technologies & Core Tooling</div>
             <div class="flex flex-wrap gap-1.5">
               <span
                 v-for="tech in exp.skills"
                 :key="tech"
-                class="px-2.5 py-1 rounded-lg text-xs font-mono bg-slate-800/80 text-slate-300 border border-white/5 hover:border-cyan-500/30 hover:text-cyan-300 transition-colors cursor-pointer"
+                class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[11px] sm:text-xs font-mono bg-slate-800/80 text-slate-300 border border-white/5 hover:border-cyan-500/30 hover:text-cyan-300 transition-colors cursor-pointer"
               >
                 {{ tech }}
               </span>
