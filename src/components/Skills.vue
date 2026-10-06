@@ -155,11 +155,11 @@ function handleChipLeave(event) {
                 @mouseleave="handleChipLeave"
                 class="group flex items-start gap-2.5 sm:gap-3.5 p-3 sm:p-3.5 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/40 hover:bg-slate-800/80 transition-all duration-200 overflow-hidden cursor-pointer"
               >
-                <div class="w-10 h-10 rounded-lg bg-slate-800 p-2 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform mt-0.5">
+                <div class="w-10 h-10 rounded-lg bg-slate-800 p-2 flex items-center justify-center flex-shrink-0 border border-transparent transition-all duration-300 group-hover:bg-slate-700/80 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_15px_rgba(6,182,212,0.35)] mt-0.5">
                   <img
                     :src="skill.icon"
                     :alt="skill.name"
-                    class="w-full h-full object-contain"
+                    class="w-full h-full object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_6px_rgba(6,182,212,0.6)]"
                     :class="skill.invertIcon ? 'brightness-0 invert opacity-90' : ''"
                     loading="lazy"
                   />
@@ -195,11 +195,11 @@ function handleChipLeave(event) {
                 @mouseleave="handleChipLeave"
                 class="group flex items-center gap-2.5 sm:gap-3 p-2 sm:p-2.5 rounded-xl bg-slate-900/70 border border-white/5 hover:border-cyan-500/40 hover:bg-slate-800/80 transition-all duration-200 overflow-hidden cursor-pointer"
               >
-                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-slate-800 p-1.5 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-slate-800 p-1.5 flex items-center justify-center flex-shrink-0 border border-transparent transition-all duration-300 group-hover:bg-slate-700/80 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_12px_rgba(6,182,212,0.35)]">
                   <img
                     :src="skill.icon"
                     :alt="skill.name"
-                    class="w-full h-full object-contain"
+                    class="w-full h-full object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_6px_rgba(6,182,212,0.6)]"
                     :class="skill.invertIcon ? 'brightness-0 invert opacity-90' : ''"
                     loading="lazy"
                   />

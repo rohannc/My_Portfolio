@@ -31,20 +31,13 @@ h1, h2, h3, h4, .font-heading {
   letter-spacing: 0.02em;
   text-shadow: 0 0 12px rgba(59, 130, 246, 0.45);
   display: inline-block;
-  transition: transform 0.2s ease, text-shadow 0.2s ease, color 0.2s ease;
-}
-
-.visa-highlight:hover {
-  transform: translateY(-1px);
-  color: #60a5fa;
-  text-shadow: 0 0 18px rgba(59, 130, 246, 0.7);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Ensure all clickable buttons, links, cards, and interactive elements display pointer cursor on hover */
+/* Ensure all clickable buttons, links, cards, and interactive hover positions display pointer cursor */
 button,
 a,
 [role="button"],
@@ -54,8 +47,19 @@ input[type="reset"],
 select,
 summary,
 .cursor-pointer,
-.glass-card-hover {
-  cursor: pointer !important;
+.glass-card-hover,
+.chip-title-container,
+[class*="hover:"],
+.group[class*="hover:"] {
+  cursor: pointer;
+}
+
+/* Allow text inputs and text-selection to maintain text cursor */
+input[type="text"],
+input[type="email"],
+textarea,
+input:not([type="button"]):not([type="submit"]):not([type="reset"]) {
+  cursor: text;
 }
 
 button:disabled,

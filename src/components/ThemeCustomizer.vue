@@ -14,7 +14,7 @@ const currentHue = ref(0);
 const isOpen = ref(false);
 const isLightMode = ref(false);
 
-const applyTheme = () => {
+const applyTheme = (save = true) => {
   document.documentElement.style.setProperty('--theme-hue', `${currentHue.value}deg`);
   
   if (isLightMode.value) {
@@ -28,7 +28,19 @@ const applyTheme = () => {
     filterStr = `hue-rotate(${currentHue.value}deg)`;
   }
   
-  document.getElementById('theme-content').style.filter = filterStr;
+  const contentEl = document.getElementById('theme-content');
+  if (contentEl) {
+    contentEl.style.filter = filterStr;
+  }
+
+  if (save) {
+    try {
+      localStorage.setItem('portfolio_theme_hue', currentHue.value.toString());
+      localStorage.setItem('portfolio_theme_mode', isLightMode.value ? 'light' : 'dark');
+    } catch {
+      // Storage unavailable fallback
+    }
+  }
 };
 
 const setTheme = (hue) => {
@@ -42,6 +54,22 @@ const toggleLightMode = () => {
 };
 
 onMounted(() => {
+  // Restore persisted preferences if present
+  try {
+    const savedHue = localStorage.getItem('portfolio_theme_hue');
+    if (savedHue !== null) {
+      currentHue.value = parseInt(savedHue, 10) || 0;
+    }
+    const savedMode = localStorage.getItem('portfolio_theme_mode');
+    if (savedMode !== null) {
+      isLightMode.value = savedMode === 'light';
+    }
+  } catch {
+    // Ignore fallback
+  }
+
+  applyTheme(false);
+
   const style = document.createElement('style');
   style.innerHTML = `
     #theme-content { transition: filter 0.5s ease-in-out; }

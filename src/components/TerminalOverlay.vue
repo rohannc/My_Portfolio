@@ -68,23 +68,51 @@ const executeCommand = () => {
   switch (command) {
     case 'help':
       output.value.push({ type: 'system', text: 'Available commands:' });
-      output.value.push({ type: 'system', text: '  whoareyou - Display portfolio owner info' });
-      output.value.push({ type: 'system', text: '  skills    - List core competencies' });
-      output.value.push({ type: 'system', text: '  clear     - Clear terminal output' });
-      output.value.push({ type: 'system', text: '  sudo      - Execute a command as superuser' });
-      output.value.push({ type: 'system', text: '  exit      - Close terminal' });
+      output.value.push({ type: 'system', text: '  whoareyou  - Display portfolio owner info & background' });
+      output.value.push({ type: 'system', text: '  skills     - List technical competencies & agentic tools' });
+      output.value.push({ type: 'system', text: '  projects   - Show featured engineering systems' });
+      output.value.push({ type: 'system', text: '  stats      - Display live competitive DSA & hackathon metrics' });
+      output.value.push({ type: 'system', text: '  resume     - Open official resume in a new tab' });
+      output.value.push({ type: 'system', text: '  contact    - Scroll to contact section / show direct email' });
+      output.value.push({ type: 'system', text: '  clear      - Clear terminal output' });
+      output.value.push({ type: 'system', text: '  sudo       - Superuser privileges test' });
+      output.value.push({ type: 'system', text: '  exit       - Close terminal' });
       break;
     case 'whoareyou':
-      output.value.push({ type: 'success', text: 'rohan_chakraborty' });
-      output.value.push({ type: 'system', text: 'Role: Software Engineer @ Visa' });
-      output.value.push({ type: 'system', text: 'Location: Bengaluru, India' });
+      output.value.push({ type: 'success', text: 'Rohan Chakraborty' });
+      output.value.push({ type: 'system', text: 'Role: Software Engineer @ Visa (Bengaluru)' });
+      output.value.push({ type: 'system', text: 'Education: Master of Computer Applications, Jadavpur University' });
+      output.value.push({ type: 'system', text: 'Focus: Autonomous AI Agents, LangGraph, Distributed Systems, DevSecOps' });
       break;
     case 'skills':
-      output.value.push({ type: 'success', text: 'Loading skills...' });
-      output.value.push({ type: 'system', text: '✓ Python (Advanced)' });
-      output.value.push({ type: 'system', text: '✓ Java (Advanced)' });
-      output.value.push({ type: 'system', text: '✓ LangGraph & AI Agents' });
-      output.value.push({ type: 'system', text: '✓ CI/CD & DevSecOps' });
+      output.value.push({ type: 'success', text: 'Core Engineering Stack:' });
+      output.value.push({ type: 'system', text: '⚡ Agentic AI: LangGraph, Model Context Protocol ( MCP ), Claude Code, OpenAI API' });
+      output.value.push({ type: 'system', text: '⚡ Languages: Python (Asyncio), Java, SQL, C++, JavaScript' });
+      output.value.push({ type: 'system', text: '⚡ Frameworks: Spring Boot, Vert.x, Vue.js, Node.js' });
+      output.value.push({ type: 'system', text: '⚡ Cloud & Ops: Kubernetes, Jenkins, Docker, Kafka, Hazelcast' });
+      output.value.push({ type: 'system', text: '⚡ Security: SonarQube, Checkmarx, Nexus IQ, HITL CI/CD Pipelines' });
+      break;
+    case 'projects':
+      output.value.push({ type: 'success', text: 'Featured Project:' });
+      output.value.push({ type: 'system', text: '🔍 DeepFake Image Detection System (92.8% Validation Accuracy)' });
+      output.value.push({ type: 'system', text: '   Tech: PyTorch, Error Level Analysis ( ELA ), Python, Streamlit, ResNet' });
+      output.value.push({ type: 'system', text: '   URL: github.com/rohannc/Deepfake-Image-Detection' });
+      break;
+    case 'stats':
+      output.value.push({ type: 'success', text: 'Live Competitive Metrics:' });
+      output.value.push({ type: 'system', text: '🔥 Problems Solved: 1,700+ (LeetCode, Codeforces, GeeksforGeeks, CodeChef)' });
+      output.value.push({ type: 'system', text: '🏆 State Entrance Rank: WBJECA 2024 - Rank 17' });
+      output.value.push({ type: 'system', text: '🏅 Milestones: 9+ Hackathons & Inter-College Coding Championships' });
+      break;
+    case 'resume':
+      output.value.push({ type: 'success', text: 'Opening official resume in new tab...' });
+      window.open('https://drive.google.com/file/d/19UzkhTtntELmvFp6c0OTfz8GoNirav87/view?usp=sharing', '_blank');
+      break;
+    case 'contact':
+      output.value.push({ type: 'success', text: 'Direct Contacts:' });
+      output.value.push({ type: 'system', text: '✉️  Email: chakrabortyrohan.abc01@gmail.com' });
+      output.value.push({ type: 'system', text: '💼 LinkedIn: linkedin.com/in/rohanchakraborty0108' });
+      output.value.push({ type: 'system', text: '🐙 GitHub: github.com/rohannc' });
       break;
     case 'clear':
       output.value = [{ type: 'system', text: 'RohanOS v1.0.0 ( tty1 )' }];
@@ -93,14 +121,14 @@ const executeCommand = () => {
       if (args[1] === 'rm' && args[2] === '-rf' && args[3] === '/') {
         output.value.push({ type: 'error', text: 'Permission denied: Nice try though!' });
       } else {
-        output.value.push({ type: 'error', text: 'You are not in the sudoers file. This incident will be reported.' });
+        output.value.push({ type: 'error', text: 'You are not in the sudoers file. This incident will be reported to Visa Security.' });
       }
       break;
     case 'exit':
       toggleTerminal();
       break;
     default:
-      output.value.push({ type: 'error', text: `Command not found: ${command}` });
+      output.value.push({ type: 'error', text: `Command not found: "${command}". Type "help" for valid commands.` });
   }
   
   inputCommand.value = '';

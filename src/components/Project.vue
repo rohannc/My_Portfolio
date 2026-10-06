@@ -216,42 +216,76 @@ const openGitHub = () => {
 :deep(.swiper-button-next),
 :deep(.swiper-button-prev) {
   color: #38bdf8;
-  width: 32px;
-  height: 32px;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(4px);
+  width: 30px;
+  height: 30px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  display: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex !important;
+  transition: all 0.2s ease;
+}
+
+:deep(.swiper-button-next:hover),
+:deep(.swiper-button-prev:hover) {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: scale(1.08);
+}
+
+:deep(.swiper-button-next) {
+  right: 8px !important;
+}
+
+:deep(.swiper-button-prev) {
+  left: 8px !important;
 }
 
 @media (min-width: 640px) {
   :deep(.swiper-button-next),
   :deep(.swiper-button-prev) {
-    display: flex !important;
+    width: 36px;
+    height: 36px;
+  }
+  :deep(.swiper-button-next) {
+    right: 14px !important;
+  }
+  :deep(.swiper-button-prev) {
+    left: 14px !important;
   }
 }
 
 :deep(.swiper-button-next::after),
 :deep(.swiper-button-prev::after) {
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+@media (min-width: 640px) {
+  :deep(.swiper-button-next::after),
+  :deep(.swiper-button-prev::after) {
+    font-size: 14px;
+  }
 }
 
 :deep(.swiper-pagination-bullet) {
-  background: #64748b;
-  opacity: 0.5;
+  background: #94a3b8;
+  opacity: 0.6;
+  width: 6px;
+  height: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 :deep(.swiper-pagination-bullet-active) {
   background: #38bdf8;
   opacity: 1;
-  width: 20px;
-  border-radius: 4px;
+  width: 22px;
+  border-radius: 9999px;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
 }
 
 :deep(.swiper-pagination) {
-  bottom: 6px !important;
+  bottom: 8px !important;
   z-index: 10 !important;
 }
 </style>

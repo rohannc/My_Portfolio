@@ -35,10 +35,10 @@ import { experiences } from "../data/portfolioData.js";
                 title="Visa Inc."
               >
                 <!-- Ambient Glowing Halo Behind the Logo (No Border) -->
-                <div class="absolute inset-0 -inset-x-3 -inset-y-1 bg-gradient-to-r from-blue-500/25 via-cyan-400/20 to-amber-500/20 rounded-full blur-md opacity-80 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                <div class="absolute inset-0 -inset-x-3 -inset-y-1 bg-gradient-to-r from-blue-500/25 via-cyan-400/20 to-amber-500/20 rounded-full blur-md opacity-80 pointer-events-none"></div>
 
                 <svg
-                  class="relative h-[21px] w-auto transition-all duration-300 drop-shadow-[0_0_14px_rgba(59,130,246,0.65)] drop-shadow-[0_0_24px_rgba(255,255,255,0.4)] group-hover:drop-shadow-[0_0_20px_rgba(250,166,26,0.8)] group-hover:scale-105"
+                  class="relative h-[21px] w-auto drop-shadow-[0_0_14px_rgba(59,130,246,0.65)] drop-shadow-[0_0_24px_rgba(255,255,255,0.4)]"
                   viewBox="0 0 1000.046 323.653"
                   xmlns="http://www.w3.org/2000/svg"
                   role="img"

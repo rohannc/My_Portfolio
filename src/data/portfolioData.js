@@ -242,13 +242,13 @@ export const featuredProject = {
     "Real-time processing with an intuitive web interface and clear result visualization"
   ],
   screenshots: [
-    { file: "Website01.png", caption: "Landing Page" },
-    { file: "Website02.png", caption: "System Architecture Overview" },
-    { file: "Website03.png", caption: "Knowledge Base" },
-    { file: "Website04.png", caption: "Support & Contact" },
-    { file: "Website05.png", caption: "Forensic Image Upload & Verification Portal" },
-    { file: "Website06.png", caption: "Error Level Analysis ( ELA ) Heatmap Visualization" },
-    { file: "Website07.png", caption: "Confidence Breakdown & Probabilistic Metrics" }
+    { file: "Website01.webp", caption: "Landing Page" },
+    { file: "Website02.webp", caption: "System Architecture Overview" },
+    { file: "Website03.webp", caption: "Knowledge Base" },
+    { file: "Website04.webp", caption: "Support & Contact" },
+    { file: "Website05.webp", caption: "Forensic Image Upload & Verification Portal" },
+    { file: "Website06.webp", caption: "Error Level Analysis ( ELA ) Heatmap Visualization" },
+    { file: "Website07.webp", caption: "Confidence Breakdown & Probabilistic Metrics" }
   ]
 };
 

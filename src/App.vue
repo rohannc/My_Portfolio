@@ -11,6 +11,7 @@ import Achievements from "./components/Achievements.vue";
 import Education from "./components/Education.vue";
 import ContactMe from "./components/ContactMe.vue";
 import Footer from "./components/Footer.vue";
+import ScrollToTop from "./components/ScrollToTop.vue";
 
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
@@ -49,5 +50,6 @@ if ("scrollRestoration" in history) {
     </div>
     <ThemeCustomizer />
     <TerminalOverlay />
+    <ScrollToTop />
   </div>
 </template>
