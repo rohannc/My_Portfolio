@@ -181,14 +181,26 @@ import { experiences } from "../data/portfolioData.js";
           </div>
 
           <!-- Technologies & Core Tooling -->
-          <div>
-            <div class="text-[10px] sm:text-[11px] font-mono text-slate-500 uppercase mb-2">Technologies & Core Tooling</div>
-            <div class="flex flex-wrap gap-1.5">
+          <div class="pt-4 border-t border-white/5">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2 text-[11px] sm:text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                </svg>
+                <span>Technologies & Core Tooling</span>
+              </div>
+              <span class="text-[10px] sm:text-[11px] font-mono text-slate-500 bg-slate-800/60 px-2 py-0.5 rounded-full border border-white/5">
+                {{ exp.skills.length }} tools
+              </span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 sm:gap-2">
               <span
                 v-for="tech in exp.skills"
                 :key="tech"
-                class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[11px] sm:text-xs font-mono bg-slate-800/80 text-slate-300 border border-white/5 hover:border-cyan-500/30 hover:text-cyan-300 transition-colors cursor-pointer"
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] sm:text-xs font-mono bg-slate-800/60 text-slate-200 border border-white/5 hover:border-cyan-500/40 hover:text-cyan-300 hover:bg-slate-800 transition-all duration-200 cursor-pointer shadow-sm group/tech"
               >
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400/60 group-hover/tech:bg-cyan-400 group-hover/tech:scale-125 transition-all"></span>
                 {{ tech }}
               </span>
             </div>
