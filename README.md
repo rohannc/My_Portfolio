@@ -33,34 +33,6 @@ Welcome to my professional developer portfolio! This repository showcases my aca
 - **Tooling & Bundler**: Vite 6
 - **Typography**: Outfit, Inter & JetBrains Mono
 
-## 🚀 Installation & Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/rohannc/My_Portfolio.git
-   cd My_Portfolio
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Run development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
-
-5. **Preview production build**
-   ```bash
-   npm run preview
-   ```
-
 ## 📂 Project Structure
 
 ```
