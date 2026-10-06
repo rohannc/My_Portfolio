@@ -160,8 +160,8 @@ const filteredAchievements = computed(() => {
           </div>
           
           <!-- Fade edges for scroll indication -->
-          <div class="absolute top-0 bottom-0 left-0 w-12 bg-gradient-to-r from-[#0f172a] to-transparent pointer-events-none"></div>
-          <div class="absolute top-0 bottom-0 right-0 w-12 bg-gradient-to-l from-[#0f172a] to-transparent pointer-events-none"></div>
+          <div class="absolute top-0 bottom-0 left-0 w-8 sm:w-12 bg-gradient-to-r from-slate-900/90 to-transparent pointer-events-none"></div>
+          <div class="absolute top-0 bottom-0 right-0 w-8 sm:w-12 bg-gradient-to-l from-slate-900/90 to-transparent pointer-events-none"></div>
         </div>
       </div>
     </div>

@@ -80,8 +80,8 @@ import { experiences } from "../data/portfolioData.js";
             </div>
 
             <!-- Date Period Badge -->
-            <div class="w-full sm:w-auto mt-2 sm:mt-0">
-              <span class="inline-flex items-center justify-center w-full sm:w-auto px-4 py-2 sm:px-3.5 sm:py-1.5 rounded-xl text-xs font-mono font-medium bg-slate-800/90 text-cyan-300 border border-white/5">
+            <div class="self-start sm:self-center mt-1 sm:mt-0">
+              <span class="inline-flex items-center px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-xl text-xs font-mono font-medium bg-slate-800/90 text-cyan-300 border border-white/5 shadow-sm">
                 {{ exp.period }}
               </span>
             </div>

@@ -185,7 +185,7 @@ function handleChipLeave(event) {
             <!-- Standard 2-column grid for other categories: auto-scroll on hover if overflow -->
             <div
               v-else
-              class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5"
             >
               <div
                 v-for="skill in category.skills"
@@ -193,9 +193,9 @@ function handleChipLeave(event) {
                 :title="skill.name"
                 @mouseenter="handleChipEnter"
                 @mouseleave="handleChipLeave"
-                class="group flex items-center gap-3 p-2.5 rounded-xl bg-slate-900/70 border border-white/5 hover:border-cyan-500/40 hover:bg-slate-800/80 transition-all duration-200 overflow-hidden cursor-pointer"
+                class="group flex items-center gap-2.5 sm:gap-3 p-2 sm:p-2.5 rounded-xl bg-slate-900/70 border border-white/5 hover:border-cyan-500/40 hover:bg-slate-800/80 transition-all duration-200 overflow-hidden cursor-pointer"
               >
-                <div class="w-8 h-8 rounded-lg bg-slate-800 p-1.5 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-slate-800 p-1.5 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
                   <img
                     :src="skill.icon"
                     :alt="skill.name"

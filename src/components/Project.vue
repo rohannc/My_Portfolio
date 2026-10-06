@@ -222,6 +222,14 @@ const openGitHub = () => {
   backdrop-filter: blur(4px);
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  display: none !important;
+}
+
+@media (min-width: 640px) {
+  :deep(.swiper-button-next),
+  :deep(.swiper-button-prev) {
+    display: flex !important;
+  }
 }
 
 :deep(.swiper-button-next::after),

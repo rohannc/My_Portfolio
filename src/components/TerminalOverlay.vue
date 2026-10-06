@@ -135,7 +135,7 @@ onUnmounted(() => {
       <!-- Terminal Body -->
       <div 
         ref="terminalBody"
-        class="h-[400px] overflow-y-auto overscroll-contain p-5 bg-transparent text-slate-300 custom-scrollbar"
+        class="h-[60vh] max-h-[420px] sm:h-[400px] overflow-y-auto overscroll-contain p-4 sm:p-5 bg-transparent text-slate-300 custom-scrollbar text-xs sm:text-[15px]"
         @click="terminalInput?.focus()"
       >
         <div v-for="(line, index) in output" :key="index" class="mb-1.5 leading-relaxed tracking-wide">

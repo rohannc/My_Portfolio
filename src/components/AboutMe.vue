@@ -22,17 +22,15 @@ const openCodolio = () => {
   <section id="about" class="scroll-mt-20 relative pt-20 pb-10 sm:pt-32 sm:pb-14 overflow-hidden bg-mesh bg-grid">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Top Hero Section -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-        <!-- Left: Text & Pitch -->
-        <div class="lg:col-span-7 flex flex-col items-start text-left">
-          <!-- Role & Status Pill: Reversed Fonts -->
-          <div class="inline-flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2 px-4 py-2 sm:px-3.5 sm:py-1.5 rounded-2xl sm:rounded-full bg-indigo-950/70 border border-indigo-500/30 text-xs mb-4 shadow-sm">
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
-              <span class="font-mono text-cyan-300">Software Engineer at <span class="visa-highlight">Visa</span></span>
-              <span class="text-slate-500 hidden sm:inline">·</span>
-            </div>
-            <span class="font-sans font-semibold text-white sm:pl-0 pl-4">Master of Computer Applications, Jadavpur University</span>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+        <!-- Left: Text & Pitch (order-2 on mobile, order-1 on lg screens) -->
+        <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
+          <!-- Role & Status Pill: Desktop Version (sm: and up) - 100% Identical to original desktop layout -->
+          <div class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/70 border border-indigo-500/30 text-xs mb-4 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
+            <span class="font-mono text-cyan-300">Software Engineer at <span class="visa-highlight">Visa</span></span>
+            <span class="text-slate-500">·</span>
+            <span class="font-sans font-semibold text-white">Master of Computer Applications, Jadavpur University</span>
           </div>
 
           <!-- Headline -->
@@ -61,7 +59,7 @@ const openCodolio = () => {
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
             <a
               href="#projects"
-              class="inline-flex items-center justify-center w-full sm:w-auto px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 transition-all duration-200 shadow-md shadow-indigo-500/25"
+              class="inline-flex items-center justify-center w-full sm:w-auto px-5 py-3 sm:py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 transition-all duration-200 shadow-md shadow-indigo-500/25 active:scale-[0.98]"
             >
               Explore Featured Project
             </a>
@@ -69,7 +67,7 @@ const openCodolio = () => {
             <button
               @click="downloadResume"
               type="button"
-              class="inline-flex items-center justify-center w-full sm:w-auto px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-indigo-500/40 transition-all duration-200"
+              class="inline-flex items-center justify-center w-full sm:w-auto px-4 py-3 sm:py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-indigo-500/40 transition-all duration-200 active:scale-[0.98]"
             >
               <svg class="mr-2 w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -80,7 +78,7 @@ const openCodolio = () => {
             <button
               @click="openCodolio"
               type="button"
-              class="inline-flex items-center justify-center w-full sm:w-auto px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-300 bg-slate-900/50 hover:bg-slate-800 border border-white/5 hover:border-white/20 transition-all duration-200"
+              class="inline-flex items-center justify-center w-full sm:w-auto px-4 py-3 sm:py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-300 bg-slate-900/50 hover:bg-slate-800 border border-white/5 hover:border-white/20 transition-all duration-200 active:scale-[0.98]"
               title="View Codolio Profile"
             >
               <span>Codolio Profile</span>
@@ -91,17 +89,17 @@ const openCodolio = () => {
           </div>
         </div>
 
-        <!-- Right: Modern Full-Box Portrait + Maven pom.xml Dossier -->
-        <div class="lg:col-span-5 flex justify-center">
+        <!-- Right: Modern Full-Box Portrait + Maven pom.xml Dossier (order-1 on mobile, order-2 on lg screens) -->
+        <div class="lg:col-span-5 flex justify-center w-full order-1 lg:order-2">
           <div class="relative w-full max-w-md">
             <!-- Ambient Glow Aura -->
             <div class="absolute -inset-2 rounded-3xl bg-gradient-to-r from-indigo-500/20 via-cyan-500/20 to-purple-500/20 blur-2xl"></div>
 
-            <div class="relative glass-card rounded-3xl p-5 sm:p-6 border border-white/10 shadow-2xl space-y-4">
+            <div class="relative glass-card rounded-3xl p-4 sm:p-6 border border-white/10 shadow-2xl space-y-4">
               <!-- Top Profile Layout: Square Image Fitted Edge-to-Edge + Bio Details -->
-              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 p-4 rounded-2xl bg-slate-900/80 border border-white/5">
+              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 p-3.5 sm:p-4 rounded-2xl bg-slate-900/80 border border-white/5">
                 <!-- Square Fitted Image (Slightly Enlarged & Shifted Slightly Left) -->
-                <div class="relative w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden flex-shrink-0 ring-2 ring-indigo-500/50 shadow-xl group bg-slate-950 sm:-ml-1.5">
+                <div class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden flex-shrink-0 ring-2 ring-indigo-500/50 shadow-xl group bg-slate-950 sm:-ml-1.5">
                   <img
                     src="../assets/ProfileImage.jpg"
                     alt="Rohan Chakraborty"
@@ -124,23 +122,23 @@ const openCodolio = () => {
 
               <!-- Metric Badges Row -->
               <div class="grid grid-cols-2 gap-2">
-                <div class="p-2.5 rounded-xl bg-slate-900/60 border border-amber-500/25 flex items-center gap-2.5">
-                  <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-sm">
+                <div class="p-2 sm:p-2.5 rounded-xl bg-slate-900/60 border border-amber-500/25 flex items-center gap-2 sm:gap-2.5">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-xs sm:text-sm flex-shrink-0">
                     🏆
                   </div>
                   <div class="min-w-0">
-                    <span class="block text-[10px] font-mono text-slate-400 uppercase">Entrance Exam</span>
-                    <span class="text-xs font-bold text-amber-300 font-mono truncate block">Rank 17 · WBJECA</span>
+                    <span class="block text-[9px] sm:text-[10px] font-mono text-slate-400 uppercase">Entrance Exam</span>
+                    <span class="text-[11px] sm:text-xs font-bold text-amber-300 font-mono truncate block">Rank 17 · WBJECA</span>
                   </div>
                 </div>
 
-                <div class="p-2.5 rounded-xl bg-slate-900/60 border border-cyan-500/25 flex items-center gap-2.5">
-                  <div class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-sm">
+                <div class="p-2 sm:p-2.5 rounded-xl bg-slate-900/60 border border-cyan-500/25 flex items-center gap-2 sm:gap-2.5">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-xs sm:text-sm flex-shrink-0">
                     ⚡
                   </div>
                   <div class="min-w-0">
-                    <span class="block text-[10px] font-mono text-slate-400 uppercase">Competitive DSA</span>
-                    <span class="text-xs font-bold text-cyan-300 font-mono truncate block">{{ codolioStats.totalSolved }} Solved</span>
+                    <span class="block text-[9px] sm:text-[10px] font-mono text-slate-400 uppercase">Competitive DSA</span>
+                    <span class="text-[11px] sm:text-xs font-bold text-cyan-300 font-mono truncate block">{{ codolioStats.totalSolved }} Solved</span>
                   </div>
                 </div>
               </div>

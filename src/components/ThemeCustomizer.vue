@@ -64,9 +64,9 @@ onMounted(() => {
   <!-- Transparent overlay to detect clicks outside -->
   <div v-if="isOpen" @click="isOpen = false" class="fixed inset-0 z-40"></div>
 
-  <div id="theme-customizer-wrapper" class="fixed bottom-6 left-6 z-50 flex items-end">
+  <div id="theme-customizer-wrapper" class="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 flex items-end">
     <div 
-      class="flex flex-col gap-3 mb-2 transition-all duration-300 origin-bottom absolute bottom-14 left-1 items-center"
+      class="flex flex-col gap-3 mb-2 transition-all duration-300 origin-bottom absolute bottom-14 left-0 sm:left-1 items-center"
       :class="isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-90 pointer-events-none'"
     >
       <!-- Light Mode Toggle -->

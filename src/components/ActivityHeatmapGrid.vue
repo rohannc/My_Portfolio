@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import heatmapData from '../data/heatmapStats.json';
 
 const tooltipContent = ref('');
@@ -92,10 +92,19 @@ const monthLabels = computed(() => {
   
   return filteredLabels;
 });
+
+const scrollContainer = ref(null);
+
+onMounted(() => {
+  // On mobile/smaller screens, auto-scroll to the most recent weeks (right side)
+  if (scrollContainer.value && window.innerWidth < 1024) {
+    scrollContainer.value.scrollLeft = scrollContainer.value.scrollWidth;
+  }
+});
 </script>
 
 <template>
-  <div class="relative w-full overflow-x-auto custom-scrollbar pb-4">
+  <div ref="scrollContainer" class="relative w-full overflow-x-auto custom-scrollbar pb-3">
     <div class="min-w-fit flex justify-center">
       <svg width="980" height="164" class="heatmap-svg mx-auto">
         <g transform="translate(16, 16)">
@@ -106,7 +115,7 @@ const monthLabels = computed(() => {
             :key="label.text + label.x"
             :x="label.x * 18" 
             y="0" 
-            class="text-xs fill-slate-400 font-medium"
+            class="text-xs fill-slate-400 font-medium select-none"
           >
             {{ label.text }}
           </text>
@@ -126,6 +135,7 @@ const monthLabels = computed(() => {
                 class="transition-all duration-200 hover:stroke-white hover:stroke-1 cursor-pointer"
                 @mouseover="(e) => handleMouseOver(e, day)"
                 @mouseleave="handleMouseLeave"
+                @click="(e) => handleMouseOver(e, day)"
               />
             </g>
           </g>
