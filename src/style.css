@@ -124,29 +124,64 @@ body {
 
 /* Light Mode Overrides */
 .light-mode {
-  --color-slate-950: #f8fafc;
-  --color-slate-900: #f1f5f9;
-  --color-slate-800: #e2e8f0;
-  --color-slate-700: #94a3b8; /* Darker border color */
+  --color-slate-950: #ffffff;
+  --color-slate-900: #f8fafc;
+  --color-slate-800: #f1f5f9;
+  --color-slate-700: #cbd5e1;
   --color-slate-600: #64748b;
   --color-slate-500: #475569;
-  --color-slate-400: #334155; /* Much darker font for text-slate-400 */
+  --color-slate-400: #334155;
   --color-slate-300: #1e293b;
   --color-slate-200: #0f172a;
   --color-slate-100: #020617;
   --color-slate-50: #000000;
   
-  --color-white: #020617; /* Very dark for headings */
+  --color-white: #0f172a; /* Deep slate-900 for headings on light background */
   
   background-color: #f8fafc !important;
-  color: #020617 !important;
+  color: #0f172a !important;
 }
 
-/* Better readable accent texts in light mode */
+/* Base text contrast on light background */
+.light-mode h1,
+.light-mode h2,
+.light-mode h3,
+.light-mode h4,
+.light-mode h5,
+.light-mode h6 {
+  color: #0f172a !important;
+}
+
+.light-mode p {
+  color: #334155;
+}
+
+.light-mode .text-white {
+  color: #0f172a !important;
+}
+
+.light-mode .text-slate-100,
+.light-mode .text-slate-200 {
+  color: #1e293b !important;
+}
+
+.light-mode .text-slate-300 {
+  color: #334155 !important;
+}
+
+.light-mode .text-slate-400 {
+  color: #475569 !important;
+}
+
+.light-mode .text-slate-500 {
+  color: #64748b !important;
+}
+
+/* High-contrast brand & accent colors for light backgrounds */
 .light-mode .text-cyan-200,
 .light-mode .text-cyan-300,
 .light-mode .text-cyan-400 {
-  color: #0e7490 !important; /* cyan-700 */
+  color: #0369a1 !important; /* sky-700 / deep cyan */
 }
 
 .light-mode .text-blue-200,
@@ -164,24 +199,128 @@ body {
 .light-mode .text-purple-200,
 .light-mode .text-purple-300,
 .light-mode .text-purple-400 {
-  color: #7e22ce !important; /* purple-700 */
+  color: #6b21a8 !important; /* purple-800 */
 }
 
+.light-mode .text-emerald-300,
+.light-mode .text-emerald-400 {
+  color: #047857 !important; /* emerald-700 */
+}
+
+.light-mode .text-amber-300,
+.light-mode .text-amber-400 {
+  color: #b45309 !important; /* amber-700 */
+}
+
+/* Reverse contrast rule: Dark elements & badges must retain light text */
+.light-mode .bg-slate-900,
+.light-mode .bg-slate-950,
+.light-mode .bg-indigo-600,
+.light-mode .bg-blue-600,
+.light-mode .bg-slate-800 button,
+.light-mode .bg-slate-900 button,
+.light-mode button.bg-indigo-600,
+.light-mode button.bg-blue-600,
+.light-mode button.bg-slate-900,
+.light-mode .tooltip,
+.light-mode [class*="bg-indigo-600"] {
+  color: #ffffff !important;
+}
+
+.light-mode button.bg-indigo-600 *,
+.light-mode button.bg-blue-600 * {
+  color: #ffffff !important;
+}
+
+/* Card & Surface contrast */
 .light-mode .glass-card {
-  background: rgba(255, 255, 255, 0.8) !important;
-  border-color: rgba(0, 0, 0, 0.2) !important;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(148, 163, 184, 0.35) !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
 }
 
+.light-mode .border-white\/5,
+.light-mode .border-white\/10 {
+  border-color: rgba(148, 163, 184, 0.3) !important;
+}
+
+.light-mode .bg-slate-900\/80,
+.light-mode .bg-slate-900\/60,
+.light-mode .bg-slate-900\/50,
+.light-mode .bg-slate-900\/40,
+.light-mode .bg-slate-950\/60,
+.light-mode .bg-slate-950\/70 {
+  background-color: rgba(241, 245, 249, 0.95) !important;
+  border-color: rgba(203, 213, 225, 0.8) !important;
+}
+
+.light-mode .bg-slate-800\/60,
+.light-mode .bg-slate-800\/80,
+.light-mode .bg-slate-800\/90 {
+  background-color: rgba(226, 232, 240, 0.9) !important;
+  color: #1e293b !important;
+}
+
+/* Experience Visa brandmark in light mode */
+.light-mode .group svg g polygon,
+.light-mode .group svg g path[fill="#FFFFFF"] {
+  fill: #0f172a !important; /* Rich navy/dark slate wordmark in light mode */
+}
+
+/* 1. Hero Role & Status Pill: Software Engineer at Visa · MCA Jadavpur University */
+.light-mode .bg-indigo-950\/70 {
+  background-color: #ffffff !important;
+  border-color: rgba(99, 102, 241, 0.35) !important;
+  box-shadow: 0 4px 15px -2px rgba(99, 102, 241, 0.12), 0 2px 6px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-mode .bg-indigo-950\/70 span.font-mono.text-cyan-300 {
+  color: #0369a1 !important; /* Crisp sky-700 / deep cyan */
+}
+
+.light-mode .bg-indigo-950\/70 span.text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+.light-mode .bg-indigo-950\/70 span.text-white {
+  color: #0f172a !important; /* Crisp dark navy text */
+}
+
+/* 2. Education Certificate / Marksheet Link Button */
+.light-mode a[href*="drive.google.com"].bg-cyan-950\/40,
+.light-mode .bg-cyan-950\/40 {
+  background-color: #f0fdf4 !important; /* Crisp light emerald/cyan-tinted background */
+  border-color: rgba(14, 116, 144, 0.35) !important;
+  color: #0e7490 !important; /* Rich readable deep cyan-700 */
+  box-shadow: 0 2px 6px -1px rgba(14, 116, 144, 0.1) !important;
+}
+
+.light-mode a[href*="drive.google.com"].bg-cyan-950\/40:hover,
+.light-mode .bg-cyan-950\/40:hover {
+  background-color: #e0f2fe !important;
+  border-color: #0284c7 !important;
+  color: #0369a1 !important;
+}
+
+/* 3. Skills Cards: '9 technologies / concepts / topics' Count Badge */
+.light-mode span.bg-cyan-950\/40.text-cyan-400\/80,
+.light-mode .bg-cyan-950\/40.border-cyan-500\/20 {
+  background-color: #f0f9ff !important; /* Soft crisp sky-50 background */
+  border-color: rgba(2, 132, 199, 0.3) !important;
+  color: #0369a1 !important; /* Deep readable sky-700 font */
+  font-weight: 600 !important;
+}
+
+/* Background mesh & grid in light mode */
 .light-mode .bg-mesh {
   background-image: 
-    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.15) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(139, 92, 246, 0.12) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.1) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(139, 92, 246, 0.08) 0px, transparent 50%);
 }
 
 .light-mode .bg-grid {
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
 }
