@@ -29,13 +29,13 @@ import { experiences } from "../data/portfolioData.js";
           <!-- Header Bar: Visa Logo Badge, Role Title, Status Badge, Period -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between items-center text-center sm:text-left gap-3.5 sm:gap-4 pb-4 sm:pb-5 mb-4 sm:mb-5 border-b border-white/5">
             <div class="flex flex-col sm:flex-row items-center sm:items-center gap-2.5 sm:gap-4 w-full sm:w-auto">
-              <!-- Highlighted White Visa Logo (Center-aligned container on mobile) -->
+              <!-- Highlighted White Visa Logo (Enlarged container on mobile) -->
               <div
-                class="flex items-center justify-center flex-shrink-0 px-3 py-1.5 sm:px-0 sm:py-0 rounded-lg bg-white/[0.04] sm:bg-transparent border border-white/10 sm:border-0 shadow-sm"
+                class="flex items-center justify-center flex-shrink-0 px-4 py-2 sm:px-0 sm:py-0 rounded-xl sm:rounded-none bg-white/[0.05] sm:bg-transparent border border-white/10 sm:border-0 shadow-md sm:shadow-none"
                 title="Visa Inc."
               >
                 <svg
-                  class="h-[18px] sm:h-[21px] w-auto fill-white drop-shadow-[0_0_8px_rgba(255,255,255,0.85)] drop-shadow-[0_0_2px_#ffffff] transition-all duration-300 group-hover:drop-shadow-[0_0_14px_rgba(255,255,255,1)] group-hover:scale-105"
+                  class="h-[24px] sm:h-[21px] w-auto fill-white drop-shadow-[0_0_10px_rgba(255,255,255,0.85)] drop-shadow-[0_0_2px_#ffffff] transition-all duration-300 group-hover:drop-shadow-[0_0_14px_rgba(255,255,255,1)] group-hover:scale-105"
                   viewBox="0 0 1000 324.68"
                   xmlns="http://www.w3.org/2000/svg"
                   role="img"
