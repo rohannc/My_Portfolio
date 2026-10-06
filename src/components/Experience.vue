@@ -29,9 +29,9 @@ import { experiences } from "../data/portfolioData.js";
           <!-- Header Bar: Visa Logo Badge, Role Title, Status Badge, Period -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between items-center text-center sm:text-left gap-3.5 sm:gap-4 pb-4 sm:pb-5 mb-4 sm:mb-5 border-b border-white/5">
             <div class="flex flex-col sm:flex-row items-center sm:items-center gap-2.5 sm:gap-4 w-full sm:w-auto">
-              <!-- Highlighted White Visa Logo (Enlarged container on mobile) -->
+              <!-- Highlighted White Visa Logo (Clean transparent container on mobile) -->
               <div
-                class="flex items-center justify-center flex-shrink-0 px-4 py-2 sm:px-0 sm:py-0 rounded-xl sm:rounded-none bg-white/[0.05] sm:bg-transparent border border-white/10 sm:border-0 shadow-md sm:shadow-none"
+                class="flex items-center justify-center flex-shrink-0 py-1 sm:py-0"
                 title="Visa Inc."
               >
                 <svg
