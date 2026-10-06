@@ -27,15 +27,15 @@ import { experiences } from "../data/portfolioData.js";
             : 'border border-white/5 border-t-4 border-t-cyan-500 bg-slate-900/80 shadow-lg hover:border-cyan-500/30'"
         >
           <!-- Header Bar: Visa Logo Badge, Role Title, Status Badge, Period -->
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-5 mb-4 sm:mb-5 border-b border-white/5">
-            <div class="flex items-start sm:items-center gap-3 sm:gap-4">
-              <!-- Highlighted White Visa Logo (Compact Container) -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between items-center text-center sm:text-left gap-3.5 sm:gap-4 pb-4 sm:pb-5 mb-4 sm:mb-5 border-b border-white/5">
+            <div class="flex flex-col sm:flex-row items-center sm:items-center gap-2.5 sm:gap-4 w-full sm:w-auto">
+              <!-- Highlighted White Visa Logo (Center-aligned container on mobile) -->
               <div
-                class="flex items-center justify-center flex-shrink-0 pt-1 sm:pt-0.5 px-2 py-1.5 sm:px-0 sm:py-0 rounded-lg bg-white/[0.03] sm:bg-transparent border border-white/5 sm:border-0"
+                class="flex items-center justify-center flex-shrink-0 px-3 py-1.5 sm:px-0 sm:py-0 rounded-lg bg-white/[0.04] sm:bg-transparent border border-white/10 sm:border-0 shadow-sm"
                 title="Visa Inc."
               >
                 <svg
-                  class="h-[16px] sm:h-[21px] w-auto fill-white drop-shadow-[0_0_8px_rgba(255,255,255,0.85)] drop-shadow-[0_0_2px_#ffffff] transition-all duration-300 group-hover:drop-shadow-[0_0_14px_rgba(255,255,255,1)] group-hover:scale-105"
+                  class="h-[18px] sm:h-[21px] w-auto fill-white drop-shadow-[0_0_8px_rgba(255,255,255,0.85)] drop-shadow-[0_0_2px_#ffffff] transition-all duration-300 group-hover:drop-shadow-[0_0_14px_rgba(255,255,255,1)] group-hover:scale-105"
                   viewBox="0 0 1000 324.68"
                   xmlns="http://www.w3.org/2000/svg"
                   role="img"
@@ -45,9 +45,10 @@ import { experiences } from "../data/portfolioData.js";
                 </svg>
               </div>
 
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-2 flex-wrap">
-                  <h3 class="text-base sm:text-2xl font-extrabold text-white tracking-tight">
+              <div class="flex-1 min-w-0 flex flex-col items-center sm:items-start">
+                <!-- Line 1: Role Title & Badge -->
+                <div class="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+                  <h3 class="text-lg sm:text-2xl font-extrabold text-white tracking-tight">
                     {{ exp.role }}
                   </h3>
                   <!-- Badge -->
@@ -63,7 +64,8 @@ import { experiences } from "../data/portfolioData.js";
                   </span>
                 </div>
 
-                <div class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 mt-1 flex-wrap font-medium">
+                <!-- Line 2: Company, Type & Location Metadata -->
+                <div class="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 mt-1.5 flex-wrap font-medium">
                   <span class="visa-highlight">{{ exp.company }}</span>
                   <span class="text-slate-600">•</span>
                   <span>{{ exp.employmentType }}</span>
@@ -79,9 +81,9 @@ import { experiences } from "../data/portfolioData.js";
               </div>
             </div>
 
-            <!-- Date Period Badge -->
-            <div class="self-start sm:self-center">
-              <span class="inline-flex items-center px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-mono font-medium bg-slate-800/90 text-cyan-300 border border-white/5 shadow-sm">
+            <!-- Line 3: Date Period Badge -->
+            <div class="self-center sm:self-center">
+              <span class="inline-flex items-center px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-mono font-medium bg-slate-800/90 text-cyan-300 border border-white/5 shadow-sm">
                 {{ exp.period }}
               </span>
             </div>
