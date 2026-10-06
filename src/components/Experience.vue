@@ -65,10 +65,10 @@ import { experiences } from "../data/portfolioData.js";
                 </div>
 
                 <!-- Line 2: Company, Type & Location Metadata -->
-                <div class="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2.5 text-xs sm:text-sm text-slate-300 mt-2 flex-wrap font-medium">
-                  <span class="visa-highlight text-sm sm:text-base font-extrabold tracking-wide px-2 py-0.5 rounded-md bg-blue-500/10 border border-blue-500/25 shadow-sm">{{ exp.company }}</span>
+                <div class="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 mt-2 sm:mt-1 flex-wrap font-medium">
+                  <span class="visa-highlight text-sm sm:text-sm font-extrabold sm:font-bold px-2 py-0.5 sm:px-0 sm:py-0 rounded-md sm:rounded-none bg-blue-500/10 sm:bg-transparent border border-blue-500/25 sm:border-0 shadow-sm sm:shadow-none">{{ exp.company }}</span>
                   <span class="text-slate-600">•</span>
-                  <span class="text-slate-200 font-semibold">{{ exp.employmentType }}</span>
+                  <span>{{ exp.employmentType }}</span>
                   <span class="text-slate-600">•</span>
                   <span class="text-slate-400 flex items-center gap-1">
                     <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
