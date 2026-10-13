@@ -92,13 +92,29 @@ const fetchJson = (url) => {
       }
     }
 
+    const platformBreakdown = platforms.map(p => ({
+      name: p.platform,
+      userName: p.userName || p.userStats?.handle || '',
+      profileUrl: p.platformUrl || p.profileUrl || '',
+      totalSolved: p.totalQuestionStats?.totalQuestionCounts || 0,
+      easy: p.totalQuestionStats?.easyQuestionCounts || 0,
+      medium: p.totalQuestionStats?.mediumQuestionCounts || 0,
+      hard: p.totalQuestionStats?.hardQuestionCounts || 0,
+      rating: p.userStats?.currentRating || p.userStats?.maxRating || null,
+      rank: p.userStats?.rank || p.userStats?.maxRank || null,
+      userLevelName: p.userStats?.userLevelName || null,
+      stars: p.userStats?.stars || null,
+      avatar: p.userStats?.titlePhoto || null
+    })).filter(p => p.totalSolved > 0 || p.rating !== null);
+
     const stats = {
       totalSolved: String(totalSolved),
       globalRank: String(globalRank),
       rating: String(maxRating),
       maxStreak: String(maxStreak),
       contestsAttended: String(contestCount),
-      activeDays: String(allActiveDays.size)
+      activeDays: String(allActiveDays.size),
+      platforms: platformBreakdown
     };
 
     const currentSolved = parseInt(stats.totalSolved, 10);

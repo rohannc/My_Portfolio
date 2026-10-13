@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 // Calculate hue rotation relative to base Cyan (Hue ~190°)
 const themes = [
@@ -53,7 +53,15 @@ const toggleLightMode = () => {
   applyTheme();
 };
 
+const handleGlobalKeydown = (e) => {
+  if (e.key === 'Escape' && isOpen.value) {
+    isOpen.value = false;
+  }
+};
+
 onMounted(() => {
+  window.addEventListener('keydown', handleGlobalKeydown);
+
   // Restore persisted preferences if present
   try {
     const savedHue = localStorage.getItem('portfolio_theme_hue');
@@ -86,22 +94,29 @@ onMounted(() => {
   `;
   document.head.appendChild(style);
 });
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleGlobalKeydown);
+});
 </script>
 
 <template>
   <!-- Transparent overlay to detect clicks outside -->
-  <div v-if="isOpen" @click="isOpen = false" class="fixed inset-0 z-40"></div>
+  <div v-if="isOpen" @click="isOpen = false" class="fixed inset-0 z-40" aria-hidden="true"></div>
 
   <div id="theme-customizer-wrapper" class="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 flex items-end">
     <div 
       class="flex flex-col gap-3 mb-2 transition-all duration-300 origin-bottom absolute bottom-14 left-0 sm:left-1 items-center"
       :class="isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-90 pointer-events-none'"
+      role="region"
+      aria-label="Theme and color palette options"
     >
       <!-- Light Mode Toggle -->
       <button 
         @click="toggleLightMode"
         class="w-10 h-10 rounded-full shadow-lg border-2 border-white/20 hover:scale-110 transition-transform flex items-center justify-center cursor-pointer bg-slate-800 mb-2"
         :title="isLightMode ? 'Switch to Dark Mode' : 'Switch to Light Mode'"
+        :aria-label="isLightMode ? 'Switch to Dark Mode' : 'Switch to Light Mode'"
       >
         <svg v-if="!isLightMode" class="w-5 h-5 text-amber-300" fill="currentColor" viewBox="0 0 24 24">
           <!-- Sun Icon -->
@@ -121,6 +136,7 @@ onMounted(() => {
         :class="currentHue === theme.hue ? 'border-white' : 'border-white/20'"
         :style="{ backgroundColor: theme.color }"
         :title="theme.name"
+        :aria-label="`Set theme color to ${theme.name}`"
       >
         <svg v-if="currentHue === theme.hue" class="w-5 h-5 text-white drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
@@ -132,6 +148,8 @@ onMounted(() => {
       @click="isOpen = !isOpen"
       class="w-12 h-12 rounded-full bg-slate-800 border border-white/10 text-white flex items-center justify-center shadow-xl hover:bg-slate-700 transition-colors z-10 cursor-pointer"
       title="Customize Theme"
+      aria-label="Customize Theme"
+      :aria-expanded="isOpen"
       :class="{ 'ring-2 ring-cyan-500/50': isOpen }"
     >
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

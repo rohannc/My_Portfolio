@@ -1,9 +1,8 @@
 <script setup>
+import { defineAsyncComponent } from "vue";
 import NavbarCustomized from "./components/NavbarCustomized.vue";
 import AboutMe from "./components/AboutMe.vue";
 import GitHubHeatmap from "./components/GitHubHeatmap.vue";
-import ThemeCustomizer from "./components/ThemeCustomizer.vue";
-import TerminalOverlay from "./components/TerminalOverlay.vue";
 import Experience from "./components/Experience.vue";
 import Skills from "./components/Skills.vue";
 import Project from "./components/Project.vue";
@@ -12,6 +11,10 @@ import Education from "./components/Education.vue";
 import ContactMe from "./components/ContactMe.vue";
 import Footer from "./components/Footer.vue";
 import ScrollToTop from "./components/ScrollToTop.vue";
+
+// Lazy loaded non-critical overlay components
+const ThemeCustomizer = defineAsyncComponent(() => import("./components/ThemeCustomizer.vue"));
+const TerminalOverlay = defineAsyncComponent(() => import("./components/TerminalOverlay.vue"));
 
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";

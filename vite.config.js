@@ -8,4 +8,16 @@ export default defineConfig({
     vue(),
     tailwindcss(),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-vue': ['vue'],
+          'vendor-swiper': ['swiper', 'swiper/vue'],
+          'vendor-emailjs': ['@emailjs/browser'],
+          'vendor-ui': ['vue3-toastify', 'aos'],
+        }
+      }
+    }
+  }
 })

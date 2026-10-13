@@ -11,18 +11,22 @@ const form = reactive({
   name: "",
   email: "",
   subject: "",
-  message: ""
+  message: "",
+  honeypot: "" // Anti-bot honeypot: hidden from real users
 });
 
 const isSubmitting = ref(false);
 const isSuccess = ref(false);
+const cooldownRemaining = ref(0);
 let successTimeout = null;
+let cooldownInterval = null;
 
 const resetForm = () => {
   form.name = "";
   form.email = "";
   form.subject = "";
   form.message = "";
+  form.honeypot = "";
   isSuccess.value = false;
   if (successTimeout) {
     clearTimeout(successTimeout);
@@ -30,9 +34,42 @@ const resetForm = () => {
   }
 };
 
+const startCooldown = (seconds = 30) => {
+  cooldownRemaining.value = seconds;
+  if (cooldownInterval) clearInterval(cooldownInterval);
+  cooldownInterval = setInterval(() => {
+    cooldownRemaining.value--;
+    if (cooldownRemaining.value <= 0) {
+      clearInterval(cooldownInterval);
+      cooldownInterval = null;
+    }
+  }, 1000);
+};
+
 const handleFormSubmit = async () => {
-  if (!form.name || !form.email || !form.message) {
+  // 1. Silent rejection for automated bot submissions (Honeypot filled)
+  if (form.honeypot) {
+    console.warn("Spam submission prevented by honeypot.");
+    isSuccess.value = true;
+    return;
+  }
+
+  // 2. Cooldown check to prevent repeated requests
+  if (cooldownRemaining.value > 0) {
+    toast.info(`Please wait ${cooldownRemaining.value}s before sending another message.`);
+    return;
+  }
+
+  // 3. Validation
+  if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
     toast.warning("Please complete your name, email, and message.");
+    return;
+  }
+
+  // Simple email pattern check
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(form.email.trim())) {
+    toast.warning("Please enter a valid email address.");
     return;
   }
 
@@ -49,17 +86,18 @@ const handleFormSubmit = async () => {
       {
         first_name: firstName,
         last_name: lastName,
-        email: form.email,
-        phone: form.subject || "Portfolio Inquiry",
-        company: form.subject || "General Inquiry",
-        message: form.message
+        email: form.email.trim(),
+        phone: form.subject.trim() || "Portfolio Inquiry",
+        company: form.subject.trim() || "General Inquiry",
+        message: form.message.trim()
       }
     );
 
     isSuccess.value = true;
+    startCooldown(45); // Set 45s anti-spam cooldown
     successTimeout = setTimeout(() => {
       resetForm();
-    }, 5000);
+    }, 6000);
   } catch (err) {
     console.error("EmailJS submission error:", err);
     toast.error("Failed to send message. You can also reach me directly at " + personalInfo.email);
@@ -168,6 +206,18 @@ const handleFormSubmit = async () => {
 
             <div class="relative">
             <form :class="{ 'opacity-0 pointer-events-none scale-95': isSuccess, 'opacity-100 scale-100': !isSuccess }" @submit.prevent="handleFormSubmit" class="space-y-4 transition-all duration-500">
+              <!-- Honeypot anti-spam field (hidden from visual display and screen readers) -->
+              <div class="hidden" aria-hidden="true" style="display: none;">
+                <label for="company-verification">Leave this field empty</label>
+                <input
+                  id="company-verification"
+                  v-model="form.honeypot"
+                  type="text"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
+
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-xs font-medium text-slate-300 mb-1.5">Your Name *</label>
@@ -213,19 +263,28 @@ const handleFormSubmit = async () => {
                 ></textarea>
               </div>
 
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-1">
+                <button
+                  type="submit"
+                  :disabled="isSubmitting || cooldownRemaining > 0"
+                  class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl font-semibold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-md shadow-indigo-500/20 cursor-pointer"
+                >
+                  <svg v-if="isSubmitting" class="animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                  </svg>
+                  <span v-if="isSubmitting">Sending...</span>
+                  <span v-else-if="cooldownRemaining > 0">Wait {{ cooldownRemaining }}s</span>
+                  <span v-else>Send Message</span>
+                </button>
 
-
-              <button
-                type="submit"
-                :disabled="isSubmitting"
-                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl font-semibold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 disabled:opacity-50 transition-all duration-200 shadow-md shadow-indigo-500/20 cursor-pointer"
-              >
-                <svg v-if="isSubmitting" class="animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-                </svg>
-                <span>{{ isSubmitting ? "Sending..." : "Send Message" }}</span>
-              </button>
+                <span class="text-[11px] text-slate-500 flex items-center gap-1.5 font-mono">
+                  <svg class="w-3.5 h-3.5 text-emerald-400/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                  Protected by honeypot verification
+                </span>
+              </div>
             </form>
 
             <!-- Success State UI -->
