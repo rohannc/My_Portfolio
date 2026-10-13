@@ -1,5 +1,5 @@
 <script setup>
-import { defineAsyncComponent } from "vue";
+import { ref, defineAsyncComponent } from "vue";
 import NavbarCustomized from "./components/NavbarCustomized.vue";
 import AboutMe from "./components/AboutMe.vue";
 import GitHubHeatmap from "./components/GitHubHeatmap.vue";
@@ -15,6 +15,13 @@ import ScrollToTop from "./components/ScrollToTop.vue";
 // Lazy loaded non-critical overlay components
 const ThemeCustomizer = defineAsyncComponent(() => import("./components/ThemeCustomizer.vue"));
 const TerminalOverlay = defineAsyncComponent(() => import("./components/TerminalOverlay.vue"));
+const CommandPalette = defineAsyncComponent(() => import("./components/CommandPalette.vue"));
+
+const paletteRef = ref(null);
+
+const handleOpenPalette = () => {
+  paletteRef.value?.openPalette();
+};
 
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
@@ -24,7 +31,7 @@ if ("scrollRestoration" in history) {
 <template>
   <div class="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-cyan-500/20 selection:text-cyan-200">
     <div id="theme-content" class="flex flex-col flex-grow">
-      <NavbarCustomized />
+      <NavbarCustomized @open-palette="handleOpenPalette" />
       <main class="flex-grow">
       <AboutMe />
       <div data-aos="fade-up">
@@ -53,6 +60,7 @@ if ("scrollRestoration" in history) {
     </div>
     <ThemeCustomizer />
     <TerminalOverlay />
+    <CommandPalette ref="paletteRef" />
     <ScrollToTop />
   </div>
 </template>
