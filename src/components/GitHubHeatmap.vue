@@ -1,7 +1,10 @@
 <script setup>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import codolioStats from '../data/codolioStats.json';
 import ActivityHeatmapGrid from './ActivityHeatmapGrid.vue';
+import DsaSkillRadarChart from './DsaSkillRadarChart.vue';
+
+const activeStatsView = ref('platforms'); // 'platforms' | 'radar'
 
 // Platform metadata mapping
 const platformMeta = {
@@ -117,16 +120,59 @@ const secondaryPlatforms = computed(() => {
           <ActivityHeatmapGrid />
         </div>
 
-        <!-- Dynamic Platform Stats Breakdown -->
+        <!-- Dynamic Platform Stats Breakdown / DSA Skill Radar Switcher -->
         <div>
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-xs font-mono font-semibold tracking-wider text-cyan-400 uppercase">Competitive Profiles</span>
-            <span class="text-xs text-slate-500">·</span>
-            <span class="text-xs text-slate-400">{{ codolioStats.totalSolved }} Total Solved</span>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono font-semibold tracking-wider text-cyan-400 uppercase">
+                {{ activeStatsView === 'platforms' ? 'Competitive Profiles' : 'Algorithmic Mastery' }}
+              </span>
+              <span class="text-xs text-slate-500">·</span>
+              <span class="text-xs text-slate-400">{{ codolioStats.totalSolved }} Total Solved</span>
+            </div>
+
+            <!-- View Switcher Pills -->
+            <div class="inline-flex p-1 rounded-xl bg-slate-900/90 border border-white/10 shadow-sm self-start sm:self-auto">
+              <button
+                type="button"
+                @click="activeStatsView = 'platforms'"
+                class="flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer"
+                :class="activeStatsView === 'platforms' 
+                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-sm' 
+                  : 'text-slate-400 hover:text-white'"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+                <span>Platform Breakdown</span>
+              </button>
+
+              <button
+                type="button"
+                @click="activeStatsView = 'radar'"
+                class="flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer"
+                :class="activeStatsView === 'radar' 
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-sm' 
+                  : 'text-slate-400 hover:text-white'"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                </svg>
+                <span>DSA Skill Radar</span>
+              </button>
+            </div>
           </div>
 
-          <!-- First Row: 2 Major Cards (LeetCode & GeeksforGeeks) Double-Width -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <!-- View 1: Multi-Axis Algorithmic Skill Radar Chart -->
+          <div v-if="activeStatsView === 'radar'" class="w-full">
+            <DsaSkillRadarChart />
+          </div>
+
+          <!-- View 2: Platform Cards (Row 1: LeetCode & GFG; Row 2: Secondary Platforms) -->
+          <div v-else>
+            <!-- First Row: 2 Major Cards (LeetCode & GeeksforGeeks) Double-Width -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <a
               v-for="platform in primaryPlatforms"
               :key="platform.name"
@@ -309,7 +355,8 @@ const secondaryPlatforms = computed(() => {
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 </template>
 
 <style scoped>

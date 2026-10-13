@@ -96,14 +96,14 @@ function handleChipLeave(event) {
           A structured breakdown of programming languages, libraries, computer science coursework, DevOps tools, cloud infrastructure, and engineering methodologies.
         </p>
 
-        <!-- View Switcher Pills -->
-        <div class="mt-6 inline-flex p-1 rounded-xl bg-slate-900/90 border border-white/10 shadow-lg">
+        <!-- View Switcher Pills (Compact) -->
+        <div class="mt-5 inline-flex p-1 rounded-xl bg-slate-900/90 border border-white/10 shadow-md">
           <button
             type="button"
             @click="activeView = 'grid'"
-            class="flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer"
+            class="flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer"
             :class="activeView === 'grid' 
-              ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/20' 
+              ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-sm' 
               : 'text-slate-400 hover:text-white'"
           >
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,16 +115,15 @@ function handleChipLeave(event) {
           <button
             type="button"
             @click="activeView = 'topology'"
-            class="flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer relative"
+            class="flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer"
             :class="activeView === 'topology' 
-              ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-md shadow-purple-500/20' 
+              ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-sm' 
               : 'text-slate-400 hover:text-white'"
           >
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            <span>Interactive Topology Graph</span>
-            <span class="px-1.5 py-0.2 text-[9px] font-mono uppercase bg-cyan-400/20 text-cyan-300 rounded border border-cyan-400/40">Interactive</span>
+            <span>Topology Graph</span>
           </button>
         </div>
       </div>

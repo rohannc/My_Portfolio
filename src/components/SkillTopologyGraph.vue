@@ -187,10 +187,18 @@ const isLinkHighlighted = (link) => {
     return hoveredLink.value.source === link.source && hoveredLink.value.target === link.target;
   }
 
-  // If a node is hovered or active
-  const focus = hoveredNode.value || activeNode.value;
-  if (!focus) return true;
-  return link.source === focus.id || link.target === focus.id;
+  // If a node is actively hovered
+  if (hoveredNode.value) {
+    return link.source === hoveredNode.value.id || link.target === hoveredNode.value.id;
+  }
+
+  // If a node is selected/clicked
+  if (activeNode.value) {
+    return link.source === activeNode.value.id || link.target === activeNode.value.id;
+  }
+
+  // Rest state: all valid links show softly
+  return false;
 };
 
 // Strict rule: If any edge is highlighted, BOTH connected nodes MUST be highlighted
@@ -204,16 +212,26 @@ const isNodeHighlighted = (node) => {
     return hoveredLink.value.source === node.id || hoveredLink.value.target === node.id;
   }
 
-  // Any node connected to any currently highlighted link is highlighted
-  const focus = hoveredNode.value || activeNode.value;
-  if (!focus) return true;
-  if (focus.id === node.id) return true;
+  // When hovering a specific node: spotlight it and its direct adjacent connections
+  if (hoveredNode.value) {
+    if (hoveredNode.value.id === node.id) return true;
+    return links.some(l => 
+      (l.source === hoveredNode.value.id && l.target === node.id) ||
+      (l.target === hoveredNode.value.id && l.source === node.id)
+    );
+  }
 
-  // Check if node is endpoint of any active highlighted link
-  return links.some(l => 
-    (l.source === focus.id && l.target === node.id) ||
-    (l.target === focus.id && l.source === node.id)
-  );
+  // If a node was clicked/selected
+  if (activeNode.value) {
+    if (activeNode.value.id === node.id) return true;
+    return links.some(l => 
+      (l.source === activeNode.value.id && l.target === node.id) ||
+      (l.target === activeNode.value.id && l.source === node.id)
+    );
+  }
+
+  // Default rest state (no hover, no selection): show all nodes in natural calm view
+  return true;
 };
 
 const currentInspection = computed(() => {
@@ -368,16 +386,16 @@ function selectNode(node) {
               class="pointer-events-none"
             />
 
-            <!-- Outer Hover Accent Ring (Static, no spinning animation) -->
+            <!-- Outer Hover Accent Ring -->
             <circle
               v-if="hoveredNode?.id === node.id || activeNode?.id === node.id"
               :cx="node.x"
               :cy="node.y"
-              :r="node.r + 6"
+              :r="node.r + 7"
               fill="none"
               :stroke="node.color"
-              stroke-width="1.5"
-              stroke-dasharray="3,3"
+              stroke-width="1.8"
+              stroke-dasharray="4,4"
               class="pointer-events-none"
             />
 
@@ -388,8 +406,11 @@ function selectNode(node) {
               :r="node.r"
               :fill="node.type === 'hub' ? '#090d16' : '#0f172a'"
               :stroke="node.color"
-              :stroke-width="hoveredNode?.id === node.id || activeNode?.id === node.id ? 2.5 : (node.type === 'hub' ? 2 : 1.2)"
-              class="transition-colors"
+              :stroke-width="hoveredNode?.id === node.id || activeNode?.id === node.id ? 3 : (node.type === 'hub' ? 2 : 1.2)"
+              class="transition-all duration-200"
+              :style="{
+                filter: (hoveredNode?.id === node.id || activeNode?.id === node.id) ? `drop-shadow(0 0 10px ${node.color})` : 'none'
+              }"
             />
 
             <!-- Hub Emoji / Icon -->
