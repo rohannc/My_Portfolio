@@ -1,6 +1,9 @@
 <script setup>
+import { ref } from "vue";
 import { skillCategories } from "../data/portfolioData.js";
+import SkillTopologyGraph from "./SkillTopologyGraph.vue";
 
+const activeView = ref('grid'); // 'grid' | 'topology'
 const activeTimers = new WeakMap();
 
 function handleChipEnter(event) {
@@ -83,8 +86,8 @@ function handleChipLeave(event) {
 <template>
   <section id="skills" class="scroll-mt-20 py-10 sm:py-14 relative border-t border-white/5 bg-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Section Header -->
-      <div class="text-center max-w-2xl mx-auto mb-10">
+      <!-- Section Header with View Mode Switcher -->
+      <div class="flex flex-col items-center max-w-2xl mx-auto mb-10 text-center">
         <span class="text-xs font-mono font-semibold tracking-wider text-cyan-400 uppercase">Technical Competencies</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1.5 tracking-tight">
           Skills & Technologies
@@ -92,10 +95,47 @@ function handleChipLeave(event) {
         <p class="text-sm sm:text-base text-slate-400 mt-3">
           A structured breakdown of programming languages, libraries, computer science coursework, DevOps tools, cloud infrastructure, and engineering methodologies.
         </p>
+
+        <!-- View Switcher Pills -->
+        <div class="mt-6 inline-flex p-1 rounded-xl bg-slate-900/90 border border-white/10 shadow-lg">
+          <button
+            type="button"
+            @click="activeView = 'grid'"
+            class="flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer"
+            :class="activeView === 'grid' 
+              ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/20' 
+              : 'text-slate-400 hover:text-white'"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+            <span>Category Grid</span>
+          </button>
+
+          <button
+            type="button"
+            @click="activeView = 'topology'"
+            class="flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer relative"
+            :class="activeView === 'topology' 
+              ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-md shadow-purple-500/20' 
+              : 'text-slate-400 hover:text-white'"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span>Interactive Topology Graph</span>
+            <span class="px-1.5 py-0.2 text-[9px] font-mono uppercase bg-cyan-400/20 text-cyan-300 rounded border border-cyan-400/40">Interactive</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Categories Grid: 2 columns on tablet/desktop, perfectly balanced with 6 cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+      <!-- View 1: Interactive Architecture Topology Graph -->
+      <div v-if="activeView === 'topology'" class="w-full">
+        <SkillTopologyGraph />
+      </div>
+
+      <!-- View 2: Categories Grid: 2 columns on tablet/desktop, perfectly balanced with 6 cards -->
+      <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
         <div
           v-for="(category, catIdx) in skillCategories"
           :key="catIdx"

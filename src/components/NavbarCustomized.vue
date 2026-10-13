@@ -113,11 +113,11 @@ onUnmounted(() => {
     class="fixed top-0 left-0 right-0 z-50 border-b transition-[padding,background-color,border-color,box-shadow,backdrop-filter] duration-300"
     :class="[
       isScrolled
-        ? 'bg-slate-950/80 backdrop-blur-md border-white/5 py-3 shadow-lg shadow-black/20'
-        : 'bg-transparent border-transparent py-5'
+        ? 'bg-slate-950/80 backdrop-blur-md border-white/5 pt-4 pb-3 sm:pt-5 sm:pb-4 shadow-lg shadow-black/20'
+        : 'bg-transparent border-transparent pt-6 pb-4 sm:pt-7 sm:pb-5'
     ]"
   >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between">
       <!-- Brand / Profile link -->
       <a
         href="#about"
@@ -165,21 +165,8 @@ onUnmounted(() => {
         </a>
       </nav>
 
-      <!-- Right CTAs: Socials + Command Palette + Resume -->
+      <!-- Right CTAs: Socials + Resume -->
       <div class="hidden sm:flex items-center gap-2.5">
-        <!-- Quick Search / Command Palette Trigger Button -->
-        <button
-          @click="$emit('open-palette')"
-          type="button"
-          class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/10 bg-slate-900/60 hover:bg-slate-800 text-slate-300 hover:text-white transition-all duration-200 cursor-pointer group"
-          title="Search & Quick Actions (Ctrl + K)"
-        >
-          <svg class="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-          <span class="text-xs font-medium text-slate-300 group-hover:text-white">Search</span>
-          <kbd class="px-1.5 py-0.5 rounded text-[10px] font-mono text-slate-400 bg-slate-800/80 border border-white/10">⌘K</kbd>
-        </button>
 
         <a
           href="https://github.com/rohannc"
