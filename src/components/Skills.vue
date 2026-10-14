@@ -97,7 +97,8 @@ function handleChipLeave(event) {
         </p>
 
         <!-- View Switcher Pills (Compact) -->
-        <div class="mt-5 inline-flex p-1 rounded-xl bg-slate-900/90 border border-white/10 shadow-md">
+        <!-- View Switcher Tabs: Clean Category Grid vs Architectural Topology Graph (Hidden on mobile) -->
+        <div class="hidden sm:inline-flex mt-5 p-1 rounded-xl bg-slate-900/90 border border-white/10 shadow-md">
           <button
             type="button"
             @click="activeView = 'grid'"
@@ -115,7 +116,7 @@ function handleChipLeave(event) {
           <button
             type="button"
             @click="activeView = 'topology'"
-            class="flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer"
+            class="topology-tab-btn flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer"
             :class="activeView === 'topology' 
               ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-sm' 
               : 'text-slate-400 hover:text-white'"
@@ -123,13 +124,13 @@ function handleChipLeave(event) {
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            <span>Topology Graph</span>
+            <span class="topology-tab-text">Topology Graph</span>
           </button>
         </div>
       </div>
 
-      <!-- View 1: Interactive Architecture Topology Graph -->
-      <div v-if="activeView === 'topology'" class="w-full">
+      <!-- View 1: Interactive Architecture Topology Graph (Desktop/Tablet only) -->
+      <div v-if="activeView === 'topology'" class="hidden sm:block w-full">
         <SkillTopologyGraph />
       </div>
 

@@ -440,7 +440,8 @@ function selectNode(node) {
                 :x="node.x"
                 :y="node.y + node.r + 17"
                 text-anchor="middle"
-                class="node-label-bg select-none"
+                class="node-label-bg select-none font-mono"
+                :class="node.type === 'hub' ? 'text-[12.5px] font-bold' : 'text-[11.5px] font-semibold'"
               >
                 {{ node.name }}
               </text>
@@ -448,10 +449,10 @@ function selectNode(node) {
                 :x="node.x"
                 :y="node.y + node.r + 17"
                 text-anchor="middle"
-                class="node-label-fg select-none"
+                class="node-label-fg select-none font-mono"
                 :class="[
-                  node.type === 'hub' ? 'font-bold text-[12px] fill-white' : 'font-medium text-[11px] fill-slate-200',
-                  hoveredNode?.id === node.id ? 'fill-cyan-300 font-semibold' : ''
+                  node.type === 'hub' ? 'font-bold text-[12.5px] fill-white' : 'font-semibold text-[11.5px] fill-slate-200',
+                  hoveredNode?.id === node.id ? 'fill-cyan-300 font-bold' : ''
                 ]"
               >
                 {{ node.name }}
@@ -515,11 +516,8 @@ function selectNode(node) {
   min-height: 520px;
 }
 
-/* Crisp text halo outline for 100% legibility on any dark background without boxy pills */
+/* Crisp text halo outline for 100% legibility on any background */
 .node-label-bg {
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: 600;
   stroke: #020617;
   stroke-width: 3.5px;
   stroke-linejoin: round;
@@ -527,7 +525,6 @@ function selectNode(node) {
 }
 
 .node-label-fg {
-  font-family: inherit;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
 }
 </style>

@@ -445,3 +445,110 @@ body {
   color: #0f172a !important;
   background-color: #f1f5f9 !important;
 }
+
+/* 5. Skills Architecture Topology Graph Light Mode Overrides */
+/* Topology Switcher Button */
+.light-mode .topology-tab-btn:not(.bg-gradient-to-r) {
+  color: #475569 !important;
+}
+
+.light-mode .topology-tab-btn:not(.bg-gradient-to-r):hover {
+  color: #0f172a !important;
+}
+
+.light-mode .topology-tab-btn.bg-gradient-to-r,
+.light-mode .topology-tab-btn.bg-gradient-to-r .topology-tab-text,
+.light-mode .topology-tab-btn.bg-gradient-to-r span,
+.light-mode .topology-tab-btn.bg-gradient-to-r svg {
+  color: #ffffff !important;
+  fill: none;
+}
+
+/* Topology Main Container */
+.light-mode .topology-container {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(203, 213, 225, 0.8) !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+}
+
+/* SVG Canvas Frame */
+.light-mode .topology-container .bg-slate-950\/80 {
+  background-color: #f8fafc !important;
+  border-color: rgba(203, 213, 225, 0.8) !important;
+}
+
+/* Ambient Backdrops subtler in light mode */
+.light-mode .topology-container .bg-cyan-500\/10 {
+  background-color: rgba(6, 182, 212, 0.04) !important;
+}
+
+.light-mode .topology-container .bg-purple-500\/10 {
+  background-color: rgba(168, 85, 247, 0.04) !important;
+}
+
+/* Filter pills & hint strip */
+.light-mode .topology-container .bg-slate-900\/60 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+.light-mode .topology-container .bg-slate-900\/60:hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+.light-mode .topology-container .bg-slate-900\/80 {
+  background-color: #f1f5f9 !important;
+  border-color: rgba(2, 132, 199, 0.25) !important;
+}
+
+/* SVG Nodes: In light mode, body fills should be white/soft slate for crisp node icons */
+.light-mode .topology-container circle[fill="#090d16"] {
+  fill: #ffffff !important;
+}
+
+.light-mode .topology-container circle[fill="#0f172a"] {
+  fill: #f8fafc !important;
+}
+
+/* Node Text Labels: crisp stroke halo & dark legible text in light mode */
+.light-mode .node-label-bg {
+  stroke: #f8fafc !important;
+  fill: #f8fafc !important;
+  stroke-width: 4px !important;
+}
+
+.light-mode .node-label-fg.fill-white {
+  fill: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+.light-mode .node-label-fg.fill-slate-200 {
+  fill: #1e293b !important;
+  font-weight: 700 !important;
+}
+
+.light-mode .node-label-fg.fill-cyan-300 {
+  fill: #0284c7 !important;
+  font-weight: 800 !important;
+}
+
+/* Unselected Network Links in Light Mode */
+.light-mode .topology-container line[stroke="#334155"] {
+  stroke: #cbd5e1 !important;
+  stroke-opacity: 0.7 !important;
+}
+
+/* Dedicated Inspector Card Below Canvas */
+.light-mode .topology-container .mt-4.rounded-xl.bg-slate-900\/80 {
+  background-color: #f8fafc !important;
+  border-color: rgba(203, 213, 225, 0.8) !important;
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.06);
+}
+
+.light-mode .topology-container .bg-slate-800\/60 {
+  background-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+}
