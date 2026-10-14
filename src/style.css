@@ -534,7 +534,16 @@ body {
   font-weight: 800 !important;
 }
 
-/* Unselected Network Links in Light Mode */
+/* Network Links in Light Mode */
+.light-mode .topology-container .edge-muted {
+  stroke: #e2e8f0 !important;
+  stroke-opacity: 0.5 !important;
+}
+
+.light-mode .topology-container .edge-highlighted {
+  filter: drop-shadow(0 0 4px rgba(2, 132, 199, 0.4)) !important;
+}
+
 .light-mode .topology-container line[stroke="#334155"] {
   stroke: #cbd5e1 !important;
   stroke-opacity: 0.7 !important;

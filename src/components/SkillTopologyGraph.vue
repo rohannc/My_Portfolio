@@ -175,30 +175,39 @@ const isLinkHighlighted = (link) => {
   const tNode = nodeMap.value.get(link.target);
   if (!sNode || !tNode) return false;
 
-  // Domain filtering
-  if (selectedDomain.value !== 'all') {
-    if (sNode.domain !== selectedDomain.value && tNode.domain !== selectedDomain.value) {
-      return false;
-    }
-  }
-
   // If a specific link is hovered directly
   if (hoveredLink.value) {
     return hoveredLink.value.source === link.source && hoveredLink.value.target === link.target;
   }
 
-  // If a node is actively hovered
+  // If a node is actively hovered: spotlight its incident edges
   if (hoveredNode.value) {
     return link.source === hoveredNode.value.id || link.target === hoveredNode.value.id;
   }
 
-  // If a node is selected/clicked
+  // If a node is explicitly clicked/selected: spotlight its incident edges
   if (activeNode.value) {
     return link.source === activeNode.value.id || link.target === activeNode.value.id;
   }
 
-  // Rest state: all valid links show softly
-  return false;
+  // When a specific domain option is selected:
+  // Highlight all edges between the nodes in that domain!
+  if (selectedDomain.value !== 'all') {
+    return sNode.domain === selectedDomain.value && tNode.domain === selectedDomain.value;
+  }
+
+  // When "All Architectures" is selected and no node is actively hovered/clicked:
+  // All architecture edges remain softly illuminated and highlighted
+  return true;
+};
+
+// Returns whether the link belongs to the currently active view or selection
+const isLinkActiveInDomain = (link) => {
+  const sNode = nodeMap.value.get(link.source);
+  const tNode = nodeMap.value.get(link.target);
+  if (!sNode || !tNode) return false;
+  if (selectedDomain.value === 'all') return true;
+  return sNode.domain === selectedDomain.value || tNode.domain === selectedDomain.value;
 };
 
 // Strict rule: If any edge is highlighted, BOTH connected nodes MUST be highlighted
@@ -357,10 +366,11 @@ function selectNode(node) {
               :y2="nodeMap.get(link.target)?.y"
               :stroke="isLinkHighlighted(link) ? (link.type === 'bridge' ? '#38bdf8' : (nodeMap.get(link.source)?.color || '#38bdf8')) : '#334155'"
               :stroke-width="isLinkHighlighted(link) ? (link.type === 'bridge' ? 3.2 : 2.5) : 1"
-              :stroke-opacity="isLinkHighlighted(link) ? 1 : 0.15"
+              :stroke-opacity="isLinkHighlighted(link) ? (selectedDomain === 'all' && !hoveredNode && !activeNode && !hoveredLink ? 0.45 : 1) : (isLinkActiveInDomain(link) ? 0.2 : 0.06)"
               :stroke-dasharray="link.type === 'bridge' ? '5,5' : 'none'"
               :filter="isLinkHighlighted(link) ? 'url(#neon-glow)' : 'none'"
-              class="transition-all duration-200 pointer-events-none"
+              class="topology-edge-line transition-all duration-300 pointer-events-none"
+              :class="isLinkHighlighted(link) ? 'edge-highlighted' : 'edge-muted'"
             />
           </g>
         </g>
