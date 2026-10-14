@@ -328,3 +328,120 @@ body {
     linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
 }
+
+/* 4. DSA Skill Radar Light Mode Overrides */
+/* Radar Switcher Tab Button */
+.light-mode .dsa-radar-tab-btn:not(.bg-gradient-to-r) {
+  color: #475569 !important;
+}
+
+.light-mode .dsa-radar-tab-btn:not(.bg-gradient-to-r):hover {
+  color: #0f172a !important;
+}
+
+.light-mode .dsa-radar-tab-btn.bg-gradient-to-r,
+.light-mode .dsa-radar-tab-btn.bg-gradient-to-r .dsa-radar-tab-text,
+.light-mode .dsa-radar-tab-btn.bg-gradient-to-r span,
+.light-mode .dsa-radar-tab-btn.bg-gradient-to-r svg {
+  color: #ffffff !important;
+  fill: none;
+}
+
+/* Radar Container & Inspector Panels */
+.light-mode .radar-container {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(203, 213, 225, 0.8) !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+}
+
+.light-mode .radar-container .lg\:col-span-7 {
+  background-color: #f8fafc !important;
+  border-color: rgba(226, 232, 240, 0.9) !important;
+}
+
+/* Radar SVG Diagram Colors in Light Mode */
+.light-mode .radar-grid-line {
+  stroke: #94a3b8 !important;
+  stroke-opacity: 0.65 !important;
+}
+
+.light-mode .radar-spoke {
+  stroke-opacity: 0.5 !important;
+}
+
+.light-mode .radar-spoke.text-slate-600 {
+  stroke: #cbd5e1 !important;
+}
+
+.light-mode .radar-data-polygon {
+  stroke: #0284c7 !important;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 6px rgba(2, 132, 199, 0.35));
+}
+
+.light-mode #radar-glow stop:first-child {
+  stop-color: #38bdf8 !important;
+  stop-opacity: 0.45 !important;
+}
+
+.light-mode #radar-glow stop:last-child {
+  stop-color: #c084fc !important;
+  stop-opacity: 0.15 !important;
+}
+
+.light-mode .radar-point-dot {
+  stroke: #ffffff !important;
+  stroke-width: 2 !important;
+}
+
+.light-mode .radar-axis-label {
+  fill: #334155 !important;
+  font-weight: 600 !important;
+}
+
+.light-mode .radar-axis-label.fill-white,
+.light-mode .radar-axis-label.font-bold {
+  fill: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+.light-mode .radar-center-dot {
+  fill: #64748b !important;
+}
+
+/* Mastered Patterns & Algorithms: Section Title */
+.light-mode .dsa-patterns-title {
+  color: #0369a1 !important;
+  font-weight: 700 !important;
+}
+
+/* Mastered Patterns & Algorithms: Pill List */
+.light-mode .dsa-pattern-pill {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+}
+
+/* Quick Topic Selector Buttons at bottom */
+.light-mode .dsa-selector-strip {
+  border-color: rgba(226, 232, 240, 0.9) !important;
+}
+
+.light-mode .dsa-topic-btn.active-topic {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  border-color: #94a3b8 !important;
+  font-weight: 700 !important;
+}
+
+.light-mode .dsa-topic-btn:not(.active-topic) {
+  color: #475569 !important;
+  background-color: transparent !important;
+}
+
+.light-mode .dsa-topic-btn:not(.active-topic):hover {
+  color: #0f172a !important;
+  background-color: #f1f5f9 !important;
+}

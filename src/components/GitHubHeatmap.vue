@@ -131,8 +131,8 @@ const secondaryPlatforms = computed(() => {
               <span class="text-xs text-slate-400">{{ codolioStats.totalSolved }} Total Solved</span>
             </div>
 
-            <!-- View Switcher Pills -->
-            <div class="inline-flex p-1 rounded-xl bg-slate-900/90 border border-white/10 shadow-sm self-start sm:self-auto">
+            <!-- View Switcher Pills (Hidden on mobile) -->
+            <div class="hidden sm:inline-flex p-1 rounded-xl bg-slate-900/90 border border-white/10 shadow-sm self-start sm:self-auto">
               <button
                 type="button"
                 @click="activeStatsView = 'platforms'"
@@ -150,7 +150,7 @@ const secondaryPlatforms = computed(() => {
               <button
                 type="button"
                 @click="activeStatsView = 'radar'"
-                class="flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer"
+                class="dsa-radar-tab-btn flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer"
                 :class="activeStatsView === 'radar' 
                   ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-sm' 
                   : 'text-slate-400 hover:text-white'"
@@ -159,13 +159,13 @@ const secondaryPlatforms = computed(() => {
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
                 </svg>
-                <span>DSA Skill Radar</span>
+                <span class="dsa-radar-tab-text">DSA Skill Radar</span>
               </button>
             </div>
           </div>
 
-          <!-- View 1: Multi-Axis Algorithmic Skill Radar Chart -->
-          <div v-if="activeStatsView === 'radar'" class="w-full">
+          <!-- View 1: Multi-Axis Algorithmic Skill Radar Chart (Desktop/Tablet only) -->
+          <div v-if="activeStatsView === 'radar'" class="hidden sm:block w-full">
             <DsaSkillRadarChart />
           </div>
 

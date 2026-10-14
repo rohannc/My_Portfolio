@@ -145,9 +145,9 @@ const dataPolygonPath = computed(() => {
               :key="idx"
               :points="getLevelPolygon(lvl)"
               fill="none"
-              stroke="#334155"
+              stroke="currentColor"
+              class="text-slate-700/60 radar-grid-line"
               stroke-width="1"
-              stroke-opacity="0.4"
               :stroke-dasharray="idx === levels.length - 1 ? 'none' : '3,3'"
             />
           </g>
@@ -161,10 +161,11 @@ const dataPolygonPath = computed(() => {
               :y1="cy"
               :x2="getPoint(idx, 1).x"
               :y2="getPoint(idx, 1).y"
-              :stroke="activeTopic.id === t.id ? t.color : '#334155'"
+              :stroke="activeTopic.id === t.id ? t.color : 'currentColor'"
               :stroke-width="activeTopic.id === t.id ? 2 : 1"
-              :stroke-opacity="activeTopic.id === t.id ? 0.8 : 0.3"
-              class="transition-colors duration-200"
+              :stroke-opacity="activeTopic.id === t.id ? 0.8 : 0.35"
+              class="radar-spoke transition-colors duration-200"
+              :class="activeTopic.id === t.id ? '' : 'text-slate-600'"
             />
           </g>
 
@@ -175,7 +176,7 @@ const dataPolygonPath = computed(() => {
             stroke="#38bdf8"
             stroke-width="2.5"
             stroke-linejoin="round"
-            class="transition-all duration-300 drop-shadow-[0_0_8px_rgba(56,189,248,0.4)]"
+            class="radar-data-polygon transition-all duration-300 drop-shadow-[0_0_8px_rgba(56,189,248,0.4)]"
           />
 
           <!-- Data Points on Axes -->
@@ -188,27 +189,36 @@ const dataPolygonPath = computed(() => {
               @mouseleave="hoveredTopicId = null"
               @click="selectedTopicId = t.id"
             >
+              <!-- Expanded Invisible Hit Area for easier hover & touch -->
+              <circle
+                :cx="getPoint(idx, t.mastery / 100).x"
+                :cy="getPoint(idx, t.mastery / 100).y"
+                r="28"
+                fill="transparent"
+                class="cursor-pointer"
+              />
+
               <!-- Outer halo circle when active -->
               <circle
                 v-if="activeTopic.id === t.id"
                 :cx="getPoint(idx, t.mastery / 100).x"
                 :cy="getPoint(idx, t.mastery / 100).y"
-                r="10"
+                r="12"
                 fill="none"
                 :stroke="t.color"
-                stroke-width="1.5"
-                class="transition-all duration-200"
+                stroke-width="1.75"
+                class="transition-all duration-200 pointer-events-none"
               />
 
               <!-- Point Dot -->
               <circle
                 :cx="getPoint(idx, t.mastery / 100).x"
                 :cy="getPoint(idx, t.mastery / 100).y"
-                :r="activeTopic.id === t.id ? 5 : 3.5"
+                :r="activeTopic.id === t.id ? 5.5 : 4"
                 :fill="t.color"
                 stroke="#090d16"
                 stroke-width="1.5"
-                class="transition-all duration-200"
+                class="radar-point-dot transition-all duration-200 pointer-events-none"
               />
 
               <!-- Outer Axis Label Indicator -->
@@ -216,7 +226,7 @@ const dataPolygonPath = computed(() => {
                 :x="getPoint(idx, 1.18).x"
                 :y="getPoint(idx, 1.18).y + 4"
                 text-anchor="middle"
-                class="text-[10px] font-mono select-none transition-colors duration-200"
+                class="text-[10px] font-mono select-none transition-colors duration-200 pointer-events-none radar-axis-label"
                 :class="activeTopic.id === t.id ? 'font-bold fill-white' : 'fill-slate-400 group-hover:fill-slate-200'"
               >
                 {{ t.shortLabel || t.title.split(' ')[0] }}
@@ -225,7 +235,7 @@ const dataPolygonPath = computed(() => {
           </g>
 
           <!-- Center Reference Dot -->
-          <circle :cx="cx" :cy="cy" r="2.5" fill="#64748b" />
+          <circle :cx="cx" :cy="cy" r="2.5" fill="#64748b" class="radar-center-dot" />
         </svg>
 
         <!-- Mastery Legend Summary -->
@@ -287,12 +297,12 @@ const dataPolygonPath = computed(() => {
 
           <!-- Key Subtopics & Algorithmic Patterns -->
           <div>
-            <span class="text-[11px] font-mono uppercase text-slate-400 tracking-wider">Mastered Patterns & Algorithms</span>
+            <span class="dsa-patterns-title text-[11px] font-mono uppercase text-slate-400 tracking-wider">Mastered Patterns & Algorithms</span>
             <div class="flex flex-wrap gap-1.5 mt-2">
               <span
                 v-for="sub in activeTopic.subtopics"
                 :key="sub"
-                class="text-xs px-2.5 py-1 rounded-lg bg-slate-900 border border-white/5 text-slate-300 font-mono"
+                class="dsa-pattern-pill text-xs px-2.5 py-1 rounded-lg bg-slate-900 border border-white/5 text-slate-300 font-mono"
               >
                 {{ sub }}
               </span>
@@ -301,14 +311,14 @@ const dataPolygonPath = computed(() => {
         </div>
 
         <!-- Quick Interactive Selector Strip at the Bottom -->
-        <div class="mt-4 pt-3 border-t border-white/5 flex flex-wrap items-center gap-1.5">
+        <div class="dsa-selector-strip mt-4 pt-3 border-t border-white/5 flex flex-wrap items-center gap-1.5">
           <button
             v-for="t in topics"
             :key="t.id"
             @click="selectedTopicId = t.id"
-            class="px-2.5 py-1 rounded-md text-[11px] font-mono transition-all cursor-pointer border"
+            class="dsa-topic-btn px-2.5 py-1 rounded-md text-[11px] font-mono transition-all cursor-pointer border"
             :class="activeTopic.id === t.id 
-              ? 'bg-slate-800 text-white border-white/30 font-semibold' 
+              ? 'bg-slate-800 text-white border-white/30 font-semibold active-topic' 
               : 'bg-transparent text-slate-400 border-transparent hover:text-white hover:bg-slate-900'"
           >
             {{ t.shortLabel || t.title.split(' ')[0] }}
