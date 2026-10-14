@@ -210,18 +210,14 @@ const isLinkActiveInDomain = (link) => {
   return sNode.domain === selectedDomain.value || tNode.domain === selectedDomain.value;
 };
 
-// Strict rule: If any edge is highlighted, BOTH connected nodes MUST be highlighted
+// Strict rule: When hovering or selecting a node, highlight the node AND all connected nodes
 const isNodeHighlighted = (node) => {
-  if (selectedDomain.value !== 'all' && node.domain !== selectedDomain.value) {
-    return false;
-  }
-
   // If hovering an edge directly: highlight exactly both source & target nodes
   if (hoveredLink.value) {
     return hoveredLink.value.source === node.id || hoveredLink.value.target === node.id;
   }
 
-  // When hovering a specific node: spotlight it and its direct adjacent connections
+  // When hovering a specific node: spotlight IT and ALL nodes connected to it!
   if (hoveredNode.value) {
     if (hoveredNode.value.id === node.id) return true;
     return links.some(l => 
@@ -230,7 +226,7 @@ const isNodeHighlighted = (node) => {
     );
   }
 
-  // If a node was clicked/selected
+  // If a node was clicked/selected: spotlight it and all its connected neighbors
   if (activeNode.value) {
     if (activeNode.value.id === node.id) return true;
     return links.some(l => 
@@ -239,7 +235,12 @@ const isNodeHighlighted = (node) => {
     );
   }
 
-  // Default rest state (no hover, no selection): show all nodes in natural calm view
+  // Domain filtering in rest state (when no specific node is hovered/active)
+  if (selectedDomain.value !== 'all') {
+    return node.domain === selectedDomain.value;
+  }
+
+  // Default rest state in "All Architectures": show all nodes
   return true;
 };
 
