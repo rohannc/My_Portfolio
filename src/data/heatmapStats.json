@@ -2,48 +2,6 @@
   "maxTotal": 32,
   "days": [
     {
-      "date": "2025-11-02",
-      "github": 0,
-      "codolio": 17,
-      "total": 17
-    },
-    {
-      "date": "2025-11-03",
-      "github": 0,
-      "codolio": 4,
-      "total": 4
-    },
-    {
-      "date": "2025-11-04",
-      "github": 0,
-      "codolio": 5,
-      "total": 5
-    },
-    {
-      "date": "2025-11-05",
-      "github": 0,
-      "codolio": 6,
-      "total": 6
-    },
-    {
-      "date": "2025-11-06",
-      "github": 0,
-      "codolio": 2,
-      "total": 2
-    },
-    {
-      "date": "2025-11-07",
-      "github": 0,
-      "codolio": 2,
-      "total": 2
-    },
-    {
-      "date": "2025-11-08",
-      "github": 1,
-      "codolio": 13,
-      "total": 14
-    },
-    {
       "date": "2025-11-09",
       "github": 1,
       "codolio": 4,
@@ -2223,6 +2181,12 @@
     },
     {
       "date": "2026-11-07",
+      "github": 0,
+      "codolio": 0,
+      "total": 0
+    },
+    {
+      "date": "2026-11-08",
       "github": 0,
       "codolio": 0,
       "total": 0
