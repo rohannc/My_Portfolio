@@ -2212,11 +2212,17 @@
     {
       "date": "2026-11-19",
       "github": 0,
-      "codolio": 0,
-      "total": 0
+      "codolio": 2,
+      "total": 2
     },
     {
       "date": "2026-11-20",
+      "github": 0,
+      "codolio": 1,
+      "total": 1
+    },
+    {
+      "date": "2026-11-21",
       "github": 0,
       "codolio": 0,
       "total": 0
