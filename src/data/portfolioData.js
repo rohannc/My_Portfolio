@@ -192,65 +192,151 @@ export const skillCategories = [
   }
 ];
 
-export const featuredProject = {
-  id: "deepfake-detection",
-  title: "DeepFake Image Detection System",
-  tagline: "Leveraging AI and Forensic Error Level Analysis ( ELA )",
-  accuracy: "98%",
-  summary: "A robust web-based application designed to detect deepfake images using a combination of advanced AI techniques and Error Level Analysis (ELA).",
-  description: "The system boasts an accuracy of approximately 98% in identifying manipulated images using dual detection methods: an AI-powered deep learning model trained on a dataset of over 80,000 images, and Error Level Analysis (ELA) as a secondary verification technique. It offers flexible inputs, allowing users to either upload an image directly from their device or submit an image URL for analysis. Privacy and security are ensured, as all uploaded images are processed securely without permanent data storage.",
-  githubUrl: "https://github.com/rohannc/FinalYearProject_DeepFakeImageDetection",
-  team: [
-    {
-      name: "Rohan Chakraborty",
-      role: "Forensic Analysis & ELA",
-      subRole: "Frontend Integration & System Lead",
-      avatar: "ProjectIcon1Cropper.jpg",
-      linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
-    },
-    {
-      name: "Adrika Ghosh",
-      role: "Frontend Engineering",
-      subRole: "UI/UX & Interface Design",
-      avatar: "Adrika.jpeg",
-      linkedin: "https://www.linkedin.com/in/adrika-ghosh-b07a66298/"
-    },
-    {
-      name: "Subhashis Mondal",
-      role: "Model Training & Datasets",
-      subRole: "Backend Architecture",
-      avatar: "Subhashis.jpeg",
-      linkedin: "https://www.linkedin.com/in/subhashis360/"
-    }
-  ],
-  techStack: [
-    { name: "Python", category: "Core" },
-    { name: "PyTorch", category: "AI/ML" },
-    { name: "OpenCV", category: "Vision" },
-    { name: "PIL", category: "Forensics" },
-    { name: "Scikit-learn", category: "Metrics" },
-    { name: "Flask", category: "Backend" },
-    { name: "HTML5", category: "Frontend" },
-    { name: "CSS3", category: "Styling" },
-    { name: "JavaScript", category: "Frontend" }
-  ],
-  keyFeatures: [
-    "Dual Detection Methods: AI-powered deep learning combined with Error Level Analysis (ELA)",
-    "Model trained on a diverse dataset of over 80,000 images",
-    "Flexible Inputs: Direct image upload or image URL submission",
-    "Privacy & Security: Secure processing with zero permanent user data storage",
-    "Real-time processing with an intuitive web interface and clear result visualization"
-  ],
-  screenshots: [
-    { file: "Website01.webp", caption: "Landing Page" },
-    { file: "Website02.webp", caption: "System Architecture Overview" },
-    { file: "Website03.webp", caption: "Knowledge Base" },
-    { file: "Website04.webp", caption: "Support & Contact" },
-    { file: "Website05.webp", caption: "Forensic Image Upload & Verification Portal" },
-    { file: "Website06.webp", caption: "Error Level Analysis ( ELA ) Heatmap Visualization" },
-    { file: "Website07.webp", caption: "Confidence Breakdown & Probabilistic Metrics" }
-  ]
-};
+export const featuredProjects = [
+  {
+    id: "deepfake-detection",
+    title: "DeepFake Image Detection System",
+    shortTitle: "DeepFake Detection",
+    icon: "shield",
+    category: "AI + Forensic Forefront",
+    tagline: "Leveraging AI and Forensic Error Level Analysis ( ELA )",
+    badge: "98% Validation Accuracy",
+    badgeType: "accuracy",
+    summary: "A high-precision forensic platform combining Error Level Analysis (ELA) and deep neural models to spot synthetic and manipulated facial imagery.",
+    description: "The system boasts an accuracy of approximately 98% in identifying manipulated images using dual detection methods: an AI-powered deep learning model trained on a dataset of over 80,000 images, and Error Level Analysis (ELA) as a secondary verification technique. It offers flexible inputs, allowing users to either upload an image directly from their device or submit an image URL for analysis. Privacy and security are ensured, as all uploaded images are processed securely without permanent data storage.",
+    githubUrl: "https://github.com/rohannc/FinalYearProject_DeepFakeImageDetection",
+    liveUrl: null,
+    apiDocsUrl: null,
+    teamTitle: "Project Contributors & Research Team",
+    team: [
+      {
+        name: "Rohan Chakraborty",
+        role: "Forensic Analysis & ELA",
+        subRole: "Frontend Integration & System Lead",
+        avatar: "ProjectIcon1Cropper.jpg",
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
+      },
+      {
+        name: "Adrika Ghosh",
+        role: "Frontend Engineering",
+        subRole: "UI/UX & Interface Design",
+        avatar: "Adrika.jpeg",
+        linkedin: "https://www.linkedin.com/in/adrika-ghosh-b07a66298/"
+      },
+      {
+        name: "Subhashis Mondal",
+        role: "Model Training & Datasets",
+        subRole: "Backend Architecture",
+        avatar: "Subhashis.jpeg",
+        linkedin: "https://www.linkedin.com/in/subhashis360/"
+      }
+    ],
+    techStack: [
+      { name: "Python", category: "Core" },
+      { name: "PyTorch", category: "AI/ML" },
+      { name: "OpenCV", category: "Vision" },
+      { name: "PIL", category: "Forensics" },
+      { name: "Scikit-learn", category: "Metrics" },
+      { name: "Flask", category: "Backend" },
+      { name: "HTML5", category: "Frontend" },
+      { name: "CSS3", category: "Styling" },
+      { name: "JavaScript", category: "Frontend" }
+    ],
+    keyFeatures: [
+      "Dual Detection Methods: AI-powered deep learning combined with Error Level Analysis (ELA)",
+      "Model trained on a diverse dataset of over 80,000 images",
+      "Flexible Inputs: Direct image upload or image URL submission",
+      "Privacy & Security: Secure processing with zero permanent user data storage",
+      "Real-time processing with an intuitive web interface and clear result visualization"
+    ],
+    highlights: [
+      { label: "Validation Accuracy", value: "98.2%", icon: "target" },
+      { label: "Training Dataset", value: "80,000+ Images", icon: "database" },
+      { label: "Forensic Method", value: "Dual (Deep Learning + ELA)", icon: "search" },
+      { label: "Data Retention", value: "Zero Storage (Stateless)", icon: "shield" }
+    ],
+    modules: [
+      { title: "Forensic ELA Engine", desc: "Analyzes compression discrepancies across 8x8 DCT JPEG blocks to expose tampered segments." },
+      { title: "Deep CNN Classifier", desc: "Trained on large-scale synthetic facial benchmarks to detect blend edges and warp artifacts." },
+      { title: "Interactive Heatmap", desc: "Generates visual confidence heatmaps and probabilistic artifact distribution charts." }
+    ],
+    screenshots: [
+      { file: "Website01.webp", caption: "Landing Page" },
+      { file: "Website02.webp", caption: "System Architecture Overview" },
+      { file: "Website03.webp", caption: "Knowledge Base" },
+      { file: "Website04.webp", caption: "Support & Contact" },
+      { file: "Website05.webp", caption: "Forensic Image Upload & Verification Portal" },
+      { file: "Website06.webp", caption: "Error Level Analysis ( ELA ) Heatmap Visualization" },
+      { file: "Website07.webp", caption: "Confidence Breakdown & Probabilistic Metrics" }
+    ]
+  },
+  {
+    id: "khoj-healthcare",
+    title: "Khoj — Healthcare Management Platform",
+    shortTitle: "Khoj Healthcare",
+    icon: "hospital",
+    category: "Full-Stack Enterprise & Cloud",
+    tagline: "Multi-Tenant Platform for Patients, Doctors & Clinics",
+    badge: "Live on Cloud (Render + Supabase)",
+    badgeType: "live",
+    summary: "An enterprise-grade, multi-tenant digital healthcare ecosystem with dynamic role-based portals, automated affiliation negotiations, and JWT auto-rotation.",
+    description: "Khoj is a modern distributed healthcare suite engineered to streamline affiliations, real-time appointments, digital prescriptions, and health records between Patients, Doctors, and Clinics. Featuring a reactive Vue 3 SPA frontend and a robust Spring Boot 3.3 REST backend backed by Supabase PostgreSQL, it implements stateless dual-token rotation, multi-tier RBAC navigation guards, doctor-clinic fee negotiation engines, and itemized prescription workflows.",
+    githubUrl: "https://github.com/rohannc/Khoj-The_Ultimate_Guide",
+    githubFrontendUrl: "https://github.com/rohannc/Khoj-The_Ultimate_Guide-FrontEnd",
+    liveUrl: "https://khoj-the-ultimate-guide.onrender.com",
+    apiDocsUrl: "https://khoj-the-ultimate-guide.onrender.com/swagger-ui/index.html",
+    teamTitle: "Architect & Lead Engineer",
+    team: [
+      {
+        name: "Rohan Chakraborty",
+        role: "Full-Stack Architect",
+        subRole: "Spring Boot 3, Vue 3, Security & DevOps",
+        avatar: "ProjectIcon1Cropper.jpg",
+        linkedin: "https://www.linkedin.com/in/rohanchakraborty0108/"
+      }
+    ],
+    techStack: [
+      { name: "Spring Boot 3.3", category: "Backend" },
+      { name: "Java 21", category: "Core" },
+      { name: "PostgreSQL", category: "Database" },
+      { name: "Supabase Cloud", category: "Cloud DB" },
+      { name: "Spring Security 6", category: "Auth" },
+      { name: "JWT Rotation", category: "Security" },
+      { name: "Hibernate / JPA", category: "ORM" },
+      { name: "Vue 3", category: "Frontend" },
+      { name: "Pinia", category: "State" },
+      { name: "Tailwind CSS", category: "Styling" },
+      { name: "Docker", category: "DevOps" },
+      { name: "Swagger / OpenAPI 3", category: "API Docs" }
+    ],
+    keyFeatures: [
+      "Role-Based Portals: Dedicated workflows for Patients (appointments & vitals), Doctors (schedules & prescriptions), and Clinics (roster & queues)",
+      "Doctor-Clinic Affiliation Negotiation Engine: Counter-propose fees, patient quotas, and contract approvals",
+      "Stateless Dual-Token JWT Auth: Proactive refresh queue interceptors and instant session termination",
+      "Digital Prescription Tracking: Multi-item dosage, course scheduling, and medication history",
+      "Enterprise Persistence: 12 normalized PostgreSQL entities on Supabase with connection pooling and Render deployment"
+    ],
+    highlights: [
+      { label: "Architecture", value: "Decoupled Full-Stack", icon: "layers" },
+      { label: "Database Entities", value: "12 Normalized Tables", icon: "database" },
+      { label: "Authentication", value: "Stateless JWT Auto-Rotation", icon: "shield" },
+      { label: "Deployment", value: "Render API + Supabase DB", icon: "cloud" }
+    ],
+    modules: [
+      { title: "Patient Healthcare Portal", desc: "Appointment booking, live token queue tracking, vitals history, and itemized digital prescriptions." },
+      { title: "Doctor Practice Suite", desc: "Schedule management, patient consultation history, and affiliation contract negotiation engine." },
+      { title: "Clinic Operations Center", desc: "Doctor roster management, facility schedule administration, and queue capacity controls." },
+      { title: "Security & Auth Micro-Core", desc: "Spring Security 6 stateless JWT with refresh rotation, blacklisting, and BCrypt encryption." }
+    ],
+    screenshots: [
+      { file: "khoj-hero.jpg", caption: "Khoj — Healthcare Management Platform Dashboard" },
+      { file: "Website02.webp", caption: "Architecture & Multi-Tenant Relational Schema" },
+      { file: "Website01.webp", caption: "Portal Overview & Provider Discovery" }
+    ]
+  }
+];
+
+export const featuredProject = featuredProjects[0];
 
 export const achievements = [
   {
