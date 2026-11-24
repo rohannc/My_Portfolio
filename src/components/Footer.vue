@@ -4,6 +4,10 @@ import { personalInfo } from "../data/portfolioData.js";
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
+
+const openTerminal = () => {
+  window.dispatchEvent(new CustomEvent('open-terminal'));
+};
 </script>
 
 <template>
@@ -21,11 +25,27 @@ const scrollToTop = () => {
           </span>
         </div>
 
-        <!-- Center Column: Stylized Back to Top Button -->
-        <div class="flex items-center justify-center">
+        <!-- Center Column: Action Controls (Terminal & Back to Top) -->
+        <div class="flex items-center justify-center gap-3">
+          <button
+            @click="openTerminal"
+            type="button"
+            data-tooltip="Launch Terminal (Ctrl + `)"
+            data-tooltip-pos="top"
+            aria-label="Launch Interactive Terminal"
+            class="group inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-mono font-medium text-slate-400 hover:text-cyan-300 bg-slate-900/60 hover:bg-slate-900 border border-white/10 hover:border-cyan-500/40 shadow-sm transition-all duration-300 cursor-pointer"
+          >
+            <span class="text-cyan-400 font-bold">&gt;_</span>
+            <span>Terminal</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-white/5 text-slate-400 font-mono hidden sm:inline">Ctrl+`</span>
+          </button>
+
           <button
             @click="scrollToTop"
             type="button"
+            data-tooltip="Scroll to Top"
+            data-tooltip-pos="top"
+            aria-label="Scroll to Top"
             class="group inline-flex items-center gap-2.5 px-5 py-2 rounded-full text-xs font-mono font-semibold text-slate-300 hover:text-white bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-cyan-500/50 shadow-md hover:shadow-cyan-500/20 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
           >
             <span>Back to Top</span>

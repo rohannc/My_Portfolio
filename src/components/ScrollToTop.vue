@@ -44,7 +44,8 @@ onUnmounted(() => {
       @click="scrollToTop"
       type="button"
       class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full glass-card bg-slate-900/80 hover:bg-slate-800 text-cyan-300 hover:text-white border border-white/10 hover:border-cyan-500/40 shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group cursor-pointer"
-      title="Scroll to Top"
+      data-tooltip="Scroll to Top"
+      data-tooltip-pos="left"
       aria-label="Scroll to Top"
     >
       <svg

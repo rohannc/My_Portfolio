@@ -79,7 +79,9 @@ const openCodolio = () => {
               @click="openCodolio"
               type="button"
               class="inline-flex items-center justify-center w-full sm:w-auto px-4 py-3 sm:py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-300 bg-slate-900/50 hover:bg-slate-800 border border-white/5 hover:border-white/20 transition-all duration-200 active:scale-[0.98]"
-              title="View Codolio Profile"
+              data-tooltip="View Live Codolio Profile"
+              data-tooltip-pos="top"
+              aria-label="View Codolio Profile"
             >
               <span>Codolio Profile</span>
               <svg class="ml-1.5 w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -99,11 +101,11 @@ const openCodolio = () => {
               <!-- Top Profile Layout: Square Image Fitted Edge-to-Edge + Bio Details -->
               <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 p-3.5 sm:p-4 rounded-2xl bg-slate-900/80 border border-white/5">
                 <!-- Square Fitted Image (Slightly Enlarged & Shifted Slightly Left) -->
-                <div class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden flex-shrink-0 ring-2 ring-indigo-500/50 shadow-xl group bg-slate-950 sm:-ml-1.5">
+                <div class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden flex-shrink-0 ring-2 ring-indigo-500/50 group-hover:ring-cyan-400/80 shadow-xl group-hover:shadow-cyan-500/20 group bg-slate-950 sm:-ml-1.5 transition-all duration-1000 ease-out isolate">
                   <img
                     src="../assets/ProfileImage.jpg"
                     alt="Rohan Chakraborty"
-                    class="w-full h-full object-cover object-[center_12%] group-hover:scale-105 transition-transform duration-300"
+                    class="w-full h-full object-cover object-[center_12%] smooth-zoom-avatar"
                   />
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent pointer-events-none"></div>
                 </div>

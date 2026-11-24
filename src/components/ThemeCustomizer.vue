@@ -115,7 +115,8 @@ onUnmounted(() => {
       <button 
         @click="toggleLightMode"
         class="w-10 h-10 rounded-full shadow-lg border-2 border-white/20 hover:scale-110 transition-transform flex items-center justify-center cursor-pointer bg-slate-800 mb-2"
-        :title="isLightMode ? 'Switch to Dark Mode' : 'Switch to Light Mode'"
+        :data-tooltip="isLightMode ? 'Switch to Dark Mode' : 'Switch to Light Mode'"
+        data-tooltip-pos="left"
         :aria-label="isLightMode ? 'Switch to Dark Mode' : 'Switch to Light Mode'"
       >
         <svg v-if="!isLightMode" class="w-5 h-5 text-amber-300" fill="currentColor" viewBox="0 0 24 24">
@@ -135,7 +136,8 @@ onUnmounted(() => {
         class="w-10 h-10 rounded-full shadow-lg border-2 hover:scale-110 transition-transform flex items-center justify-center cursor-pointer"
         :class="currentHue === theme.hue ? 'border-white' : 'border-white/20'"
         :style="{ backgroundColor: theme.color }"
-        :title="theme.name"
+        :data-tooltip="theme.name"
+        data-tooltip-pos="left"
         :aria-label="`Set theme color to ${theme.name}`"
       >
         <svg v-if="currentHue === theme.hue" class="w-5 h-5 text-white drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -147,7 +149,8 @@ onUnmounted(() => {
     <button 
       @click="isOpen = !isOpen"
       class="w-12 h-12 rounded-full bg-slate-800 border border-white/10 text-white flex items-center justify-center shadow-xl hover:bg-slate-700 transition-colors z-10 cursor-pointer"
-      title="Customize Theme"
+      data-tooltip="Theme & Colors"
+      data-tooltip-pos="left"
       aria-label="Customize Theme"
       :aria-expanded="isOpen"
       :class="{ 'ring-2 ring-cyan-500/50': isOpen }"

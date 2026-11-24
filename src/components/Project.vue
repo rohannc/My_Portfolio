@@ -29,10 +29,10 @@ const openUrl = (url) => {
       <div class="text-center max-w-2xl mx-auto mb-10">
         <span class="text-xs font-mono font-semibold tracking-wider text-cyan-400 uppercase">Featured Systems</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1.5 tracking-tight">
-          Featured Engineering Architectures
+          Featured Engineering Architecture
         </h2>
         <p class="text-sm sm:text-base text-slate-400 mt-2">
-          Production systems showcasing AI computer vision forensics and multi-tenant distributed cloud platforms.
+          Production system showcasing AI computer vision forensics and deep learning verification pipelines.
         </p>
       </div>
 

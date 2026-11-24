@@ -116,7 +116,9 @@ const filteredAchievements = computed(() => {
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-1 text-slate-400 hover:text-slate-200 transition-colors"
-              title="View on LinkedIn"
+              data-tooltip="View on LinkedIn"
+              data-tooltip-pos="top"
+              aria-label="View on LinkedIn"
             >
               <span>LinkedIn</span>
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

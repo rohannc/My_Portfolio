@@ -96,6 +96,10 @@ const openResume = () => {
   window.open(personalInfo.resumeUrl, "_blank");
 };
 
+const openTerminal = () => {
+  window.dispatchEvent(new CustomEvent('open-terminal'));
+};
+
 onMounted(() => {
   window.addEventListener("scroll", handleScroll, { passive: true });
   // Initial check on load
@@ -173,7 +177,8 @@ onUnmounted(() => {
           target="_blank"
           rel="noopener noreferrer"
           class="w-9 h-9 flex items-center justify-center rounded-lg border border-white/5 bg-slate-900/50 text-slate-300 hover:text-white hover:border-indigo-500/40 transition-colors"
-          title="GitHub"
+          data-tooltip="GitHub Profile"
+          aria-label="GitHub Profile"
         >
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path
@@ -187,7 +192,8 @@ onUnmounted(() => {
           target="_blank"
           rel="noopener noreferrer"
           class="w-9 h-9 flex items-center justify-center rounded-lg border border-white/5 bg-slate-900/50 text-slate-300 hover:text-white hover:border-indigo-500/40 transition-colors"
-          title="LinkedIn"
+          data-tooltip="LinkedIn Profile"
+          aria-label="LinkedIn Profile"
         >
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path
@@ -197,8 +203,19 @@ onUnmounted(() => {
         </a>
 
         <button
+          @click="openTerminal"
+          type="button"
+          class="w-9 h-9 hidden sm:flex items-center justify-center rounded-lg border border-white/5 bg-slate-900/50 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/40 transition-colors cursor-pointer"
+          data-tooltip="Terminal (Ctrl + `)"
+          aria-label="Open Interactive Terminal"
+        >
+          <span class="text-xs font-mono font-bold text-cyan-400">&gt;_</span>
+        </button>
+
+        <button
           @click="openResume"
           type="button"
+          data-tooltip="Open PDF Resume"
           class="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors shadow-sm shadow-indigo-600/30"
         >
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

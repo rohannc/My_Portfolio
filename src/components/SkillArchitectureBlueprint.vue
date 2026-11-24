@@ -650,7 +650,9 @@ onUnmounted(() => {
           type="button"
           @click="prevStage"
           class="p-2 rounded-xl bg-slate-900/90 border border-white/10 text-slate-300 hover:text-white hover:border-white/30 transition-all cursor-pointer shadow-sm"
-          title="Previous Stage"
+          data-tooltip="Previous Stage"
+          data-tooltip-pos="top"
+          aria-label="Previous Stage"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -663,7 +665,9 @@ onUnmounted(() => {
           type="button"
           @click="nextStage"
           class="p-2 rounded-xl bg-slate-900/90 border border-white/10 text-slate-300 hover:text-white hover:border-white/30 transition-all cursor-pointer shadow-sm"
-          title="Next Stage"
+          data-tooltip="Next Stage"
+          data-tooltip-pos="top"
+          aria-label="Next Stage"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />

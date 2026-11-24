@@ -192,7 +192,7 @@ export const skillCategories = [
   }
 ];
 
-export const featuredProjects = [
+export const allProjects = [
   {
     id: "deepfake-detection",
     title: "DeepFake Image Detection System",
@@ -277,8 +277,9 @@ export const featuredProjects = [
     icon: "hospital",
     category: "Full-Stack Enterprise & Cloud",
     tagline: "Multi-Tenant Platform for Patients, Doctors & Clinics",
-    badge: "Live on Cloud (Render + Supabase)",
+    badge: "In Development",
     badgeType: "live",
+    visible: false, // Structure and code preserved; hidden from UI until dedicated images & features are completed
     summary: "An enterprise-grade, multi-tenant digital healthcare ecosystem with dynamic role-based portals, automated affiliation negotiations, and JWT auto-rotation.",
     description: "Khoj is a modern distributed healthcare suite engineered to streamline affiliations, real-time appointments, digital prescriptions, and health records between Patients, Doctors, and Clinics. Featuring a reactive Vue 3 SPA frontend and a robust Spring Boot 3.3 REST backend backed by Supabase PostgreSQL, it implements stateless dual-token rotation, multi-tier RBAC navigation guards, doctor-clinic fee negotiation engines, and itemized prescription workflows.",
     githubUrl: "https://github.com/rohannc/Khoj-The_Ultimate_Guide",
@@ -328,13 +329,11 @@ export const featuredProjects = [
       { title: "Clinic Operations Center", desc: "Doctor roster management, facility schedule administration, and queue capacity controls." },
       { title: "Security & Auth Micro-Core", desc: "Spring Security 6 stateless JWT with refresh rotation, blacklisting, and BCrypt encryption." }
     ],
-    screenshots: [
-      { file: "khoj-hero.jpg", caption: "Khoj — Healthcare Management Platform Dashboard" },
-      { file: "Website02.webp", caption: "Architecture & Multi-Tenant Relational Schema" },
-      { file: "Website01.webp", caption: "Portal Overview & Provider Discovery" }
-    ]
+    screenshots: []
   }
 ];
+
+export const featuredProjects = allProjects.filter(p => p.visible !== false);
 
 export const featuredProject = featuredProjects[0];
 
