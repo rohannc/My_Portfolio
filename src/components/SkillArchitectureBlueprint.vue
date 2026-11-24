@@ -1,267 +1,267 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 
-// 4 Real-World Production Architecture Scenarios with Rich Tech Badges & Icons
+// 4 Real-World Pipelines Strictly Grounded in Rohan's Profile & Experience
 const pipelines = [
   {
     id: 'agentic',
-    title: 'Autonomous Multi-Agent SDLC & CI/CD Pipeline',
-    shortTitle: 'Agentic CI/CD',
+    title: 'Autonomous AI Agents & CI/CD Pipeline',
+    shortTitle: 'AI Agents & CI/CD',
     icon: '🤖',
     color: '#a855f7',
     colorFrom: 'from-purple-500',
     colorTo: 'to-indigo-600',
     accent: '#c084fc',
-    badge: 'Visa Production Automation',
-    summary: 'Autonomous multi-agent orchestration for automated user story ingestion, cyclic state routing, TDD test synthesis, and DevSecOps vulnerability remediation with Human-in-the-Loop review.',
+    badge: 'Visa Production Experience',
+    summary: 'Optimizing the SDLC using autonomous AI agents with Python Asyncio, LangGraph, and MCP to automate Jira requirement extraction, TDD implementation, and security vulnerability remediation with Human-in-the-Loop review.',
     stages: [
       {
         id: 'spec',
         number: '01',
-        title: 'Spec & Jira Ingestion',
+        title: 'Jira Requirement Extraction',
         category: 'Ingress',
-        input: 'Jira User Story & Webhook Event',
-        output: 'Normalized AST & Constraint Schema',
-        role: 'Autonomous Requirement Parsing',
-        description: 'Ingests user stories, acceptance criteria, and edge-cases directly from Jira into structured JSON schemas using asynchronous Python event loops.',
-        whyChosen: 'Asynchronous event piping allows ingestion without blocking concurrent webhook triggers during peak sprint planning.',
-        metric: '< 150ms Ingestion Latency',
+        input: 'Jira User Story & Acceptance Criteria',
+        output: 'Structured Requirements & Task Schema',
+        role: 'Autonomous Requirement Extraction',
+        description: 'Extracts user stories, acceptance criteria, and technical requirements directly from Jira using asynchronous Python event loops to prepare automated development tasks.',
+        whyChosen: 'Automates manual requirement parsing and eliminates sprint kickoff delays without human bottlenecks.',
+        metric: 'Automated Extraction',
         technologies: [
-          { name: 'Python Asyncio', role: 'Event Loop', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-          { name: 'Jira API', role: 'Backlog Ingestion', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/jira.svg' },
-          { name: 'Webhooks', role: 'Event Ingress', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/postman.svg' }
+          { name: 'Python Asyncio', role: 'Async Event Handling', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+          { name: 'Jira Automation', role: 'Issue Tracking API', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/jira.svg' },
+          { name: 'Git', role: 'Version Control', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' }
         ]
       },
       {
         id: 'langgraph',
         number: '02',
-        title: 'LangGraph State Routing',
+        title: 'LangGraph Agent Orchestration',
         category: 'Orchestration',
-        input: 'Normalized Requirements & Repo Context',
-        output: 'Cyclic Agent Execution Graph & Checkpoints',
-        role: 'Multi-Agent Cyclic State Machine',
-        description: 'Orchestrates specialized sub-agents (architect, coder, reviewer) via cyclic graphs with persistent checkpoint state and rollback mechanisms.',
-        whyChosen: 'Unlike linear chains, LangGraph allows conditional loops where code failing validation routes back to the authoring agent with compiler feedback.',
-        metric: 'Persistent State Checkpoints',
+        input: 'Extracted Requirements & Codebase Context',
+        output: 'Multi-Step Execution Graph with Checkpoints',
+        role: 'Stateful Agent Workflows',
+        description: 'Orchestrates autonomous agents through cyclic state graphs, allowing agents to iteratively draft solutions, inspect compiler output, and self-correct logic.',
+        whyChosen: 'State graphs provide checkpoints and cyclic loops so agents can retry and fix errors based on test feedback.',
+        metric: 'Stateful Checkpoints',
         technologies: [
-          { name: 'LangGraph', role: 'Cyclic State Routing', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/langchain.svg' },
-          { name: 'Python 3.11+', role: 'Agent Runtime', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-          { name: 'Multi-Agent', role: 'Role Separation', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/openai.svg' }
+          { name: 'LangGraph', role: 'Stateful Agent Routing', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/langchain.svg' },
+          { name: 'Python', role: 'Core Agent Runtime', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+          { name: 'Autonomous Agents', role: 'Workflow Automation', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/openai.svg' }
         ]
       },
       {
         id: 'mcp',
         number: '03',
-        title: 'MCP Standardized Tooling',
-        category: 'Environment',
-        input: 'Tool Invocation Requests (Read/Write/Exec)',
-        output: 'Sandboxed Context & Diff Patches',
-        role: 'Decoupled Environment Interfacing',
-        description: 'Interfaces agents with code repositories, schema definitions, and shell runtimes through the Anthropic Model Context Protocol specification.',
-        whyChosen: 'Standardized client/server protocol decouples agent reasoning from host execution, ensuring zero leaked API keys and sandboxed command execution.',
-        metric: 'Zero-Privilege Sandboxing',
+        title: 'Model Context Protocol (MCP)',
+        category: 'Tooling',
+        input: 'Agent Tool Calls & File System Queries',
+        output: 'Repository Inspection & Code Modifications',
+        role: 'Standardized Tool Integration',
+        description: 'Connects autonomous agents with development environments, code repositories, and execution tools using Anthropic\'s Model Context Protocol (MCP).',
+        whyChosen: 'Provides a standardized, secure interface for agents to read files, run terminal commands, and apply code patches.',
+        metric: 'Standardized Tooling',
         technologies: [
-          { name: 'MCP Protocol', role: 'Context Protocol', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/anthropic.svg' },
-          { name: 'Claude CLI', role: 'Autonomous Execution', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/anthropic.svg' },
-          { name: 'Claude Skills', role: 'Tool Registry', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/anthropic.svg' }
+          { name: 'Model Context Protocol', role: 'MCP Client/Server', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/anthropic.svg' },
+          { name: 'Claude CLI', role: 'Agent CLI Tooling', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/anthropic.svg' },
+          { name: 'Claude Skills', role: 'Reusable Skills', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/anthropic.svg' }
         ]
       },
       {
         id: 'tdd',
         number: '04',
-        title: 'TDD Test Generation',
-        category: 'Verification',
-        input: 'Behavioral Contract & Method Signatures',
-        output: 'Automated Regression Suite (Red Phase)',
-        role: 'Behavioral Test Boundary Synthesis',
-        description: 'Synthesizes exhaustive test suites and mocks edge cases before implementation code is allowed to compile or execute.',
-        whyChosen: 'Enforcing TDD guarantees every agent-authored method has strict behavioral boundaries and eliminates hallucinated edge-case regressions.',
-        metric: '100% Boundary Validation',
+        title: 'Test-Driven Development (TDD)',
+        category: 'Testing',
+        input: 'Method Contracts & Functional Specifications',
+        output: 'Passing Unit & Integration Test Suites',
+        role: 'Automated Test Implementation',
+        description: 'Enforces strict Test-Driven Development (TDD) by writing unit and integration tests to validate software behavior and prevent edge-case regressions.',
+        whyChosen: 'Guarantees that newly generated features adhere to expected contracts and pass automated test suites before committing.',
+        metric: 'High Test Coverage',
         technologies: [
           { name: 'JUnit 5', role: 'Java Unit Testing', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/junit5.svg' },
-          { name: 'PyTest', role: 'Python Testing', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytest/pytest-original.svg' },
-          { name: 'TDD', role: 'Contract Enforcement', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/thealgorithms.svg' }
+          { name: 'PyTest', role: 'Python Test Suite', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytest/pytest-original.svg' },
+          { name: 'TDD Methodology', role: 'Quality Assurance', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/thealgorithms.svg' }
         ]
       },
       {
         id: 'devsecops',
         number: '05',
-        title: 'DevSecOps Vulnerability Gate',
-        category: 'Security Gate',
-        input: 'Candidate Patches & Dependency Manifests',
-        output: 'SAST Audit Report & Automated Remediation',
-        role: 'Automated Security Remediation',
-        description: 'Scans generated artifacts for OWASP Top 10 vulnerabilities, dependency licenses, and static code smells with automatic self-healing loops.',
-        whyChosen: 'Remediates security vulnerabilities at the commit phase rather than during release, eliminating compliance friction.',
-        metric: 'Zero High/Critical CVEs',
+        title: 'Automated Security Remediation',
+        category: 'Security',
+        input: 'Generated Pull Requests & Code Patches',
+        output: 'Vulnerability Scan & Remediation Patches',
+        role: 'DevSecOps Quality Gate',
+        description: 'Integrates enterprise scanning tools directly into the pipeline to detect security flaws, code smells, and dependency vulnerabilities early in development.',
+        whyChosen: 'Automates vulnerability detection and remediation early in the SDLC, drastically reducing release bottlenecks.',
+        metric: 'Zero Security Smells',
         technologies: [
-          { name: 'SonarQube', role: 'Static Code Analysis', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/sonarqube.svg' },
-          { name: 'Checkmarx', role: 'SAST Security Gate', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/securityscorecard.svg' },
-          { name: 'Nexus IQ', role: 'Open Source Governance', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/sonatype.svg' }
+          { name: 'SonarQube', role: 'Code Quality & Vulnerabilities', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/sonarqube.svg' },
+          { name: 'Checkmarx', role: 'Static Code Analysis (SAST)', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/securityscorecard.svg' },
+          { name: 'Nexus IQ', role: 'Dependency Governance', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/sonatype.svg' }
         ]
       },
       {
         id: 'hitl',
         number: '06',
         title: 'Human-In-The-Loop Delivery',
-        category: 'Release',
-        input: 'Verified Clean Branch & Summary Brief',
-        output: 'Reviewed PR & Automated Pipeline Trigger',
-        role: 'Interactive Review & Gated PRs',
-        description: 'Generates clean Git pull requests with summarized diffs and rationale, awaiting final human engineer verification before automated merge.',
-        whyChosen: 'Guarantees human engineers maintain complete agency and architectural oversight while eliminating 80% of routine boilerplate drafting.',
-        metric: '75% SDLC Acceleration',
+        category: 'Deployment',
+        input: 'Tested & Scanned Git Branch',
+        output: 'Reviewed Pull Request & CI/CD Deployment',
+        role: 'Verified Release Pipeline',
+        description: 'Generates Git pull requests with clear diffs and summary notes, presenting them for human engineer review and triggering automated Jenkins builds.',
+        whyChosen: 'Keeps engineers in full control through Human-in-the-Loop review while automating 80% of routine implementation work.',
+        metric: 'Fast Feature Delivery',
         technologies: [
-          { name: 'Jenkins', role: 'CI/CD Pipelines', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg' },
-          { name: 'Git & GitHub', role: 'Version Control', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-          { name: 'GitHub Actions', role: 'Workflow Automation', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/githubactions.svg' }
+          { name: 'Jenkins', role: 'CI/CD Automation', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg' },
+          { name: 'Git & GitHub', role: 'Pull Request Review', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+          { name: 'Human In The Loop', role: 'Engineering Oversight', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/githubactions.svg' }
         ]
       }
     ]
   },
   {
     id: 'distributed',
-    title: 'High-Throughput Distributed Microservices Architecture',
-    shortTitle: 'Distributed Streaming',
+    title: 'Enterprise Backend & Distributed Systems',
+    shortTitle: 'Distributed Systems',
     icon: '⚡',
     color: '#06b6d4',
     colorFrom: 'from-cyan-500',
     colorTo: 'to-blue-600',
     accent: '#22d3ee',
-    badge: 'Enterprise Infrastructure',
-    summary: 'Resilient event-driven ingestion pipeline combining Apache Kafka streaming, Hazelcast in-memory computing, reactive Vert.x event loops, and Spring Boot persistence.',
+    badge: 'Enterprise Architecture',
+    summary: 'Scalable enterprise microservices and event-driven architecture combining Spring Boot, Apache Kafka streaming, Hazelcast in-memory computing, reactive Vert.x, and PostgreSQL.',
     stages: [
       {
         id: 'gateway',
         number: '01',
-        title: 'API Gateway & Auth',
+        title: 'API Gateway & Authentication',
         category: 'Ingress',
-        input: 'Encrypted HTTPS / WebSocket Requests',
-        output: 'Validated JWT Session & Rate-Metered Stream',
-        role: 'Edge Ingress & Identity Guard',
-        description: 'Terminates inbound SSL/TLS, validates enterprise SSO identity tokens, and rate-limits concurrent client connections at the network edge.',
-        whyChosen: 'Stateless dual-token rotation ensures instant session invalidation without central database lookups on every single microservice hop.',
-        metric: '< 5ms Edge Latency',
+        input: 'Inbound Client Requests (REST / Sockets)',
+        output: 'Authenticated Session & Validated Tokens',
+        role: 'Edge Ingress & Auth Guard',
+        description: 'Handles client ingress, enterprise Single Sign-On (SSO), and stateless dual-token JWT rotation to authenticate incoming service requests.',
+        whyChosen: 'Stateless JWT auto-rotation provides secure authentication across microservices without continuous database lookups.',
+        metric: 'Fast Token Validation',
         technologies: [
-          { name: 'Auth0 / SSO', role: 'Identity Provider', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/auth0.svg' },
-          { name: 'Stateless JWT', role: 'Dual-Token Rotation', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/jsonwebtokens.svg' },
-          { name: 'REST / Sockets', role: 'Gateway Routing', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/postman.svg' }
+          { name: 'SSO / Auth0', role: 'Single Sign-On', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/auth0.svg' },
+          { name: 'JWT Auth', role: 'Dual-Token Rotation', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/jsonwebtokens.svg' },
+          { name: 'REST APIs', role: 'Service Endpoints', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/postman.svg' }
         ]
       },
       {
         id: 'kafka',
         number: '02',
-        title: 'Apache Kafka Event Log',
-        category: 'Pub/Sub',
-        input: 'Concurrent Transaction Ingestion Events',
-        output: 'Partitioned Append-Only Immutable Records',
-        role: 'Distributed Durable Streaming',
-        description: 'Ingests high-volume concurrent transaction events into partitioned, replicated append-only logs for reliable downstream processing.',
-        whyChosen: 'Decouples high-volume burst traffic from slower transactional downstream processors, ensuring zero dropped messages under sudden spikes.',
-        metric: '100k+ Msgs/Sec Throughput',
+        title: 'Event Streaming with Kafka',
+        category: 'Streaming',
+        input: 'Asynchronous Business Events',
+        output: 'Partitioned Durable Event Log',
+        role: 'High-Throughput Event Streaming',
+        description: 'Streams asynchronous transaction events across distributed services through partitioned, fault-tolerant Kafka topics.',
+        whyChosen: 'Decouples service communication and buffers peak message bursts reliably without dropping transactions.',
+        metric: 'High-Throughput Streaming',
         technologies: [
-          { name: 'Apache Kafka', role: 'Distributed Event Log', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/apachekafka.svg' },
-          { name: 'Partitioned Topics', role: 'Parallel Consumption', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/apache.svg' },
-          { name: 'Docker / K8s', role: 'Cluster Deployments', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' }
+          { name: 'Apache Kafka', role: 'Distributed Event Streaming', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/apachekafka.svg' },
+          { name: 'Kafka Topics', role: 'Partitioned Messaging', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/apache.svg' },
+          { name: 'Docker / K8s', role: 'Container Orchestration', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' }
         ]
       },
       {
         id: 'hazelcast',
         number: '03',
-        title: 'Hazelcast Memory Grid',
-        category: 'In-Memory Compute',
-        input: 'Partition Keys & Distributed State Lookups',
-        output: 'Sub-Millisecond In-Memory Object State',
-        role: 'Low-Latency Clustered State',
-        description: 'Distributes hot application state and frequently queried lookups across RAM clusters with automatic partition rebalancing and failover.',
-        whyChosen: 'Sub-millisecond read/write access avoids relational database thrashing for rapidly fluctuating real-time session and transaction states.',
-        metric: '< 1ms Memory Lookup',
+        title: 'In-Memory Grid with Hazelcast',
+        category: 'Caching',
+        input: 'Hot State Keys & Session Lookups',
+        output: 'Sub-Millisecond Memory Responses',
+        role: 'Low-Latency In-Memory Caching',
+        description: 'Caches frequently accessed application state and session data across a distributed in-memory data grid using Hazelcast.',
+        whyChosen: 'Provides sub-millisecond data retrieval and reduces load on persistent relational databases.',
+        metric: 'Sub-Millisecond Latency',
         technologies: [
-          { name: 'Hazelcast IMDG', role: 'In-Memory Compute Grid', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/surrealdb.svg' },
-          { name: 'Distributed Cache', role: 'Low-Latency Store', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
-          { name: 'Cluster Sync', role: 'Partition Rebalancing', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' }
+          { name: 'Hazelcast', role: 'In-Memory Data Grid', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/surrealdb.svg' },
+          { name: 'Distributed Cache', role: 'Low-Latency State', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
+          { name: 'Linux / OS', role: 'Host Environment', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' }
         ]
       },
       {
         id: 'vertx',
         number: '04',
-        title: 'Eclipse Vert.x Reactive Core',
-        category: 'Event Loop',
-        input: 'Asynchronous Stream Events',
-        output: 'Non-Blocking Processed Event Futures',
-        role: 'Asynchronous Event Handling',
-        description: 'Processes asynchronous stream events on an event-driven, non-blocking reactor pattern running on the modern JVM.',
-        whyChosen: 'Traditional thread-per-request architectures exhaust memory under heavy concurrency; Vert.x handles massive load with minimal OS threads.',
-        metric: 'Zero Thread-Starvation',
+        title: 'Reactive Microservices with Vert.x',
+        category: 'Reactive',
+        input: 'Asynchronous Stream Triggers',
+        output: 'Non-Blocking Processed Futures',
+        role: 'Reactive Event Handling',
+        description: 'Executes reactive, non-blocking asynchronous event pipelines on the JVM using Eclipse Vert.x to process concurrent workloads efficiently.',
+        whyChosen: 'Vert.x event-loop model handles high concurrency with minimal thread overhead, preventing resource starvation.',
+        metric: 'Non-Blocking JVM',
         technologies: [
           { name: 'Eclipse Vert.x', role: 'Reactive Event Loop', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vertx/vertx-original.svg' },
-          { name: 'Java 21', role: 'Modern JVM Runtime', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-          { name: 'Non-Blocking I/O', role: 'Reactor Pattern', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' }
+          { name: 'Java', role: 'Strongly-Typed OOP', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+          { name: 'Mountebank', role: 'Service Virtualization', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/testinglibrary.svg' }
         ]
       },
       {
         id: 'spring',
         number: '05',
-        title: 'Spring Boot 3 Domain Core',
-        category: 'Business Services',
-        input: 'Decoded Event Payloads & Commands',
-        output: 'ACID Transaction Logs & Audited State',
-        role: 'Enterprise Domain Processing',
-        description: 'Enforces transactional consistency, complex business validation rules, and dependency-injected enterprise service boundaries.',
-        whyChosen: 'Spring ecosystem maturity offers rock-solid connection pooling, declarative @Transactional rollback guarantees, and seamless observability.',
-        metric: 'ACID Guaranteed',
+        title: 'Core Backend with Spring Boot',
+        category: 'Backend',
+        input: 'Validated Business Commands & DTOs',
+        output: 'Domain Model Updates & Response Payloads',
+        role: 'Enterprise Domain Logic',
+        description: 'Implements core enterprise business logic, dependency injection, and REST controllers with Spring Boot 3 and Java 21.',
+        whyChosen: 'Provides robust transactional management, enterprise security, and seamless database integration with Hibernate/JPA.',
+        metric: 'Transactional Integrity',
         technologies: [
-          { name: 'Spring Boot 3', role: 'Enterprise Framework', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
-          { name: 'Hibernate / JPA', role: 'ORM & Query Mapping', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/hibernate.svg' },
-          { name: 'Maven', role: 'Build Architecture', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original.svg' }
+          { name: 'Spring Boot 3', role: 'Backend Microservices', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
+          { name: 'Java 21', role: 'Modern Java Concurrency', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+          { name: 'Hibernate / JPA', role: 'ORM & Data Mapping', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/hibernate.svg' }
         ]
       },
       {
         id: 'db',
         number: '06',
-        title: 'Normalized Persistence',
-        category: 'Storage',
-        input: 'Validated Domain Entities',
-        output: 'Replicated Relational Commit & WAL Archive',
-        role: 'Durable Enterprise Storage',
-        description: 'Persists structured data into normalized relational tables backed by HikariCP pooling and point-in-time recovery archives.',
-        whyChosen: 'Relational integrity constraints prevent orphaned data while indexed foreign keys ensure lightning-fast join retrieval.',
-        metric: '99.999% Data Durability',
+        title: 'Relational Database Persistence',
+        category: 'Database',
+        input: 'Normalized Domain Entities',
+        output: 'Persistent ACID Transactions',
+        role: 'Durable Enterprise Persistence',
+        description: 'Stores application data in normalized relational tables on PostgreSQL and Supabase with connection pooling and ACID guarantees.',
+        whyChosen: 'Ensures data integrity, structured relations, and reliable querying for multi-tenant enterprise applications.',
+        metric: 'ACID Guarantees',
         technologies: [
-          { name: 'PostgreSQL', role: 'ACID Relational Database', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
-          { name: 'Supabase Cloud', role: 'Cloud Persistence', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/supabase.svg' },
-          { name: 'RocksDB', role: 'Key-Value Engine', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/surrealdb.svg' }
+          { name: 'PostgreSQL', role: 'Relational Database', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+          { name: 'Supabase Cloud', role: 'Cloud PostgreSQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/supabase.svg' },
+          { name: 'Rocks DB', role: 'Embedded Key-Value', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/surrealdb.svg' }
         ]
       }
     ]
   },
   {
     id: 'forensics',
-    title: 'Dual-Engine Forensic DeepFake Detection Pipeline',
-    shortTitle: 'Forensics & AI',
+    title: 'DeepFake Image Detection System',
+    shortTitle: 'DeepFake Forensics',
     icon: '👁️',
     color: '#f59e0b',
     colorFrom: 'from-amber-500',
     colorTo: 'to-orange-600',
     accent: '#fbbf24',
-    badge: '98.2% Validation Accuracy',
-    summary: 'Forensic image verification pipeline combining DCT Error Level Analysis (ELA) with a deep convolutional neural model trained on 80,000+ benchmark faces.',
+    badge: 'Research Project · 98.2% Accuracy',
+    summary: 'A high-precision forensic platform combining Error Level Analysis (ELA) and deep convolutional neural models trained on 80,000+ benchmark images to identify manipulated media.',
     stages: [
       {
         id: 'media',
         number: '01',
-        title: 'Stateless Image Ingestion',
-        category: 'Ingress',
-        input: 'Raw Image Stream (Upload / Remote URL)',
-        output: 'Validated In-Memory Byte Tensor',
-        role: 'Secure Media Ingestion',
-        description: 'Accepts raw uploaded media or remote URLs, validating file headers and buffer integrity without persisting bytes to permanent disk.',
-        whyChosen: 'Stateless processing ensures complete user privacy compliance, instantly purging bytes once analysis concludes.',
-        metric: 'Zero Permanent Storage',
+        title: 'Image Upload & Ingestion',
+        category: 'Ingestion',
+        input: 'Uploaded Image File or Image URL',
+        output: 'Validated In-Memory Pixel Array',
+        role: 'Stateless Image Ingestion',
+        description: 'Accepts direct user image uploads or remote URLs through a lightweight Flask API, validating file integrity in memory without permanent disk storage.',
+        whyChosen: 'Ensures complete user privacy with zero permanent file storage on the server.',
+        metric: 'Privacy-First Ingestion',
         technologies: [
-          { name: 'Flask REST API', role: 'Micro-Backend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg' },
-          { name: 'Python 3', role: 'Runtime Engine', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-          { name: 'Memory Buffer', role: 'Stateless Security', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/securityscorecard.svg' }
+          { name: 'Flask', role: 'Python Web Backend', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg' },
+          { name: 'Python', role: 'Backend Runtime', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+          { name: 'JavaScript', role: 'Frontend API Requests', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' }
         ]
       },
       {
@@ -269,91 +269,91 @@ const pipelines = [
         number: '02',
         title: 'Error Level Analysis (ELA)',
         category: 'Forensics',
-        input: 'Lossless RGB Pixel Matrix',
-        output: '8x8 DCT Compression Discrepancy Map',
-        role: 'Compression Discrepancy Extraction',
-        description: 'Resaves images at known compression levels and subtracts pixel matrices to detect non-uniform JPEG error rates across spliced regions.',
-        whyChosen: 'Synthetic edits and spliced facial swaps exhibit different compression artifacts compared to the surrounding authentic background.',
-        metric: 'Frequency-Domain Discrepancy',
+        input: 'Raw JPEG/PNG Image Stream',
+        output: 'Compression Discrepancy Error Map',
+        role: 'Forensic Compression Analysis',
+        description: 'Resaves images at a specific compression level and calculates pixel-level differences to expose non-uniform compression rates typical of image tampering.',
+        whyChosen: 'Manipulated and spliced regions retain different compression artifacts compared to the original image background.',
+        metric: 'Artifact Discrepancy',
         technologies: [
-          { name: 'Pillow / PIL', role: 'Image Processing', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/pypi.svg' },
-          { name: 'JPEG DCT', role: 'Frequency Analysis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
-          { name: 'NumPy', role: 'Array Computations', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg' }
+          { name: 'OpenCV & PIL', role: 'Image Forensics & ELA', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
+          { name: 'Pillow / PIL', role: 'JPEG Rescaling', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/pypi.svg' },
+          { name: 'Python', role: 'Matrix Computations', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' }
         ]
       },
       {
         id: 'vision',
         number: '03',
-        title: 'Feature Extraction & Masks',
+        title: 'Image Feature Preprocessing',
         category: 'Vision',
-        input: 'Color Channels & ELA Matrices',
-        output: 'Morphological Artifact Masks',
-        role: 'Spatial Boundary Isolation',
-        description: 'Applies morphological filtering, edge sharpening, and HSV/YCrCb channel conversions to isolate synthetic boundary warping.',
-        whyChosen: 'Exposes blending seams and unnatural gradients around eyes, facial boundaries, and hair fringes created by generative models.',
-        metric: 'Multi-Channel Filtering',
+        input: 'Raw Images & ELA Discrepancy Maps',
+        output: 'Normalized Feature Tensors',
+        role: 'Boundary & Color Analysis',
+        description: 'Extracts color channel features, normalizes pixel matrices, and isolates potential boundary blending discrepancies with OpenCV.',
+        whyChosen: 'Helps the neural model focus on unnatural boundary edges and facial seams created during manipulation.',
+        metric: 'Feature Extraction',
         technologies: [
-          { name: 'OpenCV', role: 'Computer Vision', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
-          { name: 'Color Space Masks', role: 'HSV/YCrCb Filters', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
-          { name: 'Edge Morphing', role: 'Gradient Laplacian', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg' }
+          { name: 'OpenCV', role: 'Computer Vision Filters', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
+          { name: 'Color Space Masks', role: 'Channel Transformations', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
+          { name: 'PIL', role: 'Image Formatting', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/pypi.svg' }
         ]
       },
       {
         id: 'cnn',
         number: '04',
-        title: 'Deep CNN Classifier',
+        title: 'Deep Neural Network Model',
         category: 'Deep Learning',
-        input: 'Dual-Branch Input: Raw Image + ELA Map',
-        output: 'Logits & Latent Anomaly Embeddings',
-        role: 'Dual-Branch Neural Inference',
-        description: 'Feeds raw tensors and ELA feature maps into convolutional neural networks trained on diverse authentic and deepfake facial datasets.',
-        whyChosen: 'Dual-input branching ensures the model evaluates both high-level semantic facial realism and low-level compression discrepancies.',
-        metric: '98.2% Validation Accuracy',
+        input: 'Normalized Image & ELA Input Tensors',
+        output: 'Probabilistic Classification Output',
+        role: 'Deep Learning Classification',
+        description: 'Processes inputs through deep convolutional neural networks trained on over 80,000 real and fake facial images to detect synthesis patterns.',
+        whyChosen: 'Combines deep learned visual features with ELA compression maps for reliable, dual-method detection accuracy.',
+        metric: '98.2% Accuracy',
         technologies: [
-          { name: 'PyTorch', role: 'Neural Framework', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
-          { name: 'TensorFlow', role: 'Model Architecture', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
-          { name: 'Scikit-Learn', role: 'Evaluation Metrics', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg' }
+          { name: 'PyTorch', role: 'Deep Learning Model', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
+          { name: 'TensorFlow', role: 'Neural Architectures', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
+          { name: 'Scikit-Learn', role: 'Validation Metrics', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg' }
         ]
       },
       {
         id: 'heatmap',
         number: '05',
-        title: 'Heatmap & Metric Scoring',
-        category: 'Synthesis',
-        input: 'Model Probability Logits',
-        output: 'Visual Heatmap & Explainable Report',
-        role: 'Forensic Visual Report Generation',
-        description: 'Generates gradient confidence heatmaps pinpointing the exact modified pixels alongside an overall manipulation probability percentage.',
-        whyChosen: 'Provides transparent, explainable forensic evidence that human investigators can visually scrutinize and audit.',
-        metric: 'Instant Visual Evidence',
+        title: 'Forensic Heatmap Generation',
+        category: 'Visualization',
+        input: 'Model Probability & Pixel Anomalies',
+        output: 'Visual Heatmap & Evidence Breakdown',
+        role: 'Visual Evidence Generation',
+        description: 'Generates intuitive visual heatmaps that highlight tampered facial areas so users can clearly see where manipulation was detected.',
+        whyChosen: 'Provides transparent, understandable visual evidence alongside the classification score.',
+        metric: 'Explainable Heatmaps',
         technologies: [
-          { name: 'Matplotlib', role: 'Heatmap Plotting', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/plotly.svg' },
-          { name: 'Vue 3 UI', role: 'Frontend Presentation', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
-          { name: 'Tailwind CSS', role: 'Report Styling', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' }
+          { name: 'OpenCV & PIL', role: 'Heatmap Rendering', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
+          { name: 'Flask', role: 'API Result Delivery', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg' },
+          { name: 'Python', role: 'Data Formatting', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' }
         ]
       },
       {
-        id: 'audit',
+        id: 'results',
         number: '06',
-        title: 'Forensic Audit & Wiping',
-        category: 'Compliance',
-        input: 'Generated Evidence Record',
-        output: 'Audited Verdict & Memory Purge',
-        role: 'Privacy-Preserving Destruction',
-        description: 'Cryptographically seals the diagnostic confidence score, formats the client response, and aggressively overwrites volatile memory buffers.',
-        whyChosen: 'Ensures zero sensitive biometric data persists in RAM or caches following diagnosis, strictly adhering to global forensic privacy standards.',
-        metric: 'Zero-Retention Guarantee',
+        title: 'Verification & Results Portal',
+        category: 'Presentation',
+        input: 'Classification Score & Heatmap Artifacts',
+        output: 'Interactive Result Dashboard',
+        role: 'User Result Presentation',
+        description: 'Presents detailed verification results and confidence metrics to the user through an intuitive web interface with clear visual feedback.',
+        whyChosen: 'Gives users clear, actionable answers on whether media has been altered or remains authentic.',
+        metric: '98.2% Validation',
         technologies: [
-          { name: 'Secure Wipe', role: 'Memory Overwrite', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/securityscorecard.svg' },
-          { name: 'JSON REST', role: 'Verdict Payload', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/postman.svg' },
-          { name: 'Docker', role: 'Isolated Container', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' }
+          { name: 'HTML5 & CSS3', role: 'Responsive Web UI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+          { name: 'JavaScript', role: 'Interactive Controls', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+          { name: 'Flask', role: 'Backend API Service', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg' }
         ]
       }
     ]
   },
   {
     id: 'dsa',
-    title: 'High-Performance Algorithmic Synthesis & Optimization',
+    title: 'Competitive Programming & Problem Solving',
     shortTitle: 'Algorithms & DSA',
     icon: '🧩',
     color: '#10b981',
@@ -361,108 +361,108 @@ const pipelines = [
     colorTo: 'to-teal-600',
     accent: '#34d399',
     badge: '1,720+ Problems Solved',
-    summary: 'Systematic algorithmic problem-solving pipeline for breaking down complex competitive programming challenges into optimal time and space complexity boundaries.',
+    summary: 'Systematic problem-solving methodology breaking down competitive algorithmic challenges into optimal data structures and time/space complexity bounds.',
     stages: [
       {
         id: 'bounds',
         number: '01',
-        title: 'Constraint Bounds Analysis',
+        title: 'Problem & Constraint Analysis',
         category: 'Analysis',
-        input: 'Problem Bounds (N <= 2e5, Q <= 1e5)',
-        output: 'Time/Memory Budget: O(N log N) / 256MB',
-        role: 'Feasible Complexity Derivation',
-        description: 'Analyzes input constraints (e.g. N <= 2e5) to establish the theoretical upper bound—determining whether O(N), O(N log N), or O(1) is required.',
-        whyChosen: 'Prevents wasted time on suboptimal approaches before a single line of implementation is written.',
-        metric: '< 1.0s Execution Window',
+        input: 'Problem Statement & Input Bounds',
+        output: 'Target Complexity (e.g. O(N log N))',
+        role: 'Complexity Derivation',
+        description: 'Analyzes input constraints (e.g., N <= 2e5) to determine the feasible time and space complexity needed to pass within the execution limit.',
+        whyChosen: 'Prevents suboptimal approaches by identifying the correct complexity target before writing implementation code.',
+        metric: 'Optimal Time Bounds',
         technologies: [
-          { name: 'C++17', role: 'Competitive Core', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
-          { name: 'Complexity Math', role: 'Asymptotics', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/thealgorithms.svg' },
-          { name: 'Bit Tricks', role: 'O(1) Evaluation', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg' }
+          { name: 'Complexity Analysis', role: 'Big-O Analysis', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/thealgorithms.svg' },
+          { name: 'C++', role: 'Fast Execution', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
+          { name: 'Problem Solving', role: 'Analytical Logic', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/geeksforgeeks.svg' }
         ]
       },
       {
         id: 'struct',
         number: '02',
-        title: 'Advanced Data Structures',
-        category: 'Modeling',
-        input: 'Continuous Interval Queries & Mutex Ops',
-        output: 'Segment Tree / Disjoint Set Graph Topology',
-        role: 'Logarithmic State Indexing',
-        description: 'Selects or synthesizes specialized data structures for range queries, disjoint set connectivity, or prefix-tree lookups.',
-        whyChosen: 'Reduces brute-force O(N) linear operations to O(log N) or inverse Ackermann alpha(N) amortized time.',
-        metric: 'O(log N) Range Operations',
+        title: 'Data Structure Selection',
+        category: 'Data Structures',
+        input: 'Interval Queries & Dynamic Data',
+        output: 'Optimized Data Structure Choice',
+        role: 'Efficient State Representation',
+        description: 'Selects or builds specialized data structures (Segment Trees, Disjoint Set Union, Tries, Heaps) to perform queries and updates efficiently.',
+        whyChosen: 'Transforms brute-force operations into logarithmic O(log N) or constant O(1) operations.',
+        metric: 'O(log N) Efficiency',
         technologies: [
           { name: 'Segment Trees', role: 'Range Queries', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/thealgorithms.svg' },
-          { name: 'Disjoint Sets', role: 'Connectivity Union', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/leetcode.svg' },
-          { name: 'Trie / Heaps', role: 'Prefix Indexing', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/geeksforgeeks.svg' }
+          { name: 'Disjoint Set Union', role: 'Connectivity Queries', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/leetcode.svg' },
+          { name: 'Heaps & Trees', role: 'Priority & Ordering', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/geeksforgeeks.svg' }
         ]
       },
       {
         id: 'strategy',
         number: '03',
-        title: 'Dynamic State Transitions',
-        category: 'Strategy',
-        input: 'Overlapping Subproblems & Invariants',
-        output: 'Recurrence Equation & Memoization Table',
-        role: 'Optimal Substructure Transitions',
-        description: 'Formulates state-space DAGs, multidimensional recurrence relations, or topological traversals to avoid redundant recomputation.',
-        whyChosen: 'Memoization transforms exponential combinatorial search spaces into efficient polynomial-time state traversals.',
-        metric: 'Zero Redundant Computations',
+        title: 'Dynamic Programming & Graph Logic',
+        category: 'Algorithms',
+        input: 'Subproblem Invariants & Relations',
+        output: 'Recurrence Relations & Graph Traversals',
+        role: 'Algorithmic Strategy',
+        description: 'Formulates dynamic programming state transitions, memoization tables, or graph traversal algorithms (BFS, DFS, Dijkstra) to solve complex problems.',
+        whyChosen: 'Eliminates redundant calculations by storing intermediate states, turning exponential search spaces into polynomial time.',
+        metric: 'Optimal Transitions',
         technologies: [
-          { name: 'Dynamic Prog', role: 'Memoization Tables', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/leetcode.svg' },
-          { name: 'Graph Theory', role: 'Dijkstra / TopoSort', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/thealgorithms.svg' },
+          { name: 'Dynamic Programming', role: 'State Transitions', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/leetcode.svg' },
+          { name: 'Graph Algorithms', role: 'Shortest Path & TopoSort', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/thealgorithms.svg' },
           { name: 'Two Pointers', role: 'Sliding Windows', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/geeksforgeeks.svg' }
         ]
       },
       {
         id: 'stl',
         number: '04',
-        title: 'C++ STL Zero-Overhead',
-        category: 'Execution',
-        input: 'Mathematical Equations & Recurrences',
-        output: 'Cache-Friendly Binary Machine Code',
-        role: 'Minimal Overhead Runtime',
-        description: 'Utilizes contiguous cache-friendly arrays, custom bitset operations, and direct memory allocation to minimize CPU instruction cycles.',
-        whyChosen: 'C++ compiles directly to native machine code with zero garbage collection pauses and predictable microsecond execution.',
-        metric: 'Microsecond CPU Runtime',
+        title: 'High-Performance Implementation',
+        category: 'Coding',
+        input: 'Algorithmic Logic & Formulas',
+        output: 'Fast, Memory-Efficient Source Code',
+        role: 'High-Performance Coding',
+        description: 'Implements solutions in C++ with standard library (STL) containers and fast I/O to achieve minimal runtime and memory footprint.',
+        whyChosen: 'C++ compiles directly to native code with no garbage collection pauses, ideal for strict time constraints in competitive programming.',
+        metric: 'Microsecond Runtimes',
         technologies: [
-          { name: 'C++ STL Containers', role: 'Vectors & Maps', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
-          { name: 'Fast I/O', role: 'Stream Optimization', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg' },
-          { name: 'Cache Locality', role: 'Memory Optimization', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' }
+          { name: 'C++ STL', role: 'Vectors, Sets & Maps', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
+          { name: 'Java', role: 'Enterprise Problem Solving', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+          { name: 'Fast I/O', role: 'I/O Optimization', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg' }
         ]
       },
       {
         id: 'test',
         number: '05',
-        title: 'Stress Testing & Invariants',
-        category: 'Proof',
-        input: 'Corner Bounds, INT_MAX, Empty/Disconnected Inputs',
-        output: 'Automated 10,000-Case Oracle Verification',
-        role: 'Invariant Proof & Corner Tests',
-        description: 'Automates stress testing with random case generators against naive brute-force oracles to prove corner cases and integer overflows.',
-        whyChosen: 'Guarantees 100% acceptance on blind test suites by verifying edge cases (empty inputs, INT_MAX, disconnected graphs) beforehand.',
-        metric: '100% First-Submission AC',
+        title: 'Corner Case & Invariant Testing',
+        category: 'Validation',
+        input: 'Boundary Inputs & Corner Cases',
+        output: 'Verified Correctness Against Oracles',
+        role: 'Stress Testing & Edge Cases',
+        description: 'Tests solutions against edge cases (boundary values, integer overflows, empty inputs, disconnected graphs) to ensure complete correctness.',
+        whyChosen: 'Prevents common competitive programming penalties by validating assumptions prior to final submission.',
+        metric: 'Zero Overflows',
         technologies: [
-          { name: 'Stress Scripting', role: 'Automated Generators', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/codeforces.svg' },
-          { name: 'Oracle Verifier', role: 'Brute-Force Check', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/geeksforgeeks.svg' },
-          { name: 'Invariants', role: 'Mathematical Proof', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/thealgorithms.svg' }
+          { name: 'Edge Case Testing', role: 'Boundary Verification', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/geeksforgeeks.svg' },
+          { name: 'C++ Invariants', role: 'Correctness Checking', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
+          { name: 'Data Structures', role: 'Integrity Verification', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/thealgorithms.svg' }
         ]
       },
       {
         id: 'submission',
         number: '06',
-        title: 'Production Contest Submission',
-        category: 'Victory',
-        input: 'Optimized Source Code (C++ / Java)',
-        output: '0ms Accepted (AC) Verdict',
-        role: 'Algorithmic Mastery & Speed',
-        description: 'Deploys clean, modular code to online judges, achieving consistent 99th-percentile runtimes and optimal memory consumption.',
-        whyChosen: 'Over 1,720 problems solved across LeetCode, Codeforces, and GeeksforGeeks demonstrate sustained problem-solving discipline.',
+        title: 'Platform Mastery & Contests',
+        category: 'Platforms',
+        input: 'Accepted Submissions on Online Judges',
+        output: '1,720+ Problems Solved Overall',
+        role: 'Competitive Coding Mastery',
+        description: 'Demonstrates consistent, disciplined algorithmic problem solving across competitive coding platforms with over 1,720 problems solved.',
+        whyChosen: 'Highlights sustained analytical problem-solving skills, speed, and algorithmic depth.',
         metric: '1,720+ Total Solved',
         technologies: [
-          { name: 'LeetCode', role: 'Online Judge', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/leetcode.svg' },
-          { name: 'GeeksforGeeks', role: 'Platform Mastery', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/geeksforgeeks.svg' },
-          { name: 'Codeforces', role: 'Global Contests', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/codeforces.svg' }
+          { name: 'Codolio', role: 'Competitive Profile', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/leetcode.svg' },
+          { name: 'LeetCode', role: 'Coding Platform', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/leetcode.svg' },
+          { name: 'GeeksforGeeks', role: 'DSA Platform', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/geeksforgeeks.svg' }
         ]
       }
     ]
@@ -565,20 +565,20 @@ onUnmounted(() => {
       :style="{ backgroundColor: currentPipeline.color }"
     />
 
-    <!-- Header Telemetry Bar -->
+    <!-- Header Status Bar -->
     <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-white/10 text-xs font-mono">
       <div class="flex items-center gap-3">
         <span class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-900 border border-white/10 text-cyan-400 font-semibold tracking-wider">
           <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-          SYS_ARCH.V3
+          SYSTEM ARCHITECTURE
         </span>
         <span class="text-slate-400 hidden sm:inline">
-          PRODUCTION ARCHITECTURE BLUEPRINT
+          ENGINEERING & RESEARCH BLUEPRINTS
         </span>
       </div>
 
       <div class="flex items-center gap-3">
-        <!-- Live Trace Simulator Toggle -->
+        <!-- Live Flow Simulator Toggle -->
         <button
           type="button"
           @click="toggleSimulation"
@@ -591,7 +591,7 @@ onUnmounted(() => {
             class="w-2 h-2 rounded-full"
             :class="isSimulating ? 'bg-cyan-400 animate-ping' : 'bg-slate-500'"
           />
-          <span>{{ isSimulating ? 'PAUSE SIMULATION' : '⚡ SIMULATE FLOW' }}</span>
+          <span>{{ isSimulating ? 'PAUSE FLOW' : '⚡ SIMULATE FLOW' }}</span>
         </button>
       </div>
     </div>
@@ -672,8 +672,7 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- 3 × 2 SPACIOUS ARCHITECTURE CIRCUIT GRID (Option A) -->
-    <!-- Replaces congested 6-column line with spacious 3-col x 2-row layout where each stage is wide and prominent -->
+    <!-- 3 × 2 Spacious Architecture Grid -->
     <div class="relative z-10 mt-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       <div
         v-for="(stage, idx) in currentPipeline.stages"
@@ -688,7 +687,7 @@ onUnmounted(() => {
           boxShadow: `0 14px 40px -8px ${currentPipeline.color}40, 0 0 0 1px ${currentPipeline.color}80`
         } : {}"
       >
-        <!-- Top Neon Circuit Accent Line -->
+        <!-- Top Accent Line -->
         <div
           class="absolute top-0 inset-x-0 h-1 transition-all duration-300"
           :style="{
@@ -754,16 +753,16 @@ onUnmounted(() => {
             {{ stage.role }}
           </p>
 
-          <!-- Stage Description Snippet -->
+          <!-- Stage Description -->
           <p class="text-xs text-slate-300 mt-2.5 leading-relaxed line-clamp-2">
             {{ stage.description }}
           </p>
         </div>
 
-        <!-- Middle: PROMINENT VISIBLE TECH STACK SHELF -->
+        <!-- Middle: Technologies Shelf -->
         <div class="mt-4 pt-3.5 border-t border-white/10">
           <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold mb-2">
-            Technologies Deployed
+            Technologies
           </div>
 
           <div class="flex flex-wrap gap-2">
@@ -772,7 +771,6 @@ onUnmounted(() => {
               :key="tech.name"
               class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/10 text-xs font-mono text-slate-200 shadow-sm hover:border-cyan-400/40 transition-colors"
             >
-              <!-- Large Visible 20px Tech Icon -->
               <img
                 :src="tech.icon"
                 :alt="tech.name"
@@ -784,9 +782,9 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <!-- Bottom: Metric SLA Footer -->
-        <div class="mt-3.5 pt-2.5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-          <span class="text-slate-400 text-[11px]">SLA Target</span>
+        <!-- Bottom: Target Metric Footer -->
+        <div class="mt-3.5 pt-2.5 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+          <span class="text-slate-400 text-[11px]">Target</span>
           <span
             class="font-bold text-[11px] px-2 py-0.5 rounded"
             :style="{
@@ -800,27 +798,26 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- Architecture Telemetry & Spec Inspector (Console Style) -->
+    <!-- Architecture Telemetry & Details Inspector -->
     <div
       class="telemetry-console relative z-10 mt-8 rounded-2xl bg-slate-950/90 border shadow-2xl transition-all duration-300 overflow-hidden"
       :style="{ borderColor: currentPipeline.color + '50' }"
     >
-      <!-- Telemetry Console Top Window Bar -->
+      <!-- Top Window Bar -->
       <div class="px-5 py-3.5 bg-slate-900/90 border-b border-white/10 flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center gap-3">
-          <!-- Terminal Status Lights -->
           <div class="flex items-center gap-1.5">
             <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
             <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
           </div>
           <span class="text-xs font-mono font-bold text-slate-300">
-            STAGE_TELEMETRY // {{ currentStage.number }}_{{ currentStage.title.toUpperCase().replace(/\s+/g, '_') }}
+            STAGE {{ currentStage.number }} // {{ currentStage.title }}
           </span>
         </div>
 
         <div class="flex items-center gap-3">
-          <!-- Live Execution Status Badge in Theme Color -->
+          <!-- Active Status Badge -->
           <div
             class="flex items-center gap-2 px-2.5 py-1 rounded-lg border text-[11px] font-mono font-semibold"
             :style="{
@@ -839,10 +836,10 @@ onUnmounted(() => {
                 :style="{ backgroundColor: currentPipeline.color }"
               />
             </span>
-            <span>EXECUTION_STATE: ACTIVE</span>
+            <span>STATUS: ACTIVE</span>
           </div>
 
-          <!-- KPI Metric Pill -->
+          <!-- Metric Pill -->
           <div
             class="flex items-center gap-2 px-3 py-1 rounded-lg border font-mono text-xs font-bold shadow-sm"
             :style="{
@@ -856,45 +853,44 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Telemetry Console Body: 3 Structured Engineering Panes -->
+      <!-- Inspector Body: 3 Clean Structured Panes -->
       <div class="p-5 sm:p-6 grid grid-cols-1 lg:grid-cols-3 gap-5">
         
-        <!-- Pane 1: Execution Mechanics & I/O Contract -->
+        <!-- Pane 1: Workflow & Data Flow -->
         <div class="p-4 sm:p-5 rounded-xl bg-slate-900/60 border border-white/10 flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-2 mb-3 text-xs font-mono font-bold uppercase tracking-wider text-cyan-400">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              <span>Execution Contract & I/O</span>
+              <span>Workflow & Data Flow</span>
             </div>
 
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
               {{ currentStage.description }}
             </p>
 
-            <!-- Input/Output Schemas -->
             <div class="space-y-2 text-xs font-mono pt-3 border-t border-white/10">
               <div class="flex items-start gap-2">
-                <span class="text-cyan-400 font-bold flex-shrink-0">IN:</span>
+                <span class="text-cyan-400 font-bold flex-shrink-0">Input:</span>
                 <span class="text-slate-300 break-words">{{ currentStage.input }}</span>
               </div>
               <div class="flex items-start gap-2">
-                <span class="text-emerald-400 font-bold flex-shrink-0">OUT:</span>
+                <span class="text-emerald-400 font-bold flex-shrink-0">Output:</span>
                 <span class="text-slate-300 break-words">{{ currentStage.output }}</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Pane 2: Deployed Stack with Large Prominent Icons -->
+        <!-- Pane 2: Technologies -->
         <div class="p-4 sm:p-5 rounded-xl bg-slate-900/60 border border-white/10 flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-2 mb-3 text-xs font-mono font-bold uppercase tracking-wider text-purple-400">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
               </svg>
-              <span>Technologies Deployed</span>
+              <span>Technologies</span>
             </div>
 
             <p class="text-xs font-mono text-slate-400 mb-3">
@@ -922,24 +918,19 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <!-- Pane 3: Architectural Rationale & Tradeoffs -->
+        <!-- Pane 3: Why This Approach -->
         <div class="p-4 sm:p-5 rounded-xl bg-slate-900/60 border border-white/10 flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-2 mb-3 text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
-              <span>Architectural Rationale</span>
+              <span>Why This Approach</span>
             </div>
 
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
               {{ currentStage.whyChosen }}
             </p>
-          </div>
-
-          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
-            <span>STAGE VERIFIED</span>
-            <span class="text-emerald-400 font-semibold">100% HEALTH</span>
           </div>
         </div>
 
