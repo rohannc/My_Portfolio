@@ -2188,20 +2188,26 @@
     {
       "date": "2026-11-22",
       "github": 0,
-      "codolio": 1,
-      "total": 1
+      "codolio": 2,
+      "total": 2
     },
     {
       "date": "2026-11-23",
       "github": 2,
-      "codolio": 0,
-      "total": 2
+      "codolio": 2,
+      "total": 4
     },
     {
       "date": "2026-11-24",
-      "github": 1,
+      "github": 4,
+      "codolio": 1,
+      "total": 5
+    },
+    {
+      "date": "2026-11-25",
+      "github": 0,
       "codolio": 0,
-      "total": 1
+      "total": 0
     }
   ]
 }
