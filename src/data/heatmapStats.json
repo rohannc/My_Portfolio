@@ -2200,26 +2200,32 @@
     {
       "date": "2026-11-24",
       "github": 4,
-      "codolio": 1,
-      "total": 5
+      "codolio": 2,
+      "total": 6
     },
     {
       "date": "2026-11-25",
       "github": 0,
-      "codolio": 0,
-      "total": 0
+      "codolio": 2,
+      "total": 2
     },
     {
       "date": "2026-11-26",
       "github": 0,
-      "codolio": 0,
-      "total": 0
+      "codolio": 2,
+      "total": 2
     },
     {
       "date": "2026-11-27",
       "github": 0,
-      "codolio": 0,
-      "total": 0
+      "codolio": 2,
+      "total": 2
+    },
+    {
+      "date": "2026-11-28",
+      "github": 0,
+      "codolio": 1,
+      "total": 1
     }
   ]
 }
